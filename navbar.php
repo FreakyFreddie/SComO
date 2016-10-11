@@ -13,7 +13,7 @@
           <ul class="nav navbar-nav">
             <?php
 				echo "<li ";
-					if($_GET['page']="home")
+					if($_GET['page']=="index")
 					{
 						echo "class=\"active\">";
 						echo "<a href=\"#\">Home</a>";
@@ -25,7 +25,7 @@
 					}
 				echo "</li>";
 				echo "<li ";
-					if($_GET['page']="about")
+					if($_GET['page']=="about")
 					{
 						echo "class=\"active\">";
 						echo "<a href=\"#\">about</a>";
@@ -37,7 +37,7 @@
 					}
 				echo "</li>";
 				echo "<li ";
-					if($_GET['page']="winkelmandje")
+					if($_GET['page']=="winkelmandje")
 					{
 						echo "class=\"active\">";
 						echo "<a href=\"#\">winkelmandje</a>";
