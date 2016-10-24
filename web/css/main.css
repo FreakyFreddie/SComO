@@ -1,0 +1,111 @@
+body {
+  min-height: 2000px;
+  padding-top: 50px;
+  background-color: #eee;
+}
+
+.navbar{
+	background-color: #1d8db0;
+}
+
+.navbar-default .navbar-header .navbar-brand{
+	font-weight: bold;
+	color: #fff;
+}
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse{
+	max-height: 100vh;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+#login-dp{
+	padding: 5%;
+}
+
+#login-dp a{
+	color: darkblue;
+}
+
+#login-dp .bottom{
+	padding-top: 3%;
+}
+
+.jumbotron{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-image: url("../img/bg7.png");
+	background-repeat: repeat;
+}
+
+.jumbotron p{
+	/*color: #1d8db0;*/
+}
+
+.searchbar{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.searchbar .input-group-addon{
+    background: white; 
+}
+.searchbar .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.searchbar button{
+    border:0;
+    background:transparent;
+}
+
+.shop .col-sm-4{
+	margin-bottom: 8vh;
+}
+
+.shop .col-sm-4 .shoparticle{
+	background-color: white;
+	border-left: 5px solid #1d8db0;
+	border-top: 5px solid #1d8db0;
+}
+
+.shop .col-sm-4 .shoparticle h3{
+	margin-top: 1%;
+	margin-left: 1%;
+	border-bottom: 1px dotted #888888;
+}
+
+.shop .col-sm-4 .shoparticle img{
+	display: block;
+	float: right;
+	width: 40%;
+	height: auto;
+}
+
+footer{
+	background-color: #1d8db0;
+	border-top: 1px solid #fff;
+}
+
+footer .container .footer-block{
+	display: block;
+	float: left;
+	width: 50%;
+}
+
+footer .container .footer-block p{
+	margin: 0px;
+}
+
+@media screen and (max-width: 480px) {
+    #mobile-dissapear {
+        display: none;
+    }
+	
+	footer .container .footer-block{
+		width: 100%;
+	}
+}
