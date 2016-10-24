@@ -8,6 +8,15 @@ body {
 	background-color: #1d8db0;
 }
 
+.navbar-default .navbar-header .navbar-brand{
+	font-weight: bold;
+	color: #fff;
+}
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse{
+	max-height: 100vh;
+}
+
 .navbar-default .navbar-nav > li > a {
     color: #fff;
 }
@@ -74,4 +83,29 @@ body {
 	float: right;
 	width: 40%;
 	height: auto;
+}
+
+footer{
+	background-color: #1d8db0;
+	border-top: 1px solid #fff;
+}
+
+footer .container .footer-block{
+	display: block;
+	float: left;
+	width: 50%;
+}
+
+footer .container .footer-block p{
+	margin: 0px;
+}
+
+@media screen and (max-width: 480px) {
+    #mobile-dissapear {
+        display: none;
+    }
+	
+	footer .container .footer-block{
+		width: 100%;
+	}
 }
