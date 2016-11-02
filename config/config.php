@@ -23,4 +23,10 @@
 		"student.kuleuven.be",
 		"kuleuven.be"
 	);
+	
+	//Mouser settings
+	$mouserAPI=;
+	
+	//Farnell settings
+	$farnellAPI="gd8n8b2kxqw6jq5mutsbrvur";
 ?>

@@ -35,7 +35,7 @@
 			."&storeInfo.id=be.farnell.com"
 			."&callInfo.responseDataFormat=XML"
 			."&callInfo.callback="
-			."&callInfo.apiKey=gd8n8b2kxqw6jq5mutsbrvur"
+			."&callInfo.apiKey=$farnellAPI"
 			."&resultsSettings.offset=$offset"
 			."&resultsSettings.numberOfResults=$numberofresults"
 			."&resultsSettings.refinements.filters=rohsCompliant,inStock"
@@ -114,12 +114,11 @@
 			//ignore numberofresults, only need products
 			if($key=="products")
 			{
-				//create array of product prices & quatities
+				//create array of product prices & quantities
 				$prices = array();
 				foreach($xmlproduct->prices as $productprice)
 				{
 					$price = new ProductPrice(
-						$productprice->to,
 						$productprice->from,
 						$productprice->cost
 					);
@@ -127,12 +126,21 @@
 				}
 				
 				//create new Product object with product specifications
-				$product = new Product(
+				$product = new FarnellProduct(
 					$xmlproduct->sku,
 					$xmlproduct->displayName,
-					$xmlproduct->brandName,
 					"Farnell",
-					$prices
+					$prices,
+					$xmlproduct->packSize,
+					$xmlproduct->unitOfMeasure,
+					$xmlproduct->id,
+					$xmlproduct->brandName,
+					$xmlproduct->translatedManufacturerPartNumber,
+					$xmlproduct->translatedMinimumOrderQuality,
+					$xmlproduct->translatedPrimaryCatalogPage,
+					$xmlproduct->publishingModule,
+					$xmlproduct->vatHandlingCode,
+					$xmlproduct->discountReason
 				);
 				
 				//push new product to array
