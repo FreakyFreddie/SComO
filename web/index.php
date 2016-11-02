@@ -34,13 +34,12 @@
 		</p>
 
 		<form class="input-group searchbar">
-			<input type="text" class="form-control" onkeyup="showResult(this.value)"  placeholder="zoek een component" >
+			<input type="text" class="form-control" placeholder="zoek een component" >
 			<span class="input-group-addon">
 				<button type="submit">
 					<span class="glyphicon glyphicon-search"></span>
 				</button> 
 			</span>
-			<div id="livesearch"></div>
 		</form>
 		</div>
 		<div class="container shop">
