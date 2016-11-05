@@ -1,24 +1,5 @@
 <?php
-	//globally used classes go here
-	//include ProductPrice class
-	require '../classes/ProductPrice.php';
-
-	//include Product class
-	require '../classes/Product.php';
-
-	//include MouserProduct
-	require '../classes/MouserProduct.php';
-
-	//include FarnellProduct
-	require '../classes/FarnellProduct.php';
-	
-	//include configuration file
-	require '../../config/config.php';
-
-?>
-
-<?php
-	function getFarnellProducts($keyword="fuse", $offset=0, $numberofresults=20, $farnellAPI)
+	function getFarnellProducts($keyword, $offset, $numberofresults, $farnellAPI)
 	{
 		//Curl is used to transfer data over a wide variety of protocols
 		//To use curl, you may have to install php libcurl package (usually included in php5+)
@@ -221,7 +202,7 @@
 					$xmlproduct->unitOfMeasure,
 					$xmlproduct->id,
 					"http://be.farnell.com/productimages/standard/en_GB".$xmlproduct->image["baseName"],
-					$xmlproduct->datasheets[url],
+					$xmlproduct->datasheets['url'],
 					$xmlproduct->inv,
 					$xmlproduct->vendorId,
 					$xmlproduct->vendorName,

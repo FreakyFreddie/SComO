@@ -1,8 +1,7 @@
-<!-- non page-specific constants -->
 <?php
 	//load config, typecast to object for easy access
-	$_GLOBALS["settings"] = (object) parse_ini_file("../config/config.ini", true);
-
+	$_GLOBALS['settings'] = (object) parse_ini_file('../config/config.ini', true);
+	
 	//define all constants here
 	//title & abbrev
 	//define(abbreviaton);
@@ -21,7 +20,7 @@
 
 		<title>
 			<?php
-				echo $_GLOBALS["settings"]->Store["storeabbrev"];
+				echo $_GLOBALS['settings']->Store["storeabbrev"];
 			?>
 		</title>
 
@@ -47,18 +46,18 @@
 		<?php
 			//globally used classes go here
 			//include ProductPrice class
-			require '../lib/classes/ProductPrice.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/classes/ProductPrice.php';
 
 			//include Product class
-			require '../lib/classes/Product.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/classes/Product.php';
 
 			//include MouserProduct
-			require '../lib/classes/MouserProduct.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/classes/MouserProduct.php';
 
 			//include FarnellProduct
-			require '../lib/classes/FarnellProduct.php';
-		?>
-		
-		<?php
+			require $_GLOBALS['settings']->Folders['root'].'../lib/classes/FarnellProduct.php';
+
 			//globally used functions go here
+			require $_GLOBALS['settings']->Folders['root'].'../lib/functions/getfarnellproducts.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/functions/getmouserproducts.php';
 		?>

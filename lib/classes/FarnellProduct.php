@@ -27,10 +27,10 @@
 		
 		//__construct is called on each newly created object
 		//if child class had __construct, parent __construct is not automatically called, so add it in child __construct
-		public function __construct($fpSKU, $fpDisplayName, $fpPrices, $fpStatus, $fpRohsStatusCode, $fpPackSize, $fpUnitOfMeasure, $fpID, $fpVendorId, $fpBrandName, $fpTranslatedManufacturerPartNumber, $fpTranslatedMinimumOrderQuality, $fpStock, $fpCountryOfOrigin, $fpComingSoon, $fpTranslatedPrimaryCatalogPage, $fpPublishingModule, $fpVatHandlingCode, $fpReleaseStatusCode, $fpIsSpecialOrder, $fpIsAwaitingRelease, $fpReeling, $fpDiscountReason, $fpBrandId, $fpCommodityClassCode, $fpSupplier)
+		public function __construct($fpSKU, $fpDisplayName, $fpPrices, $fpStatus, $fpRohsStatusCode, $fpPackSize, $fpUnitOfMeasure, $fpImage, $fpDataSheets, $fpInv, $fpID, $fpVendorId, $fpVendorName, $fpBrandName, $fpTranslatedManufacturerPartNumber, $fpTranslatedMinimumOrderQuality, $fpStock, $fpCountryOfOrigin, $fpComingSoon, $fpTranslatedPrimaryCatalogPage, $fpPublishingModule, $fpVatHandlingCode, $fpReleaseStatusCode, $fpIsSpecialOrder, $fpIsAwaitingRelease, $fpReeling, $fpDiscountReason, $fpBrandId, $fpCommodityClassCode, $fpSupplier)
 		{
 			//call parent construct (product)
-			parent::__construct($fpSKU, $fpDisplayName, $fpSupplier, $fpPrices);
+			parent::__construct($fpSKU, $fpDisplayName, $fpPrices, $fpVendorName, $fpInv, $fpImage, $fpDataSheets, $fpSupplier);
 			$this->fproductStatus = $fpStatus;
 			$this->fproductRohsStatusCode = $fpRohsStatusCode;
 			$this->fproductPackSize = $fpPackSize;

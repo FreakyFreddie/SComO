@@ -1,5 +1,5 @@
 <?php
-	function getMouserProducts($keyword="fuse", $offset=0, $numberofresults=20)
+	function getMouserProducts($keyword='fuse', $offset=0, $numberofresults=20)
 	{
 		/*
 			MOUSER SOAP 1.2 REQUEST EXAMPLE
@@ -33,7 +33,7 @@
 		$soapclient = new SoapClient('http://api.mouser.com/service/searchapi.asmx?WSDL', array('soap_version' => SOAP_1_2, 'trace' => true));
 		
 		//PartnerID (API key) needed or mouser login, we use API key
-		$headerparam = array('AccountInfo'=>array('PartnerID'=>$mouserAPI));
+		$headerparam = array('AccountInfo'=>array('PartnerID'=>"ebb711aa-9c13-459d-9721-8a145b4ffac6"));
 		
 		//create the SOAP request header
 		$header = new SoapHeader('http://api.mouser.com/service', 'MouserHeader', $headerparam);
@@ -111,12 +111,13 @@
 		
 		//send SOAP request, results in stdClass object
 		$soapresult = $soapclient->SearchByKeyword($search);
-
+		
 		//create mouser product array
 		$mouserProducts = array();
 		
-		foreach ($soapresult as $key => $soapproduct)
+		foreach ($soapresult->SearchByKeywordResult->Parts as $key => $soapproduct)
 		{
+			//print_r($soapproduct);
 			//ignore numberofresults, only need products
 			if($key=="MouserPart")
 			{
@@ -155,13 +156,15 @@
 					$soapproduct->UnitWeightKg,
 					"Mouser"
 				);
-				
 				//push new product to array
 				$mouserProducts[]= $product;
 			}
 		}
-			
+		
 		//return array of farnell products
 		return $mouserProducts;
 	}
+	
+	$producten = getMouserProducts();
+	print_r($producten);
 ?>	
