@@ -10,7 +10,7 @@
           </button>
 		  <a class="navbar-brand" href="./index.php">
 			<?php
-				echo $storeabbrev;
+				echo $_GLOBALS["settings"]->Store["storeabbrev"];
 			?>
 			</a>
         </div>

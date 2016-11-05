@@ -1,4 +1,5 @@
 <?php
+	function getMouserProducts($keyword="fuse", $offset=0, $numberofresults=20)
 	{
 		/*
 			MOUSER SOAP 1.2 REQUEST EXAMPLE
@@ -32,7 +33,7 @@
 		$soapclient = new SoapClient('http://api.mouser.com/service/searchapi.asmx?WSDL', array('soap_version' => SOAP_1_2, 'trace' => true));
 		
 		//PartnerID (API key) needed or mouser login, we use API key
-		$headerparam = array('AccountInfo'=>array('PartnerID'=>'ebb711aa-9c13-459d-9721-8a145b4ffac6'));
+		$headerparam = array('AccountInfo'=>array('PartnerID'=>$mouserAPI));
 		
 		//create the SOAP request header
 		$header = new SoapHeader('http://api.mouser.com/service', 'MouserHeader', $headerparam);
@@ -130,11 +131,10 @@
 					$prices[]= $price;
 				}
 				
-				//create new Product object with product specifications
+				//create new MouserProduct object with product specifications
 				$product = new MouserProduct(
 					$soapproduct->MouserPartNumber,
 					$soapproduct->Description,
-					"Farnell",
 					$prices,
 					$soapproduct->Availability,
 					$soapproduct->DataSheetUrl,
@@ -152,7 +152,8 @@
 					$soapproduct->ROHSStatus,
 					$soapproduct->SuggestedReplacement,
 					$soapproduct->MultiSimBlue,
-					$soapproduct->UnitWeightKg
+					$soapproduct->UnitWeightKg,
+					"Mouser"
 				);
 				
 				//push new product to array

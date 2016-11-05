@@ -4,11 +4,12 @@
 ?>
 
 <?php
-	//include configuration file
-	require '../config/config.php';
-	
 	//include header
 	require '../templates/header.php';
+	
+	//include functions
+	require '../lib/functions/getfarnellproducts.php';
+	require '../lib/functions/getmouserproducts.php';
 ?>
 	
 		<script src="./js/livesearch.js"></script>
@@ -24,12 +25,12 @@
 		<div class="jumbotron text-center">
 		<h1>
 			<?php
-				echo $storename;
+				echo $_GLOBALS["settings"]->Store["storename"];
 			?>
 		</h1>
 		<p>
 			<?php
-				echo $quote;
+				echo $_GLOBALS["settings"]->Store["quote"];
 			?>
 		</p>
 

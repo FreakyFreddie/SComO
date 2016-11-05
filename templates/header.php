@@ -1,5 +1,8 @@
 <!-- non page-specific constants -->
 <?php
+	//load config, typecast to object for easy access
+	$_GLOBALS["settings"] = (object) parse_ini_file("../config/config.ini", true);
+
 	//define all constants here
 	//title & abbrev
 	//define(abbreviaton);
@@ -16,7 +19,11 @@
 		<meta name="author" content="">
 		<link rel="icon" href="../../favicon.ico">
 
-		<title>SCOMO</title>
+		<title>
+			<?php
+				echo $_GLOBALS["settings"]->Store["storeabbrev"];
+			?>
+		</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -36,3 +43,22 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		
+		<?php
+			//globally used classes go here
+			//include ProductPrice class
+			require '../lib/classes/ProductPrice.php';
+
+			//include Product class
+			require '../lib/classes/Product.php';
+
+			//include MouserProduct
+			require '../lib/classes/MouserProduct.php';
+
+			//include FarnellProduct
+			require '../lib/classes/FarnellProduct.php';
+		?>
+		
+		<?php
+			//globally used functions go here
+		?>

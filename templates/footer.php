@@ -4,7 +4,7 @@
 				<div id="mobile-dissapear" class="footer-block text-left">
 					<p>
 						<?php
-							echo $storeabbrev." - ".$storename;
+							echo $_GLOBALS["settings"]->Store["storeabbrev"]." - ".$_GLOBALS["settings"]->Store["storename"];
 						?>
 					</p>
 				</div>
