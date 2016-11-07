@@ -11,7 +11,7 @@
 		<script src="./js/livesearch.js"></script>
 	</head>
 
-	<body>		
+	<body>	
 		<?php
 			//include navbar
 			require '../templates/navbar.php';
@@ -31,7 +31,14 @@
 		</p>
 
 		<form class="input-group searchbar fieldwithaddon" action="index.php" method="post">
-			<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct">
+			<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct" 
+				<?php
+					if(isset($_POST['searchproduct'])) 
+					{
+						echo 'value="'.$_POST['searchproduct'].'"';
+					}
+				?>
+			>
 			<span class="input-group-addon">
 				<button type="submit">
 					<span class="glyphicon glyphicon-search"></span>

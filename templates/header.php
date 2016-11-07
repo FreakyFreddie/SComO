@@ -1,12 +1,11 @@
 <?php
+	//start session once, header.php is included in all pages
+	session_start();
+	
 	//load config, typecast to object for easy access
 	$_GLOBALS['settings'] = (object) parse_ini_file('../config/config.ini', true);
-	
-	//define all constants here
-	//title & abbrev
-	//define(abbreviaton);
-	//define(title);
-?> 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
