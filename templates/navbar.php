@@ -112,7 +112,7 @@
 									<li>
 										<div class="row">
 											<div class="col-sm-12">
-												<form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+												<form method="post" action="login" id="login-nav">
 													<div class="form-group">
 														<label class="sr-only" for="rnr">r0123456</label>
 														<input type="text" class="form-control" id="rnr" placeholder="r-nummer" required>

@@ -74,17 +74,34 @@
 								<td class="text-right"><a href="'.$this->productDataSheet.'">Link</a></td>
 							</tr>
 						</table>
-						
-						<form class="input-group fieldwithaddon" action="" method="post">
-							<input type="number" class="form-control" value="1" name="amountproduct">
-							<span class="input-group-addon">
-								<button type="submit">
-									<span class="glyphicon glyphicon-plus"></span>
-								</button> 
-							</span>
-						</form>
-					</div>
-				</div>';
+						<br />
+						<table class="table-striped table-hover">
+							<tr>
+								<th>
+									Quantity
+								</th>
+								<th class="text-right">
+									Price
+								</th>
+							</tr>';
+			foreach($this->productPrices as $productPrice)
+			{
+				echo '<tr>
+						<td>< '.$productPrice->productFromQuantity.'</td>
+						<td class="text-right">'.$productPrice->productPriceQuantity.'</td>
+					</tr>';
+			}			
+			echo '</table>
+					<form class="input-group fieldwithaddon" action="" method="post">
+						<input type="number" class="form-control" value="1" name="amountproduct">
+						<span class="input-group-addon">
+							<button type="submit">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button> 
+						</span>
+					</form>
+				</div>
+			</div>';
 		}
 	}
 ?>

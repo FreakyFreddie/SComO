@@ -1,9 +1,7 @@
 <?php
 	//set page var in order to adapt navbar and functions
 	$_GLOBALS['page'] = 'index';
-?>
 
-<?php
 	//include header
 	require '../templates/header.php';
 ?>
@@ -19,36 +17,37 @@
 
 		<!-- PROJECT TITLE and QUOTE -->
 		<div class="jumbotron text-center">
-		<h1>
-			<?php
-				echo $_GLOBALS['settings']->Store['storename'];
-			?>
-		</h1>
-		<p>
-			<?php
-				echo $_GLOBALS['settings']->Store['quote'];
-			?>
-		</p>
-
-		<form class="input-group searchbar fieldwithaddon" action="index.php" method="post">
-			<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct" 
+			<h1>
 				<?php
-					if(isset($_POST['searchproduct'])) 
-					{
-						echo 'value="'.$_POST['searchproduct'].'"';
-					}
+					echo $_GLOBALS['settings']->Store['storename'];
 				?>
-			>
-			<span class="input-group-addon">
-				<button type="submit">
-					<span class="glyphicon glyphicon-search"></span>
-				</button> 
-			</span>
-		</form>
+			</h1>
+			<p>
+				<?php
+					echo $_GLOBALS['settings']->Store['quote'];
+				?>
+			</p>
+			<form action="index.php" method="post">
+				<div class="form-group input-group searchbar fieldwithaddon">
+					<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct" 
+						<?php
+							if(isset($_POST['searchproduct']) && $_POST['searchproduct'] != "") 
+							{
+								echo 'value="'.$_POST['searchproduct'].'"';
+							}
+						?>
+					>
+					<span class="input-group-addon">
+						<button type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button> 
+					</span>
+				</div>
+			</form>
 		</div>
 		<div class="container shop">
 		<?php
-			if(isset($_POST['searchproduct'])) 
+			if(isset($_POST['searchproduct']) && $_POST['searchproduct'] != "") 
 			{
 				//getFarnellProducts needs
 				$farnellproducts = getFarnellProducts($_POST['searchproduct'], 0, 20, $_GLOBALS['settings']->Suppliers['farnellAPI']);

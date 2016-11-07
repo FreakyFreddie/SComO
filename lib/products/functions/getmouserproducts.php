@@ -1,5 +1,5 @@
 <?php
-	function getMouserProducts($keyword='fuse', $offset=0, $numberofresults=20)
+	function getMouserProducts($keyword='sword', $offset=0, $numberofresults=20)
 	{
 		/*
 			MOUSER SOAP 1.2 REQUEST EXAMPLE
@@ -123,23 +123,49 @@
 			
 			foreach($soapproduct as $pattributes)
 			{
+				//print_r($pattributes);
 				$prices = array();
 				foreach($pattributes->PriceBreaks as $pPriceBreaks)
 				{
-					foreach($pPriceBreaks as $pPrice)
+					//print_r($pPriceBreaks);
+					//if there more than one Price, $pPriceBreaks is an array
+					if(is_array($pPriceBreaks))
 					{
+						foreach($pPriceBreaks as $pPrice)
+						{
+							//print_r($pPrice);
+							//var_dump($pPrice);
+							$price = new ProductPrice(
+								$pPrice->Quantity,
+								$pPrice->Price
+								);
+							$prices[]= $price;
+
+						}
+					}
+					//avoid looping through the attributes of a Price if there is only one
+					else
+					{
+					//var_dump($pPrice);
 						$price = new ProductPrice(
-							$pPrice->Quantity,
-							$pPrice->Price
+							$pPriceBreaks->Quantity,
+							$pPriceBreaks->Price
 							);
 						$prices[]= $price;
-
 					}
 				}
 
 				//problem: what if an attribute is empty or not present?
+				//problem [PriceBreaks] => stdClass Object ( [Pricebreaks] => stdClass Object
+				// [PriceBreaks] => stdClass Object ( [Pricebreaks] => Array ( [0] => stdClass Object ( [Quantity] => 1 [Price] => € 4,60 [Currency] => EUR ) [1] => stdClass Object ( [Quantity] => 10 [Price] => € 4,37 [Currency] => EUR ) [2] => stdClass Object ( [Quantity] => 25 [Price] => € 3,65 [Currency] => EUR ) [3] => stdClass Object ( [Quantity] => 50 [Price] => € 3,47 [Currency] => EUR ) ) )
+				//problem: sometimes imagePath not present --> can't work with constructor
+				//create new MouserProduct object with product specifications				
+				//set image if not found
+				if(!isset($pattributes->ImagePath))
+				{
+					$pattributes->ImagePath="./img/not_found.jpg";
+				}
 				
-				//create new MouserProduct object with product specifications
 				$product = new MouserProduct(
 					$pattributes->MouserPartNumber,
 					$pattributes->Description,

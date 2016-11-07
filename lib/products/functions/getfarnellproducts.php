@@ -191,6 +191,18 @@
 					$prices[]= $price;
 				}
 				
+				//set image if found
+				if(isset($xmlproduct->image->baseName))
+				{
+					$xmlproduct->image->baseName = "http://be.farnell.com/productimages/standard/en_GB".$xmlproduct->image->baseName;
+					
+				}
+				//if image is not found
+				else
+				{
+					$xmlproduct->image->baseName="./img/not_found.jpg";
+				}
+				
 				//create new FarnellProduct object with product specifications
 				$product = new FarnellProduct(
 					$xmlproduct->sku,
@@ -201,7 +213,7 @@
 					$xmlproduct->packSize,
 					$xmlproduct->unitOfMeasure,
 					$xmlproduct->id,
-					"http://be.farnell.com/productimages/standard/en_GB".$xmlproduct->image->baseName,
+					$xmlproduct->image->baseName,
 					$xmlproduct->datasheets->url,
 					$xmlproduct->inv,
 					$xmlproduct->vendorId,
