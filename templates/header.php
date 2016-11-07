@@ -46,18 +46,18 @@
 		<?php
 			//globally used classes go here
 			//include ProductPrice class
-			require $_GLOBALS['settings']->Folders['root'].'../lib/classes/ProductPrice.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
 
 			//include Product class
-			require $_GLOBALS['settings']->Folders['root'].'../lib/classes/Product.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
 			//include MouserProduct
-			require $_GLOBALS['settings']->Folders['root'].'../lib/classes/MouserProduct.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
 
 			//include FarnellProduct
-			require $_GLOBALS['settings']->Folders['root'].'../lib/classes/FarnellProduct.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
 
 			//globally used functions go here
-			require $_GLOBALS['settings']->Folders['root'].'../lib/functions/getfarnellproducts.php';
-			require $_GLOBALS['settings']->Folders['root'].'../lib/functions/getmouserproducts.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
+			require $_GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
 		?>

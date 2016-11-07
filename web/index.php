@@ -30,7 +30,7 @@
 			?>
 		</p>
 
-		<form class="input-group searchbar" action="index.php" method="post">
+		<form class="input-group searchbar fieldwithaddon" action="index.php" method="post">
 			<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct">
 			<span class="input-group-addon">
 				<button type="submit">
@@ -49,64 +49,35 @@
 				//getMouserProducts needs
 				$mouserproducts = getMouserProducts($_POST['searchproduct'], 0 ,20, $_GLOBALS['settings']->Suppliers['mouserAPI']);
 				
-				//merge arrays
+				//merge arrays into one array for easy sorting
 				$products = array_merge($farnellproducts, $mouserproducts);
 				
-				print_r($mouserproducts);
+				$counter = 1;
 				
 				foreach($products as $Product)
 				{
-					break;
+					if($counter == 1)
+					{
+						echo '<div class="row">';
+					}
+					
+					if (get_class($Product) == "FarnellProduct")
+					{
+						$Product->printFarnellProduct();
+					}
+					elseif  (get_class($Product) == "MouserProduct")
+					{
+						$Product->printMouserProduct();
+					}
+					
+					if($counter == 3)
+					{
+						echo '</div>';
+						$counter = 0;
+					}
+					
+					$counter++;
 				}
-			echo'
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="shoparticle">
-						.col-sm-4
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="shoparticle">
-						.col-sm-4
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="shoparticle">
-						.col-sm-4
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="shoparticle">
-						.col-sm-4
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="shoparticle">
-						<img src="./img/bg1.jpg" class="img-responsive" />
-						<h3>
-							Artikelnaam
-						</h3>
-						<ul>
-							<li>
-								
-							</li>
-							<li>
-								
-							</li>
-							<li>
-								
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="shoparticle">
-						.col-sm-4
-					</div>
-				</div>
-			</div>';
 			}
 		?>
 			
@@ -115,4 +86,4 @@
 
 
 		<!-- footer -->
-		<?php require '../templates/footer.php'; ?>
+		<?php require $_GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>

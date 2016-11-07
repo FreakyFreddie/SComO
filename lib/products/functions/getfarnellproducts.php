@@ -175,7 +175,7 @@
 		//create farnell product array
 		$farnellProducts = array();
 		
-		foreach ($xml as $key => $xmlproduct)
+		foreach($xml as $key => $xmlproduct)
 		{
 			//ignore numberofresults, only need products
 			if($key=="products")
@@ -201,8 +201,8 @@
 					$xmlproduct->packSize,
 					$xmlproduct->unitOfMeasure,
 					$xmlproduct->id,
-					"http://be.farnell.com/productimages/standard/en_GB".$xmlproduct->image["baseName"],
-					$xmlproduct->datasheets['url'],
+					"http://be.farnell.com/productimages/standard/en_GB".$xmlproduct->image->baseName,
+					$xmlproduct->datasheets->url,
 					$xmlproduct->inv,
 					$xmlproduct->vendorId,
 					$xmlproduct->vendorName,
@@ -233,4 +233,6 @@
 		//return array of farnell products
 		return $farnellProducts;
 	}
+	//$test=getFarnellProducts("fuse", 0, 20, "gd8n8b2kxqw6jq5mutsbrvur");
+	//print_r($test);
 ?>

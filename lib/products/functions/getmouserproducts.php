@@ -115,47 +115,63 @@
 		//create mouser product array
 		$mouserProducts = array();
 		
-		foreach ($soapresult->SearchByKeywordResult->Parts as $key => $soapproduct)
+		foreach($soapresult->SearchByKeywordResult->Parts as $key => $soapproduct)
 		{
-			//print_r($soapproduct);
+			
 			//ignore numberofresults, only need products
-			if($key=="MouserPart")
+			//create array of product prices & quantities
+			
+			foreach($soapproduct as $pattributes)
 			{
-				//create array of product prices & quantities
 				$prices = array();
-				foreach($soapproduct->PriceBreaks as $productprice)
+				foreach($pattributes->PriceBreaks as $pPriceBreaks)
 				{
-					$price = new ProductPrice(
-						$productprice->Quantity,
-						$productprice->Price
-					);
-					$prices[]= $price;
+					foreach($pPriceBreaks as $pPrice)
+					{
+						$price = new ProductPrice(
+							$pPrice->Quantity,
+							$pPrice->Price
+							);
+						$prices[]= $price;
+
+					}
 				}
+
+				//problem: what if an attribute is empty or not present?
 				
 				//create new MouserProduct object with product specifications
 				$product = new MouserProduct(
-					$soapproduct->MouserPartNumber,
-					$soapproduct->Description,
+					$pattributes->MouserPartNumber,
+					$pattributes->Description,
 					$prices,
-					$soapproduct->Availability,
-					$soapproduct->DataSheetUrl,
-					$soapproduct->ImagePath,
-					$soapproduct->Category,
-					$soapproduct->LeadTime,
-					$soapproduct->LifeCycleStatus,
-					$soapproduct->Manufacturer,
-					$soapproduct->ManufacturerPartNumber,
-					$soapproduct->Min,
-					$soapproduct->Mult,
-					$soapproduct->Attributes,
-					$soapproduct->DetailUrl,
-					$soapproduct->Reeling,
-					$soapproduct->ROHSStatus,
-					$soapproduct->SuggestedReplacement,
-					$soapproduct->MultiSimBlue,
-					$soapproduct->UnitWeightKg,
+					$pattributes->Availability,
+					$pattributes->DataSheetUrl,
+					$pattributes->ImagePath,
+					$pattributes->Category,
+					$pattributes->LeadTime,
+					$pattributes->LifecycleStatus,
+					$pattributes->Manufacturer,
+					$pattributes->ManufacturerPartNumber,
+					$pattributes->Min,
+					$pattributes->Mult,
+					$pattributes->ProductDetailUrl,
+					$pattributes->Reeling,
+					$pattributes->ROHSStatus,
+					$pattributes->SuggestedReplacement,
+					$pattributes->MultiSimBlue,
 					"Mouser"
 				);
+				
+				if(isset($pattributes->ProductAttributes))
+				{
+					$product->mproductAttributes = $pattributes->ProductAttributes;
+				}
+				
+				if(isset($pattributes->UnitWeightKg))
+				{
+					$product->mproductUnitWeightKg = $pattributes->UnitWeightKg;
+				}
+				
 				//push new product to array
 				$mouserProducts[]= $product;
 			}
@@ -164,7 +180,4 @@
 		//return array of farnell products
 		return $mouserProducts;
 	}
-	
-	$producten = getMouserProducts();
-	print_r($producten);
 ?>	
