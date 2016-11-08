@@ -2,18 +2,19 @@
 	//needs ProductPrice class
 	class Product
 	{
-		public $productID;
-		public $productName;
-		public $productPrices = array();
-		public $productVendor;
-		public $productInventory;
-		public $productImage;
-		public $productDataSheet;
-		public $productSupplier;
+		protected $productID;
+		protected $productName;
+		protected $productPrices = array();
+		protected $productVendor;
+		protected $productInventory;
+		protected $productImage;
+		protected $productDataSheet;
+		protected $productSupplier;
 		
 		//__construct is called on each newly created object
+		//use getters & setters to check values and handle errors better
 		//if child class had __construct, parent __construct is not automatically called
-		public function __construct($pID, $pName, $pPrices, $pVendor, $pInventory, $pImage, $pDataSheet, $pSupplier)
+		public function __construct($pID="", $pName="", $pPrices="", $pVendor="", $pInventory="", $pImage="", $pDataSheet="", $pSupplier="")
 		{
 			$this->productID = $pID;
 			$this->productName = $pName;
@@ -23,6 +24,83 @@
 			$this->productImage = $pImage;
 			$this->productDataSheet = $pDataSheet;
 			$this->productSupplier = $pSupplier;
+		}
+		
+		public function __set($property, $value)
+		{
+			switch($property)
+			{
+				case "ID":
+				$this->productID = $value;
+				break;
+				
+				case "Name":
+				$this->productName = $value;
+				break;
+				
+				case "Prices":
+				$this->productPrices = $value;
+				break;
+				
+				case "Vendor":
+				$this->productVendor = $value;
+				break;
+				
+				case "Inventory":
+				$this->productInventory = $value;
+				break;
+				
+				case "Image":
+				$this->productImage = $value;
+				break;
+				
+				case "DataSheet":
+				$this->productDataSheet = $value;
+				break;
+				
+				case "Supplier":
+				$this->productSupplier = $value;
+				break;
+			}
+		}
+		
+		public function __get($property)
+		{
+			switch($property)
+			{
+				case "ID":
+				$result = $this->productID;
+				break;
+				
+				case "Name":
+				$result = $this->productName;
+				break;
+				
+				case "Prices":
+				$result = $this->productPrices;
+				break;
+				
+				case "Vendor":
+				$this->productVendor;
+				break;
+				
+				case "Inventory":
+				$result = $this->productInventory;
+				break;
+				
+				case "Image":
+				$result = $this->productImage;
+				break;
+				
+				case "DataSheet":
+				$result = $this->productDataSheet;
+				break;
+				
+				case "Supplier":
+				$result = $this->productSupplier;
+				break;
+			}
+			return $result;
 		}
 	}
 ?>

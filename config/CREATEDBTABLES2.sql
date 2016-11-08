@@ -67,6 +67,19 @@ CREATE TABLE `webstoredb`.`product` (
   `leverancier` VARCHAR(25) NOT NULL,
   `productnaam` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`idproduct`,`leverancier`));
+
+/*Relatie gebruiker heeft bepaalde producten in winkelwagen*/
+CREATE TABLE `webstoredb`.`winkelwagen` (
+  `rnummer` VARCHAR(8) NOT NULL,
+  `idproduct` VARCHAR(25) NOT NULL,
+  `leverancier` VARCHAR(25) NOT NULL,
+  FOREIGN KEY (`rnummer`)
+	REFERENCES gebruiker (`rnummer`),
+  FOREIGN KEY (`idproduct`)
+	REFERENCES product (`idproduct`),
+  FOREIGN KEY (`leverancier`)
+	REFERENCES product (`leverancier`)
+);
   
 /*Relatie bestelling bevat producten*/
 CREATE TABLE `webstoredb`.`bestellingproduct` (

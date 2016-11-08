@@ -112,14 +112,14 @@
 									<li>
 										<div class="row">
 											<div class="col-sm-12">
-												<form method="post" action="login" id="login-nav">
+												<form method="post" action="index.php" id="login-nav">
 													<div class="form-group">
-														<label class="sr-only" for="rnr">r0123456</label>
-														<input type="text" class="form-control" id="rnr" placeholder="r-nummer" required>
+														<label class="sr-only" for="rnr">r-nummer</label>
+														<input type="text" class="form-control" id="rnr" name="rnr" placeholder="r0123456" required>
 													</div>
 													<div class="form-group">
 														<label class="sr-only" for="pwd">Wachtwoord</label>
-														<input type="password" class="form-control" id="pwd" placeholder="Wachtwoord" required>
+														<input type="password" class="form-control" id="pwd" name="pwd" placeholder="Wachtwoord" required>
 													</div>
 													<div class="form-group">
 														<p>

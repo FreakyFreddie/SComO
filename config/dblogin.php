@@ -1,7 +1,7 @@
 <?php
-//	localhost databaese instellingen
+	//db login
 	$servername = "localhost";
 	$dbusername = "Webgebruiker";
-	$dbpassword = "Labo2016";
-	$dbname = "thomeco";
+	$dbpassword = "Labo2017";
+	$dbname = "webstoredb";
 ?>

@@ -46,50 +46,47 @@
 			</form>
 		</div>
 		<div class="container shop">
-		<?php
-			if(isset($_POST['searchproduct']) && $_POST['searchproduct'] != "") 
-			{
-				//getFarnellProducts needs
-				$farnellproducts = getFarnellProducts($_POST['searchproduct'], 0, 20, $_GLOBALS['settings']->Suppliers['farnellAPI']);
-				
-				//getMouserProducts needs
-				$mouserproducts = getMouserProducts($_POST['searchproduct'], 0 ,20, $_GLOBALS['settings']->Suppliers['mouserAPI']);
-				
-				//merge arrays into one array for easy sorting
-				$products = array_merge($farnellproducts, $mouserproducts);
-				
-				$counter = 1;
-				
-				foreach($products as $Product)
+			<?php
+				if(isset($_POST['searchproduct']) && $_POST['searchproduct'] != "") 
 				{
-					if($counter == 1)
-					{
-						echo '<div class="row">';
-					}
+					//getFarnellProducts needs
+					$farnellproducts = getFarnellProducts($_POST['searchproduct'], 0, 20, $_GLOBALS['settings']->Suppliers['farnellAPI']);
 					
-					if (get_class($Product) == "FarnellProduct")
-					{
-						$Product->printFarnellProduct();
-					}
-					elseif  (get_class($Product) == "MouserProduct")
-					{
-						$Product->printMouserProduct();
-					}
+					//getMouserProducts needs
+					$mouserproducts = getMouserProducts($_POST['searchproduct'], 0 ,20, $_GLOBALS['settings']->Suppliers['mouserAPI']);
 					
-					if($counter == 3)
-					{
-						echo '</div>';
-						$counter = 0;
-					}
+					//merge arrays into one array for easy sorting
+					$products = array_merge($farnellproducts, $mouserproducts);
 					
-					$counter++;
+					$counter = 1;
+					
+					foreach($products as $Product)
+					{
+						if($counter == 1)
+						{
+							echo '<div class="row">';
+						}
+						
+						if (get_class($Product) == "FarnellProduct")
+						{
+							$Product->printFarnellProduct();
+						}
+						elseif  (get_class($Product) == "MouserProduct")
+						{
+							$Product->printMouserProduct();
+						}
+						
+						if($counter == 3)
+						{
+							echo '</div>';
+							$counter = 0;
+						}
+						
+						$counter++;
+					}
 				}
-			}
-		?>
-			
-			
+			?>
 		</div>
-
 
 		<!-- footer -->
 		<?php require $_GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
