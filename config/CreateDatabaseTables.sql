@@ -9,6 +9,8 @@ DROP TABLE webstoredb.bestelling;
 
 DROP TABLE webstoredb.product;
 
+DROP TABLE webstoredb.winkelwagen;
+
 DROP TABLE webstoredb.bestellingproduct ;
 
 DROP TABLE webstoredb.definitiefbesteld;

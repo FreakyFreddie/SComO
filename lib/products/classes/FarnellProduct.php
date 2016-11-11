@@ -6,8 +6,8 @@
 		private $fproductRohsStatusCode;
 		private $fproductPackSize;
 		private $fproductUnitOfMeasure;
-		private $fproductId;
-		private $fproductVendorId;
+		private $fproductFullID;
+		private $fproductVendorID;
 		private $fproductBrandName;
 		private $fproductTranslatedManufacturerPartNumber;
 		private $fproductTranslatedMinimumOrderQuality;
@@ -22,12 +22,12 @@
 		private $fproductIsAwaitingRelease;
 		private $fproductReeling;
 		private $fproductDiscountReason;
-		private $fproductBrandId;
+		private $fproductBrandID;
 		private $fproductCommodityClassCode;
 		
 		//__construct is called on each newly created object
 		//if child class had __construct, parent __construct is not automatically called, so add it in child __construct
-		public function __construct($fpSKU="", $fpDisplayName="", $fpPrices="", $fpStatus="", $fpRohsStatusCode="", $fpPackSize="", $fpUnitOfMeasure="", $fpID="", $fpImage="", $fpDataSheets="", $fpInv="", $fpVendorId="", $fpVendorName="", $fpBrandName="", $fpTranslatedManufacturerPartNumber="", $fpTranslatedMinimumOrderQuality="", $fpStock="", $fpCountryOfOrigin="", $fpComingSoon="", $fpTranslatedPrimaryCatalogPage="", $fpPublishingModule="", $fpVatHandlingCode="", $fpReleaseStatusCode="", $fpIsSpecialOrder="", $fpIsAwaitingRelease="", $fpReeling="", $fpDiscountReason="", $fpBrandId="", $fpCommodityClassCode="", $fpSupplier="")
+		public function __construct($fpSKU="", $fpDisplayName="", $fpPrices="", $fpStatus="", $fpRohsStatusCode="", $fpPackSize="", $fpUnitOfMeasure="", $fpID="", $fpImage="./img/not_found.jpg", $fpDataSheets="", $fpInv="", $fpVendorId="", $fpVendorName="", $fpBrandName="", $fpTranslatedManufacturerPartNumber="", $fpTranslatedMinimumOrderQuality="", $fpStock="", $fpCountryOfOrigin="", $fpComingSoon="", $fpTranslatedPrimaryCatalogPage="", $fpPublishingModule="", $fpVatHandlingCode="", $fpReleaseStatusCode="", $fpIsSpecialOrder="", $fpIsAwaitingRelease="", $fpReeling="", $fpDiscountReason="", $fpBrandId="", $fpCommodityClassCode="", $fpSupplier="Farnell")
 		{
 			//call parent construct (product)
 			parent::__construct($fpSKU, $fpDisplayName, $fpPrices, $fpVendorName, $fpInv, $fpImage, $fpDataSheets, $fpSupplier);
@@ -64,7 +64,7 @@
 				$this->fproductStatus = $value;
 				break;
 				
-				case "RohsStatusCode":
+				case "ROHSStatusCode":
 				$this->fproductRohsStatusCode = $value;
 				break;
 				
@@ -76,12 +76,12 @@
 				$this->fproductUnitOfMeasure = $value;
 				break;
 				
-				case "Id":
-				$this->fproductId = $value;
+				case "FullID":
+				$this->fproductFullID = $value;
 				break;
 				
-				case "VendorId":
-				$this->fproductVendorId = $value;
+				case "VendorID":
+				$this->fproductVendorID = $value;
 				break;
 				
 				case "BrandName":
@@ -223,10 +223,6 @@
 				$result = $this->fproductReleaseStatusCode;
 				break;
 				
-				case "VatHandlingCode":
-				$result = $this->fproductVatHandlingCode;
-				break;
-				
 				case "IsSpecialOrder":
 				$result = $this->fproductIsSpecialOrder;
 				break;
@@ -243,7 +239,7 @@
 				$result = $this->fproductDiscountReason;
 				break;
 				
-				case "BrandId":
+				case "BrandID":
 				$result = $this->fproductBrandId;
 				break;
 				
@@ -305,8 +301,8 @@
 			foreach($this->productPrices as $productPrice)
 			{
 				echo '<tr>
-						<td>< '.$productPrice->productFromQuantity.'</td>
-						<td class="text-right">'.$productPrice->productPriceQuantity.'</td>
+						<td>< '.$productPrice->__get("Quantity").'</td>
+						<td class="text-right">'.$productPrice->__get("Price").'</td>
 					</tr>';
 			}			
 			echo '</table>

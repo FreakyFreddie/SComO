@@ -18,7 +18,7 @@
 		
 		//__construct is called on each newly created object
 		//if child class had __construct, parent __construct is not automatically called, so add it in child __construct
-		public function __construct($mpMouserPartNumber="", $mpDescription="", $mpPrices="", $mpAvailability="", $mpDataSheetURL="", $mpImagePath="", $mpCategory="", $mpLeadTime="", $mpLifeCycleStatus="", $mpManufacturer="", $mpManufacturerPartNumber="", $mpMin="", $mpMult="", $mpDetailURL="", $mpReeling="", $mpROHSStatus="", $mpSuggestedReplacement="", $mpMultiSimBlue="", $mpSupplier="")
+		public function __construct($mpMouserPartNumber="", $mpDescription="", $mpPrices="", $mpAvailability="", $mpDataSheetURL="", $mpImagePath="./img/not_found.jpg", $mpCategory="", $mpLeadTime="", $mpLifeCycleStatus="", $mpManufacturer="", $mpManufacturerPartNumber="", $mpMin="", $mpMult="", $mpDetailURL="", $mpReeling="", $mpROHSStatus="", $mpSuggestedReplacement="", $mpMultiSimBlue="", $mpSupplier="Mouser")
 		{
 			//call parent construct (product)
 			parent::__construct($mpMouserPartNumber, $mpDescription, $mpPrices, $mpManufacturer, $mpAvailability, $mpImagePath, $mpDataSheetURL, $mpSupplier);
@@ -52,7 +52,7 @@
 				$this->mproductLifeCycleStatus = $value;
 				break;
 				
-				case "ManufacturerPartNumberr":
+				case "ManufacturerPartNumber":
 				$this->mproductManufacturerPartNumber = $value;
 				break;
 				
@@ -80,7 +80,7 @@
 				$this->mproductSuggestedReplacement = $value;
 				break;
 				
-				case "MultisimBlue":
+				case "MultiSimBlue":
 				$this->mproductMultisimBlue = $value;
 				break;
 				
@@ -205,8 +205,8 @@
 			foreach($this->productPrices as $productPrice)
 			{
 				echo '<tr>
-						<td>< '.$productPrice->productFromQuantity.'</td>
-						<td class="text-right">'.$productPrice->productPriceQuantity.'</td>
+						<td>< '.$productPrice->__get("Quantity").'</td>
+						<td class="text-right">'.$productPrice->__get("Price").'</td>
 					</tr>';
 			}			
 			echo '</table>

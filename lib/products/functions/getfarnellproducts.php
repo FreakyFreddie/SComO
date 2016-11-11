@@ -184,58 +184,172 @@
 				$prices = array();
 				foreach($xmlproduct->prices as $productprice)
 				{
-					$price = new ProductPrice(
-						$productprice->from,
-						$productprice->cost
-					);
+					
+					$price = new ProductPrice();
+					
+					if(isset($productprice->from) && isset($productprice->cost))
+					{
+						$price->__set("Quantity", $productprice->from);
+						$price->__set("Price", $productprice->cost);
+					}
+
 					$prices[]= $price;
 				}
 				
-				//set image if found
-				if(isset($xmlproduct->image->baseName))
+				//problem: what if an attribute is empty or not present? --> use setters instead of constructor
+				$product = new FarnellProduct();
+				
+				//Product object attributes
+				if(isset($xmlproduct->sku))
 				{
-					$xmlproduct->image->baseName = "http://be.farnell.com/productimages/standard/en_GB".$xmlproduct->image->baseName;
-					
-				}
-				//if image is not found
-				else
-				{
-					$xmlproduct->image->baseName="./img/not_found.jpg";
+					$product->__set("ID", $xmlproduct->sku);
 				}
 				
-				//create new FarnellProduct object with product specifications
-				$product = new FarnellProduct(
-					$xmlproduct->sku,
-					$xmlproduct->displayName,
-					$prices,
-					$xmlproduct->productStatus,
-					$xmlproduct->rohsStatusCode,
-					$xmlproduct->packSize,
-					$xmlproduct->unitOfMeasure,
-					$xmlproduct->id,
-					$xmlproduct->image->baseName,
-					$xmlproduct->datasheets->url,
-					$xmlproduct->inv,
-					$xmlproduct->vendorId,
-					$xmlproduct->vendorName,
-					$xmlproduct->brandName,
-					$xmlproduct->translatedManufacturerPartNumber,
-					$xmlproduct->translatedMinimumOrderQuality,
-					$xmlproduct->stock,
-					$xmlproduct->translatedPrimaryCatalogPage,
-					$xmlproduct->countryOfOrigin,
-					$xmlproduct->comingSoon,
-					$xmlproduct->publishingModule,
-					$xmlproduct->vatHandlingCode,
-					$xmlproduct->releaseStatusCode,
-					$xmlproduct->isSpecialOrder,
-					$xmlproduct->isAwaitingRelease,
-					$xmlproduct->reeling,
-					$xmlproduct->discountReason,
-					$xmlproduct->brandId,
-					$xmlproduct->commodityClassCode,
-					"Farnell"
-				);
+				if(isset($xmlproduct->displayName))
+				{
+					$product->__set("Name", $xmlproduct->displayName);
+				}
+				
+				$product->__set("Prices", $prices);
+				
+				if(isset($xmlproduct->vendorName))
+				{
+					$product->__set("Vendor", $xmlproduct->vendorName);
+				}
+				
+				if(isset($xmlproduct->inv))
+				{
+					$product->__set("Inventory", $xmlproduct->inv);
+				}
+				
+				//set image is not found
+				if(isset($xmlproduct->image->baseName))
+				{
+					$product->__set("Image", 'http://be.farnell.com/productimages/standard/en_GB'.$xmlproduct->image->baseName);
+				}
+				else
+				{
+					$product->__set("Image", "./img/not_found.jpg");
+				}
+				
+				if(isset($xmlproduct->datasheets->url))
+				{
+					$product->__set("DataSheet", $xmlproduct->datasheets->url);
+				}
+				
+				//not really needed, since we have default value set in class
+				$product->__set("Supplier", "Farnell");
+				
+				//FarnellProduct object attributes
+				if(isset($xmlproduct->productStatus))
+				{
+					$product->__set("Status", $xmlproduct->productStatus);
+				}
+				
+				if(isset($xmlproduct->rohsStatusCode))
+				{
+					$product->__set("ROHSStatusCode", $xmlproduct->rohsStatusCode);
+				}
+				
+				if(isset($xmlproduct->packSize))
+				{
+					$product->__set("PackSize", $xmlproduct->packSize);
+				}
+				
+				if(isset($xmlproduct->unitOfMeasure))
+				{
+					$product->__set("UnitOfMeasure", $xmlproduct->unitOfMeasure);
+				}
+				
+				if(isset($xmlproduct->id))
+				{
+					$product->__set("FullID", $xmlproduct->id);
+				}
+				
+				if(isset($xmlproduct->vendorId))
+				{
+					$product->__set("VendorID", $xmlproduct->vendorId);
+				}
+				
+				if(isset($xmlproduct->brandName))
+				{
+					$product->__set("BrandName", $xmlproduct->brandName);
+				}
+				
+				if(isset($xmlproduct->translatedManufacturerPartNumber))
+				{
+					$product->__set("TranslatedManufacturerPartNumber", $xmlproduct->translatedManufacturerPartNumber);
+				}
+				
+				if(isset($xmlproduct->translatedMinimumOrderQuality))
+				{
+					$product->__set("TranslatedMinimumOrderQuality", $xmlproduct->translatedMinimumOrderQuality);
+				}
+				
+				if(isset($xmlproduct->stock))
+				{
+					$product->__set("Stock", $xmlproduct->stock);
+				}
+				
+				if(isset($xmlproduct->translatedPrimaryCatalogPage))
+				{
+					$product->__set("TranslatedPrimaryCatalogPage", $xmlproduct->translatedPrimaryCatalogPage);
+				}
+					
+				if(isset($xmlproduct->countryOfOrigin))
+				{
+					$product->__set("CountryOfOrigin", $xmlproduct->countryOfOrigin);
+				}
+				
+				if(isset($xmlproduct->comingSoon))
+				{
+					$product->__set("ComingSoon", $xmlproduct->comingSoon);
+				}
+				
+				if(isset($xmlproduct->publishingModule))
+				{
+					$product->__set("PublishingModule", $xmlproduct->publishingModule);
+				}
+				
+				if(isset($xmlproduct->vatHandlingCode))
+				{
+					$product->__set("VatHandlingCode", $xmlproduct->vatHandlingCode);
+				}
+				
+				if(isset($xmlproduct->releaseStatusCode))
+				{
+					$product->__set("ReleaseStatusCode", $xmlproduct->releaseStatusCode);
+				}
+				
+				if(isset($xmlproduct->isSpecialOrder))
+				{
+					$product->__set("IsSpecialOrder", $xmlproduct->isSpecialOrder);
+				}
+				
+				if(isset($xmlproduct->isAwaitingRelease))
+				{
+					$product->__set("IsAwaitingRelease", $xmlproduct->isAwaitingRelease);
+				}
+				
+				if(isset($xmlproduct->reeling))
+				{
+					$product->__set("Reeling", $xmlproduct->reeling);
+				}
+				
+				if(isset($xmlproduct->discountReason))
+				{
+					$product->__set("DiscountReason", $xmlproduct->discountReason);
+				}
+				
+				if(isset($xmlproduct->brandId))
+				{
+					$product->__set("BrandID", $xmlproduct->brandId);
+				}
+				
+				if(isset($xmlproduct->commodityClassCode))
+				{
+					$product->__set("CommodityClassCode", $xmlproduct->commodityClassCode);
+				}
 				
 				//push new product to array
 				$farnellProducts[]= $product;

@@ -1,6 +1,8 @@
 body {
   padding-top: 50px;
   background-color: #eee;
+  background-image: url("../img/congruent_pentagon2.png");
+  background-attachment: fixed;
 }
 
 .navbar{
