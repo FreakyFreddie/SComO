@@ -27,7 +27,7 @@
 					echo $_GLOBALS['settings']->Store['quote'];
 				?>
 			</p>
-			<form action="index.php" method="post">
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 				<div class="form-group input-group searchbar fieldwithaddon">
 					<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct" 
 						<?php
@@ -55,11 +55,24 @@
 					//getMouserProducts needs
 					$mouserproducts = getMouserProducts($_POST['searchproduct'], 0 ,20, $_GLOBALS['settings']->Suppliers['mouserAPI']);
 					
+					//print message if no products found
+					if(empty($farnellproducts) && empty($mouserproducts))
+					{
+						echo '<div class="row">
+								<div class="col-sm-12 text-center">
+									<h3>
+										Geen weer te geven resultaten voor dit product.
+									</h3>
+								</div>
+							</div>';
+					}
+					
 					//merge arrays into one array for easy sorting
 					$products = array_merge($farnellproducts, $mouserproducts);
 					
 					$counter = 1;
 					
+					//3 products per line on bigger screens
 					foreach($products as $Product)
 					{
 						if($counter == 1)

@@ -1,4 +1,5 @@
 <?php
+	//request info from DB
 	function QueryDB($sql)
 	{
 		$DBSettings = (object) parse_ini_file('./config/dbconfig.ini', true);
@@ -18,10 +19,12 @@
 		} else {
 			echo "Error executing query: " . $conn->error;
 		}
-
 		
 		$conn->close();
 	}
+	
+	//send info to db
+	
 	
 	$sql = "SELECT * FROM *";
 	QueryDB($sql);

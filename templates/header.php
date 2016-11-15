@@ -55,8 +55,13 @@
 
 			//include FarnellProduct
 			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
+			
+			//include DAL
+			require $_GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
 
 			//globally used functions go here
 			require $_GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
 			require $_GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
+			//input checks
+			require $_GLOBALS['settings']->Folders['root'].'../lib/inputchecks/functions/validateInputs.php';
 		?>

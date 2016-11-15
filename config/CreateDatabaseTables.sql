@@ -24,7 +24,7 @@ CREATE TABLE webstoredb.gebruiker
   achternaam CHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
   wachtwoord VARCHAR(45) NOT NULL,
-  machtigingsniveau INT NOT NULL,
+  machtigingsniveau INT DEFAULT '0',
   aanmaakdatum DATE NOT NULL,
   PRIMARY KEY (rnummer)
 );

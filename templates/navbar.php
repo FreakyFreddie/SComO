@@ -112,7 +112,7 @@
 									<li>
 										<div class="row">
 											<div class="col-sm-12">
-												<form method="post" action="index.php" id="login-nav">
+												<form method="post" action="<?php echo $_SERVER[\'PHP_SELF\']; ?>" id="login-nav">
 													<div class="form-group">
 														<label class="sr-only" for="rnr">r-nummer</label>
 														<input type="text" class="form-control" id="rnr" name="rnr" placeholder="r0123456" required>
