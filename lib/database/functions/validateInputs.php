@@ -12,11 +12,11 @@
 	}
 	
 	//function validates if maildomain is whitelisted, returns boolean
-	function validateDomain($mail, $whitelist)
+	function validateDomain($mail)
 	{
 		$pass=FALSE;
 		
-		foreach($whitelist as $domain)
+		foreach($_GLOBALS["settings"]->Whitelist["mail"] as $domain)
 		{
 			if($mail == $domain)
 			{
@@ -49,12 +49,12 @@
 		}
 	}
 	
-	function validateRNummer($data, $idletters)
+	function validateRNummer($data)
 	{
 		$data = validateInput($data);
 		
 		//rnummer needs to be one letter (r, s, u, ...) , followed bij 7 digits
-		if(preg_match("/^[$idletters][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/", $data))
+		if(preg_match("/^[".$_GLOBALS["settings"]->Whitelist["idletters"]."][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/", $data))
 		{
 			//make all letters lowercase
 			$data = strtolower($data);

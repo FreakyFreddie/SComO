@@ -1,5 +1,5 @@
 <?php
-	function getFarnellProducts($keyword, $offset, $numberofresults, $farnellAPI)
+	function getFarnellProducts($keyword, $offset, $numberofresults)
 	{
 		//Curl is used to transfer data over a wide variety of protocols
 		//To use curl, you may have to install php libcurl package (usually included in php5+)
@@ -36,7 +36,7 @@
 			."&storeInfo.id=be.farnell.com"
 			."&callInfo.responseDataFormat=XML"
 			."&callInfo.omitXmlSchema=True"
-			."&callInfo.apiKey=$farnellAPI"
+			."&callInfo.apiKey=".$GLOBALS['settings']->Suppliers['farnellAPI']
 			."&resultsSettings.offset=$offset"
 			."&resultsSettings.numberOfResults=$numberofresults"
 			."&resultsSettings.refinements.filters=rohsCompliant,inStock"

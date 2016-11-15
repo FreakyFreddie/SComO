@@ -25,16 +25,17 @@
 		</div>
 		<div class="container register">
 			<?php
-				if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["voornaam"]) && isset($_POST["naam"]) && isset($_POST["rnummer"]) && isset($_POST["email"]) && validateDomain($_POST["email"], $_GLOBALS["settings"]->Whitelist["mail"]) && isset($_POST["wachtwoord"]))
+				if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["voornaam"]) && isset($_POST["naam"]) && isset($_POST["rnummer"]) && isset($_POST["email"]) && validateDomain($_POST["email"]) && isset($_POST["wachtwoord"])
+					&& !empty($_POST["voornaam"]) && !empty($_POST["naam"]) && !empty($_POST["rnummer"]) && !empty($_POST["email"]) && !empty($_POST["wachtwoord"]))
 				{
 					//new Data Access Layer object
-					$dal = new DAL($_GLOBALS['settings']->Folders['root']);
+					$dal = new DAL();
 					$conn = $dal->getConn();
 					
 					//validate input for html injection & check vs REGEX, counter mysql injection
 					$voornaam = mysqli_real_escape_string($conn, validateNaam($_POST["voornaam"]));
 					$naam = mysqli_real_escape_string($conn, validateNaam($_POST["naam"]));
-					$rnummer = mysqli_real_escape_string($conn, validateRNummer($_POST["rnummer"], $_GLOBALS["settings"]->Whitelist["idletters"]));
+					$rnummer = mysqli_real_escape_string($conn, validateRNummer($_POST["rnummer"]));
 					$mail = mysqli_real_escape_string($conn, validateMail($_POST["email"]));
 					$wachtwoord = mysqli_real_escape_string($conn, validateWachtWoord($_POST["wachtwoord"]));
 					$fullmail = $rnummer."@".$mail;
@@ -54,8 +55,11 @@
 						$dal->WriteDB($sql);
 						
 						echo '<div class="row">
-							<p>Registratie succesvol</p>
-							<p>mail verzonden naar '.$fullmail.'</p>
+							<p>Registratie succesvol</p>';
+						
+							
+							
+						echo '<p>mail verzonden naar '.$fullmail.'</p>
 							</div>';
 					}
 					else
@@ -67,7 +71,9 @@
 				}
 				else
 				{
-					echo '<form action="registreren.php" method="post">
+					echo '<form action="';
+					echo htmlspecialchars($_SERVER['PHP_SELF']);
+					echo '" method="post">
 						<div class="form-group row">
 							<label for="Voornaam" class="col-sm-2">Voornaam</label>
 							<div class="col-sm-10">

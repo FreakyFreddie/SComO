@@ -3,7 +3,7 @@
 	session_start();
 	
 	//load config, typecast to object for easy access
-	$_GLOBALS['settings'] = (object) parse_ini_file('../config/config.ini', true);
+	$GLOBALS['settings'] = (object) parse_ini_file('../config/config.ini', true);
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 
 		<title>
 			<?php
-				echo $_GLOBALS['settings']->Store["storeabbrev"];
+				echo $GLOBALS['settings']->Store["storeabbrev"];
 			?>
 		</title>
 
@@ -45,23 +45,33 @@
 		<?php
 			//globally used classes go here
 			//include ProductPrice class
-			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
 
 			//include Product class
-			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
 			//include MouserProduct
-			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
 
 			//include FarnellProduct
-			require $_GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
 			
 			//include DAL
-			require $_GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
 
+			//include login check
+			//require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/Login.php';
+
+			
 			//globally used functions go here
-			require $_GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
-			require $_GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
 			//input checks
-			require $_GLOBALS['settings']->Folders['root'].'../lib/inputchecks/functions/validateInputs.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
+						
+			//check login condition
+			/*if(isset($_POST["rnr"]) && isset($_POST["pwd"]))
+			{
+				$login = new Login($_POST["rnr"], $_POST["pwd"]);
+			}*/
 		?>

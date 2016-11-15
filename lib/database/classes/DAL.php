@@ -7,10 +7,10 @@
 		private $numResults;
 		
 		//pass root
-		public function __construct($rootfolder)
+		public function __construct()
 		{
 			//problem
-			$this->DBSettings = (object) parse_ini_file($rootfolder.'../config/dbconfig.ini', true);
+			$this->DBSettings = (object) parse_ini_file($_GLOBALS['settings']->Folders['root'].'../config/dbconfig.ini', true);
 			$this->dbConnect();
 		}
 		

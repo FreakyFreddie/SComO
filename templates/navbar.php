@@ -10,7 +10,7 @@
           </button>
 		  <a class="navbar-brand" href="./index.php">
 			<?php
-				echo $_GLOBALS['settings']->Store['storeabbrev'];
+				echo $GLOBALS['settings']->Store['storeabbrev'];
 			?>
 			</a>
         </div>
@@ -19,7 +19,7 @@
             <?php
 				//index is always there
 				echo '<li ';
-					if($_GLOBALS['page']=="index")
+					if($GLOBALS['page']=="index")
 					{
 						echo 'class="active">';
 					}
@@ -34,7 +34,7 @@
 				{
 					//winkelmandje is only there when logged in
 					echo '<li ';
-						if($_GLOBALS['page']=="winkelmandje")
+						if($GLOBALS['page']=="winkelmandje")
 						{
 							echo 'class="active">';
 						}
@@ -47,7 +47,7 @@
 					
 					//bestellingen is only there when logged in
 					echo '<li ';
-						if($_GLOBALS['page']=="bestellingen")
+						if($GLOBALS['page']=="bestellingen")
 						{
 							echo 'class="active">';
 						}
@@ -60,7 +60,7 @@
 					
 					//winkelmandje is only there when logged in as admin (docent)
 					echo '<li ';
-						if($_GLOBALS['page']=="adminpanel")
+						if($GLOBALS['page']=="adminpanel")
 						{
 							echo 'class="active">';
 						}
@@ -79,7 +79,7 @@
 					{
 						//profiel is only there when logged in
 						echo '<li ';
-							if($_GLOBALS['page']=="profiel")
+							if($GLOBALS['page']=="profiel")
 							{
 								echo 'class="active">';
 							}
@@ -94,7 +94,7 @@
 					{
 						//registreren is only there when not logged in
 					echo '<li ';
-						if($_GLOBALS['page']=="registreren")
+						if($GLOBALS['page']=="registreren")
 						{
 							echo 'class="active">';
 						}
@@ -112,7 +112,9 @@
 									<li>
 										<div class="row">
 											<div class="col-sm-12">
-												<form method="post" action="<?php echo $_SERVER[\'PHP_SELF\']; ?>" id="login-nav">
+												<form method="post" action="';
+												echo htmlspecialchars($_SERVER['PHP_SELF']);
+												echo '" id="login-nav">
 													<div class="form-group">
 														<label class="sr-only" for="rnr">r-nummer</label>
 														<input type="text" class="form-control" id="rnr" name="rnr" placeholder="r0123456" required>

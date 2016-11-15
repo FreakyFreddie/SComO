@@ -1,6 +1,6 @@
 <?php
 	//set page var in order to adapt navbar and functions
-	$_GLOBALS['page'] = 'index';
+	$GLOBALS['page'] = 'index';
 
 	//include header
 	require '../templates/header.php';
@@ -19,12 +19,12 @@
 		<div class="jumbotron text-center">
 			<h1>
 				<?php
-					echo $_GLOBALS['settings']->Store['storename'];
+					echo $GLOBALS['settings']->Store['storename'];
 				?>
 			</h1>
 			<p>
 				<?php
-					echo $_GLOBALS['settings']->Store['quote'];
+					echo $GLOBALS['settings']->Store['quote'];
 				?>
 			</p>
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -50,10 +50,10 @@
 				if(isset($_POST['searchproduct']) && $_POST['searchproduct'] != "") 
 				{
 					//getFarnellProducts needs
-					$farnellproducts = getFarnellProducts($_POST['searchproduct'], 0, 20, $_GLOBALS['settings']->Suppliers['farnellAPI']);
+					$farnellproducts = getFarnellProducts($_POST['searchproduct'], 0, 20);
 					
 					//getMouserProducts needs
-					$mouserproducts = getMouserProducts($_POST['searchproduct'], 0 ,20, $_GLOBALS['settings']->Suppliers['mouserAPI']);
+					$mouserproducts = getMouserProducts($_POST['searchproduct'], 0 ,20);
 					
 					//print message if no products found
 					if(empty($farnellproducts) && empty($mouserproducts))
@@ -102,4 +102,4 @@
 		</div>
 
 		<!-- footer -->
-		<?php require $_GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
+		<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
