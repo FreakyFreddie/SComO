@@ -19,7 +19,7 @@
             <?php
 				//index is always there
 				echo '<li ';
-					if($GLOBALS['page']=="index")
+					if(strcmp($GLOBALS['page'], "index")==0)
 					{
 						echo 'class="active">';
 					}
@@ -34,7 +34,7 @@
 				{
 					//winkelmandje is only there when logged in
 					echo '<li ';
-						if($GLOBALS['page']=="winkelmandje")
+						if(strcmp($GLOBALS['page'], "winkelmandje")==0)
 						{
 							echo 'class="active">';
 						}
@@ -47,7 +47,7 @@
 					
 					//bestellingen is only there when logged in
 					echo '<li ';
-						if($GLOBALS['page']=="bestellingen")
+						if(strcmp($GLOBALS['page'], "bestellingen")==0)
 						{
 							echo 'class="active">';
 						}
@@ -60,7 +60,7 @@
 					
 					//winkelmandje is only there when logged in as admin (docent)
 					echo '<li ';
-						if($GLOBALS['page']=="adminpanel")
+						if(strcmp($GLOBALS['page'], "adminpanel")==0)
 						{
 							echo 'class="active">';
 						}
@@ -79,7 +79,7 @@
 					{
 						//profiel is only there when logged in
 						echo '<li ';
-							if($GLOBALS['page']=="profiel")
+							if(strcmp($GLOBALS['page'], "profiel")==0)
 							{
 								echo 'class="active">';
 							}
@@ -94,7 +94,7 @@
 					{
 						//registreren is only there when not logged in
 					echo '<li ';
-						if($GLOBALS['page']=="registreren")
+						if(strcmp($GLOBALS['page'], "registreren")==0)
 						{
 							echo 'class="active">';
 						}

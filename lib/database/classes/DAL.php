@@ -2,7 +2,7 @@
 	//Data Access Layer or Data Access Link
 	class DAL
 	{
-		private $DBsettings;
+		private $DBSettings;
 		private $conn;
 		private $numResults;
 		
@@ -10,7 +10,7 @@
 		public function __construct()
 		{
 			//problem
-			$this->DBSettings = (object) parse_ini_file($_GLOBALS['settings']->Folders['root'].'../config/dbconfig.ini', true);
+			$this->DBSettings = (object) parse_ini_file($GLOBALS['settings']->Folders['root'].'../config/dbconfig.ini', true);
 			$this->dbConnect();
 		}
 		

@@ -60,7 +60,7 @@
 			require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
 
 			//include login check
-			//require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/Login.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/Login.php';
 
 			
 			//globally used functions go here
@@ -70,8 +70,13 @@
 			require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 						
 			//check login condition
-			/*if(isset($_POST["rnr"]) && isset($_POST["pwd"]))
+			if(isset($_POST["rnr"]) && isset($_POST["pwd"]))
 			{
-				$login = new Login($_POST["rnr"], $_POST["pwd"]);
-			}*/
+				//prevent HTML injection
+				$rnr = validateRNummer($_POST["rnr"]);
+				$pwd = validateWachtWoord($_POST["pwd"]);
+				
+				//login in
+				$login = new Login($rnr, $pwd);
+			}
 		?>

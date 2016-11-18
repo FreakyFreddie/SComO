@@ -44,13 +44,8 @@
 		);
 
 		//result contains the output string (which is an XML file)
-		$result = curl_exec($curl);
-		if ($result === false)	// Error check
-		{
-			echo "Error, kan niet verbinden met API";
-		//	throw new Exception(curl_error($curl), curl_errno($curl));
-		}
-
+		$result = curl_exec($curl) or die("Kan niet verbinden met API");
+		
 		//stop curl
 		curl_close($curl);
 		

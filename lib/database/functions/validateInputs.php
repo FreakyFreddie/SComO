@@ -16,7 +16,7 @@
 	{
 		$pass=FALSE;
 		
-		foreach($_GLOBALS["settings"]->Whitelist["mail"] as $domain)
+		foreach($GLOBALS["settings"]->Whitelist["mail"] as $domain)
 		{
 			if($mail == $domain)
 			{
@@ -54,7 +54,7 @@
 		$data = validateInput($data);
 		
 		//rnummer needs to be one letter (r, s, u, ...) , followed bij 7 digits
-		if(preg_match("/^[".$_GLOBALS["settings"]->Whitelist["idletters"]."][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/", $data))
+		if(preg_match("/^[".$GLOBALS["settings"]->Whitelist["idletters"]."][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/", $data))
 		{
 			//make all letters lowercase
 			$data = strtolower($data);
@@ -63,7 +63,7 @@
 		}
 		else
 		{
-			echo "<p>Een rnummer moet steeds beginnen met één van volgende letters: $idletters gevolgd door 7 cijfers</p>";
+			echo "<p>Een rnummer moet steeds beginnen met één van volgende letters: ".$GLOBALS["settings"]->Whitelist["idletters"]." gevolgd door 7 cijfers</p>";
 		}
 	}
 	

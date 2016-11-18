@@ -1,6 +1,6 @@
 <?php
 	//set page var in order to adapt navbar and functions
-	$_GLOBALS['page'] = "registreren";
+	$GLOBALS['page'] = "registreren";
 
 	//include header
 	require '../templates/header.php';
@@ -42,25 +42,48 @@
 					
 					//test if user already exists with rnummer
 					$sql = "SELECT rnummer FROM gebruiker WHERE rnummer='".$rnummer."'";
-					$records = $dal->QueryDB($sql);
+					$dal->QueryDB($sql);
 					
 					//if user already exists, numrows >= 1, if not we can continue
-					if(!($dal->getNumResults()>=1))
+					if($dal->getNumResults()<1)
 					{
-						//prepare for timestamp
+						//hash password (use PASSWORD_DEFAULT since php might update algorithms if they become stronger)
+						$wachtwoord = password_hash($wachtwoord,PASSWORD_DEFAULT);
+						
+						//prepare timestamp
 						date_default_timezone_set('Europe/Brussels');
 						
-						//write to db (still need to add date & time)
-						$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum) VALUES ('".$rnummer."', '".$voornaam."', '".$naam."', '".$fullmail."', '".$wachtwoord."', '0', '".date("j/n/Y H:i:s")."')";
+						do
+						{
+							//generate unique activation key
+							$generatedkey = md5(uniqid(rand(), true));
+							
+							//test if activation link already exists with rnummer
+							$sql = "SELECT rnummer FROM gebruiker WHERE activatiesleutel='".$generatedkey."'";
+							$dal->QueryDB($sql);
+						}
+						while($dal->getNumResults() != 0);
+						
+						//write to DB use date("j-n-Y H:i:s") for date
+						$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES ('".$rnummer."', '".$voornaam."', '".$naam."', '".$fullmail."', '".$wachtwoord."', '0', '".date("Y-n-j H:i:s")."', '".$generatedkey."')";
 						$dal->WriteDB($sql);
 						
-						echo '<div class="row">
-							<p>Registratie succesvol</p>';
+						//"user created" message
+						echo "Gebruiker aangemaakt";
 						
-							
-							
-						echo '<p>mail verzonden naar '.$fullmail.'</p>
+						//generate mail headers & message
+						$headers = "From: ".$GLOBALS["settings"]->Contact["webmaster"]."\r\nReply-To: ".$GLOBALS["settings"]->Contact["webmaster"];
+						$mailmessage = "Klik op onderstaande link om je account te activeren\n".$GLOBALS["settings"]->Domain["domain"]."/activate.php?key=$generatedkey";
+						
+						//send mail with activation link ($to, $subject, $message), will not work on local server
+						/*
+						mail($fullmail, "Activeer uw ".$GLOBALS['settings']->Store['storeabbrev']." account", $mailmessage, $headers)
+						OR die("Mailserver tijdelijk niet bereikbaar.");
+
+						echo '<div class="row">
+								<p>mail verzonden naar '.$fullmail.'</p>
 							</div>';
+						*/
 					}
 					else
 					{
@@ -95,7 +118,7 @@
 								<select class="form-control"  id="email" name="email">
 									<option value="Selecteer keuze">Selecteer keuze</option>';
 									//integrate mail whitelist
-									foreach ($_GLOBALS['settings']->Whitelist["mail"] as $mailaddress)
+									foreach ($GLOBALS['settings']->Whitelist["mail"] as $mailaddress)
 									{
 										echo '<option value="'.$mailaddress.'">@'.$mailaddress.'</option>';
 									}
@@ -113,5 +136,6 @@
 				}
 			?>
 		</div>
+		
 		<!-- footer -->
-		<?php require '../templates/footer.php'; ?>
+		<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>

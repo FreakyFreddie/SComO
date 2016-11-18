@@ -1,6 +1,6 @@
 <?php
 	//set page var in order to adapt navbar and functions
-	$GLOBALS['page'] = 'index';
+	$GLOBALS['page'] = "index";
 
 	//include header
 	require '../templates/header.php';

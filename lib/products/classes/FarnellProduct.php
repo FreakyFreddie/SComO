@@ -285,7 +285,7 @@
 								<td>
 									DataSheet
 								</td>
-								<td class="text-right"><a href="'.$this->productDataSheet.'">Link</a></td>
+								<td class="text-right"><a href="'.$this->productDataSheet.'" target="_blank">Link</a></td>
 							</tr>
 						</table>
 						<br />
