@@ -4,6 +4,12 @@
 
 	//include header
 	require '../templates/header.php';
+	
+	//if user logs in on the registration page, he is redirected to index
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
+	{
+		header("Location:index.php");
+	}
 ?>
 
 		<script src="./js/livesearch.js"></script>
@@ -128,7 +134,13 @@
 						<div class="form-group row">
 							<label for="wachtwoord" class="col-sm-2">Wachtwoord</label>
 							<div class="col-sm-10">
-								<input type="password" class="form-control"  id="wachtwoord" name="wachtwoord" placeholder="password" />
+								<input type="password" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="wachtwoord" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="herhaalwachtwoord" class="col-sm-2">Herhaal wachtwoord</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="wachtwoordconfirm" name="herhaalwachtwoord" placeholder="herhaal wachtwoord" />
 							</div>
 						</div>
 						<button class="btn btn-primary" type="submit">Registreer</button>

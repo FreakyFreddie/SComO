@@ -210,12 +210,12 @@
 					</tr>';
 			}			
 			echo '</table>
-					<form class="input-group fieldwithaddon" action="" method="post">
+					<form class="input-group" action="" method="post">
 						<input type="number" class="form-control" value="1" name="amountproduct">
-						<span class="input-group-addon">
-							<button type="submit">
+						<span class="input-group-btn">
+							<button class="btn btn-secondary" type="submit">
 								<span class="glyphicon glyphicon-plus"></span>
-							</button> 
+							</button>
 						</span>
 					</form>
 				</div>

@@ -27,33 +27,39 @@
 					echo $GLOBALS['settings']->Store['quote'];
 				?>
 			</p>
-			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-				<div class="form-group input-group searchbar fieldwithaddon">
+			<noscript>
+				<div class="alert alert-success alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
+				</div>
+			</noscript>
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+				<div class="form-group input-group searchbar">
 					<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct" 
 						<?php
-							if(isset($_POST['searchproduct']) && $_POST['searchproduct'] != "") 
+							if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
 							{
-								echo 'value="'.$_POST['searchproduct'].'"';
+								echo 'value="'.$_GET['searchproduct'].'"';
 							}
 						?>
 					>
-					<span class="input-group-addon">
-						<button type="submit">
+					<span class="input-group-btn">
+						<button class="btn btn-secondary" type="submit">
 							<span class="glyphicon glyphicon-search"></span>
-						</button> 
+						</button>
 					</span>
 				</div>
 			</form>
 		</div>
 		<div class="container shop">
 			<?php
-				if(isset($_POST['searchproduct']) && $_POST['searchproduct'] != "") 
+				if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
 				{
 					//getFarnellProducts needs
-					$farnellproducts = getFarnellProducts($_POST['searchproduct'], 0, 20);
+					$farnellproducts = getFarnellProducts($_GET['searchproduct'], 0, 20);
 					
 					//getMouserProducts needs
-					$mouserproducts = getMouserProducts($_POST['searchproduct'], 0 ,20);
+					$mouserproducts = getMouserProducts($_GET['searchproduct'], 0 ,20);
 					
 					//print message if no products found
 					if(empty($farnellproducts) && empty($mouserproducts))

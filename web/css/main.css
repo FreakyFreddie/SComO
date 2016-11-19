@@ -3,6 +3,7 @@ body {
   background-color: #eee;
   background-image: url("../img/congruent_pentagon2.png");
   background-attachment: fixed;
+  font-size: 16px;
 }
 
 .navbar{
@@ -54,16 +55,6 @@ body {
 	margin-right: 10%;
 }
 
-.fieldwithaddon .input-group-addon{
-    background: white;
-	border: none;
-}
-
-.fieldwithaddon button{
-    border:0;
-    background:transparent;
-}
-
 .shop .col-sm-4{
 	margin-bottom: 4vh;
 }
@@ -95,22 +86,29 @@ body {
 	width: 60%;
 }
 
-.farnellproduct .fieldwithaddon .input-group-addon{
+.container .input-group .form-control{
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+.farnellproduct .input-group .input-group-btn button{
+	border-top-right-radius: 0px;
     color: white;
 	background-color: #1d8db0;
 }
 
-.farnellproduct .fieldwithaddon .input-group-addon:hover{
+.farnellproduct .input-group .input-group-btn button:hover{
     color: black;
 	background-color: lightblue;
 }
 
-.mouserproduct .fieldwithaddon .input-group-addon{
+.mouserproduct .input-group .input-group-btn button{
+	border-top-right-radius: 0px;
     color: white;
 	background-color: #1d8db0;
 }
 
-.mouserproduct .fieldwithaddon .input-group-addon:hover{
+.mouserproduct .input-group .input-group-btn button:hover{
     color: black;
 	background-color: lightblue;
 }

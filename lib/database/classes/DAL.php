@@ -43,7 +43,7 @@
 			
 		//request information, get records
 		public function QueryDB($sql)
-		{		
+		{
 			$result = mysqli_query($this->conn, $sql)
 			or die("Er is een fout opgetreden bij het uitvoeren van de query");
 			

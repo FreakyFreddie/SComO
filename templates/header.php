@@ -1,9 +1,30 @@
 <?php
-	//start session once, header.php is included in all pages
-	session_start();
-	
 	//load config, typecast to object for easy access
 	$GLOBALS['settings'] = (object) parse_ini_file('../config/config.ini', true);
+	
+	//include classes BEFORE session_start because we might need them in session
+	//globally used classes go here
+	//include ProductPrice class
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
+
+	//include Product class
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
+
+	//include MouserProduct
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
+
+	//include FarnellProduct
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
+
+	//include DAL
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
+	
+	//include login class
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/Login.php';
+	
+	//start session once since header.php is included in all pages
+	session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -43,40 +64,20 @@
 		<![endif]-->
 		
 		<?php
-			//globally used classes go here
-			//include ProductPrice class
-			require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
-
-			//include Product class
-			require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
-
-			//include MouserProduct
-			require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
-
-			//include FarnellProduct
-			require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
-			
-			//include DAL
-			require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
-
-			//include login check
-			require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/Login.php';
-
-			
 			//globally used functions go here
 			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
 			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
 			//input checks
 			require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 						
-			//check login condition
+			//check login condition & log in
 			if(isset($_POST["rnr"]) && isset($_POST["pwd"]))
 			{
 				//prevent HTML injection
 				$rnr = validateRNummer($_POST["rnr"]);
 				$pwd = validateWachtWoord($_POST["pwd"]);
 				
-				//login in
-				$login = new Login($rnr, $pwd);
+				//Try logging in with Login object & add to session
+				$_SESSION["user"] = new Login($rnr, $pwd);
 			}
 		?>

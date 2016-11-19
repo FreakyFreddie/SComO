@@ -15,8 +15,8 @@
 			</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <?php
+			<ul class="nav navbar-nav">
+			<?php
 				//index is always there
 				echo '<li ';
 					if(strcmp($GLOBALS['page'], "index")==0)
@@ -30,7 +30,7 @@
 					echo '<a href="./index.php">Shop</a>';
 				echo '</li>';
 				
-				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+				if (isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 				{
 					//winkelmandje is only there when logged in
 					echo '<li ';
@@ -59,23 +59,27 @@
 					echo '</li>';
 					
 					//winkelmandje is only there when logged in as admin (docent)
-					echo '<li ';
-						if(strcmp($GLOBALS['page'], "adminpanel")==0)
-						{
-							echo 'class="active">';
-						}
-						else
-						{
-							echo '>';
-						}
-						echo '<a href="./adminpanel.php">Adminpanel</a>';
-					echo '</li>';
+					if($_SESSION["user"]->__get("permissionLevel") == 2)
+					{
+						echo '<li ';
+							if(strcmp($GLOBALS['page'], "adminpanel")==0)
+							{
+								echo 'class="active">';
+							}
+							else
+							{
+								echo '>';
+							}
+							echo '<a href="./adminpanel.php">Adminpanel</a>';
+						echo '</li>';
+					}
 				}
 			?>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-			  <?php
-					if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<?php
+					//different links based on user level
+					if (isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 					{
 						//profiel is only there when logged in
 						echo '<li ';
@@ -87,13 +91,26 @@
 							{
 								echo '>';
 							}
-							echo '<a href="./profiel.php">Profiel</a>';
+							echo '<a href="./profiel.php"><span class="glyphicon glyphicon-user"></span> '.$_SESSION["user"]->__get("firstName").'</a>';
+						echo '</li>';
+						
+						//logout is only there when logged in
+						echo '<li ';
+							if(strcmp($GLOBALS['page'], "logout")==0)
+							{
+								echo 'class="active">';
+							}
+							else
+							{
+								echo '>';
+							}
+							echo '<a href="./logout.php"><span class="glyphicon glyphicon-log-out"></span> Uitloggen</a>';
 						echo '</li>';
 					}
 					else
 					{
 						//registreren is only there when not logged in
-					echo '<li ';
+						echo '<li ';
 						if(strcmp($GLOBALS['page'], "registreren")==0)
 						{
 							echo 'class="active">';
@@ -158,7 +175,7 @@
 						';
 					}
 				?>
-          </ul>
-        </div><!--/.nav-collapse -->
+			</ul>
+		</div><!--/.nav-collapse -->
       </div>
     </nav>

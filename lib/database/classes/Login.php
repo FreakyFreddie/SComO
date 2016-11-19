@@ -3,9 +3,10 @@
 	class Login
 	{
 		private $userId;
-		private $passWord;
 		private $permissionLevel;
-		private $loggedIn;
+		private $firstName;
+		private $lastName;
+		private $loggedIn = False;
 		private $dal;
 		
 		public function __construct($rnummer, $wachtwoord)
@@ -18,25 +19,54 @@
 			$wachtwoord = mysqli_real_escape_string($this->dal->getConn(), $wachtwoord);
 			
 			//validate credentials vs DB
-			$this->validateCredentials($rnummer, $wachtwoord)
-			OR die("Gebruikersnaam of wachtwoord ongeldig");
+			$this->validateCredentials($rnummer, $wachtwoord);
 			
-			$this->dal->CloseConn();
+			$this->dal->closeConn();
+		}
+		
+		//returns property value
+		function __get($property)
+		{
+			switch($property)
+			{
+				case "userId":
+				$result = $this->userId;
+				break;
+				
+				case "firstName":
+				$result = $this->firstName;
+				break;
+				
+				case "lastName":
+				$result = $this->lastName;
+				break;
+				
+				case "permissionLevel":
+				$result = $this->permissionLevel;
+				break;
+				
+				case "loggedIn":
+				$result = $this->loggedIn;
+				break;
+			}
+			
+			return $result;
 		}
 		
 		private function validateCredentials($rnummer, $wachtwoord)
 		{
 			//test if user exists with rnummer and wachtwoord
-			$sql = "SELECT rnummer, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer='".$rnummer."'";
+			$sql = "SELECT rnummer, voornaam, achternaam, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer='".$rnummer."'";
 			$records = $this->dal->QueryDB($sql);
 			
+			//if only 1 result AND hashed password matches password in db, fill in object attributes
 			if($this->dal->getNumResults() == 1 && password_verify($wachtwoord, $records[0]->wachtwoord));
 			{
 				$this->userId = $records[0]->rnummer;
-				$this->permissionlevel = $records[0]->machtigingsniveau;
+				$this->firstName = $records[0]->voornaam;
+				$this->lastName = $records[0]->achternaam;
+				$this->permissionLevel = (int) $records[0]->machtigingsniveau;
 				$this->loggedIn = True;
-				
-				return True;
 			}
 		}
 	}
