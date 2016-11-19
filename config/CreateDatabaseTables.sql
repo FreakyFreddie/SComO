@@ -26,6 +26,7 @@ CREATE TABLE webstoredb.gebruiker
   wachtwoord VARCHAR(45) NOT NULL,
   machtigingsniveau INT DEFAULT '0',
   aanmaakdatum DATE NOT NULL,
+  activatiesleutel VARCHAR(),
   PRIMARY KEY (rnummer)
 );
 

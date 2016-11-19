@@ -210,10 +210,10 @@
 					</tr>';
 			}			
 			echo '</table>
-					<form class="input-group" action="" method="post">
-						<input type="number" class="form-control" value="1" name="amountproduct">
+					<form class="input-group" action="#">
+						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productID.'" supplier="'.$this->productSupplier.'">
 						<span class="input-group-btn">
-							<button class="btn btn-secondary" type="submit">
+							<button class="btn btn-secondary productbutton" type="button">
 								<span class="glyphicon glyphicon-plus"></span>
 							</button>
 						</span>

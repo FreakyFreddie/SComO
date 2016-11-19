@@ -5,8 +5,25 @@
 	//include header
 	require '../templates/header.php';
 ?>
-	
-		<script src="./js/livesearch.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$(".productbutton").click(function()
+				{					
+					//prepare request
+					$request = $.ajax({
+						method:"POST",
+						url:"addToCart.php",
+						data: {productid: $(this).parent().prev("input").attr("productid"), supplier: $(this).parent().prev("input").attr("supplier"), amount: $(this).parent().prev("input").attr("value")},
+					});
+					$request.fail(function(jqXHR, textStatus)
+					{
+						alert("Kan het product niet toevoegen aan het winkelmandje.");
+					});
+				});
+			});
+		</script>
 	</head>
 
 	<body>	
@@ -14,7 +31,7 @@
 			//include navbar
 			require '../templates/navbar.php';
 		?>
-
+		
 		<!-- PROJECT TITLE and QUOTE -->
 		<div class="jumbotron text-center">
 			<h1>
@@ -27,12 +44,6 @@
 					echo $GLOBALS['settings']->Store['quote'];
 				?>
 			</p>
-			<noscript>
-				<div class="alert alert-success alert-dismissible">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
-				</div>
-			</noscript>
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
 				<div class="form-group input-group searchbar">
 					<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct" 
@@ -52,6 +63,12 @@
 			</form>
 		</div>
 		<div class="container shop">
+			<noscript>
+				<div class="alert alert-success alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
+				</div>
+			</noscript>
 			<?php
 				if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
 				{

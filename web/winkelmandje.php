@@ -1,34 +1,59 @@
 <?php
 	//set page var in order to adapt navbar and functions
-	$_GLOBALS['page'] = "winkelmandje";
-?>
+	$GLOBALS['page'] = "winkelmandje";
 
-<?php
-	//include configuration file
-	require '../config/config.php';
-	
 	//include header
 	require '../templates/header.php';
 ?>
+	</head>
 
-	<body>		
+	<body>	
 		<?php
 			//include navbar
 			require '../templates/navbar.php';
 		?>
 		
+		<!-- PROJECT TITLE and QUOTE -->
 		<div class="jumbotron text-center">
 			<h1>
 				<?php
-					echo 'Winkelmandje';
+					echo $GLOBALS['settings']->Store['storename'];
 				?>
 			</h1>
 			<p>
 				<?php
-					echo 'Jouw artikelen';
+					echo $GLOBALS['settings']->Store['quote'];
 				?>
 			</p>
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+				<div class="form-group input-group searchbar">
+					<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct" 
+						<?php
+							if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
+							{
+								echo 'value="'.$_GET['searchproduct'].'"';
+							}
+						?>
+					>
+					<span class="input-group-btn">
+						<button class="btn btn-secondary" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div>
+			</form>
 		</div>
-		
+		<div class="container shop">
+			<noscript>
+				<div class="alert alert-success alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
+				</div>
+			</noscript>
+			<?php
+				var_dump($_SESSION["cart"]);
+			?>
+		</div>
+
 		<!-- footer -->
-		<?php require '../templates/footer.php'; ?>
+		<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
