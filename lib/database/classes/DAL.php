@@ -42,7 +42,7 @@
 		}
 			
 		//request information, get records
-		public function QueryDB($sql)
+		public function queryDB($sql)
 		{
 			$result = mysqli_query($this->conn, $sql)
 			or die("Er is een fout opgetreden bij het uitvoeren van de query");
@@ -61,7 +61,7 @@
 		}
 		
 		//Use to write something to DB
-		public function WriteDB($sql)
+		public function writeDB($sql)
 		{
 			mysqli_query($this->conn, $sql)
 			or die("Er is een fout opgetreden bij het uitvoeren van de query");

@@ -47,7 +47,7 @@
 					
 					//test if user already exists with rnummer
 					$sql = "SELECT rnummer FROM gebruiker WHERE rnummer='".$rnummer."'";
-					$dal->QueryDB($sql);
+					$dal->queryDB($sql);
 					
 					//if user already exists, numrows >= 1, if not we can continue
 					if($dal->getNumResults()<1)
@@ -65,13 +65,13 @@
 							
 							//test if activation link already exists with rnummer
 							$sql = "SELECT rnummer FROM gebruiker WHERE activatiesleutel='".$generatedkey."'";
-							$dal->QueryDB($sql);
+							$dal->queryDB($sql);
 						}
 						while($dal->getNumResults() != 0);
 						
 						//write to DB use date("j-n-Y H:i:s") for date
 						$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES ('".$rnummer."', '".$voornaam."', '".$naam."', '".$fullmail."', '".$wachtwoord."', '0', '".date("Y-n-j H:i:s")."', '".$generatedkey."')";
-						$dal->WriteDB($sql);
+						$dal->writeDB($sql);
 						
 						//"user created" message
 						echo "Gebruiker aangemaakt";

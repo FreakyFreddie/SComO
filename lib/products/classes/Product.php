@@ -72,31 +72,31 @@
 				case "Id":
 				$result = $this->productId;
 				break;
-				
+
 				case "Name":
 				$result = $this->productName;
 				break;
-				
+
 				case "Prices":
 				$result = $this->productPrices;
 				break;
-				
+
 				case "Vendor":
 				$this->productVendor;
 				break;
-				
+
 				case "Inventory":
 				$result = $this->productInventory;
 				break;
-				
+
 				case "Image":
 				$result = $this->productImage;
 				break;
-				
+
 				case "DataSheet":
 				$result = $this->productDataSheet;
 				break;
-				
+
 				case "Supplier":
 				$result = $this->productSupplier;
 				break;
