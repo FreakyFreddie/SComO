@@ -12,7 +12,6 @@
 	}
 ?>
 
-		<script src="./js/livesearch.js"></script>
 	</head>
 
 	<body>		
@@ -140,7 +139,7 @@
 						<div class="form-group row">
 							<label for="herhaalwachtwoord" class="col-sm-2">Herhaal wachtwoord</label>
 							<div class="col-sm-10">
-								<input type="password" class="form-control" id="wachtwoordconfirm" name="herhaalwachtwoord" placeholder="herhaal wachtwoord" />
+								<input type="password" class="form-control" id="herhaalwachtwoord" name="herhaalwachtwoord" placeholder="herhaal wachtwoord" />
 							</div>
 						</div>
 						<button class="btn btn-primary" type="submit">Registreer</button>

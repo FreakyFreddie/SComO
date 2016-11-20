@@ -15,9 +15,9 @@
 					$request = $.ajax({
 						method:"POST",
 						url:"addToCart.php",
-						data: {productid: $(this).parent().prev("input").attr("productid"), supplier: $(this).parent().prev("input").attr("supplier"), amount: $(this).parent().prev("input").attr("value")},
+						data: {productid: $(this).parent().prev("input").attr("productid"), supplier: $(this).parent().prev("input").attr("supplier"), amount: $(this).parent().prev("input").attr("value")}
 					});
-					$request.fail(function(jqXHR, textStatus)
+					$request.fail(function()
 					{
 						alert("Kan het product niet toevoegen aan het winkelmandje.");
 					});

@@ -17,10 +17,10 @@
 		}
 		else
 		{
-			echo "U kunt uw account geen tweede keer activeren."
+			echo "U kan uw account geen tweede keer activeren."
 		}
 
 		
-		$dal->CloseConn();
+		$dal->closeConn();
 	}
 ?>

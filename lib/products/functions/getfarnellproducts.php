@@ -197,7 +197,7 @@
 				//Product object attributes
 				if(isset($xmlproduct->sku))
 				{
-					$product->__set("ID", $xmlproduct->sku);
+					$product->__set("Id", $xmlproduct->sku);
 				}
 				
 				if(isset($xmlproduct->displayName))
@@ -258,12 +258,12 @@
 				
 				if(isset($xmlproduct->id))
 				{
-					$product->__set("FullID", $xmlproduct->id);
+					$product->__set("FullId", $xmlproduct->id);
 				}
 				
 				if(isset($xmlproduct->vendorId))
 				{
-					$product->__set("VendorID", $xmlproduct->vendorId);
+					$product->__set("VendorId", $xmlproduct->vendorId);
 				}
 				
 				if(isset($xmlproduct->brandName))
@@ -338,7 +338,7 @@
 				
 				if(isset($xmlproduct->brandId))
 				{
-					$product->__set("BrandID", $xmlproduct->brandId);
+					$product->__set("BrandId", $xmlproduct->brandId);
 				}
 				
 				if(isset($xmlproduct->commodityClassCode))

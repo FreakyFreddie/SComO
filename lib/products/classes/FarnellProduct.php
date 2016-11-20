@@ -6,8 +6,8 @@
 		private $fproductRohsStatusCode;
 		private $fproductPackSize;
 		private $fproductUnitOfMeasure;
-		private $fproductFullID;
-		private $fproductVendorID;
+		private $fproductFullId;
+		private $fproductVendorId;
 		private $fproductBrandName;
 		private $fproductTranslatedManufacturerPartNumber;
 		private $fproductTranslatedMinimumOrderQuality;
@@ -22,12 +22,12 @@
 		private $fproductIsAwaitingRelease;
 		private $fproductReeling;
 		private $fproductDiscountReason;
-		private $fproductBrandID;
+		private $fproductBrandId;
 		private $fproductCommodityClassCode;
 		
 		//__construct is called on each newly created object
 		//if child class had __construct, parent __construct is not automatically called, so add it in child __construct
-		public function __construct($fpSKU="", $fpDisplayName="", $fpPrices="", $fpStatus="", $fpRohsStatusCode="", $fpPackSize="", $fpUnitOfMeasure="", $fpID="", $fpImage="./img/not_found.jpg", $fpDataSheets="", $fpInv="", $fpVendorId="", $fpVendorName="", $fpBrandName="", $fpTranslatedManufacturerPartNumber="", $fpTranslatedMinimumOrderQuality="", $fpStock="", $fpCountryOfOrigin="", $fpComingSoon="", $fpTranslatedPrimaryCatalogPage="", $fpPublishingModule="", $fpVatHandlingCode="", $fpReleaseStatusCode="", $fpIsSpecialOrder="", $fpIsAwaitingRelease="", $fpReeling="", $fpDiscountReason="", $fpBrandId="", $fpCommodityClassCode="", $fpSupplier="Farnell")
+		public function __construct($fpSKU="", $fpDisplayName="", $fpPrices="", $fpStatus="", $fpRohsStatusCode="", $fpPackSize="", $fpUnitOfMeasure="", $fpId="", $fpImage="./img/not_found.jpg", $fpDataSheets="", $fpInv="", $fpVendorId="", $fpVendorName="", $fpBrandName="", $fpTranslatedManufacturerPartNumber="", $fpTranslatedMinimumOrderQuality="", $fpStock="", $fpCountryOfOrigin="", $fpComingSoon="", $fpTranslatedPrimaryCatalogPage="", $fpPublishingModule="", $fpVatHandlingCode="", $fpReleaseStatusCode="", $fpIsSpecialOrder="", $fpIsAwaitingRelease="", $fpReeling="", $fpDiscountReason="", $fpBrandId="", $fpCommodityClassCode="", $fpSupplier="Farnell")
 		{
 			//call parent construct (product)
 			parent::__construct($fpSKU, $fpDisplayName, $fpPrices, $fpVendorName, $fpInv, $fpImage, $fpDataSheets, $fpSupplier);
@@ -35,7 +35,7 @@
 			$this->fproductRohsStatusCode = $fpRohsStatusCode;
 			$this->fproductPackSize = $fpPackSize;
 			$this->fproductUnitOfMeasure = $fpUnitOfMeasure;
-			$this->fproductId = $fpID;
+			$this->fproductId = $fpId;
 			$this->fproductVendorId = $fpVendorId;
 			$this->fproductBrandName = $fpBrandName;
 			$this->fproductTranslatedManufacturerPartNumber = $fpTranslatedManufacturerPartNumber;
@@ -76,12 +76,12 @@
 				$this->fproductUnitOfMeasure = $value;
 				break;
 				
-				case "FullID":
-				$this->fproductFullID = $value;
+				case "FullId":
+				$this->fproductFullId = $value;
 				break;
 				
-				case "VendorID":
-				$this->fproductVendorID = $value;
+				case "VendorId":
+				$this->fproductVendorId = $value;
 				break;
 				
 				case "BrandName":
@@ -122,10 +122,6 @@
 				
 				case "ReleaseStatusCode":
 				$this->fproductReleaseStatusCode = $value;
-				break;
-				
-				case "VatHandlingCode":
-				$this->fproductVatHandlingCode = $value;
 				break;
 				
 				case "IsSpecialOrder":
@@ -239,7 +235,7 @@
 				$result = $this->fproductDiscountReason;
 				break;
 				
-				case "BrandID":
+				case "BrandId":
 				$result = $this->fproductBrandId;
 				break;
 				
@@ -265,9 +261,9 @@
 							</tr>
 							<tr>
 								<td>
-									ID
+									Id
 								</td>
-								<td class="text-right">'.$this->productID.'</td>
+								<td class="text-right">'.$this->productId.'</td>
 							</tr>
 							<tr>
 								<td>
@@ -307,7 +303,7 @@
 			}			
 			echo '</table>
 					<form class="input-group" action="#">
-						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productID.'" supplier="'.$this->productSupplier.'">
+						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'">
 						<span class="input-group-btn">
 							<button class="btn btn-secondary productbutton" type="button">
 								<span class="glyphicon glyphicon-plus"></span>

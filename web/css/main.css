@@ -1,9 +1,7 @@
 body {
   padding-top: 50px;
-  background-color: #eee;
-  background-image: url("../img/congruent_pentagon2.png");
-  background-attachment: fixed;
-  font-size: 16px;
+	background: #eee url("../img/congruent_pentagon2.png") fixed;
+	font-size: 16px;
 }
 
 .navbar{
@@ -42,8 +40,7 @@ body {
 .jumbotron{
 	padding-top: 10px;
 	padding-bottom: 10px;
-	background-image: url("../img/bg7.png");
-	background-repeat: repeat;
+	background: url("../img/bg7.png") repeat;
 }
 
 .jumbotron p{
@@ -62,10 +59,9 @@ body {
 .shop .col-sm-4 .shoparticle{
 	width: 100%;
 	background-color: white;
-	border-left: 5px solid #1d8db0;
-	border-top: 5px solid #1d8db0;
-	border-bottom: 1px solid #1d8db0;
-	border-right: 1px solid #1d8db0;
+	border: 5px solid #1d8db0;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
 	border-radius: 0px 0px 5px 0px;
 }
 

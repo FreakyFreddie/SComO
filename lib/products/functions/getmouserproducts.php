@@ -14,7 +14,7 @@
 			  <soap12:Header>
 				<MouserHeader xmlns="http://api.mouser.com/service">
 				  <AccountInfo>
-					<PartnerID>string</PartnerID>
+					<PartnerId>string</PartnerId>
 				  </AccountInfo>
 				</MouserHeader>
 			  </soap12:Header>
@@ -23,7 +23,7 @@
 				  <keyword>string</keyword>
 				  <records>int</records>
 				  <startingRecord>int</startingRecord>
-				  <searchOptions>ID</searchOptions>
+				  <searchOptions>Id</searchOptions>
 				</SearchByKeyword>
 			  </soap12:Body>
 			</soap12:Envelope>
@@ -32,7 +32,7 @@
 		//set up the SOAP client
 		$soapclient = new SoapClient('http://api.mouser.com/service/searchapi.asmx?WSDL', array('soap_version' => SOAP_1_2, 'trace' => true));
 		
-		//PartnerID (API key) needed or mouser login, we use API key
+		//PartnerId (API key) needed or mouser login, we use API key
 		$headerparam = array('AccountInfo'=>array('PartnerID'=>$GLOBALS['settings']->Suppliers['mouserAPI']));
 		
 		//create the SOAP request header
@@ -169,7 +169,7 @@
 				//Product object attributes
 				if(isset($pattributes->MouserPartNumber))
 				{
-					$product->__set("ID", $pattributes->MouserPartNumber);
+					$product->__set("Id", $pattributes->MouserPartNumber);
 				}
 				
 				if(isset($pattributes->Description))

@@ -2,7 +2,7 @@
 	//needs ProductPrice class
 	class Product
 	{
-		protected $productID;
+		protected $productId;
 		protected $productName;
 		protected $productPrices = array();
 		protected $productVendor;
@@ -14,9 +14,9 @@
 		//__construct is called on each newly created object
 		//use getters & setters to check values and handle errors better
 		//if child class had __construct, parent __construct is not automatically called
-		public function __construct($pID="", $pName="", $pPrices="", $pVendor="", $pInventory="", $pImage="", $pDataSheet="", $pSupplier="")
+		public function __construct($pId="", $pName="", $pPrices="", $pVendor="", $pInventory="", $pImage="", $pDataSheet="", $pSupplier="")
 		{
-			$this->productID = $pID;
+			$this->productId = $pId;
 			$this->productName = $pName;
 			$this->productPrices = $pPrices;
 			$this->productVendor = $pVendor;
@@ -30,8 +30,8 @@
 		{
 			switch($property)
 			{
-				case "ID":
-				$this->productID = $value;
+				case "Id":
+				$this->productId = $value;
 				break;
 				
 				case "Name":
@@ -66,10 +66,11 @@
 		
 		public function __get($property)
 		{
+			$result = FALSE;
 			switch($property)
 			{
-				case "ID":
-				$result = $this->productID;
+				case "Id":
+				$result = $this->productId;
 				break;
 				
 				case "Name":

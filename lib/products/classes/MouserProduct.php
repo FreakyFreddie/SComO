@@ -169,9 +169,9 @@
 							</tr>
 							<tr>
 								<td>
-									ID
+									Id
 								</td>
-								<td class="text-right">'.$this->productID.'</td>
+								<td class="text-right">'.$this->productId.'</td>
 							</tr>
 							<tr>
 								<td>
@@ -211,7 +211,7 @@
 			}			
 			echo '</table>
 					<form class="input-group" action="#">
-						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productID.'" supplier="'.$this->productSupplier.'">
+						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'">
 						<span class="input-group-btn">
 							<button class="btn btn-secondary productbutton" type="button">
 								<span class="glyphicon glyphicon-plus"></span>
