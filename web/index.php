@@ -6,24 +6,7 @@
 	require '../templates/header.php';
 ?>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function()
-			{
-				$(".productbutton").click(function()
-				{					
-					//prepare request
-					$request = $.ajax({
-						method:"POST",
-						url:"addToCart.php",
-						data: {productid: $(this).parent().prev("input").attr("productid"), supplier: $(this).parent().prev("input").attr("supplier"), amount: $(this).parent().prev("input").attr("value")}
-					});
-					$request.fail(function()
-					{
-						alert("Kan het product niet toevoegen aan het winkelmandje.");
-					});
-				});
-			});
-		</script>
+		<script type="text/javascript" src="./js/addToCart.js"></script>
 	</head>
 
 	<body>	
@@ -72,11 +55,11 @@
 			<?php
 				if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
 				{
-					//getFarnellProducts needs
+					//send request to Farnell API
 					$farnellproducts = getFarnellProducts($_GET['searchproduct'], 0, 20);
-					
-					//getMouserProducts needs
-					$mouserproducts = getMouserProducts($_GET['searchproduct'], 0 ,20);
+
+					//send request to Mouser API
+					$mouserproducts = getMouserProducts($_GET['searchproduct'], 0, 20);
 					
 					//print message if no products found
 					if(empty($farnellproducts) && empty($mouserproducts))

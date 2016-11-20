@@ -205,7 +205,7 @@
 			foreach($this->productPrices as $productPrice)
 			{
 				echo '<tr>
-						<td>< '.$productPrice->__get("Quantity").'</td>
+						<td>> '.$productPrice->__get("Quantity").'</td>
 						<td class="text-right">'.$productPrice->__get("Price").'</td>
 					</tr>';
 			}			

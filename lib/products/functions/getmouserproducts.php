@@ -117,168 +117,173 @@
 		
 		foreach($soapresult->SearchByKeywordResult->Parts as $key => $soapproduct)
 		{
-			
-			//ignore numberofresults, only need products
-			//create array of product prices & quantities
-			
-			foreach($soapproduct as $pattributes)
+			//if there is more than one result, an array is created, else only one object is returned
+			if(is_array($soapproduct))
 			{
-				//print_r($pattributes);
-				$prices = array();
-				foreach($pattributes->PriceBreaks as $pPriceBreaks)
+				foreach($soapproduct as $pattributes)
 				{
-					//print_r($pPriceBreaks);
-					//if there more than one Price, $pPriceBreaks is an array
-					if(is_array($pPriceBreaks))
-					{
-						foreach($pPriceBreaks as $pPrice)
-						{
-							//print_r($pPrice);
-							//var_dump($pPrice);
-							$price = new ProductPrice();
-						
-							if(isset($pPrice->Quantity) && isset($pPrice->Price))
-							{
-								$price->__set("Quantity", $pPrice->Quantity);
-								$price->__set("Price", $pPrice->Price);
-							}
-							
-							$prices[]= $price;
-
-						}
-					}
-					//avoid looping through the attributes of a Price if there is only one
-					else
-					{
-						//var_dump($pPrice);
-						$price = new ProductPrice();
-						
-						if(isset($pPriceBreaks->Quantity) && isset($pPriceBreaks->Price))
-						{
-							$price->__set("Quantity", $pPriceBreaks->Quantity);
-							$price->__set("Price", $pPriceBreaks->Price);
-						}
-
-						$prices[]= $price;
-					}
+					$mouserProducts[] = extractData($pattributes);
 				}
-
-				//problem: what if an attribute is empty or not present? --> use setters instead of constructor
-				$product = new MouserProduct();
-				
-				//Product object attributes
-				if(isset($pattributes->MouserPartNumber))
-				{
-					$product->__set("Id", $pattributes->MouserPartNumber);
-				}
-				
-				if(isset($pattributes->Description))
-				{
-					$product->__set("Name", $pattributes->Description);
-				}
-				
-				$product->__set("Prices", $prices);
-				
-				if(isset($pattributes->Manufacturer))
-				{
-					$product->__set("Vendor", $pattributes->Manufacturer);
-				}
-				
-				if(isset($pattributes->Availability))
-				{
-					$product->__set("Inventory", $pattributes->Availability);
-				}
-				
-				//set image is not found
-				if(isset($pattributes->ImagePath))
-				{
-					$product->__set("Image", $pattributes->ImagePath);
-				}
-				else
-				{
-					$product->__set("Image", "./img/not_found.jpg");
-				}
-				
-				if(isset($pattributes->DataSheetUrl))
-				{
-					$product->__set("DataSheet", $pattributes->DataSheetUrl);
-				}
-				
-				//not really needed, since we have default value set in class
-				$product->__set("Supplier", "Mouser");
-				
-				//MouserProduct object attributes
-				if(isset($pattributes->Category))
-				{
-					$product->__set("Category", $pattributes->Category);
-				}
-				
-				if(isset($pattributes->LeadTime))
-				{
-					$product->__set("LeadTime", $pattributes->LeadTime);
-				}
-				
-				if(isset($pattributes->LifecycleStatus))
-				{
-					$product->__set("LifeCycleStatus", $pattributes->LifecycleStatus);
-				}
-				
-				if(isset($pattributes->ManufacturerPartNumber))
-				{
-					$product->__set("ManufacturerPartNumber", $pattributes->ManufacturerPartNumber);
-				}
-				
-				if(isset($pattributes->Min))
-				{
-					$product->__set("Min", $pattributes->Min);
-				}
-				
-				if(isset($pattributes->Mult))
-				{
-					$product->__set("Mult", $pattributes->Mult);
-				}
-				
-				if(isset($pattributes->ProductDetailUrl))
-				{
-					$product->__set("DetailUrl", $pattributes->ProductDetailUrl);
-				}
-				
-				if(isset($pattributes->Reeling))
-				{
-					$product->__set("Reeling", $pattributes->Reeling);
-				}
-				
-				if(isset($pattributes->ROHSStatus))
-				{
-					$product->__set("ROHSStatus", $pattributes->ROHSStatus);
-				}
-				
-				if(isset($pattributes->SuggestedReplacement))
-				{
-					$product->__set("SuggestedReplacement", $pattributes->SuggestedReplacement);
-				}
-				
-				if(isset($pattributes->MultiSimBlue))
-				{
-					$product->__set("MultiSimBlue", $pattributes->MultiSimBlue);
-				}
-					
-				if(isset($pattributes->UnitWeightKg))
-				{
-					$product->__set("UnitWeightKg", $pattributes->UnitWeightKg);
-				}
-				
-				if(isset($pattributes->ProductAttributes))
-				{
-					$product->__set("Attributes", $pattributes->ProductAttributes);
-				}
-				
-				//push new product to array
-				$mouserProducts[]= $product;
+			}
+			else
+			{
+				$mouserProducts[] = extractData($soapproduct);
 			}
 		}
 		
 		//return array of farnell products
 		return $mouserProducts;
 	}
-?>	
+
+	function extractData($pattributes)
+	{
+		//ignore numberofresults, only need products
+		//create array of product prices & quantities
+		$prices = array();
+		foreach($pattributes->PriceBreaks as $pPriceBreaks)
+		{
+			//print_r($pPriceBreaks);
+			//if there more than one Price, $pPriceBreaks is an array
+			if(is_array($pPriceBreaks))
+			{
+				foreach($pPriceBreaks as $pPrice)
+				{
+					$prices[]= extractPrice($pPrice);
+				}
+			}
+			//avoid looping through the attributes of a Price if there is only one
+			else
+			{
+				$prices[]= extractPrice($pPriceBreaks);
+			}
+		}
+
+		//problem: what if an attribute is empty or not present? --> use setters instead of constructor
+		$product = new MouserProduct();
+
+		//Product object attributes
+		if(isset($pattributes->MouserPartNumber))
+		{
+			$product->__set("Id", $pattributes->MouserPartNumber);
+		}
+
+		if(isset($pattributes->Description))
+		{
+			$product->__set("Name", $pattributes->Description);
+		}
+
+		$product->__set("Prices", $prices);
+
+		if(isset($pattributes->Manufacturer))
+		{
+			$product->__set("Vendor", $pattributes->Manufacturer);
+		}
+
+		if(isset($pattributes->Availability))
+		{
+			$product->__set("Inventory", $pattributes->Availability);
+		}
+
+		//set image is not found
+		if(isset($pattributes->ImagePath))
+		{
+			$product->__set("Image", $pattributes->ImagePath);
+		}
+		else
+		{
+			$product->__set("Image", "./img/not_found.jpg");
+		}
+
+		if(isset($pattributes->DataSheetUrl))
+		{
+			$product->__set("DataSheet", $pattributes->DataSheetUrl);
+		}
+
+		//not really needed, since we have default value set in class
+		$product->__set("Supplier", "Mouser");
+
+		//MouserProduct object attributes
+		if(isset($pattributes->Category))
+		{
+			$product->__set("Category", $pattributes->Category);
+		}
+
+		if(isset($pattributes->LeadTime))
+		{
+			$product->__set("LeadTime", $pattributes->LeadTime);
+		}
+
+		if(isset($pattributes->LifecycleStatus))
+		{
+			$product->__set("LifeCycleStatus", $pattributes->LifecycleStatus);
+		}
+
+		if(isset($pattributes->ManufacturerPartNumber))
+		{
+			$product->__set("ManufacturerPartNumber", $pattributes->ManufacturerPartNumber);
+		}
+
+		if(isset($pattributes->Min))
+		{
+			$product->__set("Min", $pattributes->Min);
+		}
+
+		if(isset($pattributes->Mult))
+		{
+			$product->__set("Mult", $pattributes->Mult);
+		}
+
+		if(isset($pattributes->ProductDetailUrl))
+		{
+			$product->__set("DetailUrl", $pattributes->ProductDetailUrl);
+		}
+
+		if(isset($pattributes->Reeling))
+		{
+			$product->__set("Reeling", $pattributes->Reeling);
+		}
+
+		if(isset($pattributes->ROHSStatus))
+		{
+			$product->__set("ROHSStatus", $pattributes->ROHSStatus);
+		}
+
+		if(isset($pattributes->SuggestedReplacement))
+		{
+			$product->__set("SuggestedReplacement", $pattributes->SuggestedReplacement);
+		}
+
+		if(isset($pattributes->MultiSimBlue))
+		{
+			$product->__set("MultiSimBlue", $pattributes->MultiSimBlue);
+		}
+
+		if(isset($pattributes->UnitWeightKg))
+		{
+			$product->__set("UnitWeightKg", $pattributes->UnitWeightKg);
+		}
+
+		if(isset($pattributes->ProductAttributes))
+		{
+			$product->__set("Attributes", $pattributes->ProductAttributes);
+		}
+
+		//push new product to array
+		return $product;
+	}
+
+	function extractPrice($pPrice)
+	{
+		//print_r($pPrice);
+		//var_dump($pPrice);
+		$price = new ProductPrice();
+
+		if(isset($pPrice->Quantity) && isset($pPrice->Price))
+		{
+			$price->__set("Quantity", $pPrice->Quantity);
+			$price->__set("Price", $pPrice->Price);
+		}
+
+		return $price;
+	}
+?>
