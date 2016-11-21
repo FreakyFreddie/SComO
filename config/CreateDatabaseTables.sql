@@ -74,7 +74,7 @@ CREATE TABLE webstoredb.product
 (
   idproduct VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
-  productnaam VARCHAR(30) NOT NULL,
+  productnaam VARCHAR(100) NOT NULL,
   PRIMARY KEY (idproduct,leverancier));
 
 /*Relatie gebruiker heeft bepaalde producten in winkelwagen*/

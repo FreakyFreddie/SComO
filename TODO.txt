@@ -9,4 +9,10 @@ errormessages van forms met javascript regelen
 icoontjes toevoegen aan login
 activatiesleutel in DB toevoegen
 
+ISSUE
+bij te veel requests, blokkeert de API
+--> product is leeg
+--> toon error
+
+
 if request_method is post overal toevoegen

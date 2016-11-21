@@ -8,8 +8,8 @@
 		//if child class had __construct, parent __construct is not automatically called
 		public function __construct($pFromQuantity="", $pPriceQuantity="")
 		{
-			$this->productFromQuantity = $pFromQuantity;
-			$this->productPriceQuantity = $pPriceQuantity;
+			$this->productFromQuantity = (int) $pFromQuantity;
+			$this->productPriceQuantity = (float) $pPriceQuantity;
 		}
 		
 		public function __set($property, $value)
@@ -17,11 +17,11 @@
 			switch($property)
 			{
 				case "Quantity":
-				$this->productFromQuantity = $value;
+				$this->productFromQuantity = (int) $value;
 				break;
 				
 				case "Price":
-				$this->productPriceQuantity = $value;
+				$this->productPriceQuantity = (float) $value;
 				break;
 			}
 		}

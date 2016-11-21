@@ -35,7 +35,7 @@
 			$this->fproductRohsStatusCode = $fpRohsStatusCode;
 			$this->fproductPackSize = $fpPackSize;
 			$this->fproductUnitOfMeasure = $fpUnitOfMeasure;
-			$this->fproductId = $fpId;
+			$this->fproductFullId = $fpId;
 			$this->fproductVendorId = $fpVendorId;
 			$this->fproductBrandName = $fpBrandName;
 			$this->fproductTranslatedManufacturerPartNumber = $fpTranslatedManufacturerPartNumber;
@@ -171,8 +171,8 @@
 				$result = $this->fproductUnitOfMeasure;
 				break;
 				
-				case "Id":
-				$result = $this->fproductId;
+				case "FullId":
+				$result = $this->fproductFullId;
 				break;
 				
 				case "VendorId":

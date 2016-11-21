@@ -4,53 +4,55 @@
 
 	//include classes BEFORE session_start because we might need them in session
 	//include ProductPrice class
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/ProductPrice.php';
 
 	//include Product class
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/Product.php';
 
 	//include MouserProduct
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/MouserProduct.php';
 
 	//include FarnellProduct
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/FarnellProduct.php';
 
 	//include DAL
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/database/classes/DAL.php';
 
 	//include login class
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/Login.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/database/classes/Login.php';
 
 	//include functions
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getfarnellproducts.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getmouserproducts.php';
 
 	session_start();
-
+	$_REQUEST["supplier"]="Farnell";
+	$_REQUEST["productid"]="1123073";
+	$_REQUEST["value"]=89;
 	//check login condition and if the request contains all info
-	if(isset($_POST["user"]) && $_POST["user"]->__get("loggedIn") && isset($_POST["productid"]) && isset($_POST["supplier"]) && isset($_POST["value"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_REQUEST["productid"]) && isset($_REQUEST["supplier"]) && isset($_REQUEST["value"]))
 	{
 		//we search product to add to database (this causes overhead, but allows us to validate the data)
 		//new Data Access Layer object
 		$dal = new DAL();
 		$conn = $dal->getConn();
 
-		if($_POST["supplier"]=="Farnell")
+		if($_REQUEST["supplier"]=="Farnell")
 		{
 			//send request to Farnell API
 			//what if there are no results? --> send error to page & terminate script (still needs work)
-			$product = getFarnellProducts($_POST["productid"], 0, 1);
+			$product = getFarnellProducts($_REQUEST["productid"], 0, 1);
 
 			//add product to cart
-			addToCart($_SESSION["user"]->__get("userId"), $product, "Farnell", $_POST["value"], $dal, $conn);
+			addToCart($_SESSION["user"]->__get("userId"), $product, "Farnell", $_REQUEST["value"], $dal, $conn);
 		}
-		elseif($_POST["supplier"]=="Mouser")
+		elseif($_REQUEST["supplier"]=="Mouser")
 		{
 			//send request to Mouser API
-			$product = getMouserProducts($_POST["productid"], 0, 1);
+			$product = getMouserProducts($_REQUEST["productid"], 0, 1);
 
 			//add product to cart
-			addToCart($_SESSION["user"]->__get("userId"), $product, "Mouser", $_POST["value"], $dal, $conn);
+			addToCart($_SESSION["user"]->__get("userId"), $product, "Mouser", $_REQUEST["value"], $dal, $conn);
 		}
 
 		//close connection
