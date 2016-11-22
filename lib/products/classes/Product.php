@@ -103,5 +103,25 @@
 			}
 			return $result;
 		}
+
+		//this function writes a product to the database if it does not exist yet
+		public function writeDB()
+		{
+			$dal = new DAL();
+
+			//first check if the product already exists in the DB
+			$sql = "SELECT idproduct FROM `product` WHERE idproduct='".$this->productId."' AND leverancier='".$this->productSupplier."'";
+			$dal->queryDB($sql);
+
+			//if product doesn't exist yes, we add it
+			if($dal->getNumResults() < 1)
+			{
+				$sql = "INSERT INTO product (idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet) VALUES ('".$this->productId."', '".$this->productSupplier."', '".$this->productName."', '".$this->productVendor."', '".$this->productImage."', '".$this->productDataSheet."')";
+				$dal->writeDB($sql);
+			}
+
+			//close the connection
+			$dal->closeConn();
+		}
 	}
 ?>

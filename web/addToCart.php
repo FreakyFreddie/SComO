@@ -1,4 +1,6 @@
 <?php
+	//this script processes the AJAX request & updates the user's shopping cart
+
 	//load config, typecast to object for easy access
 	$GLOBALS['settings'] = (object) parse_ini_file('../config/config.ini', true);
 
@@ -28,8 +30,10 @@
 	session_start();
 
 	//check login condition and if the request contains all info
-	if(isset($_POST["user"]) && $_POST["user"]->__get("loggedIn") && isset($_POST["productid"]) && isset($_POST["supplier"]) && isset($_POST["value"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["productid"]) && isset($_POST["supplier"]) && isset($_POST["amount"]))
 	{
+
+
 		//we search product to add to database (this causes overhead, but allows us to validate the data)
 		//new Data Access Layer object
 		$dal = new DAL();
@@ -41,16 +45,16 @@
 			//what if there are no results? --> send error to page & terminate script (still needs work)
 			$product = getFarnellProducts($_POST["productid"], 0, 1);
 
-			//add product to cart
-			addToCart($_SESSION["user"]->__get("userId"), $product, "Farnell", $_POST["value"], $dal, $conn);
+			//add product to cart (typecast amount string to int)
+			addToCart($_SESSION["user"]->__get("userId"), $product, "Farnell", (int) $_POST["amount"], $dal, $conn);
 		}
 		elseif($_POST["supplier"]=="Mouser")
 		{
 			//send request to Mouser API
 			$product = getMouserProducts($_POST["productid"], 0, 1);
 
-			//add product to cart
-			addToCart($_SESSION["user"]->__get("userId"), $product, "Mouser", $_POST["value"], $dal, $conn);
+			//add product to cart (typecast amount string to int)
+			addToCart($_SESSION["user"]->__get("userId"), $product, "Mouser", (int) $_POST["amount"], $dal, $conn);
 		}
 
 		//close connection

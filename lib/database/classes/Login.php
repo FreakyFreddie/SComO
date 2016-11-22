@@ -7,6 +7,7 @@
 		private $firstName;
 		private $lastName;
 		private $loggedIn = False;
+
 		private $dal;
 		
 		public function __construct($rnummer, $wachtwoord)
@@ -25,7 +26,7 @@
 		}
 		
 		//returns property value
-		function __get($property)
+		public function __get($property)
 		{
 			switch($property)
 			{

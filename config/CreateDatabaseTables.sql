@@ -69,12 +69,15 @@ CREATE TABLE webstoredb.bestelling
 	REFERENCES gebruiker (rnummer)
 );
 
-/*Tabel product*/
+/*Tabel product, url kan max 2000 characters hebben*/
 CREATE TABLE webstoredb.product
 (
   idproduct VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
   productnaam VARCHAR(100) NOT NULL,
+  productverkoper VARCHAR(30) NOT NULL,
+  productafbeelding VARCHAR(2000) NOT NULL,
+  productdatasheet VARCHAR(2000) NOT NULL,
   PRIMARY KEY (idproduct,leverancier));
 
 /*Relatie gebruiker heeft bepaalde producten in winkelwagen*/
