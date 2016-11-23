@@ -14,14 +14,15 @@
 		{
 			//check user & passwd vs database
 			$this->dal = new DAL();
-			
+
 			//prevent sql injection
 			$rnummer = mysqli_real_escape_string($this->dal->getConn(), $rnummer);
 			$wachtwoord = mysqli_real_escape_string($this->dal->getConn(), $wachtwoord);
 			
 			//validate credentials vs DB
 			$this->validateCredentials($rnummer, $wachtwoord);
-			
+
+			//close the connection
 			$this->dal->closeConn();
 		}
 		

@@ -4,6 +4,12 @@
 
 	//include header
 	require '../templates/header.php';
+
+	//redirect if user is not logged in
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	{
+		header("location: index.php");
+	}
 ?>
 <script type="text/javascript" src="./js/addToCart.js"></script>
 </head>

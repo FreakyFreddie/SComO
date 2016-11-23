@@ -23,10 +23,10 @@ CREATE TABLE webstoredb.gebruiker
   voornaam CHAR(45) NOT NULL,
   achternaam CHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
-  wachtwoord VARCHAR(45) NOT NULL,
-  machtigingsniveau INT DEFAULT '0',
+  wachtwoord VARCHAR(100) NOT NULL,
+  machtigingsniveau INT(1) DEFAULT '0',
   aanmaakdatum DATE NOT NULL,
-  activatiesleutel VARCHAR(),
+  activatiesleutel VARCHAR(32),
   PRIMARY KEY (rnummer)
 );
 
@@ -86,6 +86,8 @@ CREATE TABLE webstoredb.winkelwagen
   rnummer VARCHAR(8) NOT NULL,
   idproduct VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
+  aantal INT(10) NOT NULL,
+  prijs DEC(14,4) NOT NULL,
   FOREIGN KEY (rnummer)
 	REFERENCES gebruiker (rnummer),
   FOREIGN KEY (idproduct)

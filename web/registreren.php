@@ -35,14 +35,13 @@
 				{
 					//new Data Access Layer object
 					$dal = new DAL();
-					$conn = $dal->getConn();
 					
 					//validate input for html injection & check vs REGEX, counter mysql injection
-					$voornaam = mysqli_real_escape_string($conn, validateNaam($_POST["voornaam"]));
-					$naam = mysqli_real_escape_string($conn, validateNaam($_POST["naam"]));
-					$rnummer = mysqli_real_escape_string($conn, validateRNummer($_POST["rnummer"]));
-					$mail = mysqli_real_escape_string($conn, validateMail($_POST["email"]));
-					$wachtwoord = mysqli_real_escape_string($conn, validateWachtWoord($_POST["wachtwoord"]));
+					$voornaam = mysqli_real_escape_string($dal->getConn(), validateNaam($_POST["voornaam"]));
+					$naam = mysqli_real_escape_string($dal->getConn(), validateNaam($_POST["naam"]));
+					$rnummer = mysqli_real_escape_string($dal->getConn(), validateRNummer($_POST["rnummer"]));
+					$mail = mysqli_real_escape_string($dal->getConn(), validateMail($_POST["email"]));
+					$wachtwoord = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($_POST["wachtwoord"]));
 					$fullmail = $rnummer."@".$mail;
 					
 					//test if user already exists with rnummer

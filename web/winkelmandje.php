@@ -1,9 +1,20 @@
 <?php
 	//set page var in order to adapt navbar and functions
-	$GLOBALS['page'] = "index";
+	$GLOBALS['page'] = "winkelmandje";
 
 	//include header
 	require '../templates/header.php';
+
+	//redirect if user is not logged in
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	{
+		header("location: index.php");
+	}
+
+	//include Shopping Cart & ShoppingCartArticle
+	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCart.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
+
 ?>
 	<script type="text/javascript" src="./js/addToCart.js"></script>
 </head>
@@ -18,31 +29,12 @@
 	<div class="jumbotron text-center">
 		<h1>
 			<?php
-				echo $GLOBALS['settings']->Store['storename'];
+				echo $_SESSION["user"]->__get("firstName")." ".$_SESSION["user"]->__get("lastName")
 			?>
 		</h1>
 		<p>
-			<?php
-				echo $GLOBALS['settings']->Store['quote'];
-			?>
+			Mijn Winkelmandje
 		</p>
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
-			<div class="form-group input-group searchbar">
-				<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct"
-					<?php
-						if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "")
-						{
-							echo 'value="'.$_GET['searchproduct'].'"';
-						}
-					?>
-				>
-				<span class="input-group-btn">
-							<button class="btn btn-secondary" type="submit">
-								<span class="glyphicon glyphicon-search"></span>
-							</button>
-						</span>
-			</div>
-		</form>
 	</div>
 	<div class="container">
 		<noscript>
@@ -51,6 +43,10 @@
 				<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
 			</div>
 		</noscript>
+		<?php
+			$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
+			$shoppingCart->printShoppingCart();
+		?>
 	</div>
 
 	<!-- footer -->

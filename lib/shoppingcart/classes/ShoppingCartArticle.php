@@ -1,5 +1,5 @@
 <?php
-	//article in shopping cart
+	//article in shopping cart, used to fill in a product that is extracted from the DB shopping cart
 	class ShoppingCartArticle
 	{
 		private $userId;
@@ -11,7 +11,7 @@
 		//product is object of Product class
 		private $product;
 
-		//don't use construct, if article was already in shopping cart database, we don't have to check with Farnell or Mouser DB
+		//if a product is in the shopping cart, it is also in the database
 		public function __construct($uId, $pId, $pSupplier, $pAmount, $pPrice)
 		{
 			//set userid, id, supplier & amount (typecast amount string to int)
@@ -20,6 +20,10 @@
 			$this->productSupplier = $pSupplier;
 			$this->productAmount = $pAmount;
 			$this->productPrice = $pPrice;
+
+			//get attributes from product (from DB, not external)
+			$this->product = new Product();
+			$this->product->fillFromDB($pId, $pSupplier);
 		}
 
 		//returns property value
@@ -81,35 +85,32 @@
 
 		public function printShoppingCartArticle()
 		{
-			//print shopping article in "table row" style 2x3 & 3x2
+			//print shopping article in "table row" style
 			echo '<div class="col-sm-2">'
-					.$this->product->productName.
+					.$this->product->__get("Name").
+				'</div>
+				<div class="col-sm-2">'
+					.$this->product->__get("Supplier").
 				'</div>
 				<div class="col-sm-1">'
-					.$this->product->productSupplier.
+					.$this->product->__get("Id").
 				'</div>
-				<div class="col-sm-2">'
-					.$this->product->productId.
-				'</div>
-				<div class="col-sm-2">'
-					.$this->product->productVendor.
+				<div class="col-sm-1">'
+					.$this->product->__get("Vendor").
 				'</div>			
 				<div class="col-sm-1">
-					<a href="'.$this->product->productDataSheet.'" target="_blank">Link</a>
+					<a href="'.$this->product->__get("DataSheet").'" target="_blank">Link</a>
 				</div>
-				<div class="col-sm-1">
-					<img src="'.$this->product->productImage.'" />
+				<div class="col-sm-2">
+					<img class="img img-responsive" src="'.$this->product->__get("Image").'" />
 				</div>
-				<div class="col-sm-1">
-					<form class="input-group" action="#">
-						<input type="number" class="form-control" value="'.$this->productAmount.'" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'">
-					</form>
-				</div>
+				<div class="col-sm-1">'
+					.$this->productPrice.
+				'</div>
 				<div class="col-sm-1">
 					<form class="input-group" action="#">
 						<input type="number" class="form-control" value="'.$this->productAmount.'" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'">
 					</form>
 				</div>';
-
 		}
 	}

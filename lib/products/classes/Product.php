@@ -82,7 +82,7 @@
 				break;
 
 				case "Vendor":
-				$this->productVendor;
+				$result = $this->productVendor;
 				break;
 
 				case "Inventory":
@@ -104,10 +104,39 @@
 			return $result;
 		}
 
+		public function fillFromDB($pId, $pSupplier)
+		{
+			$dal = new DAL();
+
+			//since there will be database interaction, we prevent SQL injection
+			$this->productId = mysqli_real_escape_string($dal->getConn(), $pId);
+			$this->productSupplier = mysqli_real_escape_string($dal->getConn(), $pSupplier);
+
+			//get product from DB, matching ID & Supplier
+			$sql = "SELECT idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet FROM `product` WHERE idproduct='".$this->productId."' AND leverancier='".$this->productSupplier."'";
+			$product = $dal->queryDB($sql);
+
+			//set Product attributes
+			$this->productId = $product[0]->idproduct;
+			$this->productName = $product[0]->productnaam;
+			$this->productSupplier = $product[0]->leverancier;
+			$this->productVendor = $product[0]->productverkoper;
+			$this->productImage = $product[0]->productafbeelding;
+			$this->productDataSheet = $product[0]->productdatasheet;
+		}
+
 		//this function writes a product to the database if it does not exist yet
 		public function writeDB()
 		{
 			$dal = new DAL();
+
+			//since there will be database interaction, we prevent SQL injection
+			$this->productId = mysqli_real_escape_string($dal->getConn(), $this->productId);
+			$this->productName = mysqli_real_escape_string($dal->getConn(), $this->productName);
+			$this->productSupplier = mysqli_real_escape_string($dal->getConn(), $this->productSupplier);
+			$this->productVendor = mysqli_real_escape_string($dal->getConn(), $this->productVendor);
+			$this->productImage = mysqli_real_escape_string($dal->getConn(), $this->productImage);
+			$this->productDataSheet = mysqli_real_escape_string($dal->getConn(), $this->productDataSheet);
 
 			//first check if the product already exists in the DB
 			$sql = "SELECT idproduct FROM `product` WHERE idproduct='".$this->productId."' AND leverancier='".$this->productSupplier."'";

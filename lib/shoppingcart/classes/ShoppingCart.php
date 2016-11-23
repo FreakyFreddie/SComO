@@ -25,29 +25,47 @@
 		{
 			//select all products in shopping cart
 			$sql = "SELECT * FROM winkelwagen WHERE rnummer='".$this->userId."'";
-			$articles = $this->dal()->queryDB($sql);
+			$articles = $this->dal->queryDB($sql);
 
 			//create ShoppingCartArticle for each record & add to array
 			foreach($articles as $article)
 			{
-				$this->shoppingCartArticles[] = new ShoppingCartArticle($this->userId, $article["idproduct"], $article["leverancier"], $article["aantal"], $article["prijs"]);
+				$this->shoppingCartArticles[] = new ShoppingCartArticle($this->userId, $article->idproduct, $article->leverancier, $article->aantal, $article->prijs);
 			}
 		}
 
 		public function printShoppingCart()
 		{
+			echo '<div class ="row">
+						<div class="col-sm-2">
+							<strong>Product</strong>
+						</div>
+						<div class="col-sm-2">
+							<strong>Leverancier</strong>
+						</div>
+						<div class="col-sm-1">
+							<strong>ID</strong>
+						</div>
+						<div class="col-sm-1">
+							<strong>Verkoper</strong>
+						</div>
+						<div class="col-sm-1">
+							<strong>Datasheet</strong>
+						</div>
+						<div class="col-sm-2">
+							<strong>Afbeelding</strong>
+						</div>
+						<div class="col-sm-1">
+							<strong>Prijs</strong>
+						</div>
+						<div class="col-sm-1">
+							<strong>Hoeveelheid</strong>
+						</div>
+					</div>';
 			//print every article in the shopping cart
 			foreach($this->shoppingCartArticles as $article)
 			{
-				echo '<div class ="row">
-						<div class="col-sm-3">
-							<h3></h3>
-						</div>
-						<div class="col-sm-3">
-							<h3></h3>
-						</div>
-					</div>
-					<div class ="row">'
+				echo '<div class ="row">'
 				.$article->printShoppingCartArticle().
 				'</div>';
 			}

@@ -26,92 +26,71 @@
 	require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getmouserproducts.php';
 
 	session_start();
-	$_REQUEST["supplier"]="Farnell";
-	$_REQUEST["productid"]="1123073";
-	$_REQUEST["value"]=89;
+	$_POST["supplier"]="Farnell";
+	$_POST["productid"]="1123073";
+	$_POST["amount"]=89;
+
+	//session_start();
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_REQUEST["productid"]) && isset($_REQUEST["supplier"]) && isset($_REQUEST["value"]))
+	if(isset($_POST["productid"]) && isset($_POST["supplier"]) && isset($_POST["amount"]))
 	{
 		//we search product to add to database (this causes overhead, but allows us to validate the data)
 		//new Data Access Layer object
 		$dal = new DAL();
-		$conn = $dal->getConn();
 
-		if($_REQUEST["supplier"]=="Farnell")
+		if($_POST["supplier"]=="Farnell")
 		{
-			//send request to Farnell API
+			//send request to Farnell API, returns array of one FarnellProduct
 			//what if there are no results? --> send error to page & terminate script (still needs work)
-			$product = getFarnellProducts($_REQUEST["productid"], 0, 1);
+			$product = getFarnellProducts($_POST["productid"], 0, 1);
 
-			//add product to cart
-			addToCart($_SESSION["user"]->__get("userId"), $product, "Farnell", $_REQUEST["value"], $dal, $conn);
+			//add product to cart (typecast amount string to int)
+			addToCart("r0303063", $product, (int) $_POST["amount"], $dal);
 		}
-		elseif($_REQUEST["supplier"]=="Mouser")
+		elseif($_POST["supplier"]=="Mouser")
 		{
-			//send request to Mouser API
-			$product = getMouserProducts($_REQUEST["productid"], 0, 1);
+			//send request to Mouser API, returns array of one MouserProduct
+			$product = getMouserProducts($_POST["productid"], 0, 1);
 
-			//add product to cart
-			addToCart($_SESSION["user"]->__get("userId"), $product, "Mouser", $_REQUEST["value"], $dal, $conn);
+			//add product to cart (typecast amount string to int)
+			addToCart("r0303063", $product, (int) $_POST["amount"], $dal);
 		}
 
 		//close connection
 		$dal->closeConn();
 	}
 
-	function addToCart($userId, $product, $productSupplier, $productAmount, $dal, $conn)
+
+	function addToCart($userId, $product, $productAmount, $dal)
 	{
-		//since there will be database interaction, we prevent SQL injection
-		$productId = mysqli_real_escape_string($conn, $product[0]->__get("Id"));
-		$productName = mysqli_real_escape_string($conn, $product[0]->__get("Name"));
-		$productSupplier = mysqli_real_escape_string($conn, $productSupplier);
-		$productAmount = mysqli_real_escape_string($conn, $productAmount);
-		$productPricesForAmounts = $product[0]->__get("Prices");
+		//if product is not yet in DB, add it
+		$product[0]->writeDB();
 
-		//first check if the product already exists in the DB
-		$sql = "SELECT idproduct FROM `product` WHERE idproduct='".$productId."' AND leverancier='".$productSupplier."'";
-		$dal->queryDB($sql);
+		//check if the user already has the product in its shopping cart
+		//it is more efficient to do it like this, The other solution is to load everything in a ShoppingCart Object (longer DB access = more overhead)
+		$sql = "SELECT aantal FROM winkelwagen WHERE idproduct='".$product[0]->__get("Id")."' AND leverancier='".$product[0]->__get("Supplier")."' AND rnummer='".$userId."'";
+		$records = $dal->queryDB($sql);
 
-		//if product already exists in DB, we don't need to add it
+		//if user already has some of the product in his cart, we need to add the amount & update the record (also update price if necessary)
 		if($dal->getNumResults()==1)
 		{
-			//if product already existed in DB, we have to check if the user already has it in its shopping cart
-			$sql = "SELECT aantal FROM `winkelwagen` WHERE idproduct='".$productId."' AND leverancier='".$productSupplier."' AND rnummer='".$userId."'";
-			$records = $dal->queryDB($sql);
-
-			//if user already has some of the product in his cart, we need to add the amount & update the record (also update price if necessary)
-			if($dal->getNumResults()==1)
-			{
-				$productAmount = $productAmount + $records[0]->aantal;
-
-				//calculate price for amount of the product in the shopping cart
-				$productPriceForAmount = extractProductPrice($productAmount, $productPricesForAmounts);
-
-				//update prijs en aantal of record
-				$sql = "UPDATE winkelwagen SET aantal='".$productAmount."', prijs='".$productPriceForAmount."' WHERE rnummer='".$userId."' AND idproduct='".$productId."' AND leverancier='".$productSupplier."'";
-				$dal->writeDB($sql);
-			}
-			//else we add the product to the cart
-			else
-			{
-				//calculate price for amount of the product in the shopping cart
-				$productPriceForAmount = extractProductPrice($productAmount, $productPricesForAmounts);
-
-				//we add the data to the users shopping cart
-				writeToCart($dal, $userId, $productId, $productSupplier, $productAmount, $productPriceForAmount);
-			}
-		}
-		//else we add the product to the DB & add the product to the cart
-		else
-		{
-			$sql = "INSERT INTO product (idproduct, leverancier, productnaam) VALUES ('".$productId."', '".$productSupplier."', '".$productName."')";
-			$dal->writeDB($sql);
+			$productAmount = $productAmount + $records[0]->aantal;
 
 			//calculate price for amount of the product in the shopping cart
-			$productPriceForAmount = extractProductPrice($productAmount, $productPricesForAmounts);
+			$productPriceForAmount = extractProductPrice($productAmount, $product[0]->__get("Prices"));
+
+			//update prijs en aantal of record
+			$sql = "UPDATE winkelwagen SET aantal='".$productAmount."', prijs='".$productPriceForAmount."' WHERE rnummer='".$userId."' AND idproduct='".$product[0]->__get("Id")."' AND leverancier='".$product[0]->__get("Supplier")."'";
+			$dal->writeDB($sql);
+		}
+		//else we just add the product to the cart
+		else
+		{
+			//calculate price for amount of the product in the shopping cart
+			$productPriceForAmount = extractProductPrice($productAmount, $product[0]->__get("Prices"));
 
 			//we add the data to the users shopping cart
-			writeToCart($dal, $userId, $productId, $productSupplier, $productAmount, $productPriceForAmount);
+			writeToCart($userId, $product, $productAmount, $productPriceForAmount, $dal);
 		}
 	}
 
@@ -126,7 +105,7 @@
 			if($productAmount < $productPricesForAmounts[count($productPricesForAmounts) - 1]->__get("Quantity"))
 			{
 				//when productAmount is between two Quantities, the price for the lowest Quantity is valid
-				if((int) $productAmount >= $productPricesForAmounts[$i]->__get("Quantity") && (int) $productAmount <= $productPricesForAmounts[$i + 1]->__get("Quantity"))
+				if($productAmount >= $productPricesForAmounts[$i]->__get("Quantity") && (int) $productAmount <= $productPricesForAmounts[$i + 1]->__get("Quantity"))
 				{
 					//break loop from the moment we have a match (if not, we end up using the price for the highest amount)
 					$productPriceForAmount =  $productPricesForAmounts[$i]->__get("Price");
@@ -144,15 +123,17 @@
 		if(!is_float($productPriceForAmount))
 		{
 			//throw error
+			echo "Er ging iets mis, probeer opnieuw";
+
 			exit();
 		}
 
 		return $productPriceForAmount;
 	}
 
-	function writeToCart($dal, $userId, $productId, $productSupplier, $productAmount, $productPriceForAmount)
+	function writeToCart($userId, $product, $productAmount, $productPriceForAmount, $dal)
 	{
-		$sql = "INSERT INTO winkelwagen (rnummer, idproduct, leverancier, aantal, prijs) VALUES ('".$userId."', '".$productId."', '".$productSupplier."', '".$productAmount."', '".$productPriceForAmount."')";
+		$sql = "INSERT INTO winkelwagen (rnummer, idproduct, leverancier, aantal, prijs) VALUES ('".$userId."', '".$product[0]->__get("Id")."', '".$product[0]->__get("Supplier")."', '".$productAmount."', '".$productPriceForAmount."')";
 		$dal->writeDB($sql);
 	}
 ?>

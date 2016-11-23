@@ -1,5 +1,5 @@
 <?php
-	if(isset $_GET["key"])
+	if(isset($_GET["key"]))
 	{
 		$dal = new DAL();
 		$conn = $dal->getConn();
@@ -17,7 +17,7 @@
 		}
 		else
 		{
-			echo "U kan uw account geen tweede keer activeren."
+			echo "U kan uw account geen tweede keer activeren.";
 		}
 
 		
