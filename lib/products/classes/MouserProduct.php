@@ -208,7 +208,7 @@
 						<td>> '.$productPrice->__get("Quantity").'</td>
 						<td class="text-right">'.$productPrice->__get("Price").'</td>
 					</tr>';
-			}			
+			}
 			echo '</table>
 					<form class="input-group" action="#">
 						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'">

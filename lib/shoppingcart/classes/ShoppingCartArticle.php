@@ -109,7 +109,7 @@
 				'</div>
 				<div class="col-sm-1">
 					<form class="input-group" action="#">
-						<input type="number" class="form-control" value="'.$this->productAmount.'" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'">
+						<input type="number" class="form-control" value="'.$this->productAmount.'" name="amountproduct" productid="'.$this->product->__get("Id").'" supplier="'.$this->product->__get("Supplier").'">
 					</form>
 				</div>';
 		}

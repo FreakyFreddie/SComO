@@ -10,6 +10,8 @@
 	{
 		header("Location:index.php");
 	}
+
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/registerUser.php';
 ?>
 
 	</head>
@@ -30,71 +32,10 @@
 		</div>
 		<div class="container register">
 			<?php
-				if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["voornaam"]) && isset($_POST["naam"]) && isset($_POST["rnummer"]) && isset($_POST["email"]) && validateDomain($_POST["email"]) && isset($_POST["wachtwoord"])
-					&& !empty($_POST["voornaam"]) && !empty($_POST["naam"]) && !empty($_POST["rnummer"]) && !empty($_POST["email"]) && !empty($_POST["wachtwoord"]))
+				if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["voornaam"]) && isset($_POST["naam"]) && isset($_POST["rnummer"]) && isset($_POST["email"]) && validateDomain($_POST["email"]) && isset($_POST["wachtwoord"]) && isset($_POST["herhaalwachtwoord"])
+					&& !empty($_POST["voornaam"]) && !empty($_POST["naam"]) && !empty($_POST["rnummer"]) && !empty($_POST["email"]) && !empty($_POST["wachtwoord"]) && !empty($_POST["herhaalwachtwoord"]) && ($_POST["wachtwoord"]==$_POST["herhaalwachtwoord"]))
 				{
-					//new Data Access Layer object
-					$dal = new DAL();
-					
-					//validate input for html injection & check vs REGEX, counter mysql injection
-					$voornaam = mysqli_real_escape_string($dal->getConn(), validateNaam($_POST["voornaam"]));
-					$naam = mysqli_real_escape_string($dal->getConn(), validateNaam($_POST["naam"]));
-					$rnummer = mysqli_real_escape_string($dal->getConn(), validateRNummer($_POST["rnummer"]));
-					$mail = mysqli_real_escape_string($dal->getConn(), validateMail($_POST["email"]));
-					$wachtwoord = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($_POST["wachtwoord"]));
-					$fullmail = $rnummer."@".$mail;
-					
-					//test if user already exists with rnummer
-					$sql = "SELECT rnummer FROM gebruiker WHERE rnummer='".$rnummer."'";
-					$dal->queryDB($sql);
-					
-					//if user already exists, numrows >= 1, if not we can continue
-					if($dal->getNumResults()<1)
-					{
-						//hash password (use PASSWORD_DEFAULT since php might update algorithms if they become stronger)
-						$wachtwoord = password_hash($wachtwoord,PASSWORD_DEFAULT);
-						
-						//prepare timestamp
-						date_default_timezone_set('Europe/Brussels');
-						
-						do
-						{
-							//generate unique activation key
-							$generatedkey = md5(uniqid(rand(), true));
-							
-							//test if activation link already exists with rnummer
-							$sql = "SELECT rnummer FROM gebruiker WHERE activatiesleutel='".$generatedkey."'";
-							$dal->queryDB($sql);
-						}
-						while($dal->getNumResults() != 0);
-						
-						//write to DB use date("j-n-Y H:i:s") for date
-						$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES ('".$rnummer."', '".$voornaam."', '".$naam."', '".$fullmail."', '".$wachtwoord."', '0', '".date("Y-n-j H:i:s")."', '".$generatedkey."')";
-						$dal->writeDB($sql);
-						
-						//"user created" message
-						echo "Gebruiker aangemaakt";
-						
-						//generate mail headers & message
-						$headers = "From: ".$GLOBALS["settings"]->Contact["webmaster"]."\r\nReply-To: ".$GLOBALS["settings"]->Contact["webmaster"];
-						$mailmessage = "Klik op onderstaande link om je account te activeren\n".$GLOBALS["settings"]->Domain["domain"]."/activate.php?key=$generatedkey";
-						
-						//send mail with activation link ($to, $subject, $message), will not work on local server
-						/*
-						mail($fullmail, "Activeer uw ".$GLOBALS['settings']->Store['storeabbrev']." account", $mailmessage, $headers)
-						OR die("Mailserver tijdelijk niet bereikbaar.");
-
-						echo '<div class="row">
-								<p>mail verzonden naar '.$fullmail.'</p>
-							</div>';
-						*/
-					}
-					else
-					{
-						echo "<p>Fout bij het aanmaken van de gebruiker. Probeer opnieuw.</p>";
-					}
-					
-					$dal->closeConn();
+					registerUser($_POST["voornaam"], $_POST["naam"], $_POST["rnummer"], $_POST["email"], $_POST["wachtwoord"]);
 				}
 				else
 				{

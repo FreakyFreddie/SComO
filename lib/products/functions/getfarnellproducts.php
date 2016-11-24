@@ -354,6 +354,4 @@
 		//return array of farnell products
 		return $farnellProducts;
 	}
-	//$test=getFarnellProducts("fuse", 0, 20, "gd8n8b2kxqw6jq5mutsbrvur");
-	//print_r($test);
 ?>

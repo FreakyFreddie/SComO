@@ -18,6 +18,13 @@
       <sourceFolder url="file://$MODULE_DIR$/web/js" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/shoppingcart" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/shoppingcart/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/shoppingcart/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/users" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/users/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/users/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/orders/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/orders/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/orders" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

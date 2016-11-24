@@ -8,7 +8,7 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
 
 	//include login class
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/Login.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/classes/Login.php';
 
 	//include ProductPrice class
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
@@ -62,6 +62,7 @@
 			//globally used functions go here
 			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
 			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
+
 			//input checks
 			require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 						

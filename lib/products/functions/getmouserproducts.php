@@ -274,12 +274,18 @@
 
 	function extractPrice($pPrice)
 	{
-		//print_r($pPrice);
-		//var_dump($pPrice);
+
+
 		$price = new ProductPrice();
 
 		if(isset($pPrice->Quantity) && isset($pPrice->Price))
 		{
+			//remove € sign & spaces & replace , by .
+			$pPrice->Price = str_replace('€', '', $pPrice->Price);
+			$pPrice->Price = str_replace(' ', '', $pPrice->Price);
+			$pPrice->Price = str_replace(',', '.', $pPrice->Price);
+
+			//set Price attributes
 			$price->__set("Quantity", $pPrice->Quantity);
 			$price->__set("Price", $pPrice->Price);
 		}
