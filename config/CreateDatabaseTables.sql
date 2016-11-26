@@ -33,7 +33,7 @@ CREATE TABLE webstoredb.gebruiker
 /*Tabel project*/
 CREATE TABLE webstoredb.project
 (
-  idproject VARCHAR(25) NOT NULL,
+  idproject INT NOT NULL AUTO_INCREMENT,
   titel VARCHAR(25) NOT NULL,
   budget DECIMAL(10,2) NOT NULL,
   rekeningnr VARCHAR(25) NOT NULL,

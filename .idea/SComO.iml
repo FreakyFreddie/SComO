@@ -25,6 +25,10 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/orders/functions" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/orders/classes" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/orders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/AJAX" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/project/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/project/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/project" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

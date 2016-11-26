@@ -86,7 +86,9 @@
 		public function printShoppingCartArticle()
 		{
 			//print shopping article in "table row" style
-			echo '<div class="col-sm-2">'
+			//if amount changes, AJAX script will keep track of update
+			echo '<div class ="row">
+				<div class="col-sm-2">'
 					.$this->product->__get("Name").
 				'</div>
 				<div class="col-sm-2">'
@@ -109,8 +111,53 @@
 				'</div>
 				<div class="col-sm-1">
 					<form class="input-group" action="#">
-						<input type="number" class="form-control" value="'.$this->productAmount.'" name="amountproduct" productid="'.$this->product->__get("Id").'" supplier="'.$this->product->__get("Supplier").'">
+						<label for="amountproduct" class="sr-only">Producthoeveelheid</label>
+						<input type="number" class="form-control amountproduct" value="'.$this->productAmount.'" name="amountproduct" productid="'.$this->product->__get("Id").'" supplier="'.$this->product->__get("Supplier").'" />
 					</form>
-				</div>';
+				</div>
+				<div class="col-sm-1">
+					<form class="input-group" action="#">
+						<button type="button" class="btn btn-danger deleteproduct" value="delete" name="deleteproduct" productid="'.$this->product->__get("Id").'" supplier="'.$this->product->__get("Supplier").'">Delete</button>
+					</form>
+				</div>
+			</div>';
+		}
+
+		public function printFinalShoppingCartArticle()
+		{
+			//print shopping article in "table row" style
+			//if amount changes, AJAX script will keep track of update
+			echo '<div class ="row">
+				<div class="col-sm-2">'
+					.$this->product->__get("Name").
+				'</div>
+				<div class="col-sm-2">'
+					.$this->product->__get("Supplier").
+				'</div>
+				<div class="col-sm-1">'
+					.$this->product->__get("Id").
+				'</div>
+				<div class="col-sm-1">'
+					.$this->product->__get("Vendor").
+				'</div>			
+				<div class="col-sm-1">
+					<a href="'.$this->product->__get("DataSheet").'" target="_blank">Link</a>
+				</div>
+				<div class="col-sm-2">
+					<img class="img img-responsive" src="'.$this->product->__get("Image").'" />
+				</div>
+				<div class="col-sm-1">'
+					.$this->productPrice.
+				'</div>
+				<div class="col-sm-1">'
+					.$this->productAmount.
+				'</div>
+			</div>';
+		}
+
+		public function addArticleToOrder()
+		{
+
 		}
 	}
+?>

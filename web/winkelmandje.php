@@ -16,7 +16,9 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
 
 ?>
-	<script type="text/javascript" src="./js/addToCart.js"></script>
+	<script type="text/javascript" src="./js/updateProductAmount.js"></script>
+	<script type="text/javascript" src="./js/deleteProduct.js"></script>
+	<script type="text/javascript" src="./js/showFinalCart.js"></script>
 </head>
 
 <body>
@@ -36,7 +38,7 @@
 			Mijn Winkelmandje
 		</p>
 	</div>
-	<div class="container">
+	<div id="shoppingcart" class="container">
 		<noscript>
 			<div class="alert alert-warning alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

@@ -303,7 +303,8 @@
 			}			
 			echo '</table>
 					<form class="input-group" action="#">
-						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'">
+						<label for="amountproduct" class="sr-only">Producthoeveelheid</label>
+						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'" />
 						<span class="input-group-btn">
 							<button class="btn btn-secondary productbutton" type="button">
 								<span class="glyphicon glyphicon-plus"></span>

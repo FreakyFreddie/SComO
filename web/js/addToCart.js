@@ -6,7 +6,7 @@ $(document).ready(function()
 		//prepare request
 		$request = $.ajax({
 			method:"POST",
-			url:"processAddToCartRequest.php?r=" + new Date().getTime(),
+			url:"AJAX/processAddToCartRequest.php?r=" + new Date().getTime(),
 			data: {productid: $(this).parent().prev("input").attr("productid"), supplier: $(this).parent().prev("input").attr("supplier"), amount: $(this).parent().prev("input").val()}
 		});
 
