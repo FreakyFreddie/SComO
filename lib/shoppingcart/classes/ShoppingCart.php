@@ -139,13 +139,15 @@
 			}
 		}
 
-		public function addCartToOrders()
+		public function addCartToOrders($orderpersonal)
 		{
-			$order = new Order();
+			//create a new order, indicate if it's personal or for a project
+			$order = new Order($this->userId, $orderpersonal);
+			$order->writeDB();
 
 			foreach($this->shoppingCartArticles as $article)
 			{
-				$article->addArticleToOrder();
+				$article->addArticleToOrder($order);
 			}
 		}
 

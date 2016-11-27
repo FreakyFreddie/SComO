@@ -10,20 +10,25 @@
 		private $orderCreationDate;
 		private $orderStatus;
 
-		public function __construct($pId="", $ouserId, $opersonal, $ocreationdate)
+		public function __construct($ouserId, $opersonal, $pId="")
 		{
+			//prepare timestamp
+			date_default_timezone_set('Europe/Brussels');
+
 			$this->projectId = $pId;
 			$this->userId = $ouserId;
 			$this->orderPersonal = $opersonal;
-			//ocreationdate can be replaced by date function
-			$this->orderCreationDate = $ocreationdate;
-			$this->orderStatus = "0";
+			$this->orderCreationDate = date("Y-n-j H:i:s");
+
+			//on creation, status is "pending"
+			$this->orderStatus = "1";
 		}
 
-		public function writeOrderDB()
+		public function writeDB()
 		{
 			$dal = new DAL();
 
+			//prevent SQL injection
 			$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->projectId);
 			$this->userId = mysqli_real_escape_string($dal->getConn(), $this->userId);
 			$this->orderPersonal = mysqli_real_escape_string($dal->getConn(), $this->orderPersonal);
@@ -31,7 +36,15 @@
 			$this->orderStatus = mysqli_real_escape_string($dal->getConn(), $this->orderStatus);
 
 			//add order to DB (still to complete)
-			$sql = "INSERT INTO bestelling (idproject, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet) VALUES ('" . $this->productId . "', '" . $this->productSupplier . "', '" . $this->productName . "', '" . $this->productVendor . "', '" . $this->productImage . "', '" . $this->productDataSheet . "')";
+			$sql = "INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES ('" . $this->projectId . "', '" . $this->userId . "', '" . $this->orderPersonal . "', '" . $this->orderCreationDate . "', '" . $this->orderStatus . "')";
 			$dal->writeDB($sql);
+
+			//get the automatically generated ID of the order
+			$this->orderId = mysqli_insert_id($dal->getConn());
+		}
+
+		public function getOrderFromDB()
+		{
+
 		}
 	}

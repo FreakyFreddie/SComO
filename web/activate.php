@@ -7,13 +7,13 @@
 		$key = mysqli_real_escape_string($conn, $_GET["key"]);
 		
 		$sql = "SELECT machtigingsniveau FROM gebruiker WHERE activatiesleutel='".$key."'";
-		$records = $dal->QueryDB($sql);
+		$records = $dal->queryDB($sql);
 		
 		if($dal->getNumResults()==1 && $records[0]->machtigingsniveau==0)
 		{
 			//update DB (still needs work)
 			$sql = "UPDATE gebruikers SET machtigingsniveau='1' WHERE activatiesleutel='".$key."'";
-			$dal->WriteDB($sql);
+			$dal->writeDB($sql);
 		}
 		else
 		{

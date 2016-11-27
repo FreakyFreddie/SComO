@@ -155,9 +155,10 @@
 			</div>';
 		}
 
-		public function addArticleToOrder()
+		public function addArticleToOrder($orderid)
 		{
-
+			$orderproduct = new OrderProduct($orderid, $this->productId, $this->productSupplier, $this->productAmount, $this->productPrice);
+			$orderproduct->writeDB();
 		}
 	}
 ?>

@@ -30,13 +30,13 @@
 	session_start();
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["orderpersonal"]) && isset($_POST["projectid"]))
 	{
 		//shopping cart object including all articles
 		$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
 
-		//add products from cart to order
-		$shoppingCart->addCartToOrders();
+		//add products from cart to order, indicate if it's for personal use or not (admin can assign project if not personal)
+		$shoppingCart->addCartToOrders($_POST["orderpersonal"]);
 
 		//empty cart
 		$shoppingCart->emptyCart();

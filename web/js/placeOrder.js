@@ -5,7 +5,7 @@ $(document).ready(function()
 		//prepare request
 		$request = $.ajax({
 			method:"POST",
-			url:"AJAX/processPlaceOrderRequest.php?r=" + new Date().getTime(),
+			url:"AJAX/processPlaceOrderRequest.php?r=" + new Date().getTime()
 		});
 
 		$request.done(function()

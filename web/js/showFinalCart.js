@@ -10,7 +10,7 @@ $(document).ready(function()
 
 		$request.done(function(msg)
 		{
-			$("#shoppingcart > .row").remove();
+			$("#shoppingcart").find(".row").remove();
 			$('#shoppingcart').html(msg);
 		});
 
