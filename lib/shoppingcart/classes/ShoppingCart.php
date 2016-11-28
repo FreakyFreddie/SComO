@@ -156,7 +156,7 @@
 		{
 			$dal = new DAL();
 
-			$sql = "DELETE * FROM winkelwagen WHERE rnummer='".$this->userId."'";
+			$sql = "DELETE FROM winkelwagen WHERE rnummer='".$this->userId."'";
 			$dal->writeDB($sql);
 
 			$dal->closeConn();

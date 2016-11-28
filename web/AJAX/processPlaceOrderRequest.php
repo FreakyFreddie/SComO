@@ -23,17 +23,31 @@
 	//include FarnellProduct
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
 
+	//include ShoppingCartArticle
+	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
+
+	//include ShoppingCart
+	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCart.php';
+
+	//include OrderProduct
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/OrderProduct.php';
+
+	//include Order
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/Order.php';
+
 	//include functions
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
 
 	session_start();
 
+	$_POST["orderpersonal"]=0;
+
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["orderpersonal"]) && isset($_POST["projectid"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["orderpersonal"]))
 	{
-		//shopping cart object including all articles
-		$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
+		//shopping cart object including all articles $_SESSION["user"]->__get("userId")
+		$shoppingCart = new ShoppingCart("r0303063");
 
 		//add products from cart to order, indicate if it's for personal use or not (admin can assign project if not personal)
 		$shoppingCart->addCartToOrders($_POST["orderpersonal"]);

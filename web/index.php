@@ -44,7 +44,7 @@
 				</div>
 			</form>
 		</div>
-		<div class="container shop">
+		<div class="container shop workspace">
 			<noscript>
 				<div class="alert alert-success alert-dismissible">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

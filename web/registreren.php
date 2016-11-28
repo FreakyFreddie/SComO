@@ -30,7 +30,7 @@
 				Maak een account aan.
 			</p>
 		</div>
-		<div class="container register">
+		<div class="container register workspace">
 			<?php
 				if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["voornaam"]) && isset($_POST["naam"]) && isset($_POST["rnummer"]) && isset($_POST["email"]) && validateDomain($_POST["email"]) && isset($_POST["wachtwoord"]) && isset($_POST["herhaalwachtwoord"])
 					&& !empty($_POST["voornaam"]) && !empty($_POST["naam"]) && !empty($_POST["rnummer"]) && !empty($_POST["email"]) && !empty($_POST["wachtwoord"]) && !empty($_POST["herhaalwachtwoord"]) && ($_POST["wachtwoord"]==$_POST["herhaalwachtwoord"]))

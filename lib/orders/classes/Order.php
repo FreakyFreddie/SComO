@@ -10,7 +10,10 @@
 		private $orderCreationDate;
 		private $orderStatus;
 
-		public function __construct($ouserId, $opersonal, $pId="")
+		//array of products belonging to the order
+		private $orderProducts;
+
+		public function __construct($ouserId, $opersonal="", $pId="")
 		{
 			//prepare timestamp
 			date_default_timezone_set('Europe/Brussels');
@@ -22,6 +25,51 @@
 
 			//on creation, status is "pending"
 			$this->orderStatus = "1";
+		}
+
+		public function __set($property, $value)
+		{
+			switch ($property) {
+				case "orderId":
+					$this->orderId = $value;
+					break;
+
+				case "projectId":
+					$this->projectId = $value;
+					break;
+
+				case "userId":
+					$this->userId = $value;
+					break;
+
+				case "orderPersonal":
+					$this->orderPersonal = $value;
+					break;
+
+				case "orderCreationDate":
+					$this->orderCreationDate = $value;
+					break;
+
+				case "orderStatus":
+					$this->orderStatus = $value;
+					break;
+
+				case "orderProducts":
+					$this->orderproducts = $value;
+					break;
+			}
+		}
+
+		public function __get($property)
+		{
+			$result = FALSE;
+			switch ($property) {
+				case "Id":
+					$result = $this->orderId;
+					break;
+			}
+
+			return $result;
 		}
 
 		public function writeDB()
@@ -41,10 +89,44 @@
 
 			//get the automatically generated ID of the order
 			$this->orderId = mysqli_insert_id($dal->getConn());
+			echo $this->orderId;
 		}
 
-		public function getOrderFromDB()
+		public function getProductsInOrder()
 		{
+			$dal = new DAL();
 
+			//select all products of the order
+			$sql = "SELECT * FROM bestellingproduct WHERE bestelnummer='".$this->orderId."'";
+			$arrayproducts = $dal->queryDB($sql);
+
+			//create OrderProduct for every product
+			foreach($arrayproducts as $product)
+			{
+				$this->orderProducts[] = new OrderProduct($product->bestelnummer, $product->idproduct, $product->leverancier, $product->aantal, $product->prijs, $product->verzamelnaam, $product->defbestelnummer);
+			}
+		}
+
+		public function printOrder()
+		{
+			echo '<div class ="row">
+						<div class="col-sm-2">
+							<strong>Interne bestelnummer</strong>
+							<p>'.$this->orderId.'</p>
+						</div>
+						<div class="col-sm-2">
+							<strong>Status</strong>
+							<p>'.$this->orderStatus.'</p>
+						</div>
+						<div class="col-sm-2">
+							<strong>Persoonlijk gebruik</strong>
+							<p>'. $this->orderPersonal .'</p>
+						</div>
+					</div>';
+
+			foreach($this->orderProducts as $orderproduct)
+			{
+				$orderproduct->printOrderProduct();
+			}
 		}
 	}

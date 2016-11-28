@@ -38,7 +38,7 @@
 			Mijn Winkelmandje
 		</p>
 	</div>
-	<div id="shoppingcart" class="container">
+	<div id="shoppingcart" class="container workspace">
 		<noscript>
 			<div class="alert alert-warning alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

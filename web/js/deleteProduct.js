@@ -3,6 +3,8 @@ $(document).ready(function()
 	//when a product button is clicked, product id, supplier and amount are sent to the shopping cart
 	$(".deleteproduct").click(function()
 	{
+		var division = $(this).parent().parent().parent();
+
 		//prepare request
 		$request = $.ajax({
 			method:"POST",
@@ -13,7 +15,7 @@ $(document).ready(function()
 		$request.done(function()
 		{
 			//remove from cart
-			$(this).parent().parent().remove();
+			$(division).remove();
 
 			//display message when product is successfully added
 			$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Verwijderd</strong> Het product is succesvol uit uw winkelwagen verwijderd</div>').insertBefore($("footer")).fadeOut(2000, function()

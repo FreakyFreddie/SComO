@@ -25,7 +25,7 @@ CREATE TABLE webstoredb.gebruiker
   email VARCHAR(45) NOT NULL,
   wachtwoord VARCHAR(100) NOT NULL,
   machtigingsniveau INT(1) DEFAULT '0',
-  aanmaakdatum DATE NOT NULL,
+  aanmaakdatum DATETIME NOT NULL,
   activatiesleutel VARCHAR(32),
   PRIMARY KEY (rnummer)
 );
@@ -37,8 +37,8 @@ CREATE TABLE webstoredb.project
   titel VARCHAR(25) NOT NULL,
   budget DECIMAL(10,2) NOT NULL,
   rekeningnr VARCHAR(25) NOT NULL,
-  startdatum DATE NOT NULL,
-  vervaldatum DATE NOT NULL,
+  startdatum DATETIME NOT NULL,
+  vervaldatum DATETIME NOT NULL,
   PRIMARY KEY (idproject)
 );
 
@@ -58,7 +58,7 @@ CREATE TABLE webstoredb.bestelling
 (
   bestelnummer VARCHAR(25) NOT NULL,
   status INT NOT NULL,
-  besteldatum DATE NOT NULL,
+  besteldatum DATETIME NOT NULL,
   idproject VARCHAR(25),
   rnummer VARCHAR(8) NOT NULL,
   persoonlijk INT NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE webstoredb.definitiefbesteld
 (
   defbestelnummer VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
-  defbesteldatum DATE NOT NULL,
+  defbesteldatum DATETIME NOT NULL,
   PRIMARY KEY (defbestelnummer,leverancier));
 
 /*Relatie bestelling bevat producten*/
