@@ -11,6 +11,7 @@
 		header("Location:index.php");
 	}
 
+	//include registerfunction
 	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/registerUser.php';
 ?>
 

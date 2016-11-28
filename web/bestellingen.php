@@ -31,10 +31,12 @@
 	<!-- PROJECT TITLE and QUOTE -->
 	<div class="jumbotron text-center">
 		<h1>
-			Bestellingen
+			<?php
+				echo $_SESSION["user"]->__get("firstName")." ".$_SESSION["user"]->__get("lastName");
+			?>
 		</h1>
 		<p>
-			Jouw bestelgeschiedenis
+			Bestelgeschiedenis.
 		</p>
 	</div>
 	<div class="container workspace">

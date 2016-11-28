@@ -35,7 +35,7 @@
 			?>
 		</h1>
 		<p>
-			Mijn Winkelmandje
+			Winkelmandje.
 		</p>
 	</div>
 	<div id="shoppingcart" class="container workspace">

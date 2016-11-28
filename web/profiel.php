@@ -1,34 +1,96 @@
 <?php
 	//set page var in order to adapt navbar and functions
-	$_GLOBALS['page'] = "profiel";
-?>
+	$GLOBALS['page'] = "profiel";
 
-<?php
-	//include configuration file
-	require '../config/config.php';
-	
 	//include header
 	require '../templates/header.php';
+
+	//redirect if user is not logged in
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	{
+		header("location: index.php");
+	}
+
+	//include function to change password
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/changePassWord.php';
+?>
+</head>
+
+<body>
+<?php
+	//include navbar
+	require '../templates/navbar.php';
 ?>
 
-	<body>
+<!-- PROJECT TITLE and QUOTE -->
+<div class="jumbotron text-center">
+	<h1>
 		<?php
-			//include navbar
-			require '../templates/navbar.php';
+			echo $_SESSION["user"]->__get("firstName")." ".$_SESSION["user"]->__get("lastName")
 		?>
-		
-		<div class="jumbotron text-center">
-			<h1>
+	</h1>
+	<p>
+		Gegevens.
+	</p>
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+		<div class="form-group input-group searchbar">
+			<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct"
 				<?php
-					echo 'Profiel';
+					if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "")
+					{
+						echo 'value="'.$_GET['searchproduct'].'"';
+					}
 				?>
-			</h1>
-			<p>
-				<?php
-					echo 'Jouw Naam';
-				?>
-			</p>
+			>
+			<span class="input-group-btn">
+				<button class="btn btn-secondary" type="submit">
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
+			</span>
 		</div>
-		
-		<!-- footer -->
-		<?php require '../templates/footer.php'; ?>
+	</form>
+</div>
+<div class="container workspace">
+	<noscript>
+		<div class="alert alert-warning alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
+		</div>
+	</noscript>
+	<?php
+		if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["oudwachtwoord"]) && isset($_POST["wachtwoord"]) && isset($_POST["herhaalwachtwoord"])
+			&& !empty($_POST["oudwachtwoord"]) && !empty($_POST["wachtwoord"]) && !empty($_POST["herhaalwachtwoord"]) && ($_POST["wachtwoord"]==$_POST["herhaalwachtwoord"]))
+		{
+			changePassWord($_SESSION["user"]->__get("userId"), $_POST["oudwachtwoord"], $_POST["wachtwoord"]);
+		}
+		else
+		{
+			echo '<form action="';
+			echo htmlspecialchars($_SERVER['PHP_SELF']);
+			echo '" method="post">
+						<div class="form-group row">
+							<label for="oudwachtwoord" class="col-sm-2">Oud wachtwoord</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="oudwachtwoord" name="oudwachtwoord" placeholder="Oud wachtwoord" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="wachtwoord" class="col-sm-2">Niew wachtwoord</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="wachtwoord" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="herhaalwachtwoord" class="col-sm-2">Herhaal wachtwoord</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="herhaalwachtwoord" name="herhaalwachtwoord" placeholder="herhaal wachtwoord" />
+							</div>
+						</div>
+						<button class="btn btn-primary" type="submit">Wijzig</button>
+					</form>';
+		}
+	?>
+</div>
+
+<!-- footer -->
+<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
