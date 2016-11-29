@@ -1,0 +1,5 @@
+::1||1480450790|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/scomo/web/adminpanel.php|r0303063
+::1|1480450819|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/scomo/web/adminpanel.php|r0303063
+::1|1480450840|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/scomo/web/adminpanel.php|r0303063
+::1|1480450869|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/scomo/web/adminpanel.php|r0303063
+::1|2016-11-29 21:23:33|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/scomo/web/adminpanel.php|r0303063

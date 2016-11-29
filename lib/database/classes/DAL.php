@@ -68,5 +68,17 @@
 			mysqli_query($this->conn, $sql)
 			or die("Er is een fout opgetreden bij het uitvoeren van de query");
 		}
+
+		//returns one value: count, use for count queries
+		public function countDB($sql)
+		{
+			//echo $sql;
+			$result = mysqli_query($this->conn, $sql)
+			or die("Er is een fout opgetreden bij het uitvoeren van de query");
+
+			$data=mysqli_fetch_assoc($result);
+
+			return $data["COUNT(*)"];
+		}
 	}
 ?>

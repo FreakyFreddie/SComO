@@ -29,6 +29,7 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/project/functions" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/project/classes" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/project" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/logs" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

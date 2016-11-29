@@ -63,6 +63,9 @@
 			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
 			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
 
+			//logfunction
+			require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/logActivity.php';
+
 			//input checks
 			require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 						
@@ -76,4 +79,7 @@
 				//Try logging in with Login object & add to session
 				$_SESSION["user"] = new Login($rnr, $pwd);
 			}
+
+			//write activity to log
+			logActivity();
 		?>
