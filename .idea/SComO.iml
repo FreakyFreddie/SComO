@@ -30,6 +30,8 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/project/classes" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/project" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/logs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/css/Lumino" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/js/Lumino" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
