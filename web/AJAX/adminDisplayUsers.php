@@ -31,13 +31,33 @@
 	{
 		//orders for projects to be approved (what is important?)
 		$dal = new DAL();
-		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as datum, bestelling.idproject as projectid,
- 			bestelling.rnummer as rnummer, (bestellingproduct.aantal * bestellingproduct.prijs) as totaalkost
-			FROM bestelling INNER JOIN bestellingproduct
-			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
-			WHERE bestelling.status=1 AND bestelling.persoonlijk=0
-			GROUP BY bestelling.bestelnummer;";
+		$sql = "SELECT gebruiker.email as email, gebruiker.achternaam as naam, gebruiker.voornaam as voornaam, gebruiker.machtigingsniveau as niveau, gebruiker.aanmaakdatum
+			FROM gebruiker;";
+
 		$records = $dal->queryDB($sql);
+
+		//write words instead of integers to identify userlevel
+		foreach($records as $key => $level)
+		{
+			switch($records[$key]->niveau)
+			{
+				case 0:
+					$records[$key]->niveau="non-actief";
+					break;
+
+				case 1:
+					$records[$key]->niveau="user";
+					break;
+
+				case 2:
+					$records[$key]->niveau="admin";
+					break;
+
+				case 5:
+					$records[$key]->niveau="banned";
+					break;
+			}
+		}
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

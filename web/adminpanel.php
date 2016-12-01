@@ -92,8 +92,8 @@
 							<div class="col-sm-9 col-lg-7 widget-right">
 								<div class="large">
 									<?php
-										$countNewOrders = getOrdersTotal("Pending");
-										echo $countNewOrders;
+										$countProcessedOrders = getOrdersTotal("Besteld") + getOrdersTotal("Aangekomen") + getOrdersTotal("Afgehaald");
+										echo $countProcessedOrders;
 									?>
 								</div>
 								<div class="text-muted">Orders verwerkt</div>
@@ -248,7 +248,6 @@
 				</div><!--/.col-->
 
 				<div class="col-md-4">
-
 					<div class="panel panel-blue">
 						<div class="panel-heading dark-overlay"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg>To-do List</div>
 						<div class="panel-body">

@@ -20,17 +20,17 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/getOrdersTotal.php';
 ?>
 
-		<link href="css/Lumino/datepicker3.css" rel="stylesheet">
-		<link href="css/Lumino/bootstrap-table.css" rel="stylesheet">
-		<link href="css/Lumino/styles.css" rel="stylesheet">
+	<link href="css/Lumino/datepicker3.css" rel="stylesheet">
+	<link href="css/Lumino/bootstrap-table.css" rel="stylesheet">
+	<link href="css/Lumino/styles.css" rel="stylesheet">
 
-		<!--Icons-->
-		<script src="js/Lumino/lumino.glyphs.js"></script>
+	<!--Icons-->
+	<script src="js/Lumino/lumino.glyphs.js"></script>
 
-		<!--[if lt IE 9]>
-		<script src="js/Lumino/html5shiv.min.js"></script>
-		<script src="js/Lumino/respond.min.js"></script>
-		<![endif]-->
+	<!--[if lt IE 9]>
+	<script src="js/Lumino/html5shiv.min.js"></script>
+	<script src="js/Lumino/respond.min.js"></script>
+	<![endif]-->
 
 	</head>
 
@@ -99,10 +99,10 @@
 					<div class="panel-body">
 						<table data-toggle="table" data-url="AJAX/adminFarnellProductsToOrderRequest.php" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
-								<tr>
-									<th data-field="productid" data-sortable="true">productid</th>
-									<th data-field="aantal" data-sortable="true">aantal</th>
-								</tr>
+							<tr>
+								<th data-field="productid" data-sortable="true">productid</th>
+								<th data-field="aantal" data-sortable="true">aantal</th>
+							</tr>
 							</thead>
 						</table>
 					</div>
@@ -114,10 +114,10 @@
 					<div class="panel-body">
 						<table data-toggle="table" data-url="AJAX/adminMouserProductsToOrderRequest.php" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
-								<tr>
-									<th data-field="productid" data-sortable="true">productid</th>
-									<th data-field="aantal" data-sortable="true">aantal</th>
-								</tr>
+							<tr>
+								<th data-field="productid" data-sortable="true">productid</th>
+								<th data-field="aantal" data-sortable="true">aantal</th>
+							</tr>
 							</thead>
 						</table>
 					</div>
@@ -148,5 +148,4 @@
 		})
 	</script>
 	<!-- footer -->
-	<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
-
+<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>

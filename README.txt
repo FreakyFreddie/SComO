@@ -1,3 +1,6 @@
+#!VERY IMPORTANT!#
+After downloading Farnell or Mouser csv, immediately upload the Mouser/Farnell final order number!
+
 INSTALL WEBSERVER
 PHP MOD DEPENDENCIES
 	CURL

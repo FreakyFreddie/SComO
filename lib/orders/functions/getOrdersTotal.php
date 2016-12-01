@@ -20,13 +20,18 @@
 				$count = $dal->countDB($sql);
 				break;
 
-			case "Aangekomen":
+			case "Besteld":
 				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='3'";
 				$count = $dal->countDB($sql);
 				break;
 
-			case "Afgehaald":
+			case "Aangekomen":
 				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='4'";
+				$count = $dal->countDB($sql);
+				break;
+
+			case "Afgehaald":
+				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='5'";
 				$count = $dal->countDB($sql);
 				break;
 		}

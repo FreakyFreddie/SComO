@@ -29,14 +29,13 @@
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 	{
-		//orders for projects to be approved (what is important?)
+		//approved Mouser orders ready for csv download
 		$dal = new DAL();
-		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as datum, bestelling.idproject as projectid,
- 			bestelling.rnummer as rnummer, (bestellingproduct.aantal * bestellingproduct.prijs) as totaalkost
+		$sql = "SELECT bestellingproduct.idproduct as productid, SUM(bestellingproduct.aantal) as aantal
 			FROM bestelling INNER JOIN bestellingproduct
 			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
-			WHERE bestelling.status=1 AND bestelling.persoonlijk=0
-			GROUP BY bestelling.bestelnummer;";
+			WHERE bestelling.status=2 AND bestellingproduct.leverancier='Mouser'
+			GROUP BY bestellingproduct.idproduct;";
 		$records = $dal->queryDB($sql);
 
 		//Lumino admin panel requires a JSON to process
