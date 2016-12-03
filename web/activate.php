@@ -1,4 +1,17 @@
 <?php
+	//set page var in order to adapt navbar and functions
+	$GLOBALS['page'] = "activate";
+
+	//include header
+	require '../templates/header.php';
+?>
+</head>
+
+<body>
+<?php
+	//include navbar
+	require '../templates/navbar.php';
+
 	if(isset($_GET["key"]))
 	{
 		$dal = new DAL();
@@ -12,15 +25,18 @@
 		if($dal->getNumResults()==1 && $records[0]->machtigingsniveau==0)
 		{
 			//update DB (still needs work)
-			$sql = "UPDATE gebruikers SET machtigingsniveau='1' WHERE activatiesleutel='".$key."'";
+			$sql = "UPDATE gebruiker SET machtigingsniveau='1' WHERE activatiesleutel='".$key."'";
 			$dal->writeDB($sql);
+
+			echo "Account geactiveerd.";
 		}
 		else
 		{
 			echo "U kan uw account geen tweede keer activeren.";
 		}
 
-		
 		$dal->closeConn();
 	}
 ?>
+	<!-- footer -->
+	<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>

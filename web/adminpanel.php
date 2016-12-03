@@ -34,7 +34,7 @@
 	<body>
 		<?php
 			//include navbar
-			require '../templates/navbar.php';
+			require $GLOBALS['settings']->Folders['root'].'../templates/navbar.php';
 		?>
 
 		<noscript>

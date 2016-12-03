@@ -22,6 +22,9 @@
 	//include FarnellProduct
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
 
+	//add PHPMailer mail functionality
+	require $GLOBALS['settings']->Folders['root'].'../lib/PHPMailer/PHPMailerAutoload.php';
+
 	//start session once since header.php is included in all pages
 	session_start();
 ?>
