@@ -4,79 +4,136 @@
 	{
 		echo'<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">';
-				echo '<li ';
+				echo '<li class="';
 
 				if (strcmp($GLOBALS['adminpage'], "adminpanel") == 0)
 				{
-					echo 'class="active">';
+					echo 'active">';
 				}
 				else
 				{
-					echo '>';
+					echo '">';
 				}
 
 				echo '<a href="adminpanel.php">
 						<svg class="glyph stroked dashboard-dial">
 							<use xlink:href="#stroked-dashboard-dial"></use>
-						</svg>
-						 Dashboard
+						</svg> Dashboard
 					</a>';
+
 				echo '</li>';
-				echo '<li ';
+				echo '<li class="parent';
 
 				if (strcmp($GLOBALS['adminpage'], "adminprojecten") == 0)
 				{
-					echo 'class="active">';
+					echo ' active">';
 				}
 				else
 				{
-					echo '>';
+					echo '">';
 				}
 
 				echo '<a href="adminprojecten.php">
-						<svg class="glyph stroked calendar">
-							<use xlink:href="#stroked-calendar"></use>
-						</svg>
+						<span data-toggle="collapse" href="#sub-item-1">
+							<svg class="glyph stroked calendar">
+								<use xlink:href="#stroked-calendar"></use>
+							</svg>
+						</span>
 						 Projecten
-					</a>';
+					</a>
+					<ul class="children collapse" id="sub-item-1">
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+							</a>
+						</li>
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+							</a>
+						</li>
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+							</a>
+						</li>
+					</ul>';
 
 				echo '</li>';
-				echo '<li ';
+				echo '<li class="parent';
 
 				if (strcmp($GLOBALS['adminpage'], "adminbestellingen") == 0)
 				{
-					echo 'class="active">';
+					echo ' active">';
 				}
 				else
 				{
-					echo '>';
+					echo '">';
 				}
 
 				echo '<a href="adminbestellingen.php">
-						<svg class="glyph stroked table">
-							<use xlink:href="#stroked-table"></use>
-						</svg>
+						<span data-toggle="collapse" href="#sub-item-2">
+							<svg class="glyph stroked table">
+								<use xlink:href="#stroked-table"></use>
+							</svg>
+						</span>
 						 Bestellingen
-					</a>';
+					</a>
+					<ul class="children collapse" id="sub-item-2">
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+							</a>
+						</li>
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+							</a>
+						</li>
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+							</a>
+						</li>
+					</ul>';
 
 				echo '</li>';
-				echo '<li ';
+				echo '<li class="parent';
 
 				if (strcmp($GLOBALS['adminpage'], "adminusers") == 0)
 				{
-					echo 'class="active">';
+					echo ' active">';
 				}
 				else
 				{
-					echo '>';
+					echo '">';
 				}
 
 				echo '<a href="adminusers.php">
-						<svg class="glyph stroked male-user">
-							<use xlink:href="#stroked-male-user"></use>
-						</svg>
+						<span data-toggle="collapse" href="#sub-item-3">
+							<svg class="glyph stroked male-user">
+								<use xlink:href="#stroked-male-user"></use>
+							</svg>
+						</span>
 						 Gebruikers
-					</a>';
+					</a>
+					<ul class="children collapse" id="sub-item-3">
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+							</a>
+						</li>
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+							</a>
+						</li>
+						<li>
+							<a class="" href="#">
+								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+							</a>
+						</li>
+					</ul>';
 
 				echo '</li>';
 			echo'<li role="presentation" class="divider"></li>

@@ -36,6 +36,8 @@
 				break;
 		}
 
+		$dal->closeConn();
+
 		return $count;
 	}
 ?>

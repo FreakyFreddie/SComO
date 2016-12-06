@@ -5,7 +5,7 @@
 
 	//set page var in order to adapt navbar and functions
 	$GLOBALS['page'] = "adminpanel";
-	$GLOBALS['adminpage'] = "adminbestellingen";
+	$GLOBALS['adminpage'] = "adminprojecten";
 
 	//include header
 	require '../templates/header.php';
@@ -74,17 +74,17 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Nieuwe bestellingen voor projecten</div>
+					<div class="panel-heading">Alle projecten</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminNewProjectOrdersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table data-toggle="table" data-url="AJAX/adminAllProjectsRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
 								<tr>
 									<th data-field="selector" data-checkbox="true" >selector</th>
-									<th data-field="bestelnr" data-sortable="true">bestelnr</th>
-									<th data-field="datum"  data-sortable="true">datum</th>
-									<th data-field="projectid" data-sortable="true">project</th>
-									<th data-field="rnummer" data-sortable="true">rnummer</th>
-									<th data-field="totaalkost" data-sortable="true">totaalkost</th>
+									<th data-field="id" data-sortable="true">id</th>
+									<th data-field="titel"  data-sortable="true">titel</th>
+									<th data-field="budget" data-sortable="true">budget</th>
+									<th data-field="rekening" data-sortable="true">rekening</th>
+									<th data-field="einddatum" data-sortable="true">einddatum</th>
 								</tr>
 							</thead>
 						</table>
