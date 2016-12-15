@@ -29,7 +29,7 @@
 			$this->projectEndDate = mysqli_real_escape_string($dal->getConn(), $this->projectEndDate);
 			$this->projectAccountNumber = mysqli_real_escape_string($dal->getConn(), $this->projectAccountNumber);
 
-			$sql = "INSERT INTO project (titel, budget, startdatum, vervaldatum, rekeningnummer) VALUES ('" . $this->projectTitle . "', '" . $this->productSupplier . "', '" . $this->projectFunding . "', '" .$this->projectStartDate . "', '" . $this->projectEndDate . "', '" . $this->projectAccountNumber . "')";
+			$sql = "INSERT INTO project (titel, budget, startdatum, vervaldatum, rekeningnr) VALUES ('" . $this->projectTitle . "', '" . $this->projectFunding . "', '" .$this->projectStartDate . "', '" . $this->projectEndDate . "', '" . $this->projectAccountNumber . "')";
 			$dal->writeDB($sql);
 
 			//close the connection
@@ -37,7 +37,7 @@
 		}
 
 		//assign the project to a user
-		public function assignProject($userId)
+		public function assignProject($userIds)
 		{
 
 		}

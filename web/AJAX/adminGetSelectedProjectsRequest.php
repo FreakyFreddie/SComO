@@ -1,5 +1,5 @@
 <?php
-	//this script processes the AJAX request & shows the users shopping cart
+	//this script processes the AJAX request
 
 	//load config, typecast to object for easy access
 	$GLOBALS['settings'] = (object) parse_ini_file('../../config/config.ini', true);
@@ -14,10 +14,6 @@
 	//include Product class
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
-	//include Shopping Cart & ShoppingCartArticle
-	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCart.php';
-	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
-
 	session_start();
 
 	//redirect if user is not logged in as admin
@@ -27,18 +23,9 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_SESSION["adminAddProjectsToAssignRequest"]))
 	{
-		//orders for projects to be approved (what is important?)
-		$dal = new DAL();
-		$sql = "SELECT bestellingproduct.idproduct as productid, SUM(bestellingproduct.aantal) as aantal
-			FROM bestelling INNER JOIN bestellingproduct
-			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
-			WHERE bestelling.status=2 AND bestellingproduct.leverancier='Farnell'
-			GROUP BY bestellingproduct.idproduct;";
-		$records = $dal->queryDB($sql);
-
 		//Lumino admin panel requires a JSON to process
-		echo json_encode($records);
+		echo json_encode($_SESSION["adminAddProjectsToAssignRequest"]);
 	}
 ?>

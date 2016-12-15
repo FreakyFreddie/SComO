@@ -5,7 +5,7 @@
 
 	//set page var in order to adapt navbar and functions
 	$GLOBALS['page'] = "adminpanel";
-	$GLOBALS['adminpage'] = "adminusers";
+	$GLOBALS['adminpage'] = "adminprojecten";
 
 	//include header
 	require '../templates/header.php';
@@ -20,17 +20,20 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/getOrdersTotal.php';
 ?>
 
-	<link href="css/Lumino/datepicker3.css" rel="stylesheet">
-	<link href="css/Lumino/bootstrap-table.css" rel="stylesheet">
-	<link href="css/Lumino/styles.css" rel="stylesheet">
+		<link href="css/Lumino/datepicker3.css" rel="stylesheet">
+		<link href="css/Lumino/bootstrap-table.css" rel="stylesheet">
+		<link href="css/Lumino/styles.css" rel="stylesheet">
 
-	<!--Icons-->
-	<script src="js/Lumino/lumino.glyphs.js"></script>
+		<!--Icons-->
+		<script src="js/Lumino/lumino.glyphs.js"></script>
 
-	<!--[if lt IE 9]>
-	<script src="js/Lumino/html5shiv.min.js"></script>
-	<script src="js/Lumino/respond.min.js"></script>
-	<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="js/Lumino/html5shiv.min.js"></script>
+		<script src="js/Lumino/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- AJAX to add new projects -->
+		<script src="js/adminAddNewProject.js"></script>
 
 	</head>
 
@@ -62,30 +65,60 @@
 						</svg>
 					</a>
 				</li>
-				<li class="active">Gebruikers</li>
+				<li>
+					<a href="adminprojecten.php">
+						Projecten
+					</a>
+				</li>
+				<li class="active">Nieuw project</li>
 			</ol>
 		</div><!--/.row-->
+
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="panel panel-primary">
-					<div class="panel-heading">Alle gebruikers</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Maak een nieuw project aan</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminDisplayUsers.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-							<thead>
-								<tr>
-									<th data-field="selector" data-checkbox="true" >selector</th>
-									<th data-field="email" data-sortable="true">email</th>
-									<th data-field="naam" data-sortable="true">naam</th>
-									<th data-field="voornaam"  data-sortable="true">voornaam</th>
-									<th data-field="niveau" data-sortable="true">niveau</th>
-									<th data-field="aanmaakdatum" data-sortable="true">aanmaakdatum</th>
-								</tr>
-							</thead>
-						</table>
+							<form role="form" action="#">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Titel project</label>
+											<input class="form-control" placeholder="Titel" id="projecttitle">
+										</div>
+
+										<div class="form-group">
+											<label>Budget</label>
+											<input class="form-control" placeholder="Budget" id="projectfunds">
+										</div>
+
+										<div class="form-group">
+											<label>Rekeningnummer</label>
+											<input class="form-control" placeholder="Rekeningnummer" id="projectaccount">
+										</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Startdatum</label>
+										<input class="form-control" placeholder="2016-12-31" id="projectstartdate">
+									</div>
+
+									<div class="form-group">
+										<label>Vervaldatum</label>
+										<input class="form-control" placeholder="2017-12-31" id="projectenddate">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<button type="submit" class="btn btn-primary" id="createnewproject">Aanmaken</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
-			</div>
-		</div><!--/.row-->
+			</div><!-- /.col-->
+		</div><!-- /.row -->
 	</div><!--/.main-->
 
 	<script src="js/Lumino/bootstrap-datepicker.js"></script>

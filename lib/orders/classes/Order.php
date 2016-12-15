@@ -13,7 +13,7 @@
 		//array of products belonging to the order
 		private $orderProducts;
 
-		public function __construct($ouserId, $opersonal="", $pId="")
+		public function __construct($ouserId, $opersonal="0", $pId="")
 		{
 			//prepare timestamp
 			date_default_timezone_set('Europe/Brussels');
@@ -74,22 +74,27 @@
 
 		public function writeDB()
 		{
-			$dal = new DAL();
+			//catch empty orders
+			if(isset($this->userId) && isset($this->orderCreationDate) && isset($this->orderStatus)
+			&& !empty($this->userId) && !empty($this->orderCreationDate) && !empty($this->orderStatus))
+			{
+				$dal = new DAL();
 
-			//prevent SQL injection
-			$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->projectId);
-			$this->userId = mysqli_real_escape_string($dal->getConn(), $this->userId);
-			$this->orderPersonal = mysqli_real_escape_string($dal->getConn(), $this->orderPersonal);
-			$this->orderCreationDate = mysqli_real_escape_string($dal->getConn(), $this->orderCreationDate);
-			$this->orderStatus = mysqli_real_escape_string($dal->getConn(), $this->orderStatus);
+				//prevent SQL injection
+				$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->projectId);
+				$this->userId = mysqli_real_escape_string($dal->getConn(), $this->userId);
+				$this->orderPersonal = mysqli_real_escape_string($dal->getConn(), $this->orderPersonal);
+				$this->orderCreationDate = mysqli_real_escape_string($dal->getConn(), $this->orderCreationDate);
+				$this->orderStatus = mysqli_real_escape_string($dal->getConn(), $this->orderStatus);
 
-			//add order to DB (still to complete)
-			$sql = "INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES ('" . $this->projectId . "', '" . $this->userId . "', '" . $this->orderPersonal . "', '" . $this->orderCreationDate . "', '" . $this->orderStatus . "')";
-			$dal->writeDB($sql);
+				//add order to DB
+				$sql = "INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES ('" . $this->projectId . "', '" . $this->userId . "', '" . $this->orderPersonal . "', '" . $this->orderCreationDate . "', '" . $this->orderStatus . "')";
+				$dal->writeDB($sql);
 
-			//get the automatically generated ID of the order
-			$this->orderId = mysqli_insert_id($dal->getConn());
-			echo $this->orderId;
+				//get the automatically generated ID of the order
+				$this->orderId = mysqli_insert_id($dal->getConn());
+				echo $this->orderId;
+			}
 		}
 
 		public function getProductsInOrder()
@@ -109,24 +114,28 @@
 
 		public function printOrder()
 		{
-			echo '<div class ="row">
-						<div class="col-sm-2">
-							<strong>Interne bestelnummer</strong>
-							<p>'.$this->orderId.'</p>
-						</div>
-						<div class="col-sm-2">
-							<strong>Status</strong>
-							<p>'.$this->orderStatus.'</p>
-						</div>
-						<div class="col-sm-2">
-							<strong>Persoonlijk gebruik</strong>
-							<p>'. $this->orderPersonal .'</p>
-						</div>
-					</div>';
-
-			foreach($this->orderProducts as $orderproduct)
+			//catch empty orders
+			if(isset($this->orderProducts))
 			{
-				$orderproduct->printOrderProduct();
+				echo '<div class ="row">
+							<div class="col-sm-2">
+								<strong>Interne bestelnummer</strong>
+								<p>'.$this->orderId.'</p>
+							</div>
+							<div class="col-sm-2">
+								<strong>Status</strong>
+								<p>'.$this->orderStatus.'</p>
+							</div>
+							<div class="col-sm-2">
+								<strong>Persoonlijk gebruik</strong>
+								<p>'. $this->orderPersonal .'</p>
+							</div>
+						</div>';
+
+				foreach($this->orderProducts as $orderproduct)
+				{
+					$orderproduct->printOrderProduct();
+				}
 			}
 		}
 	}

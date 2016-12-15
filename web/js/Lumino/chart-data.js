@@ -109,7 +109,7 @@ window.onload = function(){
 	//prepare request
 	$request = $.ajax({
 		method:"POST",
-		url:"AJAX/processChartDataRequest.php?r=" + new Date().getTime()
+		url:"AJAX/adminChartDataRequest.php?r=" + new Date().getTime()
 	});
 
 	$request.done(function(msg)

@@ -126,10 +126,6 @@
 		</div>
 	</div><!--/.main-->
 
-	<script src="js/Lumino/chart.min.js"></script>
-	<script src="js/Lumino/chart-data.js"></script>
-	<script src="js/Lumino/easypiechart.js"></script>
-	<script src="js/Lumino/easypiechart-data.js"></script>
 	<script src="js/Lumino/bootstrap-datepicker.js"></script>
 	<script src="js/Lumino/bootstrap-table.js"></script>
 	<script>

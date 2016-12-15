@@ -41,13 +41,11 @@
 
 	session_start();
 
-	$_POST["orderpersonal"]=0;
-
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["orderpersonal"]))
 	{
 		//shopping cart object including all articles $_SESSION["user"]->__get("userId")
-		$shoppingCart = new ShoppingCart("r0303063");
+		$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
 
 		//add products from cart to order, indicate if it's for personal use or not (admin can assign project if not personal)
 		$shoppingCart->addCartToOrders($_POST["orderpersonal"]);

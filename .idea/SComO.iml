@@ -32,6 +32,15 @@
       <sourceFolder url="file://$MODULE_DIR$/logs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/web/css/Lumino" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/web/js/Lumino" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/docs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/extras" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/language" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/images" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/styles" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

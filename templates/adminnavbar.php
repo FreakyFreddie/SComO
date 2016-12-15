@@ -41,20 +41,37 @@
 						</span>
 						 Projecten
 					</a>
-					<ul class="children collapse" id="sub-item-1">
+					<ul class="children collapse in" aria-expanded="true" id="sub-item-1">
 						<li>
-							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+							<a class="" href="adminprojectennieuw.php">
+								<svg class="glyph stroked plus sign">
+									<use xlink:href="#stroked-plus-sign"/>
+								</svg>
+								 Nieuw project
+							</a>
+						</li>
+						<li>
+							<a class="" href="adminprojectentoewijzen.php">
+								<svg class="glyph stroked clipboard with paper">
+									<use xlink:href="#stroked-clipboard-with-paper"/>
+								</svg>
+								 Project toewijzen
 							</a>
 						</li>
 						<li>
 							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+								<svg class="glyph stroked pencil">
+									<use xlink:href="#stroked-pencil"/>
+								</svg>
+								 Project wijzigen
 							</a>
 						</li>
 						<li>
 							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+								<svg class="glyph stroked trash">
+									<use xlink:href="#stroked-trash"/>
+								</svg>
+								 Project verwijderen
 							</a>
 						</li>
 					</ul>';
@@ -79,20 +96,29 @@
 						</span>
 						 Bestellingen
 					</a>
-					<ul class="children collapse" id="sub-item-2">
+					<ul class="children collapse in" aria-expanded="true" id="sub-item-2">
 						<li>
 							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+								<svg class="glyph stroked checkmark">
+									<use xlink:href="#stroked-checkmark"/>
+								</svg>
+								 Bestellingen keuren
 							</a>
 						</li>
 						<li>
 							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+								<svg class="glyph stroked download">
+									<use xlink:href="#stroked-download"/>
+								</svg>
+								 BOM downloaden
 							</a>
 						</li>
 						<li>
 							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+								<svg class="glyph stroked hourglass">
+									<use xlink:href="#stroked-hourglass"/>
+								</svg>
+								 Verwachte leveringen
 							</a>
 						</li>
 					</ul>';
@@ -117,20 +143,29 @@
 						</span>
 						 Gebruikers
 					</a>
-					<ul class="children collapse" id="sub-item-3">
+					<ul class="children collapse in" aria-expanded="true" id="sub-item-3">
 						<li>
 							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+								<svg class="glyph stroked plus sign">
+									<use xlink:href="#stroked-plus-sign"/>
+								</svg>
+								 Gebruiker toevoegen
 							</a>
 						</li>
 						<li>
 							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+								<svg class="glyph stroked pencil">
+									<use xlink:href="#stroked-pencil"/>
+								</svg>
+								 Gebruiker wijzigen
 							</a>
 						</li>
 						<li>
 							<a class="" href="#">
-								<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+								<svg class="glyph stroked trash">
+									<use xlink:href="#stroked-trash"/>
+								</svg>
+								 Gebruiker verwijderen
 							</a>
 						</li>
 					</ul>';

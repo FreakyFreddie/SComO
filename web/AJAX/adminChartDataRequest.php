@@ -20,6 +20,12 @@
 
 	session_start();
 
+	//redirect if user is not logged in as admin
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE && $_SESSION["user"]->__get("permissionLevel") != 2)
+	{
+		header("location: ../index.php");
+	}
+
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && $_SESSION["user"]->__get("permissionLevel") == 2)
 	{
@@ -59,6 +65,7 @@
 			GROUP BY datum
 			ORDER BY datum DESC";
 		$records = $dal->queryDB($sql);
+		$dal->closeConn();
 
 		//start a counter for the array
 		$i = 0;
@@ -71,13 +78,13 @@
 		foreach($records as $key => $record)
 		{
 			//exit the loop if we go over the max date
-			if(date_diff($dates[$i],date_create($record->datum))->days > ($scale*$counter*7)+7)
+			if(date_diff($dates[$i],date_create($record->datum))->days > ($scale*$counter*7))
 			{
 				break;
 			}
 
-			//if the date is within one week from a milestone date add the amount corresponding the date to the total for this week
-			//if the there is more than one week between the the milestone date & amount date, keep checking
+			//if the date is within one scale unit from a milestone date add the amount corresponding the date to the total for this week
+			//if the there is more than one scale unit between the the milestone date & amount date, keep checking
 			if(date_diff($dates[$i],date_create($record->datum))->days > $scale*7)
 			{
 				//security loop in case there was a week with 0 orders
@@ -95,7 +102,7 @@
 					//counter goes up
 					$i = $i+1;
 				}
-				while(date_diff($dates[$i],date_create($record->datum))->days > $scale*7);
+				while((date_diff($dates[$i],date_create($record->datum))->days > $scale*7));
 
 				$totalweek = $totalweek + $record->aantal;
 			}

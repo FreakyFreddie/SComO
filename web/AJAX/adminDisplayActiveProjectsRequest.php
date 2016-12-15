@@ -1,5 +1,5 @@
 <?php
-	//this script processes the AJAX request & shows the users shopping cart
+	//this script processes the AJAX request
 
 	//load config, typecast to object for easy access
 	$GLOBALS['settings'] = (object) parse_ini_file('../../config/config.ini', true);
@@ -29,14 +29,15 @@
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 	{
-		//orders for projects to be approved (what is important?)
+		//set timezone
+		date_default_timezone_set('Europe/Brussels');
+
+		//list all active projects
 		$dal = new DAL();
-		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as datum, bestelling.idproject as projectid,
- 			bestelling.rnummer as rnummer, (bestellingproduct.aantal * bestellingproduct.prijs) as totaalkost
-			FROM bestelling INNER JOIN bestellingproduct
-			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
-			WHERE bestelling.status=1 AND bestelling.persoonlijk=0
-			GROUP BY bestelling.bestelnummer;";
+		$sql = "SELECT project.idproject as id, project.titel as titel, project.budget as budget, project.rekeningnr as rekening, project.vervaldatum as einddatum
+			FROM project
+			WHERE project.vervaldatum > '".date("Y-n-j")."';";
+
 		$records = $dal->queryDB($sql);
 
 		//Lumino admin panel requires a JSON to process
