@@ -16,24 +16,24 @@
 		header("location: index.php");
 	}
 
-	//include getOrdersTotal
-	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/getOrdersTotal.php';
+	//include getProjectsFromDB
+	require $GLOBALS['settings']->Folders['root'].'../lib/project/functions/getProjectsFromDB.php';
 ?>
 
-		<link href="css/Lumino/datepicker3.css" rel="stylesheet">
-		<link href="css/Lumino/bootstrap-table.css" rel="stylesheet">
-		<link href="css/Lumino/styles.css" rel="stylesheet">
+	<link href="css/Lumino/datepicker3.css" rel="stylesheet">
+	<link href="css/Lumino/bootstrap-table.css" rel="stylesheet">
+	<link href="css/Lumino/styles.css" rel="stylesheet">
 
-		<!--Icons-->
-		<script src="js/Lumino/lumino.glyphs.js"></script>
+	<!--Icons-->
+	<script src="js/Lumino/lumino.glyphs.js"></script>
 
-		<!--[if lt IE 9]>
-		<script src="js/Lumino/html5shiv.min.js"></script>
-		<script src="js/Lumino/respond.min.js"></script>
-		<![endif]-->
+	<!--[if lt IE 9]>
+	<script src="js/Lumino/html5shiv.min.js"></script>
+	<script src="js/Lumino/respond.min.js"></script>
+	<![endif]-->
 
-		<!-- AJAX to add new projects -->
-		<script src="js/adminAddNewProject.js"></script>
+	<!-- AJAX to modify projects -->
+	<script src="js/adminModifyProject.js"></script>
 
 	</head>
 
@@ -70,34 +70,48 @@
 						Projecten
 					</a>
 				</li>
-				<li class="active">Nieuw project</li>
+				<li class="active">Projecten wijzigen</li>
 			</ol>
 		</div><!--/.row-->
-
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Maak een nieuw project aan</div>
+					<div class="panel-heading">Selecteer een project en wijzig de eigenschappen</div>
 					<div class="panel-body">
-							<form role="form" action="#">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="titel">Titel project</label>
-											<input class="form-control" placeholder="Titel" id="projecttitle" name="titel">
-										</div>
+						<form role="form">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="projectidentificatie">Id & Titel</label>
+										<br />
+										<select id="selectproject" name="projectidentificatie">
+											<option value="Maak een keuze">Maak een keuze...</option>
+											<?php
+												$projects = getProjectsFromDB();
 
-										<div class="form-group">
-											<label for="budget">Budget</label>
-											<input class="form-control" placeholder="Budget" id="projectfunds" name="budget">
-										</div>
+												foreach($projects as $project)
+												{
+													echo '<option value="'.$project->idproject.' '.$project->titel.'">'.$project->idproject.' '.$project->titel.'</option>';
+												}
+											?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="budget">Budget</label>
+										<input class="form-control" placeholder="Budget" id="projectfunds" name="budget">
+									</div>
 
-										<div class="form-group">
-											<label for="rekeningnummer">Rekeningnummer</label>
-											<input class="form-control" placeholder="Rekeningnummer" id="projectaccount" name="rekeningnummer">
-										</div>
+									<div class="form-group">
+										<label for="rekeningnummer">Rekeningnummer</label>
+										<input class="form-control" placeholder="Rekeningnummer" id="projectaccount" name="rekeningnummer">
+									</div>
 								</div>
 								<div class="col-md-6">
+									<div class="form-group">
+										<label for="titel">Titel</label>
+										<input class="form-control" placeholder="Projectnaam" id="projecttitle" name="titel">
+									</div>
+
 									<div class="form-group">
 										<label for="startdatum">Startdatum</label>
 										<input class="form-control" placeholder="2016-12-31" id="projectstartdate" name="startdatum">
@@ -111,7 +125,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-6">
-									<input type="button" class="btn btn-primary" id="createnewproject" value="Aanmaken"></input>
+									<input type="button" class="btn btn-primary" id="modifyproject" value="Opslaan" />
 								</div>
 							</div>
 						</form>

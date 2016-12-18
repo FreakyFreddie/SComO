@@ -1,5 +1,5 @@
 <?php
-	//returns the amount of new orders
+	//returns amount of projects
 	function getProjectsTotal()
 	{
 		$dal = new DAL();

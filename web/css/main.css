@@ -120,6 +120,11 @@ body {
 footer{
 	background-color: #1d8db0;
 	border-top: 1px solid #fff;
+	color: #333;
+}
+
+footer p{
+	color: #333;
 }
 
 footer .container .footer-block{

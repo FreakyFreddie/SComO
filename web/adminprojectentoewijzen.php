@@ -148,7 +148,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<button class="btn btn-primary" id="adduserstoproject">Toewijzen</button>
+				<input class="btn btn-primary" type="button" id="adduserstoproject" value="Toewijzen"></input>
 			</div>
 		</div><!--/.row-->
 	</div><!--/.main-->

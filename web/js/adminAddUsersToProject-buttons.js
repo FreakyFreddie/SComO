@@ -1,16 +1,16 @@
 $(document).ready(function()
 {
 	//add add projects button to the toolbar
-	$("#getprojects").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="addprojects" class="btn btn-default" type="button" name="addprojects" title="Zet projecten klaar om toe te wijzen aan een groep gebruikers"><span class="glyphicon glyphicon-plus"></span> Toevoegen</button><div>');
+	$("#getprojects").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="addprojects" class="btn btn-default" type="button" name="addprojects" title="Zet projecten klaar om toe te wijzen aan een groep gebruikers"><span class="glyphicon glyphicon-plus"></span> Toevoegen</button></div>');
 
 	//add add users button to the toolber
-	$("#getusers").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="addusers" class="btn btn-default" type="button" name="addusers" title="Zet projecten klaar om toe te wijzen aan een groep gebruikers"><span class="glyphicon glyphicon-plus"></span> Toevoegen</button><div>');
+	$("#getusers").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="addusers" class="btn btn-default" type="button" name="addusers" title="Zet projecten klaar om toe te wijzen aan een groep gebruikers"><span class="glyphicon glyphicon-plus"></span> Toevoegen</button></div>');
 
 	//add add users button to the toolber
-	$("#listprojects").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="deleteprojects" class="btn btn-default" type="button" name="deleteprojects" title="Zet projecten klaar om toe te wijzen aan een groep gebruikers"><span class="glyphicon glyphicon-minus"></span> Verwijderen</button><div>');
+	$("#listprojects").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="deleteprojects" class="btn btn-default" type="button" name="deleteprojects" title="Zet projecten klaar om toe te wijzen aan een groep gebruikers"><span class="glyphicon glyphicon-minus"></span> Verwijderen</button></div>');
 
 	//add add users button to the toolber
-	$("#listusers").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="deleteusers" class="btn btn-default" type="button" name="deleteusers" title="Zet projecten klaar om toe te wijzen aan een groep gebruikers"><span class="glyphicon glyphicon-minus"></span> Verwijderen</button><div>');
+	$("#listusers").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="deleteusers" class="btn btn-default" type="button" name="deleteusers" title="Zet projecten klaar om toe te wijzen aan een groep gebruikers"><span class="glyphicon glyphicon-minus"></span> Verwijderen</button></div>');
 
 	//script to get id & titel of projects
 	$("#addprojects").click(function()
