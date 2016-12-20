@@ -98,7 +98,7 @@
 					</a>
 					<ul class="children collapse in" aria-expanded="true" id="sub-item-2">
 						<li>
-							<a class="" href="#">
+							<a class="" href="adminbestellingenkeuren.php">
 								<svg class="glyph stroked checkmark">
 									<use xlink:href="#stroked-checkmark"/>
 								</svg>
@@ -106,7 +106,7 @@
 							</a>
 						</li>
 						<li>
-							<a class="" href="#">
+							<a class="" href="adminbestellingenBOMdownloaden.php">
 								<svg class="glyph stroked download">
 									<use xlink:href="#stroked-download"/>
 								</svg>
@@ -114,7 +114,7 @@
 							</a>
 						</li>
 						<li>
-							<a class="" href="#">
+							<a class="" href="adminbestellingenverwachteleveringen.php">
 								<svg class="glyph stroked hourglass">
 									<use xlink:href="#stroked-hourglass"/>
 								</svg>

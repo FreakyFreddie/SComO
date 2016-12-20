@@ -73,16 +73,16 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="panel panel-primary">
-					<div class="panel-heading">Nieuwe bestellingen voor projecten</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Alle bestellingen</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminNewProjectOrdersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table data-toggle="table" data-url="AJAX/adminDisplayOrdersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
 								<tr>
-									<th data-field="selector" data-checkbox="true" >selector</th>
 									<th data-field="bestelnr" data-sortable="true">bestelnr</th>
 									<th data-field="datum"  data-sortable="true">datum</th>
-									<th data-field="projectid" data-sortable="true">project</th>
+									<th data-field="projectid" data-sortable="true">project id</th>
+									<th data-field="projecttitel" data-sortable="true">project titel</th>
 									<th data-field="rnummer" data-sortable="true">rnummer</th>
 									<th data-field="totaalkost" data-sortable="true">totaalkost</th>
 								</tr>
@@ -92,38 +92,6 @@
 				</div>
 			</div>
 		</div><!--/.row-->
-		<div class="row">
-			<div class="col-md-6">
-				<div class="panel panel-primary">
-					<div class="panel-heading">Goedgekeurde, te bestellen Farnell artikelen</div>
-					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminFarnellProductsToOrderRequest.php" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-							<thead>
-								<tr>
-									<th data-field="productid" data-sortable="true">productid</th>
-									<th data-field="aantal" data-sortable="true">aantal</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-primary">
-					<div class="panel-heading">Goedgekeurde, te bestellen Mouser artikelen</div>
-					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminMouserProductsToOrderRequest.php" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-							<thead>
-								<tr>
-									<th data-field="productid" data-sortable="true">productid</th>
-									<th data-field="aantal" data-sortable="true">aantal</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div><!--/.main-->
 
 	<script src="js/Lumino/bootstrap-datepicker.js"></script>

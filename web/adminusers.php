@@ -67,10 +67,10 @@
 		</div><!--/.row-->
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="panel panel-primary">
+				<div class="panel panel-default">
 					<div class="panel-heading">Alle gebruikers</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminDisplayUsers.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table data-toggle="table" data-url="AJAX/adminDisplayUsersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
 								<tr>
 									<th data-field="selector" data-checkbox="true" >selector</th>

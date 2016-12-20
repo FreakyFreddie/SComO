@@ -64,7 +64,7 @@
 		//Use to write something to DB
 		public function writeDB($sql)
 		{
-			echo $sql;
+			//echo $sql;
 			mysqli_query($this->conn, $sql)
 			or die("Er is een fout opgetreden bij het uitvoeren van de query");
 		}

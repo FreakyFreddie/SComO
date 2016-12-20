@@ -17,7 +17,7 @@
 	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
 
-	//include project class
+	//include function to validate input
 	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 
 	session_start();

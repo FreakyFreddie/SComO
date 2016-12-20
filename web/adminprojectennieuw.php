@@ -79,23 +79,23 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Maak een nieuw project aan</div>
 					<div class="panel-body">
-							<form role="form" action="#">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="titel">Titel project</label>
-											<input class="form-control" placeholder="Titel" id="projecttitle" name="titel">
-										</div>
+						<form role="form" action="#">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="titel">Titel project</label>
+										<input class="form-control" placeholder="Titel" id="projecttitle" name="titel">
+									</div>
 
-										<div class="form-group">
-											<label for="budget">Budget</label>
-											<input class="form-control" placeholder="Budget" id="projectfunds" name="budget">
-										</div>
+									<div class="form-group">
+										<label for="budget">Budget</label>
+										<input class="form-control" placeholder="Budget" id="projectfunds" name="budget">
+									</div>
 
-										<div class="form-group">
-											<label for="rekeningnummer">Rekeningnummer</label>
-											<input class="form-control" placeholder="Rekeningnummer" id="projectaccount" name="rekeningnummer">
-										</div>
+									<div class="form-group">
+										<label for="rekeningnummer">Rekeningnummer</label>
+										<input class="form-control" placeholder="Rekeningnummer" id="projectaccount" name="rekeningnummer">
+									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
