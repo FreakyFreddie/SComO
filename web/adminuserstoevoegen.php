@@ -32,6 +32,9 @@
 	<script src="js/Lumino/respond.min.js"></script>
 	<![endif]-->
 
+	<!-- AJAX to add new projects -->
+	<script src="js/adminAddNewUser.js"></script>
+
 	</head>
 
 	<body>
@@ -62,30 +65,75 @@
 						</svg>
 					</a>
 				</li>
-				<li class="active">Gebruikers</li>
+				<li>
+					<a href="adminusers.php">
+						Gebruikers
+					</a>
+				</li>
+				<li class="active">Gebruikers toevoegen</li>
 			</ol>
 		</div><!--/.row-->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Alle gebruikers</div>
+					<div class="panel-heading">Maak een nieuwe gebruiker aan</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminDisplayUsersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-							<thead>
-								<tr>
-									<th data-field="rnummer" data-sortable="true">rnummer</th>
-									<th data-field="email" data-sortable="true">email</th>
-									<th data-field="naam" data-sortable="true">naam</th>
-									<th data-field="voornaam"  data-sortable="true">voornaam</th>
-									<th data-field="niveau" data-sortable="true">niveau</th>
-									<th data-field="aanmaakdatum" data-sortable="true">aanmaakdatum</th>
-								</tr>
-							</thead>
-						</table>
+						<form role="form" action="#">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="rnummer">Rnummer</label>
+										<input class="form-control" placeholder="rnummer" id="rnummer" name="rnummer" />
+									</div>
+
+									<div class="form-group">
+										<label for="voornaam">Voornaam</label>
+										<input class="form-control" placeholder="voornaam" id="voornaam" name="voornaam" />
+									</div>
+
+									<div class="form-group">
+										<label for="wachtwoord">Wachtwoord</label>
+										<input type="password" class="form-control" placeholder="wachtwoord" id="wachtwoord" name="wachtwoord" />
+									</div>
+
+									<div class="form-group">
+										<label for="machtigingsniveau">Machtigingsniveau</label>
+										<select class="form-control" id="machtigingsniveau" name="machtigingsniveau">
+											<option value="non-actief">non-actief</option>
+											<option value="non-actief">user</option>
+											<option value="non-actief">admin</option>
+											<option value="non-actief">banned</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input class="form-control" placeholder="r0123456@student.thomasmore.be" id="email" name="email" />
+									</div>
+
+									<div class="form-group">
+										<label for="achternaam">Achternaam</label>
+										<input class="form-control" placeholder="achternaam" id="achternaam" name="achternaam" />
+									</div>
+
+									<div class="form-group">
+										<label for="bevestigwachtwoord">Bevestig wachtwoord</label>
+										<input type="password" class="form-control" placeholder="wachtwoord" id="wachtwoordconfirm" name="bevestigwachtwoord" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<input type="button" class="btn btn-primary" id="createnewuser" value="Aanmaken" />
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
-			</div>
-		</div><!--/.row-->
+			</div><!-- /.col-->
+		</div><!-- /.row -->
 	</div><!--/.main-->
 
 	<script src="js/Lumino/bootstrap-datepicker.js"></script>

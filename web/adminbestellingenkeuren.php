@@ -62,8 +62,10 @@
 					</svg>
 				</a>
 			</li>
-			<li>
-				Bestellingen
+			<li class="active">
+				<a href="adminbestellingen.php">
+					Bestellingen
+				</a>
 			</li>
 			<li class="active">Bestellingen keuren</li>
 		</ol>

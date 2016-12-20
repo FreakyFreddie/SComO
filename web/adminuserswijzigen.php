@@ -32,6 +32,9 @@
 	<script src="js/Lumino/respond.min.js"></script>
 	<![endif]-->
 
+	<!-- AJAX to update users -->
+	<script src="js/adminModifyUser.js"></script>
+
 	</head>
 
 	<body>
@@ -62,7 +65,12 @@
 						</svg>
 					</a>
 				</li>
-				<li class="active">Gebruikers</li>
+				<li>
+					<a href="adminusers.php">
+						Gebruikers
+					</a>
+				</li>
+				<li class="active">Gebruikers wijzigen</li>
 			</ol>
 		</div><!--/.row-->
 		<div class="row">
@@ -70,18 +78,63 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Alle gebruikers</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminDisplayUsersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-							<thead>
-								<tr>
-									<th data-field="rnummer" data-sortable="true">rnummer</th>
-									<th data-field="email" data-sortable="true">email</th>
-									<th data-field="naam" data-sortable="true">naam</th>
-									<th data-field="voornaam"  data-sortable="true">voornaam</th>
-									<th data-field="niveau" data-sortable="true">niveau</th>
-									<th data-field="aanmaakdatum" data-sortable="true">aanmaakdatum</th>
-								</tr>
-							</thead>
-						</table>
+						<form role="form">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="useridentificatie">Gebruiker</label>
+										<br />
+										<select  class="form-control" id="selectuser" name="useridentificatie">
+											<option value="Maak een keuze">Maak een keuze...</option>
+											<?php
+												$dal = new DAL();
+
+												$sql = "SELECT rnummer, voornaam, achternaam FROM gebruiker";
+												$records = $dal->queryDB($sql);
+
+												foreach($records as $user)
+												{
+													echo '<option value="'.$user->rnummer.' - '.$user->voornaam.' '.$user->achternaam.'">'.$user->rnummer.' - '.$user->voornaam.' '.$user->achternaam.'</option>';
+												}
+
+												$dal->closeConn();
+											?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="voornaam">Voornaam</label>
+										<input class="form-control" placeholder="voornaam" id="voornaam" name="voornaam" />
+									</div>
+
+									<div class="form-group">
+										<label for="machtigingsniveau">Machtigingsniveau</label>
+										<select class="form-control" id="machtigingsniveau" name="machtigingsniveau">
+											<option value="non-actief">non-actief</option>
+											<option value="user">user</option>
+											<option value="admin">admin</option>
+											<option value="banned">banned</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input class="form-control" placeholder="r0123456@student.thomasmore.be" id="email" name="email" />
+									</div>
+
+									<div class="form-group">
+										<label for="achternaam">Achternaam</label>
+										<input class="form-control" placeholder="achternaam" id="achternaam" name="achternaam" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<input type="button" class="btn btn-primary" id="modifyuser" value="Opslaan" />
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

@@ -62,24 +62,30 @@
 						</svg>
 					</a>
 				</li>
-				<li class="active">Gebruikers</li>
+				<li>
+					<a href="adminusers.php">
+						Gebruikers
+					</a>
+				</li>
+				<li class="active">Gebruikers verwijderen</li>
 			</ol>
 		</div><!--/.row-->
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="panel panel-default">
+				<div class="panel panel-default" id="userlist">
 					<div class="panel-heading">Alle gebruikers</div>
 					<div class="panel-body">
 						<table data-toggle="table" data-url="AJAX/adminDisplayUsersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
-								<tr>
-									<th data-field="rnummer" data-sortable="true">rnummer</th>
-									<th data-field="email" data-sortable="true">email</th>
-									<th data-field="naam" data-sortable="true">naam</th>
-									<th data-field="voornaam"  data-sortable="true">voornaam</th>
-									<th data-field="niveau" data-sortable="true">niveau</th>
-									<th data-field="aanmaakdatum" data-sortable="true">aanmaakdatum</th>
-								</tr>
+							<tr>
+								<th data-field="selector" data-checkbox="true" >selector</th>
+								<th data-field="rnummer" data-sortable="true">rnummer</th>
+								<th data-field="email" data-sortable="true">email</th>
+								<th data-field="naam" data-sortable="true">naam</th>
+								<th data-field="voornaam"  data-sortable="true">voornaam</th>
+								<th data-field="niveau" data-sortable="true">niveau</th>
+								<th data-field="aanmaakdatum" data-sortable="true">aanmaakdatum</th>
+							</tr>
 							</thead>
 						</table>
 					</div>
@@ -90,6 +96,8 @@
 
 	<script src="js/Lumino/bootstrap-datepicker.js"></script>
 	<script src="js/Lumino/bootstrap-table.js"></script>
+	<!-- AJAX to remove users -->
+	<script src="js/adminRemoveUser.js"></script>
 	<script>
 		!function ($) {
 			$(document).on("click","ul.nav li.parent > a > span.icon", function(){

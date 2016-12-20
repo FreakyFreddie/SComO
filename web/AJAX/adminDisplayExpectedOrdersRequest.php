@@ -29,35 +29,14 @@
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 	{
-		//orders for projects to be approved (what is important?)
+		//Select orders from view "bestellingen"
 		$dal = new DAL();
-		$sql = "SELECT gebruiker.rnummer, gebruiker.email as email, gebruiker.achternaam as naam, gebruiker.voornaam as voornaam, gebruiker.machtigingsniveau as niveau, gebruiker.aanmaakdatum
-			FROM gebruiker;";
-
+		$sql = "SELECT definitiefbesteldebestellingen.defbestelnummer, definitiefbesteldebestellingen.defbesteldatum, definitiefbesteldebestellingen.leverancier, SUM(totaalkost) AS totaalkost
+				FROM definitiefbesteldebestellingen
+				INNER JOIN bestelling
+				ON definitiefbesteldebestellingen.bestelnummer = bestelling.bestelnummer
+				WHERE bestelling.status = '3'";
 		$records = $dal->queryDB($sql);
-
-		//write words instead of integers to identify userlevel
-		foreach($records as $key => $level)
-		{
-			switch($records[$key]->niveau)
-			{
-				case 0:
-					$records[$key]->niveau="non-actief";
-					break;
-
-				case 1:
-					$records[$key]->niveau="user";
-					break;
-
-				case 2:
-					$records[$key]->niveau="admin";
-					break;
-
-				case 5:
-					$records[$key]->niveau="banned";
-					break;
-			}
-		}
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

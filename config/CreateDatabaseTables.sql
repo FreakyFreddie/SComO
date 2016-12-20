@@ -15,13 +15,21 @@ DROP TABLE webstoredb.bestellingproduct ;
 
 DROP TABLE webstoredb.definitiefbesteld;
 
-CREATE VIEW bestellingen AS
+CREATE VIEW pendingbestellingen AS
 	  SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as datum, bestelling.idproject as projectid,
     bestelling.rnummer as rnummer, (bestellingproduct.aantal * bestellingproduct.prijs) as totaalkost
     FROM bestelling INNER JOIN bestellingproduct
     ON bestelling.bestelnummer=bestellingproduct.bestelnummer
     WHERE bestelling.status=1 AND bestelling.persoonlijk=0
     GROUP BY bestelling.bestelnummer;
+
+CREATE VIEW definitiefbesteldebestellingen AS
+    SELECT definitiefbesteld.defbestelnummer, definitiefbesteld.defbesteldatum, definitiefbesteld.leverancier, bestellingproduct.bestelnummer, (bestellingproduct.aantal * bestellingproduct.prijs) as totaalkost
+    FROM definitiefbesteld
+    INNER JOIN bestellingproduct
+    ON definitiefbesteld.defbestelnummer = bestellingproduct.defbestelnummer
+    WHERE bestellingproduct.leverancier = definitiefbesteld.leverancier
+    GROUP BY bestellingproduct.bestelnummer;
 */
 
 /*Tabel gebruiker*/

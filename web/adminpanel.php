@@ -74,7 +74,7 @@
 				<div class="col-xs-12 col-md-6 col-lg-3">
 					<div class="panel panel-blue panel-widget ">
 						<div class="row no-padding">
-							<a href="adminbestellingen.php">
+							<a href="adminbestellingenkeuren.php">
 								<div class="col-sm-3 col-lg-5 widget-left">
 									<svg class="glyph stroked bag">
 										<use xlink:href="#stroked-bag"></use>
@@ -96,11 +96,13 @@
 				<div class="col-xs-12 col-md-6 col-lg-3">
 					<div class="panel panel-orange panel-widget">
 						<div class="row no-padding">
-							<div class="col-sm-3 col-lg-5 widget-left">
-								<svg class="glyph stroked table">
-									<use xlink:href="#stroked-table"></use>
-								</svg>
-							</div>
+							<a href="adminbestellingenBOMdownloaden.php">
+								<div class="col-sm-3 col-lg-5 widget-left">
+									<svg class="glyph stroked table">
+										<use xlink:href="#stroked-table"></use>
+									</svg>
+								</div>
+							</a>
 							<div class="col-sm-9 col-lg-7 widget-right">
 								<div class="large">
 									<?php
@@ -116,11 +118,13 @@
 				<div class="col-xs-12 col-md-6 col-lg-3">
 					<div class="panel panel-teal panel-widget">
 						<div class="row no-padding">
+							<a href="adminprojectentoewijzen.php">
 								<div class="col-sm-3 col-lg-5 widget-left">
 									<svg class="glyph stroked calendar">
 										<use xlink:href="#stroked-calendar"></use>
 									</svg>
 								</div>
+							</a>
 							<div class="col-sm-9 col-lg-7 widget-right">
 								<div class="large">
 									<?php
@@ -136,11 +140,13 @@
 				<div class="col-xs-12 col-md-6 col-lg-3">
 					<div class="panel panel-red panel-widget">
 						<div class="row no-padding">
-							<div class="col-sm-3 col-lg-5 widget-left">
-								<svg class="glyph stroked male-user">
-									<use xlink:href="#stroked-male-user"></use>
-								</svg>
-							</div>
+							<a href="adminuserswijzigen.php">
+								<div class="col-sm-3 col-lg-5 widget-left">
+									<svg class="glyph stroked male-user">
+										<use xlink:href="#stroked-male-user"></use>
+									</svg>
+								</div>
+							</a>
 							<div class="col-sm-9 col-lg-7 widget-right">
 								<div class="large">
 									<?php

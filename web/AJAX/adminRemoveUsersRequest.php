@@ -1,5 +1,5 @@
 <?php
-	//this script processes the AJAX request & updates the user's shopping cart
+	//this script processes the AJAX request
 
 	//load config, typecast to object for easy access
 	$GLOBALS['settings'] = (object) parse_ini_file('../../config/config.ini', true);
@@ -11,8 +11,14 @@
 	//include login class
 	require $GLOBALS['settings']->Folders['root'].'../lib/users/classes/Login.php';
 
-	//include ProductPrice class
+	//include Product class
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
+
+	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
+
+	//include function to remove projects
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/removeUser.php';
 
 	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
@@ -26,20 +32,12 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_POST["projecttitle"]) && isset($_POST["projectfunds"]) && isset($_POST["projectaccount"]) && isset($_POST["projectstartdate"]) && isset($_POST["projectenddate"])
-		&& !empty($_POST["projecttitle"]) && !empty($_POST["projectfunds"]) && !empty($_POST["projectaccount"]) && !empty($_POST["projectstartdate"]) && !empty($_POST["projectenddate"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["array"]) && !empty($_POST["array"]))
 	{
-		//validate inputs
-		$projecttitle = validateInput($_POST["projecttitle"]);
-		$projectfunds = validateInput($_POST["projectfunds"]);
-		$projectstartdate = validateInput($_POST["projectstartdate"]);
-		$projectenddate = validateInput($_POST["projectenddate"]);
-		$projectaccount = validateInput($_POST["projectaccount"]);
-
-		//create new project
-		$project = new Project($projecttitle, $projectfunds, $projectstartdate, $projectenddate, $projectaccount);
-
-		//write project to DB
-		$project->writeDB();
+		foreach($_POST["array"] as $user)
+		{
+			//remove the project
+			removeUser($user["userid"]);
+		}
 	}
 ?>

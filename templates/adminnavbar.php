@@ -145,7 +145,7 @@
 					</a>
 					<ul class="children collapse in" aria-expanded="true" id="sub-item-3">
 						<li>
-							<a class="" href="#">
+							<a class="" href="adminuserstoevoegen.php">
 								<svg class="glyph stroked plus sign">
 									<use xlink:href="#stroked-plus-sign"/>
 								</svg>
@@ -153,7 +153,7 @@
 							</a>
 						</li>
 						<li>
-							<a class="" href="#">
+							<a class="" href="adminuserswijzigen.php">
 								<svg class="glyph stroked pencil">
 									<use xlink:href="#stroked-pencil"/>
 								</svg>
@@ -161,7 +161,7 @@
 							</a>
 						</li>
 						<li>
-							<a class="" href="#">
+							<a class="" href="adminusersverwijderen.php">
 								<svg class="glyph stroked trash">
 									<use xlink:href="#stroked-trash"/>
 								</svg>

@@ -32,9 +32,6 @@
 	<script src="js/Lumino/respond.min.js"></script>
 	<![endif]-->
 
-	<!-- AJAX to modify projects -->
-	<script src="js/adminModifyProject.js"></script>
-
 	</head>
 
 	<body>
@@ -84,7 +81,7 @@
 									<div class="form-group">
 										<label for="projectidentificatie">Id & Titel</label>
 										<br />
-										<select id="selectproject" name="projectidentificatie">
+										<select  class="form-control" id="selectproject" name="projectidentificatie">
 											<option value="Maak een keuze">Maak een keuze...</option>
 											<?php
 												$projects = getProjectsFromDB();
@@ -137,6 +134,8 @@
 
 	<script src="js/Lumino/bootstrap-datepicker.js"></script>
 	<script src="js/Lumino/bootstrap-table.js"></script>
+	<!-- AJAX to modify projects -->
+	<script src="js/adminModifyProject.js"></script>
 	<script>
 		!function ($) {
 			$(document).on("click","ul.nav li.parent > a > span.icon", function(){
