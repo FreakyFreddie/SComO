@@ -7,7 +7,7 @@ $(document).ready(function()
 		$request = $.ajax({
 			method:"POST",
 			url:"AJAX/processUpdateProductAmountRequest.php?r=" + new Date().getTime(),
-			data: {productid: $(this).attr("productid"), supplier: $(this).attr("supplier"), amount: $(this).val()}
+			data: {productid: $(this).data("productid"), supplier: $(this).data("supplier"), amount: $(this).val()}
 		});
 
 		$request.done(function()

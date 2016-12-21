@@ -117,25 +117,78 @@
 			//catch empty orders
 			if(isset($this->orderProducts))
 			{
-				echo '<div class ="row">
-							<div class="col-sm-2">
-								<strong>Interne bestelnummer</strong>
-								<p>'.$this->orderId.'</p>
-							</div>
-							<div class="col-sm-2">
-								<strong>Status</strong>
-								<p>'.$this->orderStatus.'</p>
-							</div>
-							<div class="col-sm-2">
-								<strong>Persoonlijk gebruik</strong>
-								<p>'. $this->orderPersonal .'</p>
-							</div>
-						</div>';
+				//make orderstatus understandable
+				switch($this->orderStatus)
+				{
+					case "0":
+						$orderstatus = "geweigerd";
+						break;
+
+					case "1":
+						$orderstatus = "pending";
+						break;
+
+					case "2":
+						$orderstatus = "goedgekeurd";
+						break;
+
+					case "3":
+						$orderstatus = "besteld";
+						break;
+
+					case "4":
+						$orderstatus = "aangekomen";
+						break;
+
+					case "5":
+						$orderstatus = "afgehaald";
+						break;
+				}
+
+				if($this->orderPersonal = 1)
+				{
+					$personal = " / persoonlijk";
+				}
+				else
+				{
+					$personal = "";
+				}
+				echo '<div class="panel-heading" data-bestelnummer="'.$this->orderId.'">
+							<strong>
+								Order #'.$this->orderId.' / '.$orderstatus.$personal.' / '.$this->orderCreationDate.'
+							</strong>
+						</div>
+						<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th data-field="naam">Naam</th>
+										<th data-field="leverancier">Leverancier</th>
+										<th data-field="id">ID</th>
+										<th data-field="fabrikant">fabrikant</th>
+										<th data-field="datasheet">datasheet</th>
+										<th data-field="afbeelding">afbeelding</th>
+										<th data-field="prijs">prijs</th>
+										<th data-field="hoeveelheid">hoeveelheid</th>
+									</tr>
+								</thead>
+								<tbody>
+						';
 
 				foreach($this->orderProducts as $orderproduct)
 				{
+					echo '<tr>';
+
 					$orderproduct->printOrderProduct();
+
+					echo '</tr>';
 				}
+
+				echo '			</tbody>
+							</table>
+						</div>
+					</div>';
 			}
 		}
 	}

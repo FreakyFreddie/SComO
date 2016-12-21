@@ -24,6 +24,11 @@
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 	{
 		$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
+
+		echo '<div class="panel panel-default">';
+
 		$shoppingCart->printFinalShoppingCart();
+
+		echo '</div>';
 	}
 ?>

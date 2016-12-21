@@ -7,7 +7,7 @@
 
 		//validate input for html injection & check vs REGEX, counter mysql injection
 		$userid = mysqli_real_escape_string($dal->getConn(), validateRNummer($userid));
-		$oldpassword = mysqli_real_escape_string($dal->getConn(), validateMail($oldpassword));
+		$oldpassword = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($oldpassword));
 		$password = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($password));
 
 		//test if user already exists with rnummer
@@ -34,3 +34,4 @@
 
 		$dal->closeConn();
 	}
+?>

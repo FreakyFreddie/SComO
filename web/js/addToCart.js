@@ -3,11 +3,13 @@ $(document).ready(function()
 	//when a product button is clicked, product id, supplier and amount are sent to the shopping cart
 	$(".productbutton").click(function()
 	{
+		var DOMobj = $(this).parent().prev();
+
 		//prepare request
 		$request = $.ajax({
 			method:"POST",
 			url:"AJAX/processAddToCartRequest.php?r=" + new Date().getTime(),
-			data: {productid: $(this).parent().prev("input").attr("productid"), supplier: $(this).parent().prev("input").attr("supplier"), amount: $(this).parent().prev("input").val()}
+			data: {productid: $(DOMobj).data("productid"), supplier: $(DOMobj).data("supplier"), amount: $(DOMobj).val()}
 		});
 
 		$request.done(function()

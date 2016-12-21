@@ -11,7 +11,7 @@
 	require '../templates/header.php';
 
 	//redirect if user is not logged in
-	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") != 2)
 	{
 		header("location: index.php");
 	}
@@ -72,12 +72,13 @@
 	</div><!--/.row-->
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">Alle bestellingen</div>
+			<div class="panel panel-default" id="finalorderlist">
+				<div class="panel-heading">Lopende definitieve bestellingen</div>
 				<div class="panel-body">
 					<table data-toggle="table" data-url="AJAX/adminDisplayExpectedOrdersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						<thead>
 						<tr>
+							<th data-field="selector" data-checkbox="true" >selector</th>
 							<th data-field="defbestelnummer" data-sortable="true">definitief bestelnr</th>
 							<th data-field="defbesteldatum"  data-sortable="true">datum plaatsing</th>
 							<th data-field="leverancier" data-sortable="true">leverancier</th>
@@ -93,6 +94,7 @@
 
 <script src="js/Lumino/bootstrap-datepicker.js"></script>
 <script src="js/Lumino/bootstrap-table.js"></script>
+<script src="js/adminOrderArrived.js"></script>
 <script>
 	!function ($) {
 		$(document).on("click","ul.nav li.parent > a > span.icon", function(){

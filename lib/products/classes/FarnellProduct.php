@@ -304,7 +304,7 @@
 			echo '</table>
 					<form class="input-group" action="#">
 						<label for="amountproduct" class="sr-only">Producthoeveelheid</label>
-						<input type="number" class="form-control" value="1" name="amountproduct" productid="'.$this->productId.'" supplier="'.$this->productSupplier.'" />
+						<input type="number" class="form-control" value="1" id="amountproduct" name="amountproduct" data-productid="'.$this->productId.'" data-supplier="'.$this->productSupplier.'" />
 						<span class="input-group-btn">
 							<button class="btn btn-secondary productbutton" type="button">
 								<span class="glyphicon glyphicon-plus"></span>

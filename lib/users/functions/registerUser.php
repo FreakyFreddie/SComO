@@ -8,7 +8,12 @@
 		$firstname = mysqli_real_escape_string($dal->getConn(), validateNaam($firstname));
 		$lastname = mysqli_real_escape_string($dal->getConn(), validateNaam($lastname));
 		$rnummer = mysqli_real_escape_string($dal->getConn(), validateRNummer($rnummer));
-		$mail = mysqli_real_escape_string($dal->getConn(), validateMail($email));
+
+		if(validateDomain($email) == TRUE)
+		{
+			$mail = mysqli_real_escape_string($dal->getConn(), $email);
+		}
+
 		$password = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($password));
 		$fullmail = $rnummer."@".$mail;
 

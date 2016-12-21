@@ -25,7 +25,7 @@
 	//$_GET["supplier"]="Farnell";
 
 	//redirect if user is not logged in as admin
-	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE && $_SESSION["user"]->__get("permissionLevel") != 2)
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") != 2)
 	{
 		header("location: ../index.php");
 	}

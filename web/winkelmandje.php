@@ -5,8 +5,8 @@
 	//include header
 	require '../templates/header.php';
 
-	//redirect if user is not logged in
-	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	//redirect if user is not logged in or account is not activated yet
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") == 0 OR $_SESSION["user"]->__get("permissionLevel") == 5)
 	{
 		header("location: index.php");
 	}
@@ -47,7 +47,12 @@
 		</noscript>
 		<?php
 			$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
+
+			echo '<div class="panel panel-default">';
+
 			$shoppingCart->printShoppingCart();
+
+			echo '</div>';
 		?>
 	</div>
 

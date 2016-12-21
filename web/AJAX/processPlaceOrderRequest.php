@@ -39,6 +39,9 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
 
+	//include input validation
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
+
 	session_start();
 
 	//check login condition and if the request contains all info
@@ -47,8 +50,12 @@
 		//shopping cart object including all articles $_SESSION["user"]->__get("userId")
 		$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
 
+		//input checks
+		$orderpersonal = validateInput($_POST["orderpersonal"]);
+		$project = validateInput($_POST["project"]);
+
 		//add products from cart to order, indicate if it's for personal use or not (admin can assign project if not personal)
-		$shoppingCart->addCartToOrders($_POST["orderpersonal"]);
+		$shoppingCart->addCartToOrders($orderpersonal, $project);
 
 		//empty cart
 		$shoppingCart->emptyCart();

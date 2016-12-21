@@ -6,7 +6,7 @@
 	require '../templates/header.php';
 	
 	//if user logs in on the registration page, he is redirected to index
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") OR $_SESSION["user"]->__get("permissionLevel") == 0 OR $_SESSION["user"]->__get("permissionLevel") == 5)
 	{
 		header("Location:index.php");
 	}

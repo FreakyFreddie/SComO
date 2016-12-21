@@ -14,6 +14,21 @@
 	//include Product class
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
+	//include project class
+	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
+
+	//include order class
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/Order.php';
+
+	//add PHPMailer mail functionality
+	require $GLOBALS['settings']->Folders['root'].'../lib/PHPMailer/PHPMailerAutoload.php';
+
+	//include function to remove projects
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/markOrderArrived.php';
+
+	//include project class
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
+
 	session_start();
 
 	//redirect if user is not logged in as admin
@@ -23,9 +38,12 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_SESSION["adminAddUsersToAssignRequest"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["array"]) && !empty($_POST["array"]))
 	{
-		//Lumino admin panel requires a JSON to process
-		echo json_encode($_SESSION["adminAddUsersToAssignRequest"]);
+		foreach($_POST["array"] as $order)
+		{
+			//remove the project
+			markOrderArrived($order["id"]);
+		}
 	}
 ?>

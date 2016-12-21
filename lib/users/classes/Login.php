@@ -60,9 +60,9 @@
 			//test if user exists with rnummer and wachtwoord
 			$sql = "SELECT rnummer, voornaam, achternaam, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer='".$rnummer."'";
 			$records = $this->dal->queryDB($sql);
-			
+
 			//if only 1 result AND hashed password matches password in db, fill in object attributes
-			if($this->dal->getNumResults() == 1 && password_verify($wachtwoord, $records[0]->wachtwoord));
+			if($this->dal->getNumResults() == 1 && (password_verify($wachtwoord, $records[0]->wachtwoord) == TRUE))
 			{
 				$this->userId = $records[0]->rnummer;
 				$this->firstName = $records[0]->voornaam;

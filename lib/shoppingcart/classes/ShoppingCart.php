@@ -39,44 +39,69 @@
 			//only print articles if there are articles in shopping cart
 			if(isset($this->shoppingCartArticles) && ($this->shoppingCartArticles[0]->__get("productId") !=""))
 			{
-				echo '<div class ="row">
-						<div class="col-sm-2">
-							<strong>Product</strong>
+				echo '<div class="panel-heading">
+							<strong>
+								Producten
+							</strong>
 						</div>
-						<div class="col-sm-2">
-							<strong>Leverancier</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>ID</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>Verkoper</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>Datasheet</strong>
-						</div>
-						<div class="col-sm-2">
-							<strong>Afbeelding</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>Prijs</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>Hoeveelheid</strong>
-						</div>
-					</div>';
+						<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th data-field="naam">Naam</th>
+										<th data-field="leverancier">Leverancier</th>
+										<th data-field="id">ID</th>
+										<th data-field="fabrikant">fabrikant</th>
+										<th data-field="datasheet">datasheet</th>
+										<th data-field="afbeelding">afbeelding</th>
+										<th data-field="prijs">prijs</th>
+										<th data-field="hoeveelheid">hoeveelheid</th>
+										<th data-field="delete">delete</th>
+									</tr>
+								</thead>
+								<tbody>';
 				//print every article in the shopping cart
 				foreach($this->shoppingCartArticles as $article)
 				{
+					echo '<tr>';
+
 					$article->printShoppingCartArticle();
+
+					echo '</tr>';
 				}
 
 				//print orderbutton
-				echo '<div class = "row">
-					<div class="col-sm-1">
-						<button type="button" id="orderproducts" class="btn btn-primary" value="orderproducts" name="orderproducts">Bestelling plaatsen</button>
+				echo '			</tbody>
+							</table>
+						</div>
+						<div class = "row">
+							<div class="col-sm-4">
+								<p>Deze bestelling is: </p>
+								<input checked="true" class="orderpersoonlijk" type="radio" name="orderpersoonlijk" value="persoonlijk" /> Persoonlijk
+								<input class="orderpersoonlijk" type="radio" name="orderpersoonlijk" value="project" /> Voor project
+							</div>
+							<div class="col-sm-4" id="projectlist">
+								<p>Indien voor project, selecteer welk: </p>
+								<select  class="form-control" id="selectproject" name="selectproject">';
+
+										$projects = $this->getProjectsForUser($_SESSION["user"]->__get("userId"));
+	
+										foreach($projects as $project)
+										{
+											echo '<option value="'.$project->idproject.' - '.$project->titel.'">'.$project->idproject.' - '.$project->titel.'</option>';
+										}
+
+								echo '</select>
+							</div>
+							<div class="col-sm-4">
+								<button type="button" id="orderproducts" class="btn btn-primary" value="orderproducts" name="orderproducts">Bestelling plaatsen</button>
+							</div>
+						</div>
 					</div>
-				</div>';
+				';
+
+
 			}
 			//else print message
 			else
@@ -90,32 +115,27 @@
 			//only print articles if there are articles in shopping cart
 			if(isset($this->shoppingCartArticles) && ($this->shoppingCartArticles[0]->__get("productId") !=""))
 			{
-				echo '<div class ="row">
-						<div class="col-sm-2">
-							<strong>Product</strong>
+				echo '<div class="panel-heading">
+							<strong>
+								Producten
+							</strong>
 						</div>
-						<div class="col-sm-2">
-							<strong>Leverancier</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>ID</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>Verkoper</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>Datasheet</strong>
-						</div>
-						<div class="col-sm-2">
-							<strong>Afbeelding</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>Prijs</strong>
-						</div>
-						<div class="col-sm-1">
-							<strong>Hoeveelheid</strong>
-						</div>
-					</div>';
+						<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th data-field="naam">Naam</th>
+										<th data-field="leverancier">Leverancier</th>
+										<th data-field="id">ID</th>
+										<th data-field="fabrikant">fabrikant</th>
+										<th data-field="datasheet">datasheet</th>
+										<th data-field="afbeelding">afbeelding</th>
+										<th data-field="prijs">prijs</th>
+										<th data-field="hoeveelheid">hoeveelheid</th>
+									</tr>
+								</thead>
+								<tbody>';
 				//print every article in the shopping cart
 				foreach($this->shoppingCartArticles as $article)
 				{
@@ -123,27 +143,51 @@
 				}
 
 				//print orderbutton
-				echo '<div class = "row">
-					<div class="col-sm-1">
-						<a href="./winkelmandje.php" class="btn btn-primary">Terug</a>
-					</div>
-					<div class="col-sm-1">
-						<button type="button" class="btn btn-primary" id="placeorder" value="placeorder" name="placeorder">Bestelling plaatsen</button>
+				echo '				</tbody>
+								</table>
+							</div>
+						<div class = "row">
+						<div class="col-sm-1">
+							<a href="./winkelmandje.php" class="btn btn-primary">Terug</a>
+						</div>
+						<div class="col-sm-1">
+							<button type="button" class="btn btn-primary" id="placeorder" value="placeorder" name="placeorder">Bestelling plaatsen</button>
+						</div>
 					</div>
 				</div>';
 			}
 			//else print message
 			else
 			{
-				echo "Er bevinden zich geen artikelen in uw winkelwagen";
+				echo '<div class="panel-heading">
+						Er bevinden zich geen artikelen in uw winkelwagen
+					</div>';
 			}
 		}
 
-		public function addCartToOrders($orderpersonal)
+		public function addCartToOrders($orderpersonal, $project)
 		{
-			//create a new order, indicate if it's personal or for a project
-			$order = new Order($this->userId, $orderpersonal);
-			$order->writeDB();
+			if($orderpersonal == "persoonlijk")
+			{
+				$orderpersonal = "1";
+
+				//create a new personal order
+				$order = new Order($this->userId, $orderpersonal);
+				$order->writeDB();
+			}
+			elseif($orderpersonal == "project")
+			{
+				echo "test";
+				$orderpersonal = "0";
+
+				//extract projectid
+				$project = explode(" - ", $project);
+				$projectid = $project[0];
+
+				//create a new project order
+				$order = new Order($this->userId, $orderpersonal, $projectid);
+				$order->writeDB();
+			}
 
 			foreach($this->shoppingCartArticles as $article)
 			{
@@ -161,4 +205,22 @@
 
 			$dal->closeConn();
 		}
+
+		//returns projectid & projectnaam of each project in DB
+		public function getProjectsForUser($userid)
+		{
+			$dal = new DAL();
+
+			//still to exclude old projects
+			$sql = "SELECT gebruikerproject.idproject as idproject, project.titel as titel FROM gebruikerproject
+				INNER JOIN project
+				ON gebruikerproject.idproject = project.idproject
+				WHERE gebruikerproject.rnummer='".$userid."'";
+			$records = $dal->queryDB($sql);
+
+			$dal->closeConn();
+
+			return $records;
+		}
 	}
+?>

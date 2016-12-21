@@ -6,7 +6,7 @@
 	require '../templates/header.php';
 
 	//redirect if user is not logged in
-	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") == 0 OR $_SESSION["user"]->__get("permissionLevel") == 5)
 	{
 		header("location: index.php");
 	}
@@ -17,8 +17,9 @@
 	//include Order
 	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/Order.php';
 
-	//include ShoppingCartArticle
+	//include function to get user orders
 	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/getOrdersForUser.php';
+
 ?>
 	</head>
 
@@ -46,12 +47,17 @@
 				<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
 			</div>
 		</noscript>
+
 		<?php
 			//array of user orders
 			$orders = getOrdersForUser($_SESSION["user"]->__get("userId"));
 			foreach($orders as $order)
 			{
+				echo '<div class="panel panel-default">';
+
 				$order->printOrder();
+
+				echo '</div>';
 			}
 		?>
 	</div>

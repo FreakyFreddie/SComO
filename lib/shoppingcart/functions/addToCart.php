@@ -20,6 +20,7 @@
 		//if user already has some of the product in his cart, we need to add the amount & update the record (also update price if necessary)
 		if($dal->getNumResults()==1)
 		{
+			/** @noinspection PhpWrongStringConcatenationInspection */
 			$productAmount = $productAmount + $records[0]->aantal;
 
 			//calculate price for amount of the product in the shopping cart

@@ -1,7 +1,24 @@
 $(document).ready(function()
 {
+	//display or hide the project list when a radio button is clicked
+	$("#projectlist").hide();
+	$(".orderpersoonlijk").change(function()
+	{
+		if($('.orderpersoonlijk:checked').val() == "persoonlijk")
+		{
+			$("#projectlist").hide();
+		}
+		if($('.orderpersoonlijk:checked').val() == "project")
+		{
+			$("#projectlist").show();
+		}
+	});
+
 	$("#orderproducts").click(function()
 	{
+		var orderpersoonlijk = $('.orderpersoonlijk:checked').val();
+		var project = $("#selectproject").val();
+
 		//prepare request
 		$request = $.ajax({
 			method:"POST",
@@ -19,7 +36,7 @@ $(document).ready(function()
 				$request = $.ajax({
 					method:"POST",
 					url:"AJAX/processPlaceOrderRequest.php?r=" + new Date().getTime(),
-					data: {orderpersonal: "0"}
+					data: {orderpersonal: orderpersoonlijk, project: project}
 				});
 
 				$request.done(function()

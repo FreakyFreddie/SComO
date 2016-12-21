@@ -78,7 +78,7 @@
 				//prevent HTML injection
 				$rnr = validateRNummer($_POST["rnr"]);
 				$pwd = validateWachtWoord($_POST["pwd"]);
-				
+
 				//Try logging in with Login object & add to session
 				$_SESSION["user"] = new Login($rnr, $pwd);
 			}

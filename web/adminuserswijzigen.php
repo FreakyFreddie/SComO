@@ -11,7 +11,7 @@
 	require '../templates/header.php';
 
 	//redirect if user is not logged in
-	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") != 2)
 	{
 		header("location: index.php");
 	}
@@ -82,9 +82,9 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="useridentificatie">Gebruiker</label>
+										<label for="selectuser">Gebruiker</label>
 										<br />
-										<select  class="form-control" id="selectuser" name="useridentificatie">
+										<select  class="form-control" id="selectuser" name="selectuser">
 											<option value="Maak een keuze">Maak een keuze...</option>
 											<?php
 												$dal = new DAL();

@@ -5,7 +5,8 @@
 		$dal = new DAL();
 
 		//select all orders of user
-		$sql = "SELECT * FROM bestelling WHERE rnummer='".$userid."'";
+		$sql = "SELECT * FROM bestelling WHERE rnummer='".$userid."'
+				ORDER BY bestelnummer";
 		$arrayorders = $dal->queryDB($sql);
 
 		//create new array for user's orders

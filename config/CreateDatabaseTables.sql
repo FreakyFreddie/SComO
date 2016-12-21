@@ -30,6 +30,14 @@ CREATE VIEW definitiefbesteldebestellingen AS
     ON definitiefbesteld.defbestelnummer = bestellingproduct.defbestelnummer
     WHERE bestellingproduct.leverancier = definitiefbesteld.leverancier
     GROUP BY bestellingproduct.bestelnummer;
+
+CREATE VIEW bestellingdefbestelling AS
+    SELECT bestellingproduct.bestelnummer, bestellingproduct.leverancier, bestellingproduct.defbestelnummer
+    FROM bestellingproduct
+    INNER JOIN bestelling
+    ON bestellingproduct.bestelnummer = bestelling.bestelnummer
+    WHERE bestelling.status = '2'
+    GROUP BY bestellingproduct.bestelnummer AND bestellingproduct.leverancier
 */
 
 /*Tabel gebruiker*/

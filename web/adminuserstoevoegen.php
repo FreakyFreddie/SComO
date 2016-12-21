@@ -11,7 +11,7 @@
 	require '../templates/header.php';
 
 	//redirect if user is not logged in
-	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") != 2)
 	{
 		header("location: index.php");
 	}
@@ -100,9 +100,9 @@
 										<label for="machtigingsniveau">Machtigingsniveau</label>
 										<select class="form-control" id="machtigingsniveau" name="machtigingsniveau">
 											<option value="non-actief">non-actief</option>
-											<option value="non-actief">user</option>
-											<option value="non-actief">admin</option>
-											<option value="non-actief">banned</option>
+											<option value="user">user</option>
+											<option value="admin">admin</option>
+											<option value="banned">banned</option>
 										</select>
 									</div>
 								</div>

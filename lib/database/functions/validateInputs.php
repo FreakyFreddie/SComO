@@ -70,15 +70,35 @@
 	function validateMail($data)
 	{
 		$data = validateInput($data);
-		
-		return $data;
+
+		//split data & test rnummer & domain
+		$splitdata= explode("@", $data);
+
+		//check if rnummer & maildomain are valid
+		if($splitdata[0]==validateRNummer($splitdata[0]) && validateDomain($splitdata[1]))
+		{
+			return $data;
+		}
+		else
+		{
+			echo "<p>Niet ondersteund emailadres.</p>";
+		}
 	}
 	
 	function validateWachtWoord($data)
 	{
 		$data = validateInput($data);
-		
-		return $data;
+
+		//password must contain at least 8 characters or numbers(a-z, A-Z, 0-9)
+		if(preg_match("/^[a-zA-Z0-9]{8,}$/", $data))
+		{
+			return $data;
+		}
+		else
+		{
+			echo "<p>Een wachtwoord moet bestaan uit ten minste 8 letters of cijfers</p>";
+			return FALSE;
+		}
 	}
 	
 ?>

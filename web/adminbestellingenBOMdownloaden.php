@@ -11,7 +11,7 @@
 	require '../templates/header.php';
 
 	//redirect if user is not logged in
-	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") != 2)
 	{
 		header("location: index.php");
 	}
@@ -125,7 +125,7 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-12">
-								<input type="button" class="btn btn-primary" id="addfarnellordernumber" value="Voeg toe"></input>
+								<input type="button" class="btn btn-primary" id="addfarnellordernumber" value="Voeg toe" />
 							</div>
 						</div>
 					</form>
@@ -148,7 +148,7 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-12">
-								<input type="button" class="btn btn-primary" id="addmouserordernumber" value="Voeg toe"></input>
+								<input type="button" class="btn btn-primary" id="addmouserordernumber" value="Voeg toe" />
 							</div>
 						</div>
 					</form>
