@@ -139,7 +139,11 @@
 				//print every article in the shopping cart
 				foreach($this->shoppingCartArticles as $article)
 				{
+					echo '<tr>';
+
 					$article->printFinalShoppingCartArticle();
+
+					echo '</tr>';
 				}
 
 				//print orderbutton

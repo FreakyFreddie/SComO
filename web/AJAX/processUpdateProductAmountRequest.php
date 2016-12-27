@@ -13,6 +13,12 @@
 
 	session_start();
 
+	//redirect if user is not logged in
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") == 0 OR $_SESSION["user"]->__get("permissionLevel") == 5)
+	{
+		header("location: index.php");
+	}
+
 	//check login condition and if the request contains all info
 	//price should update as well, but this is only needed in the final order confirmation (avoiding the overhead)
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["productid"]) && isset($_POST["supplier"]) && isset($_POST["amount"]))

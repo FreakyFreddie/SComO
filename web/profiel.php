@@ -32,23 +32,6 @@
 	<p>
 		Gegevens.
 	</p>
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
-		<div class="form-group input-group searchbar">
-			<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct"
-				<?php
-					if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "")
-					{
-						echo 'value="'.$_GET['searchproduct'].'"';
-					}
-				?>
-			>
-			<span class="input-group-btn">
-				<button class="btn btn-secondary" type="submit">
-					<span class="glyphicon glyphicon-search"></span>
-				</button>
-			</span>
-		</div>
-	</form>
 </div>
 <div class="container workspace">
 	<noscript>

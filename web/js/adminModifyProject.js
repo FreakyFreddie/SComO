@@ -63,6 +63,15 @@ $(document).ready(function()
 					enddate: enddate
 				}
 			});
+
+			$request.done(function()
+			{
+				//display message when project is successfully added
+				$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Succes</strong> Het project is gewijzigd.</div>').insertBefore($("footer")).fadeOut(2000, function()
+				{
+					$(this).remove();
+				});
+			});
 		}
 	});
 });

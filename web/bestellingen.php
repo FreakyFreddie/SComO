@@ -21,6 +21,9 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/getOrdersForUser.php';
 
 ?>
+	<!-- AJAX to sort orders -->
+	<script src="js/sortOrders.js"></script>
+
 	</head>
 
 	<body>
@@ -40,6 +43,33 @@
 			Bestelgeschiedenis.
 		</p>
 	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>
+					Sorteer bestellingen op:
+				</strong>
+			</div>
+			<div class="panel-body">
+				<form>
+					<div class="form-group">
+						<div class="col-lg-12">
+							<label for="sorteeropbestelnummer" class="sr-only"></label>
+							<input type="button" class="btn btn-default order-by" value="Bestelnummer" name="sorteeropbestelnummer" data-sequence="DESC" />
+							/
+							<label for="sorteeropstatus" class="sr-only"></label>
+							<input type="button" class="btn btn-default order-by" value="Status" name="sorteeropstatus" data-sequence="ASC" />
+							/
+							<label for="sorteeroppersoonlijk" class="sr-only"></label>
+							<input type="button" class="btn btn-default order-by" value="Persoonlijk/Project" name="sorteeroppersoonlijk" data-sequence="ASC" />
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<div class="container workspace">
 		<noscript>
 			<div class="alert alert-warning alert-dismissible">
@@ -50,7 +80,7 @@
 
 		<?php
 			//array of user orders
-			$orders = getOrdersForUser($_SESSION["user"]->__get("userId"));
+			$orders = getOrdersForUser($_SESSION["user"]->__get("userId"), "bestelnummer", "ASC");
 			foreach($orders as $order)
 			{
 				echo '<div class="panel panel-default">';

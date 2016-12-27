@@ -79,6 +79,15 @@ $(document).ready(function()
 					machtigingsniveau: machtigingsniveau
 				}
 			});
+
+			$request.done(function()
+			{
+				//display message when project is successfully added
+				$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Succes</strong> De gebruiker is gewijzigd.</div>').insertBefore($("footer")).fadeOut(2000, function()
+				{
+					$(this).remove();
+				});
+			});
 		}
 	});
 });

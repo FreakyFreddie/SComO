@@ -145,13 +145,22 @@
 						break;
 				}
 
-				if($this->orderPersonal = 1)
+				if($this->orderPersonal == 1)
 				{
 					$personal = " / persoonlijk";
 				}
-				else
+				elseif($this->orderPersonal == 0)
 				{
-					$personal = "";
+					$dal = new DAL();
+
+					//prevent SQL injection
+					$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->projectId);
+
+					//select title of the project
+					$sql = "SELECT titel FROM project WHERE idproject='".$this->projectId."'";
+					$records = $dal->queryDB($sql);
+
+					$personal = " / ".$records[0]->titel;
 				}
 				echo '<div class="panel-heading" data-bestelnummer="'.$this->orderId.'">
 							<strong>

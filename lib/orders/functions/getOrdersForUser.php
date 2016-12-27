@@ -1,12 +1,17 @@
 <?php
 	//returns all orders of a user with the products the order contains
-	function getOrdersForUser($userid)
+	function getOrdersForUser($userid, $sort, $sequence)
 	{
 		$dal = new DAL();
 
+		//prevent SQL injection
+		$userid= mysqli_real_escape_string($dal->getConn(), $userid);
+		$sort= mysqli_real_escape_string($dal->getConn(), $sort);
+		$sequence= mysqli_real_escape_string($dal->getConn(), $sequence);
+
 		//select all orders of user
 		$sql = "SELECT * FROM bestelling WHERE rnummer='".$userid."'
-				ORDER BY bestelnummer";
+				ORDER BY ".$sort." ".$sequence."";
 		$arrayorders = $dal->queryDB($sql);
 
 		//create new array for user's orders
