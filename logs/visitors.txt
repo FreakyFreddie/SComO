@@ -2232,3 +2232,4 @@
 ::1|2016-12-27 13:56:25|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/SCOMO/web/bestellingen.php|r0303063
 ::1|2016-12-27 13:56:44|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/SCOMO/web/adminpanel.php|r0303063
 ::1|2016-12-27 13:56:50|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/SCOMO/web/adminbestellingenBOMdownloaden.php|r0303063
+::1|2016-12-27 14:32:10|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0|vmware-localhost|http://localhost/SCOMO/web/adminbestellingenBOMdownloaden.php|r0303063
