@@ -35,7 +35,8 @@
 				FROM definitiefbesteldebestellingen
 				INNER JOIN bestelling
 				ON definitiefbesteldebestellingen.bestelnummer = bestelling.bestelnummer
-				WHERE bestelling.status = '3'";
+				WHERE bestelling.status = '3'
+				GROUP BY definitiefbesteldebestellingen.defbestelnummer";
 		$records = $dal->queryDB($sql);
 
 		//Lumino admin panel requires a JSON to process

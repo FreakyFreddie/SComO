@@ -32,6 +32,7 @@
 						<?php
 							if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
 							{
+								//validate
 								echo 'value="'.$_GET['searchproduct'].'"';
 							}
 						?>

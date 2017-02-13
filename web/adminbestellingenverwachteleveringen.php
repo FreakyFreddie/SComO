@@ -77,13 +77,13 @@
 				<div class="panel-body">
 					<table data-toggle="table" data-url="AJAX/adminDisplayExpectedOrdersRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						<thead>
-						<tr>
-							<th data-field="selector" data-checkbox="true" >selector</th>
-							<th data-field="defbestelnummer" data-sortable="true">definitief bestelnr</th>
-							<th data-field="defbesteldatum"  data-sortable="true">datum plaatsing</th>
-							<th data-field="leverancier" data-sortable="true">leverancier</th>
-							<th data-field="totaalkost" data-sortable="true">totaalkost</th>
-						</tr>
+							<tr>
+								<th data-field="selector" data-checkbox="true" >selector</th>
+								<th data-field="defbestelnummer" data-sortable="true">definitief bestelnr</th>
+								<th data-field="defbesteldatum"  data-sortable="true">datum plaatsing</th>
+								<th data-field="leverancier" data-sortable="true">leverancier</th>
+								<th data-field="totaalkost" data-sortable="true">totaalkost</th>
+							</tr>
 						</thead>
 					</table>
 				</div>
