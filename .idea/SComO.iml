@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/config" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/templates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/database" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/database/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/database/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/products" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/products/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/products/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/css" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/fonts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/img" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/js" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/shoppingcart" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/shoppingcart/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/shoppingcart/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/users" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/users/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/users/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/orders/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/orders/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/orders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/AJAX" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/project/functions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/project/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/project" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/logs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/css/Lumino" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/js/Lumino" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/docs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/extras" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/language" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/images" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/styles" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery" level="application" />
+  </component>
+</module>
