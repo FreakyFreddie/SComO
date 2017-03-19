@@ -171,31 +171,47 @@
 
 		public function addCartToOrders($orderpersonal, $project)
 		{
-			if($orderpersonal == "persoonlijk")
-			{
-				$orderpersonal = "1";
+			//if farnell product in shopping cart --> create farnell order
 
-				//create a new personal order
-				$order = new Order($this->userId, $orderpersonal);
-				$order->writeDB();
-			}
-			elseif($orderpersonal == "project")
-			{
-				echo "test";
-				$orderpersonal = "0";
-
-				//extract projectid
-				$project = explode(" - ", $project);
-				$projectid = $project[0];
-
-				//create a new project order
-				$order = new Order($this->userId, $orderpersonal, $projectid);
-				$order->writeDB();
-			}
+			$mousercount = 0;
+			$farnellcount = 0;
 
 			foreach($this->shoppingCartArticles as $article)
 			{
-				$article->addArticleToOrder($order);
+				if($article->__get("Supplier") == "Mouser")
+				{
+					$mousercount ++;
+				}
+				if($article->__get("Supplier") == "Farnell")
+				{
+					$farnellcount++;
+				}
+			}
+
+			//if mouser product in shopping cart -->  create mouser order
+			if($mousercount > 0)
+			{
+				$mouserorder = $this->createOrder($orderpersonal, $project);
+
+				foreach($this->shoppingCartArticles as $article)
+				{
+					if($article->__get("Supplier") == "Mouser")
+					{
+						$article->addArticleToOrder($mouserorder);
+					}
+				}
+			}
+			if($farnellcount > 0)
+			{
+				$farnellorder = $this->createOrder($orderpersonal, $project);
+
+				foreach($this->shoppingCartArticles as $article)
+				{
+					if($article->__get("Supplier") == "Farnell")
+					{
+						$article->addArticleToOrder($farnellorder);
+					}
+				}
 			}
 		}
 
@@ -225,6 +241,32 @@
 			$dal->closeConn();
 
 			return $records;
+		}
+
+		private function createOrder($orderpersonal, $project)
+		{
+			if($orderpersonal == "persoonlijk")
+			{
+				$orderpersonal = "1";
+
+				//create a new personal order
+				$order = new Order($this->userId, $orderpersonal);
+				$order->writeDB();
+			}
+			elseif($orderpersonal == "project")
+			{
+				$orderpersonal = "0";
+
+				//extract projectid
+				$project = explode(" - ", $project);
+				$projectid = $project[0];
+
+				//create a new project order
+				$order = new Order($this->userId, $orderpersonal, $projectid);
+				$order->writeDB();
+			}
+
+			return $order;
 		}
 	}
 ?>
