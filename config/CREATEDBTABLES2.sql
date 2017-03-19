@@ -1,18 +1,10 @@
-/*
 DROP TABLE IF EXISTS webstoredb.gebruiker;
-
 DROP TABLE IF EXISTS webstoredb.project;
-
 DROP TABLE IF EXISTS webstoredb.gebruikerproject;
-
 DROP TABLE IF EXISTS webstoredb.bestelling;
-
 DROP TABLE IF EXISTS webstoredb.product;
-
 DROP TABLE IF EXISTS webstoredb.bestellingproduct ;
-
 DROP TABLE IF EXISTS webstoredb.definitiefbesteld;
-*/
 
 /*Tabel gebruiker*/
 CREATE TABLE IF NOT EXISTS webstoredb.gebruiker
@@ -44,6 +36,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.gebruikerproject
 (
   rnummer VARCHAR(8) NOT NULL,
   idproject VARCHAR(25) NOT NULL,
+  is_beheerder INT NOT NULL,
   FOREIGN KEY (rnummer)
 	REFERENCES gebruiker (rnummer),
   FOREIGN KEY (idproject)
@@ -59,11 +52,14 @@ CREATE TABLE IF NOT EXISTS webstoredb.bestelling
   idproject VARCHAR(25),
   rnummer VARCHAR(8) NOT NULL,
   persoonlijk INT NOT NULL,
+  defbestelnummer VARCHAR(25) NOT NULL,
   PRIMARY KEY (bestelnummer),
   FOREIGN KEY (idproject)
 	REFERENCES project (idproject),
   FOREIGN KEY (rnummer)
-	REFERENCES gebruiker (rnummer)
+	REFERENCES gebruiker (rnummer),
+	FOREIGN KEY (defbestelnummer)
+	REFERENCES definitiefbesteld (defbestelnummer)
 );
 
 /*Tabel product*/
@@ -92,9 +88,9 @@ CREATE TABLE IF NOT EXISTS webstoredb.winkelwagen
 CREATE TABLE webstoredb.definitiefbesteld
 (
   defbestelnummer VARCHAR(25) NOT NULL,
-  leverancier VARCHAR(25) NOT NULL,
   defbesteldatum DATE NOT NULL,
-  PRIMARY KEY (defbestelnummer,leverancier));
+  PRIMARY KEY (defbestelnummer)
+);
 
 /*Relatie bestelling bevat producten*/
 CREATE TABLE IF NOT EXISTS webstoredb.bestellingproduct
@@ -105,11 +101,8 @@ CREATE TABLE IF NOT EXISTS webstoredb.bestellingproduct
   aantal INT NOT NULL,
   prijs DECIMAL(10,2) NOT NULL,
   verzamelnaam VARCHAR(25),
-  defbestelnummer VARCHAR(25),
   FOREIGN KEY (bestelnummer)
 	REFERENCES bestelling (bestelnummer),
   FOREIGN KEY (idproduct,leverancier)
 	REFERENCES product (idproduct,leverancier),
-  FOREIGN KEY (defbestelnummer)
-	REFERENCES definitiefbesteld (defbestelnummer)
 );
