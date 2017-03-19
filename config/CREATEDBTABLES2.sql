@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.bestelling
   idproject VARCHAR(25),
   rnummer VARCHAR(8) NOT NULL,
   persoonlijk INT NOT NULL,
-  defbestelnummer VARCHAR(25) NOT NULL,
+  defbestelnummer VARCHAR(25),
   PRIMARY KEY (bestelnummer),
   FOREIGN KEY (idproject)
 	REFERENCES project (idproject),
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.winkelwagen
 );
 
 /*Tabel definitief besteld*/
-CREATE TABLE webstoredb.definitiefbesteld
+CREATE TABLE IF NOT EXISTS webstoredb.definitiefbesteld
 (
   defbestelnummer VARCHAR(25) NOT NULL,
   defbesteldatum DATE NOT NULL,
