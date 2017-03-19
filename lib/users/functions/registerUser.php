@@ -68,7 +68,7 @@
 			$mail->Body = '<html><p>Klik op onderstaande link om je account te activeren</p><br /><a href="http://' . $GLOBALS["settings"]->Domain["domain"] . '/activate.php?key='.$generatedkey.'">http://'.$GLOBALS["settings"]->Domain["domain"] . '/activate.php?key='.$generatedkey.'</a></html>';
 
 			if (!$mail->send()) {
-				echo "<p>Fout bij het aanmaken van de gebruiker. Probeer opnieuw.</p>";
+				echo "<p>Activatiemail kon niet verzonden worden.</p>";
 			} else {
 				echo '<div class="row">
 					<p>mail verzonden naar ' . $fullmail . '</p>

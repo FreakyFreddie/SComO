@@ -2437,3 +2437,4 @@
 ::1|2017-3-19 15:08:26|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0|vmware-localhost|http://localhost/SComO/web/winkelmandje.php|r0303063
 ::1|2017-3-19 15:08:28|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0|vmware-localhost|http://localhost/SComO/web/winkelmandje.php|r0303063
 ::1|2017-3-19 15:08:46|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0|vmware-localhost|http://localhost/SComO/web/bestellingen.php|r0303063
+::1|2017-3-19 15:17:52|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0|vmware-localhost|http://localhost/SComO/web/adminpanel.php|r0303063
