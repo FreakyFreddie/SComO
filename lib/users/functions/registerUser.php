@@ -38,13 +38,6 @@
 				$dal->queryDB($sql);
 			} while ($dal->getNumResults() != 0);
 
-			//write to DB use date("j-n-Y H:i:s") for date
-			$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES ('" . $rnummer . "', '" . $firstname . "', '" . $lastname . "', '" . $fullmail . "', '" . $password . "', '0', '" . date("Y-n-j H:i:s") . "', '" . $generatedkey . "')";
-			$dal->writeDB($sql);
-
-			//"user created" message
-			echo "Gebruiker aangemaakt";
-
 			$mail = new PHPMailer;
 
 			//$mail->SMTPDebug = 3;
@@ -67,15 +60,27 @@
 			$mail->Subject = "Activeer uw " . $GLOBALS['settings']->Store['storeabbrev'] . " account";
 			$mail->Body = '<html><p>Klik op onderstaande link om je account te activeren</p><br /><a href="http://' . $GLOBALS["settings"]->Domain["domain"] . '/activate.php?key='.$generatedkey.'">http://'.$GLOBALS["settings"]->Domain["domain"] . '/activate.php?key='.$generatedkey.'</a></html>';
 
+			/*
+			//debug
 			if (!$mail->send()) {
-				echo "<p>Activatiemail kon niet verzonden worden.</p>";
+				echo "<p>Fout bij het versturen van de mail. Probeer opnieuw.</p>";
 			} else {
 				echo '<div class="row">
 					<p>mail verzonden naar ' . $fullmail . '</p>
 				</div>';
 			}
+			*/
+
+			//write to DB use date("j-n-Y H:i:s") for date
+			$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES ('" . $rnummer . "', '" . $firstname . "', '" . $lastname . "', '" . $fullmail . "', '" . $password . "', '0', '" . date("Y-n-j H:i:s") . "', '" . $generatedkey . "')";
+			$dal->writeDB($sql);
 		}
+
+		//"user created" message
+		echo "<p>Gebruiker aangemaakt indien deze nog niet bestond.</p>
+			<p>Er is een activatiecode verzonden naar $fullmail.</p>";
+
 		$dal->closeConn();
 	}
-	
+
 ?>
