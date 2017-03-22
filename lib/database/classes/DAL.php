@@ -47,10 +47,10 @@
 			//echo $sql;
 			$result = mysqli_query($this->conn, $sql)
 			or die("Er is een fout opgetreden bij het uitvoeren van de query");
-			
+
 			//number of results
 			$this->numResults = mysqli_num_rows($result);
-			
+			var_dump($this->numResults);
 			$records = array();
 			
 			while ($row = mysqli_fetch_object($result))

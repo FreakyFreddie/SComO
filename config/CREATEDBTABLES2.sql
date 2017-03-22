@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.gebruiker
   voornaam CHAR(45) NOT NULL,
   achternaam CHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
-  wachtwoord VARCHAR(45) NOT NULL,
+  wachtwoord VARCHAR(100) NOT NULL,
   machtigingsniveau INT NOT NULL,
   aanmaakdatum DATE NOT NULL,
   activatiesleutel VARCHAR(32),
