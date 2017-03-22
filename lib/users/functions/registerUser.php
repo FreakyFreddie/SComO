@@ -58,29 +58,26 @@
 			$mail->isHTML(TRUE);
 
 			$mail->Subject = "Activeer uw " . $GLOBALS['settings']->Store['storeabbrev'] . " account";
-			$mail->Body = '<html><p>Klik op onderstaande link om je account te activeren</p><br /><a href="http://' . $GLOBALS["settings"]->Domain["domain"] . '/activate.php?key='.$generatedkey.'">http://'.$GLOBALS["settings"]->Domain["domain"] . '/activate.php?key='.$generatedkey.'</a></html>';
+			$mail->Body = '<html><p>Klik op onderstaande link om je account te activeren</p><br /><a href="https://' . $GLOBALS["settings"]->Domain["domain"] . '/activate.php?key='.$generatedkey.'">https://'.$GLOBALS["settings"]->Domain["domain"] . '/activate.php?key='.$generatedkey.'</a></html>';
 
-			/*
-			//debug
-			if (!$mail->send()) {
-				echo "<p>Fout bij het versturen van de mail. Probeer opnieuw.</p>";
-			} else {
-				echo '<div class="row">
-					<p>mail verzonden naar ' . $fullmail . '</p>
-				</div>';
+			if(!$mail->send())
+			{
+				echo '<p>Gebruiker kon niet worden aangemaakt</p>';
+
+				//Debug
+				//echo 'Mailer Error: ' . $mail->ErrorInfo;
 			}
-			*/
+			else
+			{
+				//write to DB use date("j-n-Y H:i:s") for date
+				$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES ('" . $rnummer . "', '" . $firstname . "', '" . $lastname . "', '" . $fullmail . "', '" . $password . "', '0', '" . date("Y-n-j H:i:s") . "', '" . $generatedkey . "')";
+				$dal->writeDB($sql);
 
-			//write to DB use date("j-n-Y H:i:s") for date
-			$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES ('" . $rnummer . "', '" . $firstname . "', '" . $lastname . "', '" . $fullmail . "', '" . $password . "', '0', '" . date("Y-n-j H:i:s") . "', '" . $generatedkey . "')";
-			$dal->writeDB($sql);
+				echo '<p>Gebruiker aangemaakt.</p>
+				<p>Er is een activatiecode verzonden naar '.$fullmail.'.</p>';
+			}
 		}
-
-		//"user created" message
-		echo "<p>Gebruiker aangemaakt indien deze nog niet bestond.</p>
-			<p>Er is een activatiecode verzonden naar $fullmail.</p>";
 
 		$dal->closeConn();
 	}
-
 ?>
