@@ -57,9 +57,21 @@
 		
 		private function validateCredentials($rnummer, $wachtwoord)
 		{
-			//test if user exists with rnummer and wachtwoord
-			$sql = "SELECT rnummer, voornaam, achternaam, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer='".$rnummer."'";
-			$records = $this->dal->queryDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $rnummer;
+
+			//prepare statement
+			$this->dal->setStatement("SELECT rnummer, voornaam, achternaam, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer=?");
+
+
+
+			$records = $this->dal->queryDB($parameters);
 
 			//if only 1 result AND hashed password matches password in db, fill in object attributes
 			if($this->dal->getNumResults() == 1 && (password_verify($wachtwoord, $records[0]->wachtwoord) == TRUE))

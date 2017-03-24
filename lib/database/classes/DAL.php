@@ -5,6 +5,7 @@
 		private $DBSettings;
 		private $conn;
 		private $numResults;
+		private $statement;
 		
 		//pass root
 		public function __construct()
@@ -40,25 +41,64 @@
 			mysqli_select_db($this->conn, $this->DBSettings->Database['dbname'])
 			or die("databank ".$this->DBSettings->Database['dbname']." niet beschikbaar");
 		}
+
+		public function setStatement($statement)
+		{
+			$this->statement = $statement;
+		}
 			
 		//request information, get records
-		public function queryDB($sql)
+		public function queryDB($parameters)
 		{
-			//echo $sql;
-			$result = mysqli_query($this->conn, $sql)
-			or die("Er is een fout opgetreden bij het uitvoeren van de query");
-
-			//number of results
-			$this->numResults = mysqli_num_rows($result);
-			var_dump($this->numResults);
-			$records = array();
-			
-			while ($row = mysqli_fetch_object($result))
+			if(!isset($this->statement))
 			{
-				$records[] = $row;
-			};
-			
-			return $records;
+				//debug
+				echo "statement not set";
+			}
+			else
+			{
+				//prepare and bind
+				$stmt = $this->conn->prepare($this->statement) OR die("ERROR: Statement not valid.");
+
+				//allows us to bind a variable amount of parameters
+				//remember: first parameter is always a string of parameter types
+				call_user_func_array(array($stmt, 'bind_param'), $this->refValues($parameters));
+
+				//execute the statement with the passed parameters
+				$result = $stmt->execute() or die("Er is een fout opgetreden bij het uitvoeren van de query");
+
+				//fetch result
+				$result = $stmt->get_result();
+
+				//number of results
+				$this->numResults = mysqli_num_rows($result);
+
+				$records = array();
+
+				while ($row = mysqli_fetch_object($result))
+				{
+					$records[] = $row;
+				};
+
+				$stmt->close();
+
+				return $records;
+			}
+		}
+
+		//bind_params needs references in php 5.3+
+		private function refValues($arr){
+			if (strnatcmp(phpversion(),'5.3') >= 0) //Reference is required for PHP 5.3+
+			{
+				$refs = array();
+				foreach($arr as $key => $value)
+				{
+					$refs[$key] = &$arr[$key];
+				}
+
+				return $refs;
+			}
+			return $arr;
 		}
 		
 		//Use to write something to DB

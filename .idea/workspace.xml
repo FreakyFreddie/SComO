@@ -81,10 +81,10 @@
       <file leaf-file-name="Login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/users/classes/Login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+            <state relative-caret-position="212">
+              <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
               <folding>
-                <marker date="1487002878976" expanded="true" signature="1235:1346" ph="SELECT rnumm... gebruiker" />
+                <marker date="1490375342127" expanded="true" signature="1408:1506" ph="SELECT rnumm... gebruiker" />
               </folding>
             </state>
           </provider>
@@ -100,31 +100,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DAL.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DAL.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/database/classes/DAL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+            <state relative-caret-position="410">
+              <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="101" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CREATEDBTABLES2.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="winkelmandje.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/winkelmandje.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-206">
+              <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CREATEDBTABLES2.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/CREATEDBTABLES2.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
               <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adminuserstoevoegen.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/adminuserstoevoegen.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -174,7 +174,6 @@
         <option value="$PROJECT_DIR$/web/winkelmandje.php" />
         <option value="$PROJECT_DIR$/lib/users/functions/changePassWord.php" />
         <option value="$PROJECT_DIR$/lib/database/functions/validateInputs.php" />
-        <option value="$PROJECT_DIR$/lib/users/classes/Login.php" />
         <option value="$PROJECT_DIR$/web/adminuserstoevoegen.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectsRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminRemoveUsersRequest.php" />
@@ -209,8 +208,9 @@
         <option value="$PROJECT_DIR$/lib/orders/classes/Order.php" />
         <option value="$PROJECT_DIR$/lib/shoppingcart/classes/ShoppingCart.php" />
         <option value="$PROJECT_DIR$/lib/users/functions/registerUser.php" />
-        <option value="$PROJECT_DIR$/lib/database/classes/DAL.php" />
         <option value="$PROJECT_DIR$/config/CREATEDBTABLES2.sql" />
+        <option value="$PROJECT_DIR$/lib/users/classes/Login.php" />
+        <option value="$PROJECT_DIR$/lib/database/classes/DAL.php" />
       </list>
     </option>
   </component>
@@ -274,6 +274,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -667,7 +668,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -837,12 +837,15 @@
       <workItem from="1489940555243" duration="1328000" />
       <workItem from="1490133533773" duration="1342000" />
       <workItem from="1490187764961" duration="4792000" />
-      <workItem from="1490211216749" duration="1188000" />
+      <workItem from="1490211216749" duration="1786000" />
+      <workItem from="1490295765801" duration="17000" />
+      <workItem from="1490302020258" duration="233000" />
+      <workItem from="1490360550348" duration="6544000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="458912000" />
+    <option name="totallyTimeSpent" value="466304000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1133,13 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/winkelmandje.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/showFinalCart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
@@ -1288,16 +1284,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/users/classes/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-          <folding>
-            <marker date="1487002878976" expanded="true" signature="1235:1346" ph="SELECT rnumm... gebruiker" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1314,18 +1300,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/database/classes/DAL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/CREATEDBTABLES2.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/winkelmandje.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-206">
+          <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/users/classes/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+          <folding>
+            <marker date="1490375342127" expanded="true" signature="1408:1506" ph="SELECT rnumm... gebruiker" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/database/classes/DAL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="101" selection-end-column="9" />
           <folding />
         </state>
       </provider>
