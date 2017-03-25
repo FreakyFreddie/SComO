@@ -69,8 +69,6 @@
 			//prepare statement
 			$this->dal->setStatement("SELECT rnummer, voornaam, achternaam, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer=?");
 
-
-
 			$records = $this->dal->queryDB($parameters);
 
 			//if only 1 result AND hashed password matches password in db, fill in object attributes

@@ -26,14 +26,17 @@
 		//validate input
 		$finalordernumber = validateInput($_POST["finalordernumber"]);
 		$supplier = validateInput($_POST["supplier"]);
+
 		//prepare timestamp
 		date_default_timezone_set('Europe/Brussels');
 		$dal = new DAL();
+
 		//add final order number to database
 		$finalordernumber = mysqli_real_escape_string($dal->getConn(), $_POST["finalordernumber"]);
 		$supplier = mysqli_real_escape_string($dal->getConn(), $_POST["supplier"]);
 		$sql = "INSERT INTO definitiefbesteld (defbestelnummer, leverancier, defbesteldatum) VALUES ('" . $finalordernumber . "', '" . $supplier . "', '" . date("Y-n-j H:i:s") . "')";
 		$dal->writeDB($sql);
+
 		//update the definitief bestelnummer column
 		$sql = "UPDATE bestellingproduct
 				INNER JOIN bestelling
@@ -41,12 +44,14 @@
 				SET bestellingproduct.defbestelnummer = '".$finalordernumber."'	
 				WHERE bestelling.status = '2' AND bestellingproduct.leverancier = '".$supplier."';";
 		$dal->writeDB($sql);
+
 		//update status of approved orders to "ordered" = 3
 		$sql = "UPDATE bestelling
 				INNER JOIN bestellingproduct
 				ON bestellingproduct.bestelnummer = bestelling.bestelnummer
 				SET bestelling.status = '3'
 				WHERE bestelling.status = '2' AND bestellingproduct.leverancier = '".$supplier."';";
+
 		$dal->writeDB($sql);
 		$dal->closeConn();
 	}

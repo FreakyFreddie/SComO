@@ -16,17 +16,38 @@
 	{
 		$dal = new DAL();
 		$conn = $dal->getConn();
-		
+
 		$key = mysqli_real_escape_string($conn, $_GET["key"]);
-		
-		$sql = "SELECT machtigingsniveau FROM gebruiker WHERE activatiesleutel='".$key."'";
-		$records = $dal->queryDB($sql);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $key;
+
+		//prepare statement
+		$this->dal->setStatement("SELECT machtigingsniveau FROM gebruiker WHERE activatiesleutel=?");
+
+		$records = $this->dal->queryDB($parameters);
 		
 		if($dal->getNumResults()==1 && $records[0]->machtigingsniveau==0)
 		{
-			//update DB (still needs work)
-			$sql = "UPDATE gebruiker SET machtigingsniveau='1' WHERE activatiesleutel='".$key."'";
-			$dal->writeDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $key;
+
+			//prepare statement
+			$this->dal->setStatement("UPDATE gebruiker SET machtigingsniveau='1' WHERE activatiesleutel=?");
+
+			$this->dal->writeDB($parameters);
 
 			echo "Account geactiveerd.";
 		}

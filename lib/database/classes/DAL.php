@@ -46,8 +46,28 @@
 		{
 			$this->statement = $statement;
 		}
+
+		//request information, get records (without parameters)
+		public function queryDBNoArgs($sql)
+		{
+			//echo $sql;
+			$result = mysqli_query($this->conn, $sql)
+			or die("Er is een fout opgetreden bij het uitvoeren van de query");
+
+			//number of results
+			$this->numResults = mysqli_num_rows($result);
+
+			$records = array();
+
+			while ($row = mysqli_fetch_object($result))
+			{
+				$records[] = $row;
+			};
+
+			return $records;
+		}
 			
-		//request information, get records
+		//request information, get records (with parameters)
 		public function queryDB($parameters)
 		{
 			if(!isset($this->statement))
@@ -85,6 +105,67 @@
 				return $records;
 			}
 		}
+		
+		//Use to write something to DB
+		public function writeDB($parameters)
+		{
+			if(!isset($this->statement))
+			{
+				//debug
+				echo "statement not set";
+			}
+			else
+			{
+				//prepare and bind
+				$stmt = $this->conn->prepare($this->statement) OR die("ERROR: Statement not valid.");
+
+				//allows us to bind a variable amount of parameters
+				//remember: first parameter is always a string of parameter types
+				call_user_func_array(array($stmt, 'bind_param'), $this->refValues($parameters));
+
+				//execute the statement with the passed parameters
+				$stmt->execute() or die("Er is een fout opgetreden bij het uitvoeren van de query");
+
+				$stmt->close();
+			}
+		}
+
+		//returns one value: count, use for count queries
+		public function countDB($parameters)
+		{
+			if(!isset($this->statement))
+			{
+				//debug
+				echo "statement not set";
+			}
+			else
+			{
+				//prepare and bind
+				$stmt = $this->conn->prepare($this->statement) OR die("ERROR: Statement not valid.");
+
+				//allows us to bind a variable amount of parameters
+				//remember: first parameter is always a string of parameter types
+				call_user_func_array(array($stmt, 'bind_param'), $this->refValues($parameters));
+
+				//execute the statement with the passed parameters
+				$result = $stmt->execute() or die("Er is een fout opgetreden bij het uitvoeren van de query");
+
+				//fetch result
+				$result = $stmt->get_result();
+
+				$data=mysqli_fetch_assoc($result);
+
+				$stmt->close();
+
+				return $data["COUNT(*)"];
+			}
+			$result = mysqli_query($this->conn, $sql)
+			or die("Er is een fout opgetreden bij het uitvoeren van de query");
+
+			$data=mysqli_fetch_assoc($result);
+
+			return $data["COUNT(*)"];
+		}
 
 		//bind_params needs references in php 5.3+
 		private function refValues($arr){
@@ -99,26 +180,6 @@
 				return $refs;
 			}
 			return $arr;
-		}
-		
-		//Use to write something to DB
-		public function writeDB($sql)
-		{
-			//echo $sql;
-			mysqli_query($this->conn, $sql)
-			or die("Er is een fout opgetreden bij het uitvoeren van de query");
-		}
-
-		//returns one value: count, use for count queries
-		public function countDB($sql)
-		{
-			//echo $sql;
-			$result = mysqli_query($this->conn, $sql)
-			or die("Er is een fout opgetreden bij het uitvoeren van de query");
-
-			$data=mysqli_fetch_assoc($result);
-
-			return $data["COUNT(*)"];
 		}
 	}
 ?>

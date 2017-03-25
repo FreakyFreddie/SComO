@@ -90,7 +90,7 @@
 												$dal = new DAL();
 
 												$sql = "SELECT rnummer, voornaam, achternaam FROM gebruiker";
-												$records = $dal->queryDB($sql);
+												$records = $dal->queryDBNoArgs($sql);
 
 												foreach($records as $user)
 												{
