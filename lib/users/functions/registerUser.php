@@ -17,12 +17,20 @@
 		$password = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($password));
 		$fullmail = $rnummer."@".$mail;
 
-		//test if user already exists with rnummer
-		$sql = "SELECT rnummer FROM gebruiker WHERE rnummer='".$rnummer."'";
-		$dal->queryDB($sql);
+        $sql="SELECT * FROM gebruiker WHERE rnummer='".$rnummer."'";
+        $result= $dal->queryDB($sql);
+        $check = $result->fetch_assoc();
+        if(in_array($rnummer,$check)) {
+			echo("test completed");
+		}
 
-		//if user already exists, numrows >= 1, if not we can continue
-		if($dal->getNumResults()<1) {
+        //test if user already exists with rnummer
+        $sql = "SELECT rnummer FROM gebruiker WHERE rnummer='".$rnummer."'";
+        $dal->queryDB($sql);
+
+        //if user already exists, numrows >= 1, if not we can continue
+        if($dal->getNumResults()<1) {
+
 			//hash password (use PASSWORD_DEFAULT since php might update algorithms if they become stronger)
 			$password = password_hash($password, PASSWORD_DEFAULT);
 

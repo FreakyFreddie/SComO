@@ -31,6 +31,7 @@
 	function validateNaam($data)
 	{
 		$data = validateInput($data);
+        $data=filter_var($data, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 		
 		//Naam needs to be one or more words, sometimes separated by a - (ex. An-sophie)
 		if(preg_match("/^[a-zA-Z -]+$/", $data))
@@ -88,6 +89,7 @@
 	function validateWachtWoord($data)
 	{
 		$data = validateInput($data);
+        $data=filter_var($data, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 
 		//password must contain at least 8 characters or numbers(a-z, A-Z, 0-9)
 		if(preg_match("/^[a-zA-Z0-9]{8,}$/", $data))

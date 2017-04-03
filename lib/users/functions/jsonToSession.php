@@ -34,7 +34,11 @@
 			$keys[] = $key;
 		}
 
-		//check array for duplicates (sample is array of element attributes)
+        $_SESSION[$sessionarray] = array_unique($_SESSION[$sessionarray]);
+
+		//check array for duplicates and remove them
+
+		/*//check array for duplicates (sample is array of element attributes)
 		foreach($_SESSION[$sessionarray] as $index => $sample)
 		{
 			$match = 0;
@@ -83,7 +87,8 @@
 					}
 				}
 			}
-		}
+		} */
+
 	}
 ?>
 
