@@ -9,10 +9,22 @@
 		$sort= mysqli_real_escape_string($dal->getConn(), $sort);
 		$sequence= mysqli_real_escape_string($dal->getConn(), $sequence);
 
-		//select all orders of user
-		$sql = "SELECT * FROM bestelling WHERE rnummer='".$userid."'
-				ORDER BY ".$sort." ".$sequence."";
-		$arrayorders = $dal->queryDB($sql);
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "sss";
+		$parameters[1] = $userid;
+		$parameters[2] = $sort;
+		$parameters[3] = $sequence;
+
+		//prepare statement
+		$dal->setStatement("SELECT * FROM bestelling WHERE rnummer=? ORDER BY ? ?");
+		$arrayorders = $dal->queryDB($parameters);
+
+		$dal->closeConn();
 
 		//create new array for user's orders
 		$orders = array();

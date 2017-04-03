@@ -2,6 +2,7 @@
 	function markOrderArrived($finalorderid)
 	{
 		$dal = new DAL();
+		
 
 		//prevent sql injection
 		$finalorderid = mysqli_real_escape_string($dal->getConn(), $finalorderid);
