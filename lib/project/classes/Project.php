@@ -29,8 +29,23 @@
 			$this->projectEndDate = mysqli_real_escape_string($dal->getConn(), $this->projectEndDate);
 			$this->projectAccountNumber = mysqli_real_escape_string($dal->getConn(), $this->projectAccountNumber);
 
-			$sql = "INSERT INTO project (titel, budget, startdatum, vervaldatum, rekeningnr) VALUES ('" . $this->projectTitle . "', '" . $this->projectFunding . "', '" .$this->projectStartDate . "', '" . $this->projectEndDate . "', '" . $this->projectAccountNumber . "')";
-			$dal->writeDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "sdsss";
+			$parameters[1] = $this->projectTitle;
+			$parameters[2] = $this->projectFunding;
+			$parameters[3] = $this->projectStartDate;
+			$parameters[4] = $this->projectEndDate;
+			$parameters[5] = $this->projectAccountNumber;
+
+			//prepare statement
+			//create project in db
+			$dal->setStatement("INSERT INTO project (titel, budget, startdatum, vervaldatum, rekeningnr) VALUES (?, ?, ?, ?, ?)");
+			$dal->writeDB($parameters);
 
 			//close the connection
 			$dal->closeConn();
@@ -106,8 +121,19 @@
 			//database input, counter injection
 			$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->projectId);
 
-			$sql = "SELECT * FROM project WHERE idproject = '" .$this->projectId . "'";
-			$records = $dal->queryDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "i";
+			$parameters[1] = $this->projectId;
+
+			//prepare statement
+			//check if project already exists in db
+			$dal->setStatement("SELECT * FROM project WHERE idproject =?");
+			$records = $dal->queryDB($parameters);
 
 			//fill attributes if record is found
 			if($dal->getNumResults() == 1)
@@ -134,8 +160,24 @@
 			$this->projectEndDate = mysqli_real_escape_string($dal->getConn(), $this->projectEndDate);
 			$this->projectAccountNumber = mysqli_real_escape_string($dal->getConn(), $this->projectAccountNumber);
 
-			$sql = "UPDATE project SET titel='".$this->projectTitle."', budget='".$this->projectFunding."', rekeningnr='".$this->projectAccountNumber."', startdatum='".$this->projectStartDate."', vervaldatum='".$this->projectEndDate."' WHERE idproject='".$this->projectId."'";
-			$dal->writeDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "sdsssi";
+			$parameters[1] = $this->projectTitle;
+			$parameters[2] = $this->projectFunding;
+			$parameters[3] = $this->projectStartDate;
+			$parameters[4] = $this->projectEndDate;
+			$parameters[5] = $this->projectAccountNumber;
+			$parameters[6] = $this->projectId;
+
+			//prepare statement
+			//write project update to db
+			$dal->setStatement("UPDATE project SET titel=?, budget=?, startdatum=?, vervaldatum=?, rekeningnr=? WHERE idproject=?");
+			$dal->writeDB($parameters);
 
 			//close the connection
 			$dal->closeConn();
@@ -147,9 +189,19 @@
 
 			$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->projectId);
 
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "i";
+			$parameters[1] = $this->projectId;
+
+			//prepare statement
 			//delete project from DB
-			$sql = "DELETE FROM project WHERE idproject = '".$this->projectId."'";
-			$dal->writeDB($sql);
+			$dal->setStatement("DELETE FROM project WHERE idproject = ?");
+			$dal->writeDB($parameters);
 
 			//close the connection
 			$dal->closeConn();
@@ -161,10 +213,19 @@
 
 			$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->projectId);
 
-			//delete link to participants
-			$sql = "DELETE FROM gebruikerproject WHERE idproject = '".$this->projectId."'";
-			$dal->writeDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "i";
+			$parameters[1] = $this->projectId;
 
+			//prepare statement
+			//delete link between project & users from DB
+			$dal->setStatement("DELETE FROM gebruikerproject WHERE idproject = ?");
+			$dal->writeDB($parameters);
 
 			//close the connection
 			$dal->closeConn();

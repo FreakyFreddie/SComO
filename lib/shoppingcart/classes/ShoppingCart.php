@@ -23,9 +23,21 @@
 
 		private function getArticlesFromDB()
 		{
-			//select all products in shopping cart
-			$sql = "SELECT * FROM winkelwagen WHERE rnummer='".$this->userId."'";
-			$articles = $this->dal->queryDB($sql);
+			$this->userId = mysqli_real_escape_string($this->dal->getConn(), $this->userId);
+
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $this->userId;
+
+			//prepare statement
+			//fetch user shopping cart articles
+			$this->dal->setStatement("SELECT * FROM winkelwagen WHERE rnummer=?");
+			$articles = $this->dal->queryDB($parameters);
 
 			//create ShoppingCartArticle for each record & add to array
 			foreach($articles as $article)
@@ -218,7 +230,21 @@
 		//delete all products from the user's shopping cart
 		public function emptyCart()
 		{
-			$dal = new DAL();
+			$this->userId = mysqli_real_escape_string($this->dal->getConn(), $this->userId);
+
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $this->userId;
+
+			//prepare statement
+			//fetch user shopping cart articles
+			$this->dal->setStatement("SELECT * FROM winkelwagen WHERE rnummer=?");
+			$articles = $this->dal->queryDB($parameters);
 
 			$sql = "DELETE FROM winkelwagen WHERE rnummer='".$this->userId."'";
 			$dal->writeDB($sql);

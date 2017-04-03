@@ -50,7 +50,7 @@
 			//d = double
 			//b = blob
 			//s = string
-			$parameters[0] = "i";
+			$parameters[0] = "s";
 			$parameters[1] = $userid;
 
 			//get user email

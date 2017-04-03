@@ -5,7 +5,7 @@
 		$dal = new DAL();
 
 		$sql = "SELECT idproject, titel FROM project";
-		$records = $dal->queryDB($sql);
+		$records = $dal->queryDBNoArgs($sql);
 
 		$dal->closeConn();
 

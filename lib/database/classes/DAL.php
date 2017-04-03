@@ -131,34 +131,9 @@
 		}
 
 		//returns one value: count, use for count queries
-		public function countDB($parameters)
+		public function countDB($sql)
 		{
-			if(!isset($this->statement))
-			{
-				//debug
-				echo "statement not set";
-			}
-			else
-			{
-				//prepare and bind
-				$stmt = $this->conn->prepare($this->statement) OR die("ERROR: Statement not valid.");
-
-				//allows us to bind a variable amount of parameters
-				//remember: first parameter is always a string of parameter types
-				call_user_func_array(array($stmt, 'bind_param'), $this->refValues($parameters));
-
-				//execute the statement with the passed parameters
-				$result = $stmt->execute() or die("Er is een fout opgetreden bij het uitvoeren van de query");
-
-				//fetch result
-				$result = $stmt->get_result();
-
-				$data=mysqli_fetch_assoc($result);
-
-				$stmt->close();
-
-				return $data["COUNT(*)"];
-			}
+			//echo $sql;
 			$result = mysqli_query($this->conn, $sql)
 			or die("Er is een fout opgetreden bij het uitvoeren van de query");
 
