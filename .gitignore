@@ -1,0 +1,5 @@
+.idea/workspace.xml
+logs/visitors.txt
+config/config.ini
+config/dbconfig.ini
+config/CREATEDBTABLES2.sql

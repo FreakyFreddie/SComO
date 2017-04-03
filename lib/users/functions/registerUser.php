@@ -87,10 +87,10 @@
 
 			if(!$mail->send())
 			{
-				echo '<p>Gebruiker kon niet worden aangemaakt</p>';
+				echo '<p>Gebruiker kon niet worden aangemaakt.</p>';
 
 				//Debug
-				//echo 'Mailer Error: ' . $mail->ErrorInfo;
+				echo 'Mailer Error: ' . $mail->ErrorInfo;
 			}
 			else
 			{
