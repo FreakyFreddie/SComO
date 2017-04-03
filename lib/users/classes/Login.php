@@ -69,6 +69,7 @@
 			//prepare statement
 			$dal->setStatement("SELECT rnummer, voornaam, achternaam, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer=?");
 			$records = $dal->queryDB($parameters);
+			unset($parameters);
 
 			//if only 1 result AND hashed password matches password in db, fill in object attributes
 			if($dal->getNumResults() == 1 && (password_verify($wachtwoord, $records[0]->wachtwoord) == TRUE))

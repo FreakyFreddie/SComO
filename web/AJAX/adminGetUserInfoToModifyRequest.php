@@ -44,8 +44,19 @@
 		//database input, counter injection
 		$userid = mysqli_real_escape_string($dal->getConn(), $userid);
 
-		$sql = "SELECT * FROM gebruiker WHERE rnummer = '" .$userid . "'";
-		$records = $dal->queryDB($sql);
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $userid;
+
+		//prepare statement
+		$dal->setStatement("SELECT * FROM gebruiker WHERE rnummer =?");
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		$dal->closeConn();
 

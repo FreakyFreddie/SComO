@@ -29,9 +29,9 @@
 		$parameters[1] = $key;
 
 		//prepare statement
-		$this->dal->setStatement("SELECT machtigingsniveau FROM gebruiker WHERE activatiesleutel=?");
+		$dal->setStatement("SELECT machtigingsniveau FROM gebruiker WHERE activatiesleutel=?");
 
-		$records = $this->dal->queryDB($parameters);
+		$records = $dal->queryDB($parameters);
 		
 		if($dal->getNumResults()==1 && $records[0]->machtigingsniveau==0)
 		{
@@ -45,9 +45,9 @@
 			$parameters[1] = $key;
 
 			//prepare statement
-			$this->dal->setStatement("UPDATE gebruiker SET machtigingsniveau='1' WHERE activatiesleutel=?");
+			$dal->setStatement("UPDATE gebruiker SET machtigingsniveau='1' WHERE activatiesleutel=?");
 
-			$this->dal->writeDB($parameters);
+			$dal->writeDB($parameters);
 
 			echo "Account geactiveerd.";
 		}

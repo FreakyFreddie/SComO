@@ -77,10 +77,22 @@
 
 				//check if user already exists
 				$dal = new DAL();
-				$sql = "SELECT rnummer
+
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "s";
+				$parameters[1] = $userid;
+
+				//prepare statement
+				$dal->setStatement("SELECT rnummer
 					FROM gebruiker
-					WHERE rnummer = '".$userid."'";
-				$records = $dal->queryDB($sql);
+					WHERE rnummer = ?");
+				$records = $dal->queryDB($parameters);
+				unset($parameters);
 
 				//add user if not already present in DB
 				if($dal->getNumResults() == 0)
@@ -88,9 +100,25 @@
 					//prepare timestamp
 					date_default_timezone_set('Europe/Brussels');
 
-					//add user to DB
-					$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum) VALUES ('" . $userid . "', '" . $firstname . "', '" .$lastname . "', '" . $email . "', '" . $password . "', '" . $permissionlevel . "', '". date("Y-n-j") ."')";
-					$dal->writeDB($sql);
+					//create array of parameters
+					//first item = parameter types
+					//i = integer
+					//d = double
+					//b = blob
+					//s = string
+					$parameters[0] = "sssssis";
+					$parameters[1] = $userid;
+					$parameters[2] = $firstname;
+					$parameters[3] = $lastname;
+					$parameters[4] = $email;
+					$parameters[5] = $password;
+					$parameters[6] = $permissionlevel;
+					$parameters[7] = date("Y-n-j");
+
+					//prepare statement
+					$dal->setStatement("INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum) VALUES (?, ?, '?, ?, ?, ?, ?)");
+					$dal->writeDB($parameters);
+					unset($parameters);
 				}
 
 				//close the connection

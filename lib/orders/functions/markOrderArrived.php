@@ -23,6 +23,7 @@
 				ON definitiefbesteldebestellingen.bestelnummer=bestelling.bestelnummer
 				WHERE definitiefbesteldebestellingen.defbestelnummer=?");
 		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		foreach($records as $order)
 		{
@@ -43,6 +44,7 @@
 					SET status='4'
 					WHERE bestelnummer=?");
 			$dal->writeDB($parameters);
+			unset($parameters);
 
 			//create array of parameters
 			//first item = parameter types
@@ -57,6 +59,7 @@
 			$dal->setStatement("SELECT email FROM gebruiker
  					WHERE rnummer=?");
 			$records = $dal->queryDB($parameters);
+			unset($parameters);
 
 			$fullmail = $records[0]->email;
 

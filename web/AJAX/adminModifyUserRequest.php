@@ -75,10 +75,25 @@
 			$email = mysqli_real_escape_string($dal->getConn(), $email);
 			$permissionlevel = mysqli_real_escape_string($dal->getConn(), $permissionlevel);
 
-			$sql = "UPDATE gebruiker
-					SET voornaam='" . $firstname . "', achternaam='" . $lastname . "', email='" . $email . "', machtigingsniveau='" . $permissionlevel . "'
-					WHERE rnummer='" . $userid . "'";
-			$dal->writeDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "sssis";
+			$parameters[1] = $firstname;
+			$parameters[2] = $lastname;
+			$parameters[3] = $email;
+			$parameters[4] = $permissionlevel;
+			$parameters[5] = $userid;
+
+			//prepare statement
+			$dal->setStatement("UPDATE gebruiker
+					SET voornaam=?, achternaam=?, email=?, machtigingsniveau=?
+					WHERE rnummer=?");
+			$dal->writeDB($parameters);
+			unset($parameters);
 
 			//close the connection
 			$dal->closeConn();

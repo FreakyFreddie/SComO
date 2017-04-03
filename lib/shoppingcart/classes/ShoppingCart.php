@@ -40,6 +40,7 @@
 			//fetch user shopping cart articles
 			$dal->setStatement("SELECT * FROM winkelwagen WHERE rnummer=?");
 			$articles = $dal->queryDB($parameters);
+			unset($parameters);
 
 			//create ShoppingCartArticle for each record & add to array
 			foreach($articles as $article)
@@ -252,6 +253,7 @@
 			//delete articles from user shopping cart
 			$dal->setStatement("DELETE FROM winkelwagen WHERE rnummer=?");
 			$dal->writeDB($parameters);
+			unset($parameters);
 
 			$dal->closeConn();
 		}
@@ -279,6 +281,7 @@
 				ON gebruikerproject.idproject = project.idproject
 				WHERE gebruikerproject.rnummer=?");
 			$records = $dal->queryDB($parameters);
+			unset($parameters);
 
 			$dal->closeConn();
 

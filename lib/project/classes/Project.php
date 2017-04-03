@@ -46,6 +46,7 @@
 			//create project in db
 			$dal->setStatement("INSERT INTO project (titel, budget, startdatum, vervaldatum, rekeningnr) VALUES (?, ?, ?, ?, ?)");
 			$dal->writeDB($parameters);
+			unset($parameters);
 
 			//close the connection
 			$dal->closeConn();
@@ -134,6 +135,7 @@
 			//check if project already exists in db
 			$dal->setStatement("SELECT * FROM project WHERE idproject =?");
 			$records = $dal->queryDB($parameters);
+			unset($parameters);
 
 			//fill attributes if record is found
 			if($dal->getNumResults() == 1)
@@ -178,6 +180,7 @@
 			//write project update to db
 			$dal->setStatement("UPDATE project SET titel=?, budget=?, startdatum=?, vervaldatum=?, rekeningnr=? WHERE idproject=?");
 			$dal->writeDB($parameters);
+			unset($parameters);
 
 			//close the connection
 			$dal->closeConn();
@@ -202,6 +205,7 @@
 			//delete project from DB
 			$dal->setStatement("DELETE FROM project WHERE idproject = ?");
 			$dal->writeDB($parameters);
+			unset($parameters);
 
 			//close the connection
 			$dal->closeConn();
@@ -226,6 +230,7 @@
 			//delete link between project & users from DB
 			$dal->setStatement("DELETE FROM gebruikerproject WHERE idproject = ?");
 			$dal->writeDB($parameters);
+			unset($parameters);
 
 			//close the connection
 			$dal->closeConn();

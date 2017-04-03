@@ -35,7 +35,9 @@
 				FROM bestellingen
 				LEFT JOIN project
 				ON bestellingen.projectid = project.idproject";
-		$records = $dal->queryDB($sql);
+		$records = $dal->queryDBNoArgs($sql);
+
+		$dal->closeConn();
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

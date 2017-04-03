@@ -57,6 +57,7 @@
 			//add order to DB (still to complete)
 			$dal->setStatement("INSERT INTO bestellingproduct (defbestelnummer, bestelnummer, idproduct, leverancier, aantal, prijs, verzamelnaam) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			$dal->writeDB($parameters);
+			unset($parameters);
 
 			$dal->closeConn();
 		}

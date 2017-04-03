@@ -102,7 +102,8 @@
 
 				//prepare statement
 				$dal->setStatement("INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES (?, ?, ?, ?, ?)");
-				$this->dal->writeDB($parameters);
+				$dal->writeDB($parameters);
+				unset($parameters);
 
 				//get the automatically generated ID of the order
 				$this->orderId = mysqli_insert_id($dal->getConn());
@@ -130,6 +131,7 @@
 			//prepare statement
 			$dal->setStatement("SELECT * FROM bestellingproduct WHERE bestelnummer=?");
 			$arrayproducts = $dal->queryDB($parameters);
+			unset($parameters);
 
 			$dal->closeConn();
 
@@ -195,6 +197,7 @@
 					//prepare statement
 					$dal->setStatement("SELECT titel FROM project WHERE idproject=?");
 					$records = $dal->queryDB($parameters);
+					unset($parameters);
 
 					$dal->closeConn();
 

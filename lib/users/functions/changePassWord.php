@@ -23,6 +23,7 @@
 		//test if user already exists with rnummer
 		$dal->setStatement("SELECT wachtwoord FROM gebruiker WHERE rnummer=?");
 		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		//if user already exists, numrows >= 1, if not we can continue
 		if($dal->getNumResults()==1 && password_verify($oldpassword, $records[0]->wachtwoord))
@@ -43,6 +44,7 @@
 			//prepare statement
 			$dal->setStatement("UPDATE gebruiker SET wachtwoord=? WHERE rnummer=?");
 			$dal->writeDB($parameters);
+			unset($parameters);
 
 			//"user created" message
 			echo "Wachtwoord gewijzigd.";

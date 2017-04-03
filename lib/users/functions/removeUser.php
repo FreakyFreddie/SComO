@@ -27,6 +27,7 @@
 		//delete user from projects -- also possible to delete from bestellingen, but probably not for the best
 		$dal->setStatement("DELETE FROM gebruikerproject WHERE rnummer = ?");
 		$dal->writeDB($parameters);
+		unset($parameters);
 
 		//close the connection
 		$dal->closeConn();

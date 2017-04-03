@@ -31,15 +31,42 @@
 		$Supplier = mysqli_real_escape_string($dal->getConn(), $_POST["supplier"]);
 		$productAmount = mysqli_real_escape_string($dal->getConn(), (int)$_POST["amount"]);
 
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "sss";
+		$parameters[1] = $productId;
+		$parameters[2] = $Supplier;
+		$parameters[3] = $userId;
+
+		//prepare statement
 		//check if the user has the product in his shopping cart
-		$sql = "SELECT idproduct FROM winkelwagen WHERE idproduct='".$productId."' AND leverancier='".$Supplier."' AND rnummer='".$userId."'";
-		$dal->queryDB($sql);
+		$dal->setStatement("SELECT idproduct FROM winkelwagen WHERE idproduct=? AND leverancier=? AND rnummer=?");
+		$dal->queryDB($parameters);
+		unset($parameters);
 
 		if($dal->getNumResults() == 1)
 		{
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "sss";
+			$parameters[1] = $userId;
+			$parameters[2] = $productId;
+			$parameters[3] = $Supplier;
+
+
+			//prepare statement
 			//if product exists in cart, delete it
-			$sql = "DELETE FROM winkelwagen WHERE rnummer='".$userId."' AND idproduct='".$productId."' AND leverancier='".$Supplier."'";
-			$dal->writeDB($sql);
+			$dal->setStatement("DELETE FROM winkelwagen WHERE rnummer=? AND idproduct=? AND leverancier=?");
+			$dal->writeDB($parameters);
+			unset($parameters);
 		}
 
 		//close connection

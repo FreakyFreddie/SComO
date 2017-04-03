@@ -64,7 +64,7 @@
 			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
 			GROUP BY datum
 			ORDER BY datum DESC";
-		$records = $dal->queryDB($sql);
+		$records = $dal->queryDBNoArgs($sql);
 		$dal->closeConn();
 
 		//start a counter for the array

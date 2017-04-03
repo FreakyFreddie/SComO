@@ -47,6 +47,7 @@
 				$count = $dal->queryDB($parameters);
 				break;
 		}
+		unset($parameters);
 
 		$dal->closeConn();
 

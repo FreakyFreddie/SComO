@@ -125,6 +125,7 @@
 			//get product from DB, matching ID & Supplier
 			$dal->setStatement("SELECT idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet FROM `product` WHERE idproduct=? AND leverancier=?");
 			$product = $dal->queryDB($parameters);
+			unset($parameters);
 
 			$dal->closeConn();
 
@@ -164,6 +165,7 @@
 			//first check if the product already exists in the DB
 			$dal->setStatement("SELECT idproduct FROM `product` WHERE idproduct=? AND leverancier=?");
 			$dal->queryDB($parameters);
+			unset($parameters);
 
 			//if product doesn't exist yes, we add it
 			if ($dal->getNumResults() < 1)
@@ -184,6 +186,7 @@
 
 				$dal->setStatement("INSERT INTO product (idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet) VALUES (?, ?, ?, ?, ?, ?)");
 				$dal->writeDB($parameters);
+				unset($parameters);
 			}
 
 			//close the connection

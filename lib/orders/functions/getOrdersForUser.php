@@ -23,6 +23,7 @@
 		//prepare statement
 		$dal->setStatement("SELECT * FROM bestelling WHERE rnummer=? ORDER BY ? ?");
 		$arrayorders = $dal->queryDB($parameters);
+		unset($parameters);
 
 		$dal->closeConn();
 

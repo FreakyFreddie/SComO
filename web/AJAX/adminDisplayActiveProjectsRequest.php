@@ -38,7 +38,9 @@
 			FROM project
 			WHERE project.vervaldatum > '".date("Y-n-j")."';";
 
-		$records = $dal->queryDB($sql);
+		$records = $dal->queryDBNoArgs($sql);
+
+		$dal->closeConn();
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

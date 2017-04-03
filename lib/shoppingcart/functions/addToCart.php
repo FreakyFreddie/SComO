@@ -28,6 +28,7 @@
 		//it is more efficient to do it like this, The other solution is to load everything in a ShoppingCart Object (longer DB access = more overhead)
 		$dal->setStatement("SELECT idproduct, leverancier, aantal FROM winkelwagen WHERE idproduct='?' AND leverancier=? AND rnummer=?");
 		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		//if user already has some of the product in his cart, we need to add the amount & update the record (also update price if necessary)
 		if($dal->getNumResults()==1)
@@ -54,6 +55,7 @@
 			//update prijs and aantal of record
 			$dal->setStatement("UPDATE winkelwagen SET aantal=?, prijs=? WHERE rnummer=? AND idproduct=? AND leverancier=?");
 			$dal->writeDB($parameters);
+			unset($parameters);
 		}
 		//else we just add the product to the cart
 		elseif($dal->getNumResults()==0)
@@ -78,6 +80,7 @@
 			//we add the data to the users shopping cart
 			$dal->setStatement("INSERT INTO winkelwagen (rnummer, idproduct, leverancier, aantal, prijs) VALUES (?, ?, ?, ?, ?)");
 			$dal->writeDB($parameters);
+			unset($parameters);
 		}
 
 		//close connection
