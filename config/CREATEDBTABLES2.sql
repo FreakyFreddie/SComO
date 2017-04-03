@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.gebruiker
 /*Tabel project*/
 CREATE TABLE IF NOT EXISTS webstoredb.project
 (
-  idproject INT NOT NULL,
+  idproject INT NOT NULL AUTO_INCREMENT,
   titel VARCHAR(25) NOT NULL,
   budget DECIMAL(10,2) NOT NULL,
   rekeningnr VARCHAR(25) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.definitiefbesteld
 /*Tabel bestelling*/
 CREATE TABLE IF NOT EXISTS webstoredb.bestelling
 (
-  bestelnummer INT NOT NULL,
+  bestelnummer INT NOT NULL AUTO_INCREMENT,
   status INT NOT NULL,
   besteldatum DATE NOT NULL,
   idproject INT,
@@ -89,6 +89,8 @@ CREATE TABLE IF NOT EXISTS webstoredb.winkelwagen
   rnummer VARCHAR(8) NOT NULL,
   idproduct VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
+  aantal INT NOT NULL,
+  prijs DECIMAL(10,2) NOT NULL,
   FOREIGN KEY (rnummer)
 	REFERENCES gebruiker (rnummer),
   FOREIGN KEY (idproduct,leverancier)

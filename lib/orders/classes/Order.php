@@ -10,6 +10,9 @@
 		private $orderCreationDate;
 		private $orderStatus;
 
+		//still to implement: connection between final order number & order number
+		private $finalOrderNumber;
+
 		//array of products belonging to the order
 		private $orderProducts;
 
@@ -57,6 +60,10 @@
 				case "orderProducts":
 					$this->orderproducts = $value;
 					break;
+
+				case "finalOrderNumber":
+					$this->finalOrderNumber = $value;
+					break;
 			}
 		}
 
@@ -101,6 +108,7 @@
 				$parameters[5] = $this->orderStatus;
 
 				//prepare statement
+				//defbestelnummer is NULL when order is created
 				$dal->setStatement("INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES (?, ?, ?, ?, ?)");
 				$dal->writeDB($parameters);
 				unset($parameters);
@@ -138,7 +146,7 @@
 			//create OrderProduct for every product
 			foreach($arrayproducts as $product)
 			{
-				$this->orderProducts[] = new OrderProduct($product->bestelnummer, $product->idproduct, $product->leverancier, $product->aantal, $product->prijs, $product->verzamelnaam, $product->defbestelnummer);
+				$this->orderProducts[] = new OrderProduct($product->bestelnummer, $product->idproduct, $product->leverancier, $product->aantal, $product->prijs, $product->verzamelnaam);
 			}
 		}
 
