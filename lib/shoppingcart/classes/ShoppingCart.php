@@ -4,34 +4,51 @@
 	{
 		private $userId;
 		private $shoppingCartArticles;
-		private $dal;
 
 		public function __construct($rnummer)
 		{
 			//set up connection
-			$this->dal = new DAL();
+			$dal = new DAL();
 
 			//prevent sql injection
-			$this->userId = mysqli_real_escape_string($this->dal->getConn(), $rnummer);
+			$this->userId = mysqli_real_escape_string($dal->getConn(), $rnummer);
 
 			//get all products from user's shopping cart
 			$this->getArticlesFromDB();
 
 			//close the connection
-			$this->dal->closeConn();
+			$dal->closeConn();
 		}
 
 		private function getArticlesFromDB()
 		{
-			//select all products in shopping cart
-			$sql = "SELECT * FROM winkelwagen WHERE rnummer='".$this->userId."'";
-			$articles = $this->dal->queryDB($sql);
+			//set up connection
+			$dal = new DAL();
+
+			$this->userId = mysqli_real_escape_string($dal->getConn(), $this->userId);
+
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $this->userId;
+
+			//prepare statement
+			//fetch user shopping cart articles
+			$dal->setStatement("SELECT * FROM winkelwagen WHERE rnummer=?");
+			$articles = $dal->queryDB($parameters);
+			unset($parameters);
 
 			//create ShoppingCartArticle for each record & add to array
 			foreach($articles as $article)
 			{
 				$this->shoppingCartArticles[] = new ShoppingCartArticle($this->userId, $article->idproduct, $article->leverancier, $article->aantal, $article->prijs);
 			}
+
+			$dal->closeConn();
 		}
 
 		public function printShoppingCart()
@@ -218,10 +235,25 @@
 		//delete all products from the user's shopping cart
 		public function emptyCart()
 		{
+			//set up connection
 			$dal = new DAL();
 
-			$sql = "DELETE FROM winkelwagen WHERE rnummer='".$this->userId."'";
-			$dal->writeDB($sql);
+			$this->userId = mysqli_real_escape_string($dal->getConn(), $this->userId);
+
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $this->userId;
+
+			//prepare statement
+			//delete articles from user shopping cart
+			$dal->setStatement("DELETE FROM winkelwagen WHERE rnummer=?");
+			$dal->writeDB($parameters);
+			unset($parameters);
 
 			$dal->closeConn();
 		}
@@ -231,12 +263,25 @@
 		{
 			$dal = new DAL();
 
-			//still to exclude old projects
-			$sql = "SELECT gebruikerproject.idproject as idproject, project.titel as titel FROM gebruikerproject
+			$this->userId = mysqli_real_escape_string($dal->getConn(), $this->userId);
+
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $this->userId;
+
+			//prepare statement
+			//delete articles from user shopping cart
+			$dal->setStatement("SELECT gebruikerproject.idproject as idproject, project.titel as titel FROM gebruikerproject
 				INNER JOIN project
 				ON gebruikerproject.idproject = project.idproject
-				WHERE gebruikerproject.rnummer='".$userid."'";
-			$records = $dal->queryDB($sql);
+				WHERE gebruikerproject.rnummer=?");
+			$records = $dal->queryDB($parameters);
+			unset($parameters);
 
 			$dal->closeConn();
 

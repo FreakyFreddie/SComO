@@ -34,7 +34,7 @@
 		$sql = "SELECT gebruiker.rnummer, gebruiker.email as email, gebruiker.achternaam as naam, gebruiker.voornaam as voornaam, gebruiker.machtigingsniveau as niveau, gebruiker.aanmaakdatum
 			FROM gebruiker;";
 
-		$records = $dal->queryDB($sql);
+		$records = $dal->queryDBNoArgs($sql);
 
 		//write words instead of integers to identify userlevel
 		foreach($records as $key => $level)
@@ -58,6 +58,8 @@
 					break;
 			}
 		}
+
+		$dal->closeConn();
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

@@ -36,7 +36,7 @@
 			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
 			WHERE bestelling.status=2 AND bestellingproduct.leverancier='Mouser'
 			GROUP BY bestellingproduct.idproduct;";
-		$records = $dal->queryDB($sql);
+		$records = $dal->queryDBNoArgs($sql);
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

@@ -26,28 +26,71 @@
 		//validate input
 		$finalordernumber = validateInput($_POST["finalordernumber"]);
 		$supplier = validateInput($_POST["supplier"]);
+
 		//prepare timestamp
 		date_default_timezone_set('Europe/Brussels');
+
 		$dal = new DAL();
-		//add final order number to database
+
 		$finalordernumber = mysqli_real_escape_string($dal->getConn(), $_POST["finalordernumber"]);
 		$supplier = mysqli_real_escape_string($dal->getConn(), $_POST["supplier"]);
-		$sql = "INSERT INTO definitiefbesteld (defbestelnummer, leverancier, defbesteldatum) VALUES ('" . $finalordernumber . "', '" . $supplier . "', '" . date("Y-n-j H:i:s") . "')";
-		$dal->writeDB($sql);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "sss";
+		$parameters[1] = $finalordernumber;
+		$parameters[2] = $supplier;
+		$parameters[3] = date("Y-n-j H:i:s");
+
+		//prepare statement
+		//add final order number to database
+		$dal->setStatement("INSERT INTO definitiefbesteld (defbestelnummer, leverancier, defbesteldatum) VALUES (?, ?, ?)");
+		$dal->writeDB($parameters);
+		unset($parameters);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "ss";
+		$parameters[1] = $finalordernumber;
+		$parameters[2] = $supplier;
+
+		//prepare statement
 		//update the definitief bestelnummer column
-		$sql = "UPDATE bestellingproduct
+		$dal->setStatement("UPDATE bestellingproduct
 				INNER JOIN bestelling
 				ON bestellingproduct.bestelnummer = bestelling.bestelnummer
-				SET bestellingproduct.defbestelnummer = '".$finalordernumber."'	
-				WHERE bestelling.status = '2' AND bestellingproduct.leverancier = '".$supplier."';";
-		$dal->writeDB($sql);
+				SET bestellingproduct.defbestelnummer = ?	
+				WHERE bestelling.status = '2' AND bestellingproduct.leverancier = ?");
+		$dal->writeDB($parameters);
+		unset($parameters);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $supplier;
+
+		//prepare statement
 		//update status of approved orders to "ordered" = 3
-		$sql = "UPDATE bestelling
+		$dal->setStatement("UPDATE bestelling
 				INNER JOIN bestellingproduct
 				ON bestellingproduct.bestelnummer = bestelling.bestelnummer
 				SET bestelling.status = '3'
-				WHERE bestelling.status = '2' AND bestellingproduct.leverancier = '".$supplier."';";
-		$dal->writeDB($sql);
+				WHERE bestelling.status = '2' AND bestellingproduct.leverancier = ?");
+		$dal->writeDB($parameters);
+		unset($parameters);
+
 		$dal->closeConn();
 	}
 ?>

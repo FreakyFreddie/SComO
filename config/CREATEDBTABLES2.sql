@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.gebruiker
   voornaam CHAR(45) NOT NULL,
   achternaam CHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
-  wachtwoord VARCHAR(45) NOT NULL,
+  wachtwoord VARCHAR(100) NOT NULL,
   machtigingsniveau INT NOT NULL,
   aanmaakdatum DATE NOT NULL,
   activatiesleutel VARCHAR(32),
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.gebruiker
 /*Tabel project*/
 CREATE TABLE IF NOT EXISTS webstoredb.project
 (
-  idproject VARCHAR(25) NOT NULL,
+  idproject INT NOT NULL,
   titel VARCHAR(25) NOT NULL,
   budget DECIMAL(10,2) NOT NULL,
   rekeningnr VARCHAR(25) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.project
 CREATE TABLE IF NOT EXISTS webstoredb.gebruikerproject
 (
   rnummer VARCHAR(8) NOT NULL,
-  idproject VARCHAR(25) NOT NULL,
+  idproject INT NOT NULL,
   is_beheerder INT NOT NULL,
   FOREIGN KEY (rnummer)
 	REFERENCES gebruiker (rnummer),
@@ -56,10 +56,10 @@ CREATE TABLE IF NOT EXISTS webstoredb.definitiefbesteld
 /*Tabel bestelling*/
 CREATE TABLE IF NOT EXISTS webstoredb.bestelling
 (
-  bestelnummer VARCHAR(25) NOT NULL,
+  bestelnummer INT NOT NULL,
   status INT NOT NULL,
   besteldatum DATE NOT NULL,
-  idproject VARCHAR(25),
+  idproject INT,
   rnummer VARCHAR(8) NOT NULL,
   persoonlijk INT NOT NULL,
   defbestelnummer VARCHAR(25),
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.winkelwagen
 /*Relatie bestelling bevat producten*/
 CREATE TABLE IF NOT EXISTS webstoredb.bestellingproduct
 (
-  bestelnummer VARCHAR(25) NOT NULL,
+  bestelnummer INT NOT NULL,
   idproduct VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
   aantal INT NOT NULL,

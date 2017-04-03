@@ -17,26 +17,51 @@
 		$password = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($password));
 		$fullmail = $rnummer."@".$mail;
 
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $rnummer;
+
+		//prepare statement
 		//test if user already exists with rnummer
-		$sql = "SELECT rnummer FROM gebruiker WHERE rnummer='".$rnummer."'";
-		$dal->queryDB($sql);
+		$dal->setStatement("SELECT rnummer FROM gebruiker WHERE rnummer=?");
+		$dal->queryDB($parameters);
+		unset($parameters);
 
 		//if user already exists, numrows >= 1, if not we can continue
-		if($dal->getNumResults()<1) {
+		if($dal->getNumResults()<1)
+		{
 			//hash password (use PASSWORD_DEFAULT since php might update algorithms if they become stronger)
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
 			//prepare timestamp
 			date_default_timezone_set('Europe/Brussels');
 
-			do {
+			do
+			{
 				//generate unique activation key
 				$generatedkey = md5(uniqid(rand(), TRUE));
 
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "s";
+				$parameters[1] = $generatedkey;
+
+				//prepare statement
 				//test if activation link already exists with rnummer
-				$sql = "SELECT rnummer FROM gebruiker WHERE activatiesleutel='" . $generatedkey . "'";
-				$dal->queryDB($sql);
-			} while ($dal->getNumResults() != 0);
+				$dal->setStatement("SELECT rnummer FROM gebruiker WHERE activatiesleutel=?");
+				$dal->queryDB($parameters);
+				unset($parameters);
+			}
+			while ($dal->getNumResults() != 0);
 
 			$mail = new PHPMailer;
 
@@ -69,9 +94,27 @@
 			}
 			else
 			{
-				//write to DB use date("j-n-Y H:i:s") for date
-				$sql = "INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES ('" . $rnummer . "', '" . $firstname . "', '" . $lastname . "', '" . $fullmail . "', '" . $password . "', '0', '" . date("Y-n-j H:i:s") . "', '" . $generatedkey . "')";
-				$dal->writeDB($sql);
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "sssssiss";
+				$parameters[1] = $rnummer;
+				$parameters[2] = $firstname;
+				$parameters[3] = $lastname;
+				$parameters[4] = $fullmail;
+				$parameters[5] = $password;
+				$parameters[6] = 0;
+				$parameters[7] = date("Y-n-j H:i:s");
+				$parameters[8] = $generatedkey;
+
+				//prepare statement
+				//write to DB using date("j-n-Y H:i:s") for date
+				$dal->setStatement("INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum, activatiesleutel) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+				$dal->writeDB($parameters);
+				unset($parameters);
 
 				echo '<p>Gebruiker aangemaakt.</p>
 				<p>Er is een activatiecode verzonden naar '.$fullmail.'.</p>';

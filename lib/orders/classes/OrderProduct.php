@@ -32,17 +32,34 @@
 
 			//prevent SQL injection
 			$this->finalOrderNumber = mysqli_real_escape_string($dal->getConn(), $this->finalOrderNumber);
-			//is int
-			//$this->orderId = mysqli_real_escape_string($dal->getConn(), $this->orderId);
+			$this->orderId = mysqli_real_escape_string($dal->getConn(), $this->orderId);
 			$this->productId = mysqli_real_escape_string($dal->getConn(), $this->productId);
 			$this->productSupplier = mysqli_real_escape_string($dal->getConn(), $this->productSupplier);
 			$this->productAmount = mysqli_real_escape_string($dal->getConn(), $this->productAmount);
 			$this->productPrice = mysqli_real_escape_string($dal->getConn(), $this->productPrice);
 			$this->collection = mysqli_real_escape_string($dal->getConn(), $this->collection);
 
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "sissids";
+			$parameters[1] = $this->finalOrderNumber;
+			$parameters[2] = $this->orderId;
+			$parameters[3] = $this->productId;
+			$parameters[4] = $this->productSupplier;
+			$parameters[5] = $this->productAmount;
+			$parameters[6] = $this->productPrice;
+			$parameters[7] = $this->collection;
+
 			//add order to DB (still to complete)
-			$sql = "INSERT INTO bestellingproduct (defbestelnummer, bestelnummer, idproduct, leverancier, aantal, prijs, verzamelnaam) VALUES ('" . $this->finalOrderNumber . "', '" . $this->orderId . "', '" . $this->productId . "', '" . $this->productSupplier . "', '" . $this->productAmount. "', '" . $this->productPrice. "', '" . $this->collection. "')";
-			$dal->writeDB($sql);
+			$dal->setStatement("INSERT INTO bestellingproduct (defbestelnummer, bestelnummer, idproduct, leverancier, aantal, prijs, verzamelnaam) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			$dal->writeDB($parameters);
+			unset($parameters);
+
+			$dal->closeConn();
 		}
 
 		public function getProductInfo()

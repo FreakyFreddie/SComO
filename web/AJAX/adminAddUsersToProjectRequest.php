@@ -43,14 +43,38 @@
 				$userid = explode("@", $user["email"]);
 				$userid = mysqli_real_escape_string($dal->getConn(), $userid[0]);
 
-				$sql = "SELECT * FROM gebruikerproject WHERE rnummer='" . $userid . "' AND idproject= '" . $projectid . "'";
-				$records = $dal->queryDB($sql);
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "si";
+				$parameters[1] = $userid;
+				$parameters[2] = $projectid;
+
+				//prepare statement
+				$dal->setStatement("SELECT * FROM gebruikerproject WHERE rnummer=? AND idproject= ?");
+				$records = $dal->queryDB($parameters);
+				unset($parameters);
 
 				//if not exists, add row
 				if($dal->getNumResults() == 0)
 				{
-					$sql = "INSERT INTO gebruikerproject (rnummer, idproject) VALUES ('" . $userid . "', '" . $projectid . "')";
-					$dal->writeDB($sql);
+					//create array of parameters
+					//first item = parameter types
+					//i = integer
+					//d = double
+					//b = blob
+					//s = string
+					$parameters[0] = "si";
+					$parameters[1] = $userid;
+					$parameters[2] = $projectid;
+
+					//prepare statement
+					$dal->setStatement("INSERT INTO gebruikerproject (rnummer, idproject) VALUES (?, ?)");
+					$dal->writeDB($parameters);
+					unset($parameters);
 				}
 			}
 		}

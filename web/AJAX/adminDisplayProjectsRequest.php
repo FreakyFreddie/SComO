@@ -30,7 +30,9 @@
 		$sql = "SELECT project.idproject as id, project.titel as titel, project.budget as budget, project.rekeningnr as rekening, project.vervaldatum as einddatum
 			FROM project;";
 
-		$records = $dal->queryDB($sql);
+		$records = $dal->queryDBNoArgs($sql);
+
+		$dal->closeConn();
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

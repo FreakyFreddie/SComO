@@ -46,18 +46,41 @@
 			{
 				//validate input
 				$orderid = validateInput($orderapproved["id"]);
-
-				//update orderstatus in database
 				$orderid = mysqli_real_escape_string($dal->getConn(), $orderid);
-				$sql = "UPDATE bestelling SET status='2' WHERE bestelnummer='".$orderid."'";
-				$dal->writeDB($sql);
 
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "i";
+				$parameters[1] = $orderid;
+
+				//prepare statement
+				//update orderstatus in database
+				$dal->setStatement("UPDATE bestelling SET status='2' WHERE bestelnummer=?");
+				$dal->writeDB($parameters);
+				unset($parameters);
+
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "i";
+				$parameters[1] = $orderid;
+
+				//prepare statement
 				//get user email
-				$sql = "SELECT gebruiker.email FROM gebruiker
+				$dal->setStatement("SELECT gebruiker.email FROM gebruiker
  						INNER JOIN bestelling
  						ON bestelling.rnummer = gebruiker.rnummer
- 						WHERE bestelling.bestelnummer='".$orderid."'";
-				$records = $dal->queryDB($sql);
+ 						WHERE bestelling.bestelnummer=?");
+				$records = $dal->queryDB($parameters);
+				unset($parameters);
+
 				$fullmail = $records[0]->email;
 
 				//send mail to inform person
@@ -105,15 +128,40 @@
 
 				//update orderstatus in database
 				$orderid = mysqli_real_escape_string($dal->getConn(), $orderid);
-				$sql = "UPDATE bestelling SET status='0' WHERE bestelnummer='".$orderid."'";
-				$dal->writeDB($sql);
 
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "i";
+				$parameters[1] = $orderid;
+
+				//prepare statement
+				//update orderstatus
+				$dal->setStatement("UPDATE bestelling SET status='0' WHERE bestelnummer=?");
+				$dal->writeDB($parameters);
+				unset($parameters);
+
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "i";
+				$parameters[1] = $orderid;
+
+				//prepare statement
 				//get user email
-				$sql = "SELECT gebruiker.email FROM gebruiker
+				$dal->setStatement("SELECT gebruiker.email FROM gebruiker
  						INNER JOIN bestelling
  						ON bestelling.rnummer = gebruiker.rnummer
- 						WHERE bestelling.bestelnummer='".$orderid."'";
-				$records = $dal->queryDB($sql);
+ 						WHERE bestelling.bestelnummer=?");
+				$records = $dal->queryDB($parameters);
+				unset($parameters);
+
 				$fullmail = $records[0]->email;
 
 				//send mail to inform person

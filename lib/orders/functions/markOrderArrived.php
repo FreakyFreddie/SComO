@@ -6,13 +6,24 @@
 		//prevent sql injection
 		$finalorderid = mysqli_real_escape_string($dal->getConn(), $finalorderid);
 
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $finalorderid;
+
+		//prepare statement
 		//get array of order numbers belonging to the final order number
-		$sql = "SELECT definitiefbesteldebestellingen.bestelnummer, bestelling.rnummer
+		$dal->setStatement("SELECT definitiefbesteldebestellingen.bestelnummer, bestelling.rnummer
 				FROM definitiefbesteldebestellingen
 				INNER JOIN bestelling
 				ON definitiefbesteldebestellingen.bestelnummer=bestelling.bestelnummer
-				WHERE definitiefbesteldebestellingen.defbestelnummer='".$finalorderid."'";
-		$records = $dal->queryDB($sql);
+				WHERE definitiefbesteldebestellingen.defbestelnummer=?");
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		foreach($records as $order)
 		{
@@ -20,16 +31,36 @@
 			$orderid = mysqli_real_escape_string($dal->getConn(), $order->bestelnummer);
 			$userid = mysqli_real_escape_string($dal->getConn(), $order->rnummer);
 
-			//update order status
-			$sql = "UPDATE bestelling
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "i";
+			$parameters[1] = $orderid;
+
+			$dal->setStatement("UPDATE bestelling
 					SET status='4'
-					WHERE bestelnummer='" . $orderid . "'";
-			$dal->writeDB($sql);
+					WHERE bestelnummer=?");
+			$dal->writeDB($parameters);
+			unset($parameters);
+
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $userid;
 
 			//get user email
-			$sql = "SELECT email FROM gebruiker
- 					WHERE rnummer='".$userid."'";
-			$records = $dal->queryDB($sql);
+			$dal->setStatement("SELECT email FROM gebruiker
+ 					WHERE rnummer=?");
+			$records = $dal->queryDB($parameters);
+			unset($parameters);
+
 			$fullmail = $records[0]->email;
 
 			//send mail to inform person

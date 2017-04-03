@@ -87,13 +87,29 @@
 				$this->orderCreationDate = mysqli_real_escape_string($dal->getConn(), $this->orderCreationDate);
 				$this->orderStatus = mysqli_real_escape_string($dal->getConn(), $this->orderStatus);
 
-				//add order to DB
-				$sql = "INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES ('" . $this->projectId . "', '" . $this->userId . "', '" . $this->orderPersonal . "', '" . $this->orderCreationDate . "', '" . $this->orderStatus . "')";
-				$dal->writeDB($sql);
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "isisi";
+				$parameters[1] = $this->projectId;
+				$parameters[2] = $this->userId;
+				$parameters[3] = $this->orderPersonal;
+				$parameters[4] = $this->orderCreationDate;
+				$parameters[5] = $this->orderStatus;
+
+				//prepare statement
+				$dal->setStatement("INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES (?, ?, ?, ?, ?)");
+				$dal->writeDB($parameters);
+				unset($parameters);
 
 				//get the automatically generated ID of the order
 				$this->orderId = mysqli_insert_id($dal->getConn());
 				echo $this->orderId;
+
+				$dal->closeConn();
 			}
 		}
 
@@ -101,9 +117,23 @@
 		{
 			$dal = new DAL();
 
-			//select all products of the order
-			$sql = "SELECT * FROM bestellingproduct WHERE bestelnummer='".$this->orderId."'";
-			$arrayproducts = $dal->queryDB($sql);
+			$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->orderId);
+
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "i";
+			$parameters[1] = $this->orderId;
+
+			//prepare statement
+			$dal->setStatement("SELECT * FROM bestellingproduct WHERE bestelnummer=?");
+			$arrayproducts = $dal->queryDB($parameters);
+			unset($parameters);
+
+			$dal->closeConn();
 
 			//create OrderProduct for every product
 			foreach($arrayproducts as $product)
@@ -153,12 +183,23 @@
 				{
 					$dal = new DAL();
 
-					//prevent SQL injection
 					$this->projectId = mysqli_real_escape_string($dal->getConn(), $this->projectId);
 
-					//select title of the project
-					$sql = "SELECT titel FROM project WHERE idproject='".$this->projectId."'";
-					$records = $dal->queryDB($sql);
+					//create array of parameters
+					//first item = parameter types
+					//i = integer
+					//d = double
+					//b = blob
+					//s = string
+					$parameters[0] = "i";
+					$parameters[1] = $this->projectId;
+
+					//prepare statement
+					$dal->setStatement("SELECT titel FROM project WHERE idproject=?");
+					$records = $dal->queryDB($parameters);
+					unset($parameters);
+
+					$dal->closeConn();
 
 					$personal = " / ".$records[0]->titel;
 				}

@@ -111,9 +111,23 @@
 			$this->productId = mysqli_real_escape_string($dal->getConn(), $pId);
 			$this->productSupplier = mysqli_real_escape_string($dal->getConn(), $pSupplier);
 
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "ss";
+			$parameters[1] = $this->productId;
+			$parameters[2] = $this->productSupplier;
+
+			//prepare statement
 			//get product from DB, matching ID & Supplier
-			$sql = "SELECT idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet FROM `product` WHERE idproduct='" . $this->productId . "' AND leverancier='" . $this->productSupplier . "'";
-			$product = $dal->queryDB($sql);
+			$dal->setStatement("SELECT idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet FROM `product` WHERE idproduct=? AND leverancier=?");
+			$product = $dal->queryDB($parameters);
+			unset($parameters);
+
+			$dal->closeConn();
 
 			//set Product attributes
 			$this->productId = $product[0]->idproduct;
@@ -137,14 +151,42 @@
 			$this->productImage = mysqli_real_escape_string($dal->getConn(), $this->productImage);
 			$this->productDataSheet = mysqli_real_escape_string($dal->getConn(), $this->productDataSheet);
 
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "ss";
+			$parameters[1] = $this->productId;
+			$parameters[2] = $this->productSupplier;
+
+			//prepare statement
 			//first check if the product already exists in the DB
-			$sql = "SELECT idproduct FROM `product` WHERE idproduct='" . $this->productId . "' AND leverancier='" . $this->productSupplier . "'";
-			$dal->queryDB($sql);
+			$dal->setStatement("SELECT idproduct FROM `product` WHERE idproduct=? AND leverancier=?");
+			$dal->queryDB($parameters);
+			unset($parameters);
 
 			//if product doesn't exist yes, we add it
-			if ($dal->getNumResults() < 1) {
-				$sql = "INSERT INTO product (idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet) VALUES ('" . $this->productId . "', '" . $this->productSupplier . "', '" . $this->productName . "', '" . $this->productVendor . "', '" . $this->productImage . "', '" . $this->productDataSheet . "')";
-				$dal->writeDB($sql);
+			if ($dal->getNumResults() < 1)
+			{
+				//create array of parameters
+				//first item = parameter types
+				//i = integer
+				//d = double
+				//b = blob
+				//s = string
+				$parameters[0] = "ssssss";
+				$parameters[1] = $this->productId;
+				$parameters[2] = $this->productSupplier;
+				$parameters[3] = $this->productName;
+				$parameters[4] = $this->productVendor;
+				$parameters[5] = $this->productImage;
+				$parameters[6] = $this->productDataSheet;
+
+				$dal->setStatement("INSERT INTO product (idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet) VALUES (?, ?, ?, ?, ?, ?)");
+				$dal->writeDB($parameters);
+				unset($parameters);
 			}
 
 			//close the connection

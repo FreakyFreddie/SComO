@@ -7,23 +7,21 @@
 		private $firstName;
 		private $lastName;
 		private $loggedIn = False;
-
-		private $dal;
 		
 		public function __construct($rnummer, $wachtwoord)
 		{
 			//check user & passwd vs database
-			$this->dal = new DAL();
+			$dal = new DAL();
 
 			//prevent sql injection
-			$rnummer = mysqli_real_escape_string($this->dal->getConn(), $rnummer);
-			$wachtwoord = mysqli_real_escape_string($this->dal->getConn(), $wachtwoord);
+			$rnummer = mysqli_real_escape_string($dal->getConn(), $rnummer);
+			$wachtwoord = mysqli_real_escape_string($dal->getConn(), $wachtwoord);
 			
 			//validate credentials vs DB
 			$this->validateCredentials($rnummer, $wachtwoord);
 
 			//close the connection
-			$this->dal->closeConn();
+			$dal->closeConn();
 		}
 		
 		//returns property value
@@ -57,12 +55,24 @@
 		
 		private function validateCredentials($rnummer, $wachtwoord)
 		{
-			//test if user exists with rnummer and wachtwoord
-			$sql = "SELECT rnummer, voornaam, achternaam, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer='".$rnummer."'";
-			$records = $this->dal->queryDB($sql);
+			$dal = new DAL();
+
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "s";
+			$parameters[1] = $rnummer;
+
+			//prepare statement
+			$dal->setStatement("SELECT rnummer, voornaam, achternaam, wachtwoord, machtigingsniveau FROM gebruiker WHERE rnummer=?");
+			$records = $dal->queryDB($parameters);
+			unset($parameters);
 
 			//if only 1 result AND hashed password matches password in db, fill in object attributes
-			if($this->dal->getNumResults() == 1 && (password_verify($wachtwoord, $records[0]->wachtwoord) == TRUE))
+			if($dal->getNumResults() == 1 && (password_verify($wachtwoord, $records[0]->wachtwoord) == TRUE))
 			{
 				$this->userId = $records[0]->rnummer;
 				$this->firstName = $records[0]->voornaam;
@@ -70,6 +80,8 @@
 				$this->permissionLevel = (int) $records[0]->machtigingsniveau;
 				$this->loggedIn = True;
 			}
+
+			$dal->closeConn();
 		}
 	}
 ?>

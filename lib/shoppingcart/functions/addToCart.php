@@ -12,23 +12,50 @@
 		//if product is not yet in DB, add it
 		$product[0]->writeDB();
 
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "sss";
+		$parameters[1] = $product[0]->__get("Id");
+		$parameters[2] = $product[0]->__get("Supplier");
+		$parameters[3] = $userId;
+
+		//prepare statement
 		//check if the user already has the product in its shopping cart
 		//it is more efficient to do it like this, The other solution is to load everything in a ShoppingCart Object (longer DB access = more overhead)
-		$sql = "SELECT idproduct, leverancier, aantal FROM winkelwagen WHERE idproduct='".$product[0]->__get("Id")."' AND leverancier='".$product[0]->__get("Supplier")."' AND rnummer='".$userId."'";
-		$records = $dal->queryDB($sql);
+		$dal->setStatement("SELECT idproduct, leverancier, aantal FROM winkelwagen WHERE idproduct='?' AND leverancier=? AND rnummer=?");
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		//if user already has some of the product in his cart, we need to add the amount & update the record (also update price if necessary)
 		if($dal->getNumResults()==1)
 		{
-			/** @noinspection PhpWrongStringConcatenationInspection */
 			$productAmount = $productAmount + $records[0]->aantal;
 
 			//calculate price for amount of the product in the shopping cart
 			$productPriceForAmount = $product[0]->extractProductPrice($productAmount);
 
-			//update prijs en aantal of record
-			$sql = "UPDATE winkelwagen SET aantal='".$productAmount."', prijs='".$productPriceForAmount."' WHERE rnummer='".$userId."' AND idproduct='".$product[0]->__get("Id")."' AND leverancier='".$product[0]->__get("Supplier")."'";
-			$dal->writeDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "idsss";
+			$parameters[1] = $productAmount;
+			$parameters[2] = $productPriceForAmount;
+			$parameters[3] = $userId;
+			$parameters[4] = $product[0]->__get("Id");
+			$parameters[5] = $product[0]->__get("Supplier");
+
+			//prepare statement
+			//update prijs and aantal of record
+			$dal->setStatement("UPDATE winkelwagen SET aantal=?, prijs=? WHERE rnummer=? AND idproduct=? AND leverancier=?");
+			$dal->writeDB($parameters);
+			unset($parameters);
 		}
 		//else we just add the product to the cart
 		elseif($dal->getNumResults()==0)
@@ -36,9 +63,24 @@
 			//calculate price for amount of the product in the shopping cart
 			$productPriceForAmount = $product[0]->extractProductPrice($productAmount);
 
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "sssid";
+			$parameters[1] = $userId;
+			$parameters[2] = $product[0]->__get("Id");
+			$parameters[3] = $product[0]->__get("Supplier");
+			$parameters[4] = $productAmount;
+			$parameters[5] = $productPriceForAmount;
+
+			//prepare statement
 			//we add the data to the users shopping cart
-			$sql = "INSERT INTO winkelwagen (rnummer, idproduct, leverancier, aantal, prijs) VALUES ('".$userId."', '".$product[0]->__get("Id")."', '".$product[0]->__get("Supplier")."', '".$productAmount."', '".$productPriceForAmount."')";
-			$dal->writeDB($sql);
+			$dal->setStatement("INSERT INTO winkelwagen (rnummer, idproduct, leverancier, aantal, prijs) VALUES (?, ?, ?, ?, ?)");
+			$dal->writeDB($parameters);
+			unset($parameters);
 		}
 
 		//close connection

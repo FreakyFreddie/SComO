@@ -39,12 +39,25 @@
 		//get orders for projects to be approved (what is important?)
 		$dal = new DAL();
 		$supplier = mysqli_real_escape_string($dal->getConn(), $supplier);
-		$sql = "SELECT bestellingproduct.idproduct as productid, SUM(bestellingproduct.aantal) as aantal
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $supplier;
+
+		//prepare statement
+		//get user email
+		$dal->setStatement("SELECT bestellingproduct.idproduct as productid, SUM(bestellingproduct.aantal) as aantal
 			FROM bestelling INNER JOIN bestellingproduct
 			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
-			WHERE bestelling.status=2 AND bestellingproduct.leverancier='".$supplier."'
-			GROUP BY bestellingproduct.idproduct;";
-		$records = $dal->queryDB($sql);
+			WHERE bestelling.status=2 AND bestellingproduct.leverancier=?
+			GROUP BY bestellingproduct.idproduct");
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		//prepare timestamp
 		date_default_timezone_set('Europe/Brussels');

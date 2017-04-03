@@ -4,37 +4,50 @@
 	{
 		$dal = new DAL();
 
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "i";
+
+		//prepare statement
+		$dal->setStatement("SELECT COUNT(*) FROM bestelling WHERE status=?");
+
+
 		switch ($status) {
 			case "Geweigerd":
-				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='0'";
-				$count = $dal->countDB($sql);
+				$parameters[1] = 0;
+				$count = $dal->queryDB($parameters);
 				break;
 
 			case "Pending":
-				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='1'";
-				$count = $dal->countDB($sql);
+				$parameters[1] = 1;
+				$count = $dal->queryDB($parameters);
 				break;
 
 			case "Goedgekeurd":
-				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='2'";
-				$count = $dal->countDB($sql);
+				$parameters[1] = 2;
+				$count = $dal->queryDB($parameters);
 				break;
 
 			case "Besteld":
-				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='3'";
-				$count = $dal->countDB($sql);
+				$parameters[1] = 3;
+				$count = $dal->queryDB($parameters);
 				break;
 
 			case "Aangekomen":
-				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='4'";
-				$count = $dal->countDB($sql);
+				$parameters[1] =4;
+				$count = $dal->queryDB($parameters);
 				break;
 
 			case "Afgehaald":
-				$sql = "SELECT COUNT(*) FROM bestelling WHERE status='5'";
-				$count = $dal->countDB($sql);
+				$parameters[1] = 5;
+				$count = $dal->queryDB($parameters);
 				break;
 		}
+		unset($parameters);
 
 		$dal->closeConn();
 

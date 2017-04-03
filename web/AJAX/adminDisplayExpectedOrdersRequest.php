@@ -37,7 +37,9 @@
 				ON definitiefbesteldebestellingen.bestelnummer = bestelling.bestelnummer
 				WHERE bestelling.status = '3'
 				GROUP BY definitiefbesteldebestellingen.defbestelnummer";
-		$records = $dal->queryDB($sql);
+		$records = $dal->queryDBNoArgs($sql);
+
+		$dal->closeConn();
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);
