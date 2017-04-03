@@ -10,9 +10,19 @@
 		$oldpassword = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($oldpassword));
 		$password = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($password));
 
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $userid;
+
+		//prepare statement
 		//test if user already exists with rnummer
-		$sql = "SELECT wachtwoord FROM gebruiker WHERE rnummer='".$userid."'";
-		$records = $dal->queryDB($sql);
+		$dal->setStatement("SELECT wachtwoord FROM gebruiker WHERE rnummer=?");
+		$records = $dal->queryDB($parameters);
 
 		//if user already exists, numrows >= 1, if not we can continue
 		if($dal->getNumResults()==1 && password_verify($oldpassword, $records[0]->wachtwoord))
@@ -20,9 +30,19 @@
 			//hash password (use PASSWORD_DEFAULT since php might update algorithms if they become stronger)
 			$password = password_hash($password,PASSWORD_DEFAULT);
 
-			//write to DB use date("j-n-Y H:i:s") for date
-			$sql = "UPDATE gebruiker SET wachtwoord='".$password."' WHERE rnummer='".$userid."'";
-			$dal->writeDB($sql);
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "ss";
+			$parameters[1] = $password;
+			$parameters[2] = $userid;
+
+			//prepare statement
+			$dal->setStatement("UPDATE gebruiker SET wachtwoord=? WHERE rnummer=?");
+			$dal->writeDB($parameters);
 
 			//"user created" message
 			echo "Wachtwoord gewijzigd.";
