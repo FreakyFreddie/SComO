@@ -42,7 +42,7 @@
 			//d = double
 			//b = blob
 			//s = string
-			$parameters[0] = "sissids";
+			$parameters[0] = "issids";
 			$parameters[1] = $this->orderId;
 			$parameters[2] = $this->productId;
 			$parameters[3] = $this->productSupplier;
