@@ -17,12 +17,12 @@
 		$password = mysqli_real_escape_string($dal->getConn(), validateWachtWoord($password));
 		$fullmail = $rnummer."@".$mail;
 
-        $sql="SELECT * FROM gebruiker WHERE rnummer='".$rnummer."'";
+        /*$sql="SELECT rnummer FROM gebruiker";
         $result= $dal->queryDB($sql);
-        $check = $result->fetch_assoc();
-        if(in_array($rnummer,$check)) {
-			echo("test completed");
-		}
+        //$check = mysqli_fetch_assoc($result);
+        if(in_array($rnummer,$result)) {
+            echo("test completed");
+        }*/
 
         //test if user already exists with rnummer
         $sql = "SELECT rnummer FROM gebruiker WHERE rnummer='".$rnummer."'";
