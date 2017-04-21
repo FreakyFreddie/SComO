@@ -71,8 +71,8 @@
 		public function queryDB($parameters)
 		{
 			//debug
-			echo $this->statement;
-			var_dump($parameters);
+			//echo $this->statement;
+			//var_dump($parameters);
 
 			if(!isset($this->statement))
 			{
@@ -114,8 +114,8 @@
 		public function writeDB($parameters)
 		{
 			//debug
-			echo $this->statement;
-			var_dump($parameters);
+			//echo $this->statement;
+			//var_dump($parameters);
 
 			if(!isset($this->statement))
 			{

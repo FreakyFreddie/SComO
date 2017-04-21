@@ -27,7 +27,7 @@
 	{
 		//list all projects
 		$dal = new DAL();
-		$sql = "SELECT project.idproject as id, project.titel as titel, project.budget as budget, project.rekeningnr as rekening, project.vervaldatum as einddatum
+		$sql = "SELECT project.idproject as id, project.titel as titel, project.budget as budget, project.rekeningnr as rekening, project.startdatum as startdatum, project.vervaldatum as einddatum
 			FROM project;";
 
 		$records = $dal->queryDBNoArgs($sql);

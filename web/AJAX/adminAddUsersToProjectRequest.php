@@ -37,6 +37,7 @@
 		{
 			//sanitize DB input
 			$projectid = mysqli_real_escape_string($dal->getConn(), $project["id"]);
+			$is_admin = mysqli_real_escape_string($dal->getConn(), $project["admin"]);
 
 			foreach($_SESSION["adminAddUsersToAssignRequest"] as $user)
 			{
@@ -70,9 +71,10 @@
 					$parameters[0] = "si";
 					$parameters[1] = $userid;
 					$parameters[2] = $projectid;
+					$parameters[3] = $is_admin;
 
 					//prepare statement
-					$dal->setStatement("INSERT INTO gebruikerproject (rnummer, idproject) VALUES (?, ?)");
+					$dal->setStatement("INSERT INTO gebruikerproject (rnummer, idproject, is_beheerder) VALUES (?, ?, ?)");
 					$dal->writeDB($parameters);
 					unset($parameters);
 				}

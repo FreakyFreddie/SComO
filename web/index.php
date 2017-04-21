@@ -33,7 +33,7 @@
 							if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
 							{
 								//validate
-								echo 'value="'.$_GET['searchproduct'].'"';
+								echo 'value="'.htmlspecialchars($_GET['searchproduct']).'"';
 							}
 						?>
 					>
@@ -56,10 +56,10 @@
 				if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
 				{
 					//send request to Farnell API
-					$farnellproducts = getFarnellProducts($_GET['searchproduct'], 0, 20);
+					$farnellproducts = getFarnellProducts(htmlspecialchars($_GET['searchproduct']), 0, 20);
 
 					//send request to Mouser API
-					$mouserproducts = getMouserProducts($_GET['searchproduct'], 0, 20);
+					$mouserproducts = getMouserProducts(htmlspecialchars($_GET['searchproduct']), 0, 20);
 					
 					//print message if no products found
 					if(empty($farnellproducts) && empty($mouserproducts))
