@@ -47,6 +47,7 @@
 		else
 		{
 			echo "<p>Een naam kan enkel letters, spaties en - bevatten.</p>";
+			return FALSE;
 		}
 	}
 	
@@ -65,6 +66,7 @@
 		else
 		{
 			echo "<p>Een rnummer moet steeds beginnen met één van volgende letters: ".$GLOBALS["settings"]->Whitelist["idletters"]." gevolgd door 7 cijfers</p>";
+			return FALSE;
 		}
 	}
 	
@@ -83,13 +85,14 @@
 		else
 		{
 			echo "<p>Niet ondersteund emailadres.</p>";
+			return FALSE;
 		}
 	}
 	
 	function validateWachtWoord($data)
 	{
 		$data = validateInput($data);
-        $data=filter_var($data, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+        $data = filter_var($data, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 
 		//password must contain at least 8 characters or numbers(a-z, A-Z, 0-9)
 		if(preg_match("/^[a-zA-Z0-9]{8,}$/", $data))

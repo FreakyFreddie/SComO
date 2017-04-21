@@ -70,6 +70,10 @@
 		//request information, get records (with parameters)
 		public function queryDB($parameters)
 		{
+			//debug
+			//echo $this->statement;
+			//var_dump($parameters);
+
 			if(!isset($this->statement))
 			{
 				//debug
@@ -109,6 +113,10 @@
 		//Use to write something to DB
 		public function writeDB($parameters)
 		{
+			//debug
+			//echo $this->statement;
+			//var_dump($parameters);
+
 			if(!isset($this->statement))
 			{
 				//debug

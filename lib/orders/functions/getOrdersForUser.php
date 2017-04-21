@@ -15,13 +15,24 @@
 		//d = double
 		//b = blob
 		//s = string
-		$parameters[0] = "sss";
+		$parameters[0] = "ss";
 		$parameters[1] = $userid;
 		$parameters[2] = $sort;
-		$parameters[3] = $sequence;
 
-		//prepare statement
-		$dal->setStatement("SELECT * FROM bestelling WHERE rnummer=? ORDER BY ? ?");
+		if($sequence == "ASC")
+		{
+			//prepare statement
+			$dal->setStatement("SELECT * FROM bestelling WHERE rnummer=? ORDER BY ? ASC");
+		}
+		elseif($sequence = "DESC")
+		{
+			//prepare statement
+			$dal->setStatement("SELECT * FROM bestelling WHERE rnummer=? ORDER BY ? DESC");
+		}
+		else
+		{
+			echo "This action is not permitted";
+		}
 		$arrayorders = $dal->queryDB($parameters);
 		unset($parameters);
 

@@ -26,7 +26,7 @@
 		//prepare statement
 		//check if the user already has the product in its shopping cart
 		//it is more efficient to do it like this, The other solution is to load everything in a ShoppingCart Object (longer DB access = more overhead)
-		$dal->setStatement("SELECT idproduct, leverancier, aantal FROM winkelwagen WHERE idproduct='?' AND leverancier=? AND rnummer=?");
+		$dal->setStatement("SELECT idproduct, leverancier, aantal FROM winkelwagen WHERE idproduct=? AND leverancier=? AND rnummer=?");
 		$records = $dal->queryDB($parameters);
 		unset($parameters);
 

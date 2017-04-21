@@ -7,6 +7,7 @@
 		private $productSupplier;
 		private $productAmount;
 		private $productPrice;
+		private $collection = "none";
 
 		//product is object of Product class
 		private $product;
@@ -153,7 +154,7 @@
 
 		public function addArticleToOrder($order)
 		{
-			$orderproduct = new OrderProduct((int)$order->__get("Id"), $this->productId, $this->productSupplier, $this->productAmount, $this->productPrice);
+			$orderproduct = new OrderProduct((int)$order->__get("Id"), $this->productId, $this->productSupplier, $this->productAmount, $this->productPrice, $this->collection);
 			$orderproduct->writeDB();
 		}
 	}

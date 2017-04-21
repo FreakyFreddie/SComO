@@ -2,7 +2,6 @@
 
 	class OrderProduct
 	{
-		private $finalOrderNumber;
 		private $orderId;
 		private $productId;
 		private $productSupplier;
@@ -12,9 +11,8 @@
 
 		private $product;
 
-		public function __construct($oid, $pid, $psupplier, $pamount, $pprice, $collection="", $finalonumber="")
+		public function __construct($oid, $pid, $psupplier, $pamount, $pprice, $collection="")
 		{
-			$this->finalOrderNumber = $finalonumber;
 			$this->orderId = $oid;
 			$this->productId = $pid;
 			$this->productSupplier = $psupplier;
@@ -31,7 +29,6 @@
 			$dal = new DAL();
 
 			//prevent SQL injection
-			$this->finalOrderNumber = mysqli_real_escape_string($dal->getConn(), $this->finalOrderNumber);
 			$this->orderId = mysqli_real_escape_string($dal->getConn(), $this->orderId);
 			$this->productId = mysqli_real_escape_string($dal->getConn(), $this->productId);
 			$this->productSupplier = mysqli_real_escape_string($dal->getConn(), $this->productSupplier);
@@ -45,17 +42,16 @@
 			//d = double
 			//b = blob
 			//s = string
-			$parameters[0] = "sissids";
-			$parameters[1] = $this->finalOrderNumber;
-			$parameters[2] = $this->orderId;
-			$parameters[3] = $this->productId;
-			$parameters[4] = $this->productSupplier;
-			$parameters[5] = $this->productAmount;
-			$parameters[6] = $this->productPrice;
-			$parameters[7] = $this->collection;
+			$parameters[0] = "issids";
+			$parameters[1] = $this->orderId;
+			$parameters[2] = $this->productId;
+			$parameters[3] = $this->productSupplier;
+			$parameters[4] = $this->productAmount;
+			$parameters[5] = $this->productPrice;
+			$parameters[6] = $this->collection;
 
 			//add order to DB (still to complete)
-			$dal->setStatement("INSERT INTO bestellingproduct (defbestelnummer, bestelnummer, idproduct, leverancier, aantal, prijs, verzamelnaam) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			$dal->setStatement("INSERT INTO bestellingproduct (bestelnummer, idproduct, leverancier, aantal, prijs, verzamelnaam) VALUES (?, ?, ?, ?, ?, ?)");
 			$dal->writeDB($parameters);
 			unset($parameters);
 

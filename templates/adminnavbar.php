@@ -4,11 +4,11 @@
 	{
 		echo'<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">';
-				echo '<li class="';
+				echo '<li class="parent';
 
 				if (strcmp($GLOBALS['adminpage'], "adminpanel") == 0)
 				{
-					echo 'active">';
+					echo ' active">';
 				}
 				else
 				{
@@ -40,9 +40,18 @@
 							</svg>
 						</span>
 						 Projecten
-					</a>
-					<ul class="children collapse in" aria-expanded="true" id="sub-item-1">
-						<li>
+					</a>';
+
+				if (strcmp($GLOBALS['adminpage'], "adminprojecten") == 0)
+				{
+					echo '<ul class="children collapse in" aria-expanded="true" id="sub-item-1">';
+				}
+				else
+				{
+					echo '<ul class="children collapse" aria-expanded="false" id="sub-item-1">';
+				}
+
+				echo '<li>
 							<a class="" href="adminprojectennieuw.php">
 								<svg class="glyph stroked plus sign">
 									<use xlink:href="#stroked-plus-sign"/>
@@ -95,9 +104,18 @@
 							</svg>
 						</span>
 						 Bestellingen
-					</a>
-					<ul class="children collapse in" aria-expanded="true" id="sub-item-2">
-						<li>
+					</a>';
+
+				if (strcmp($GLOBALS['adminpage'], "adminbestellingen") == 0)
+				{
+					echo '<ul class="children collapse in" aria-expanded="true" id="sub-item-2">';
+				}
+				else
+				{
+					echo '<ul class="children collapse" aria-expanded="false" id="sub-item-2">';
+				}
+
+				echo '<li>
 							<a class="" href="adminbestellingenkeuren.php">
 								<svg class="glyph stroked checkmark">
 									<use xlink:href="#stroked-checkmark"/>
@@ -142,9 +160,18 @@
 							</svg>
 						</span>
 						 Gebruikers
-					</a>
-					<ul class="children collapse in" aria-expanded="true" id="sub-item-3">
-						<li>
+					</a>';
+
+				if (strcmp($GLOBALS['adminpage'], "adminusers") == 0)
+				{
+					echo '<ul class="children collapse in" aria-expanded="true" id="sub-item-3">';
+				}
+				else
+				{
+					echo '<ul class="children collapse" aria-expanded="false" id="sub-item-3">';
+				}
+
+				echo '<li>
 							<a class="" href="adminuserstoevoegen.php">
 								<svg class="glyph stroked plus sign">
 									<use xlink:href="#stroked-plus-sign"/>

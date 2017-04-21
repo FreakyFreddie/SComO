@@ -13,10 +13,10 @@
 		$parameters[0] = "i";
 
 		//prepare statement
-		$dal->setStatement("SELECT COUNT(*) FROM bestelling WHERE status=?");
+		$dal->setStatement("SELECT COUNT(*) AS number FROM bestelling WHERE status=?");
 
-
-		switch ($status) {
+		switch ($status)
+		{
 			case "Geweigerd":
 				$parameters[1] = 0;
 				$count = $dal->queryDB($parameters);
@@ -38,7 +38,7 @@
 				break;
 
 			case "Aangekomen":
-				$parameters[1] =4;
+				$parameters[1] = 4;
 				$count = $dal->queryDB($parameters);
 				break;
 
@@ -51,6 +51,6 @@
 
 		$dal->closeConn();
 
-		return $count;
+		return $count[0]->number;
 	}
 ?>

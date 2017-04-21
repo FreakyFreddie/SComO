@@ -54,18 +54,89 @@
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
-			<ol class="breadcrumb">
-				<li>
-					<a href="adminpanel.php">
-						<svg class="glyph stroked home">
-							<use xlink:href="#stroked-home"></use>
-						</svg>
-					</a>
-				</li>
-				<li class="active">Projecten</li>
-			</ol>
+			<div class="col-xs-12 col-md-6 col-lg-3">
+				<div class="panel panel-orange panel-widget">
+					<div class="row no-padding">
+						<a id="togglerow1" href="#row1">
+							<div class="col-sm-3 col-lg-5 widget-left">
+								<svg class="glyph stroked calendar">
+									<use xlink:href="#stroked-calendar"></use>
+								</svg>
+							</div>
+						</a>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">
+								Overzicht
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-3">
+				<div class="panel panel-teal panel-widget">
+					<div class="row no-padding">
+						<a id="togglerow2" href="#row2">
+							<div class="col-sm-3 col-lg-5 widget-left">
+								<svg class="glyph stroked plus sign">
+									<use xlink:href="#stroked-plus-sign"/>
+								</svg>
+							</div>
+						</a>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">
+								Nieuw
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div><!--/.row-->
-		<div class="row">
+		<div class="row" id="row2">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Maak een nieuw project aan</div>
+					<div class="panel-body">
+						<form role="form" action="#">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="titel">Titel project</label>
+										<input class="form-control" placeholder="Titel" id="projecttitle" name="titel">
+									</div>
+
+									<div class="form-group">
+										<label for="budget">Budget</label>
+										<input class="form-control" placeholder="Budget" id="projectfunds" name="budget">
+									</div>
+
+									<div class="form-group">
+										<label for="rekeningnummer">Rekeningnummer</label>
+										<input class="form-control" placeholder="Rekeningnummer" id="projectaccount" name="rekeningnummer">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="startdatum">Startdatum</label>
+										<input class="form-control" placeholder="2016-12-31" id="projectstartdate" name="startdatum">
+									</div>
+
+									<div class="form-group">
+										<label for="vervaldatum">Vervaldatum</label>
+										<input class="form-control" placeholder="2017-12-31" id="projectenddate" name="vervaldatum">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<input type="button" class="btn btn-primary" id="createnewproject" value="Aanmaken" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
+		<div class="row" id="row1">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">Alle projecten</div>
@@ -77,6 +148,7 @@
 									<th data-field="titel"  data-sortable="true">titel</th>
 									<th data-field="budget" data-sortable="true">budget</th>
 									<th data-field="rekening" data-sortable="true">rekening</th>
+									<th data-field="startdatum" data-sortable="true">startdatum</th>
 									<th data-field="einddatum" data-sortable="true">einddatum</th>
 								</tr>
 							</thead>
