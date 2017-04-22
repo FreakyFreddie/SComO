@@ -29,20 +29,16 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["idtitle"]) && isset($_POST["title"]) && isset($_POST["funds"]) && isset($_POST["account"]) && isset($_POST["startdate"]) && isset($_POST["enddate"])
-		&& !empty($_POST["idtitle"]) && !empty($_POST["title"]) && !empty($_POST["funds"]) && !empty($_POST["account"]) && !empty($_POST["startdate"]) && !empty($_POST["enddate"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["id"]) && isset($_POST["titel"]) && isset($_POST["budget"]) && isset($_POST["rekening"]) && isset($_POST["startdatum"]) && isset($_POST["einddatum"])
+		&& !empty($_POST["id"]) && !empty($_POST["titel"]) && !empty($_POST["budget"]) && !empty($_POST["rekening"]) && !empty($_POST["startdatum"]) && !empty($_POST["einddatum"]))
 	{
 		//validate input
-		$idtitle = validateInput($_POST["idtitle"]);
-		$title = validateInput($_POST["title"]);
-		$funds = validateInput($_POST["funds"]);
-		$account = validateInput($_POST["account"]);
-		$startdate = validateInput($_POST["startdate"]);
-		$enddate = validateInput($_POST["enddate"]);
-
-		//split in id & title
-		$idtitle = explode(" ", $idtitle);
-		$idproject = $idtitle[0];
+		$idproject = validateInput($_POST["id"]);
+		$title = validateInput($_POST["titel"]);
+		$funds = validateInput($_POST["budget"]);
+		$account = validateInput($_POST["rekening"]);
+		$startdate = validateInput($_POST["startdatum"]);
+		$enddate = validateInput($_POST["einddatum"]);
 
 		//create new project object
 		$project = new Project($title, $funds, $startdate, $enddate, $account);
@@ -51,6 +47,6 @@
 		$project->__set("Id", $idproject);
 
 		//extract project info from DB
-		$project->updateDB();;
+		$project->updateDB();
 	}
 ?>

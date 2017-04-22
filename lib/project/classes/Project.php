@@ -170,11 +170,11 @@
 			//s = string
 			$parameters[0] = "sdsssi";
 			$parameters[1] = $this->projectTitle;
-			$parameters[2] = $this->projectFunding;
+			$parameters[2] = (float)$this->projectFunding;
 			$parameters[3] = $this->projectStartDate;
 			$parameters[4] = $this->projectEndDate;
 			$parameters[5] = $this->projectAccountNumber;
-			$parameters[6] = $this->projectId;
+			$parameters[6] = (int)$this->projectId;
 
 			//prepare statement
 			//write project update to db
