@@ -52,35 +52,19 @@
 				}
 
 				echo '<li>
-							<a class="" href="adminprojectennieuw.php">
+							<a class="" href="#row1">
+								<svg class="glyph stroked clipboard with paper">
+									<use xlink:href="#stroked-clipboard-with-paper"/>
+								</svg>
+								 Overzicht
+							</a>
+						</li>
+						<li>
+							<a class="" href="#row2">
 								<svg class="glyph stroked plus sign">
 									<use xlink:href="#stroked-plus-sign"/>
 								</svg>
 								 Nieuw project
-							</a>
-						</li>
-						<li>
-							<a class="" href="adminprojectentoewijzen.php">
-								<svg class="glyph stroked clipboard with paper">
-									<use xlink:href="#stroked-clipboard-with-paper"/>
-								</svg>
-								 Project toewijzen
-							</a>
-						</li>
-						<li>
-							<a class="" href="adminprojectenwijzigen.php">
-								<svg class="glyph stroked pencil">
-									<use xlink:href="#stroked-pencil"/>
-								</svg>
-								 Project wijzigen
-							</a>
-						</li>
-						<li>
-							<a class="" href="adminprojectenverwijderen.php">
-								<svg class="glyph stroked trash">
-									<use xlink:href="#stroked-trash"/>
-								</svg>
-								 Project verwijderen
 							</a>
 						</li>
 					</ul>';

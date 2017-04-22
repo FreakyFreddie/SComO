@@ -34,6 +34,13 @@
 
 		$dal->closeConn();
 
+		//add buttons to change row or view details
+		for($i = 0; $i < count($records); $i++)
+		{
+			$records[$i]->wijzig = '<button class="btn btn-default wijzig" type="button" name="wijzig"><i class="fa fa-exchange fa-lg"></i></button>';
+			$records[$i]->details = '<button class="btn btn-default details" type="button" name="details"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+		}
+
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);
 	}

@@ -64,6 +64,10 @@ body {
 	margin-bottom: 5vh;
 }
 
+#row1{
+	margin-top: 25px;
+}
+
 .shop .col-sm-4 .shoparticle{
 	width: 100%;
 	background-color: white;
