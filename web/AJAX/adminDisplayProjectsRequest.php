@@ -38,7 +38,7 @@
 		for($i = 0; $i < count($records); $i++)
 		{
 			$records[$i]->wijzig = '<button class="btn btn-default" type="button" name="wijzig" onclick="changeProject('.$records[$i]->id.')"><i class="fa fa-exchange fa-lg"></i></button>';
-			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="showDetails('.$records[$i]->id.')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav()"><i class="fa fa-angle-double-right fa-lg"></i></button>';
 		}
 
 		//Lumino admin panel requires a JSON to process

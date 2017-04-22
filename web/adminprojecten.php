@@ -34,6 +34,7 @@
 
 	<!-- AJAX to add new projects -->
 	<script src="js/adminAddNewProject.js"></script>
+	<script src="js/adminSidePanel.js"></script>
 	</head>
 
 	<body>
@@ -53,6 +54,10 @@
 		//include admin dashboard navbar
 		require $GLOBALS['settings']->Folders['root'].'../templates/adminnavbar.php';
 	?>
+
+	<div id="sidepanel" class="sidepanel">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	</div>
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row" id="row1">
@@ -124,6 +129,7 @@
 				</div>
 			</div><!-- /.col-->
 		</div><!-- /.row -->
+		<!-- Use any element to open the sidenav -->
 	</div><!--/.main-->
 
 	<script src="js/Lumino/bootstrap-datepicker.js"></script>
