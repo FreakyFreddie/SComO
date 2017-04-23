@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
 	//add remove button to the toolbar of table 1
-	$(".removebutton1").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="removebutton1" class="btn btn-default" type="button" name="addprojects" title="Verwijderen"><span class="glyphicon glyphicon-minus"></span> Verwijderen</button></div>');
+	$(".removebutton1").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="removebutton1" class="btn btn-default" type="button" name="removeprojects" title="Verwijderen"><span class="glyphicon glyphicon-minus"></span> Verwijderen</button></div>');
 
 	//script to get remove a project
 	$("#removebutton1").click(function()
@@ -35,6 +35,7 @@ $(document).ready(function()
 			});
 		}
 	});
+
 });
 
 function changeProject(id)
