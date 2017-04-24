@@ -105,7 +105,7 @@
 				<div class="col-xs-12 col-md-6 col-lg-3">
 					<div class="panel panel-teal panel-widget">
 						<div class="row no-padding">
-							<a href="adminprojectentoewijzen.php">
+							<a href="adminprojecten.php">
 								<div class="col-sm-3 col-lg-5 widget-left">
 									<svg class="glyph stroked calendar">
 										<use xlink:href="#stroked-calendar"></use>
