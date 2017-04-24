@@ -25,6 +25,86 @@ body {
     color: #fff;
 }
 
+/*sidepanel*/
+.sidepanel {
+	right: 0;
+	min-height: 100%; /* 100% Full-height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 100; /* Stay on top */
+	background-color: #f1f4f7; /* grey*/
+	overflow-x: hidden; /* Disable horizontal scroll */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* When you mouse over the button, change color */
+.sidepanel .closebtn:hover, .offcanvas .closebtn:focus{
+	color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+	z-index: 200;
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+#infopanel table{
+	width: 47%;
+	float: left;
+	margin: 5px;
+}
+
+.easypiechart-panel {
+	text-align: center;
+	padding: 1px 0;
+	margin-bottom: 20px;
+}
+
+.easypiechart-panel {
+	text-align: center;
+	padding: 1px 0;
+	margin-bottom: 20px;
+	height: 100%;
+}
+
+.placeholder h2 {
+	margin-bottom: 0px;
+}
+
+.donut {
+	width: 100%;
+}
+
+.easypiechart {
+	position: relative;
+	text-align: center;
+	width: 120px;
+	height: 120px;
+	margin: 20px auto 10px auto;
+}
+
+.easypiechart .percent {
+	display: block;
+	position: absolute;
+	font-size: 26px;
+	top: 38px;
+	width: 120px;
+}
+
+#easypiechart-blue .percent { color: #30a5ff;}
+#easypiechart-teal .percent { color: #1ebfae;}
+#easypiechart-orange .percent { color: #ffb53e;}
+#easypiechart-red .percent { color: #ef4040;}
+
 #login-dp{
 	padding: 5%;
 }
@@ -62,6 +142,10 @@ body {
 
 .main{
 	margin-bottom: 5vh;
+}
+
+#row1{
+	margin-top: 25px;
 }
 
 .shop .col-sm-4 .shoparticle{
@@ -115,6 +199,10 @@ body {
 .mouserproduct .input-group .input-group-btn button:hover{
     color: black;
 	background-color: lightblue;
+}
+
+table{
+	color: #5f6468;
 }
 
 footer{

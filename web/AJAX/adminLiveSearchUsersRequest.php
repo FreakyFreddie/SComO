@@ -23,25 +23,38 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_GET["q"]))
 	{
-		//list all projects
 		$dal = new DAL();
-		$sql = "SELECT project.idproject as id, project.titel as titel, project.budget as budget, project.rekeningnr as rekening, project.startdatum as startdatum, project.vervaldatum as einddatum
-			FROM project;";
 
-		$records = $dal->queryDBNoArgs($sql);
+		//extract user info from DB
+		//database input, counter injection
+		$q = mysqli_real_escape_string($dal->getConn(), $_GET["q"]);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "sss";
+		$parameters[1] = "%".$q."%";
+		$parameters[2] = "%".$q."%";
+		$parameters[3] = "%".$q."%";
+
+		//prepare statement
+		$dal->setStatement("SELECT rnummer, voornaam, achternaam FROM gebruiker WHERE rnummer LIKE ?
+			UNION
+			SELECT rnummer, voornaam, achternaam FROM gebruiker WHERE voornaam LIKE ?
+			UNION
+			SELECT rnummer, voornaam, achternaam FROM gebruiker WHERE achternaam LIKE ?
+		");
+
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		$dal->closeConn();
 
-		//add buttons to change row or view details
-		for($i = 0; $i < count($records); $i++)
-		{
-			$records[$i]->wijzig = '<button class="btn btn-default" type="button" name="wijzig" onclick="changeProject('.$records[$i]->id.')"><i class="fa fa-exchange fa-lg"></i></button>';
-			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->id.",'".$records[$i]->titel."',".$records[$i]->budget.",'".$records[$i]->rekening."','".$records[$i]->startdatum."','".$records[$i]->einddatum."'".')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
-		}
-
-		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);
 	}
 ?>

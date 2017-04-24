@@ -14,12 +14,6 @@
 	//include Product class
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
-	//include project class
-	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
-
-	//include project class
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
-
 	session_start();
 
 	//redirect if user is not logged in as admin
@@ -29,25 +23,34 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["idtitle"]) && !empty($_POST["idtitle"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_GET["id"]))
 	{
-		//validate input
-		$idtitle = validateInput($_POST["idtitle"]);
+		$dal = new DAL();
 
-		//split in id & title
-		$idtitle = explode(" ", $idtitle);
-		$idproject = $idtitle[0];
+		//prevent SQL injection
+		$id= mysqli_real_escape_string($dal->getConn(), $_GET["id"]);
 
-		//create new project object
-		$project = new Project();
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "i";
+		$parameters[1] = (int) $id;
 
-		//set project id
-		$project->__set("Id", $idproject);
+		//prepare statement
+		$dal->setStatement("SELECT gebruiker.rnummer, gebruiker.achternaam as naam, gebruiker.voornaam as voornaam, gebruikerproject.is_beheerder as beheerder
+			FROM gebruiker
+			INNER JOIN gebruikerproject ON gebruiker.rnummer=gebruikerproject.rnummer
+			WHERE gebruikerproject.idproject=?");
 
-		//extract project info from DB
-		$project->getFromDB();
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
-		//pass JSON object
-		echo $project->toJSON();
+		$dal->closeConn();
+
+		//Lumino admin panel requires a JSON to process
+		echo json_encode($records);
 	}
 ?>

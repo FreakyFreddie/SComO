@@ -32,6 +32,9 @@
 	<script src="js/Lumino/respond.min.js"></script>
 	<![endif]-->
 
+	<!-- AJAX to add new projects -->
+	<script src="js/adminAddNewProject.js"></script>
+	<script src="js/adminSidePanelProject.js"></script>
 	</head>
 
 	<body>
@@ -52,41 +55,146 @@
 		require $GLOBALS['settings']->Folders['root'].'../templates/adminnavbar.php';
 	?>
 
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-orange panel-widget">
-					<div class="row no-padding">
-						<a id="togglerow1" href="#row1">
-							<div class="col-sm-3 col-lg-5 widget-left">
-								<svg class="glyph stroked calendar">
-									<use xlink:href="#stroked-calendar"></use>
-								</svg>
-							</div>
-						</a>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">
-								Overzicht
+	<div id="sidepanel" class="sidepanel">
+		<div class="main">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="panel panel-default removebutton1" id="infopanel">
+						<div class="panel-heading">Info </div>
+						<div class="panel-body">
+							<table class="table table-hover">
+								<tbody>
+								<tr>
+									<th>
+										Id
+									</th>
+									<td id="id" class="text-right">
+
+									</td>
+								</tr>
+								<tr>
+									<th>
+										Titel
+									</th>
+									<td id="titel" class="text-right">
+
+									</td>
+								</tr>
+								<tr>
+									<th>
+										Budget
+									</th>
+									<td id="budget" class="text-right">
+
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<table class="table table-hover">
+								<tbody>
+								<tr>
+									<th>
+										Startdatum
+									</th>
+									<td id="startdatum" class="text-right">
+
+									</td>
+								</tr>
+								<tr>
+									<th>
+										Einddatum
+									</th>
+									<td id="einddatum" class="text-right">
+
+									</td>
+								</tr>
+								<tr>
+									<th>
+										Rekening
+									</th>
+									<td id="rekening" class="text-right">
+
+									</td>
+								</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">Budget</div>
+						<div class="panel-body easypiechart-panel">
+							<div class="easypiechart" id="easypiechart-teal" data-percent="0">
+								<span class="percent">0%</span>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-teal panel-widget">
-					<div class="row no-padding">
-						<a id="togglerow2" href="#row2">
-							<div class="col-sm-3 col-lg-5 widget-left">
-								<svg class="glyph stroked plus sign">
-									<use xlink:href="#stroked-plus-sign"/>
-								</svg>
-							</div>
-						</a>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">
-								Nieuw
-							</div>
+			</div><!--/.row-->
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="panel panel-default removebutton2 addbutton1">
+						<div class="panel-heading">Deelnemers</div>
+						<div class="panel-body">
+							<table id="displayprojectparticipants" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+								<thead>
+								<tr>
+									<th data-field="selector" data-checkbox="true" >selector</th>
+									<th data-field="rnummer" data-sortable="true">rnummer</th>
+									<th data-field="naam"  data-sortable="true">naam</th>
+									<th data-field="voornaam" data-sortable="true">voornaam</th>
+									<th data-field="beheerder" data-sortable="true">beheerder</th>
+								</tr>
+								</thead>
+							</table>
 						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Bestellingen</div>
+						<div class="panel-body">
+							<table id="displayprojectorders" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+								<thead>
+								<tr>
+									<th data-field="bestelnummer" data-sortable="true">order</th>
+									<th data-field="productid" data-sortable="true">productid</th>
+									<th data-field="aantal" data-sortable="true">aantal</th>
+									<th data-field="prijs" data-sortable="true">prijs</th>
+								</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+		</div>
+	</div>
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row" id="row1">
+			<div class="col-lg-12">
+				<div class="panel panel-default removebutton1">
+					<div class="panel-heading">Alle projecten</div>
+					<div class="panel-body">
+						<table data-toggle="table" data-url="AJAX/adminDisplayProjectsRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+							<thead>
+								<tr>
+									<th data-field="selector" data-checkbox="true" >selector</th>
+									<th data-field="id" data-sortable="true">id</th>
+									<th data-field="titel"  data-sortable="true">titel</th>
+									<th data-field="budget" data-sortable="true">budget</th>
+									<th data-field="rekening" data-sortable="true">rekening</th>
+									<th data-field="startdatum" data-sortable="true">startdatum</th>
+									<th data-field="einddatum" data-sortable="true">einddatum</th>
+									<th data-field="wijzig">wijzig</th>
+									<th data-field="details">details</th>
+								</tr>
+							</thead>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -136,31 +244,14 @@
 				</div>
 			</div><!-- /.col-->
 		</div><!-- /.row -->
-		<div class="row" id="row1">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">Alle projecten</div>
-					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/adminDisplayProjectsRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
-							<thead>
-								<tr>
-									<th data-field="id" data-sortable="true">id</th>
-									<th data-field="titel"  data-sortable="true">titel</th>
-									<th data-field="budget" data-sortable="true">budget</th>
-									<th data-field="rekening" data-sortable="true">rekening</th>
-									<th data-field="startdatum" data-sortable="true">startdatum</th>
-									<th data-field="einddatum" data-sortable="true">einddatum</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div><!--/.row-->
+		<!-- Use any element to open the sidenav -->
 	</div><!--/.main-->
 
 	<script src="js/Lumino/bootstrap-datepicker.js"></script>
 	<script src="js/Lumino/bootstrap-table.js"></script>
+	<script src="js/Lumino/easypiechart.js"></script>
+	<script src="js/Lumino/easypiechart-data.js"></script>
+	<script src="js/adminAddTableButtons-projects.js"></script>
 	<script>
 		!function ($) {
 			$(document).on("click","ul.nav li.parent > a > span.icon", function(){

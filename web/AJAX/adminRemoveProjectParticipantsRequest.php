@@ -17,7 +17,10 @@
 	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
 
-	//include function to validate input
+	//include function to remove projects
+	require $GLOBALS['settings']->Folders['root'].'../lib/project/functions/removeProject.php';
+
+	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 
 	session_start();
@@ -29,24 +32,35 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["id"]) && isset($_POST["titel"]) && isset($_POST["budget"]) && isset($_POST["rekening"]) && isset($_POST["startdatum"]) && isset($_POST["einddatum"])
-		&& !empty($_POST["id"]) && !empty($_POST["titel"]) && !empty($_POST["budget"]) && !empty($_POST["rekening"]) && !empty($_POST["startdatum"]) && !empty($_POST["einddatum"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["array"]) && isset($_POST["id"]) && !empty($_POST["array"]) && !empty($_POST["id"]))
 	{
-		//validate input
-		$idproject = validateInput($_POST["id"]);
-		$title = validateInput($_POST["titel"]);
-		$funds = validateInput($_POST["budget"]);
-		$account = validateInput($_POST["rekening"]);
-		$startdate = validateInput($_POST["startdatum"]);
-		$enddate = validateInput($_POST["einddatum"]);
+		$dal = new DAL();
 
-		//create new project object
-		$project = new Project($title, $funds, $startdate, $enddate, $account);
+		//prevent SQL injection
+		$id = mysqli_real_escape_string($dal->getConn(), $_POST["id"]);
 
-		//set project id
-		$project->__set("Id", $idproject);
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "is";
+		$parameters[1] = (int) $id;
 
-		//extract project info from DB
-		$project->updateDB();
+		//prepare statement
+		$dal->setStatement("DELETE FROM gebruikerproject WHERE idproject=? AND rnummer=?");
+
+		foreach($_POST["array"] as $user)
+		{
+			$rnummer = mysqli_real_escape_string($dal->getConn(), $user["rnummer"]);
+			$parameters[2] = $rnummer;
+
+			$dal->writeDB($parameters);
+		}
+
+		unset($parameters);
+
+		$dal->closeConn();
 	}
 ?>
