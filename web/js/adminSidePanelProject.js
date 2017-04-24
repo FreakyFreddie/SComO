@@ -41,9 +41,27 @@ function openNav(id, titel, budget, rekening, startdatum, einddatum) {
 		url: 'AJAX/adminDisplayProjectOrdersRequest.php?id=' + id +'&r=' + new Date().getTime()
 	});
 
+	//update pie chart data
+	var budget = $("#budget").html();
+	var id = $("#id").html();
+
+	//prepare request
+	$request = $.ajax({
+		method:"POST",
+		url:"AJAX/adminProjectOrderDataRequest.php?r=" + new Date().getTime(),
+		data: {id: id, budget: budget}
+	});
+
+	$request.done(function(data)
+	{
+		$('.easypiechart').data('easyPieChart').update(data);
+		$('.percent').html(data + "%");
+	});
+
+	//if removebutton does not exist, add & add eventhandler
 	if(!$("#removebutton2").length)
 	{
-		$(".removebutton2").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="removebutton2" class="btn btn-default" type="button" name="removeprojects" title="Verwijderen"><span class="glyphicon glyphicon-minus"></span> Verwijderen</button></div>');
+		$(".removebutton2").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="removebutton2" class="btn btn-default" type="button" name="removeuserfromproject" title="Verwijderen"><span class="glyphicon glyphicon-minus"></span> Verwijderen</button><button id="addbutton1" class="btn btn-default" type="button" name="addusertoproject" title="Toevoegen"><span class="glyphicon glyphicon-plus"></span> Toevoegen</button></div>');
 
 		//script to get remove participants from a project
 		$("#removebutton2").click(function()
@@ -77,12 +95,100 @@ function openNav(id, titel, budget, rekening, startdatum, einddatum) {
 				});
 			}
 		});
-	}
 
+		//script to add livesearch for users
+
+		$("#addbutton1").click(function()
+		{
+			if(!$("#livesearchform").length)
+			{
+				$("#addbutton1").parent().parent().before(
+				'<form id="livesearchform">' +
+				'<input class="form-control" id="searchusers" placeholder="Search users" type="text" onkeyup="showResult($(this).val())" />' +
+				'<div id="livesearch"></div>' +
+				'</form>');
+			}
+			else
+			{
+				var rnummer = $("#searchusers").val();
+				var id = $("#id").html();
+
+				//prepare request
+				$request = $.ajax({
+					method:"POST",
+					url:"AJAX/adminAddUserToProjectRequest.php?r=" + new Date().getTime(),
+					data: {rnummer: rnummer, id: id}
+				});
+
+				$request.done(function()
+				{
+					$("#searchusers").val("");
+					//refresh all tables
+					$("button[name='refresh']").trigger("click");
+				});
+			}
+		});
+	}
 }
 
 /* Close/hide the sidenav */
-function closeNav() {
+function closeNav()
+{
 	document.getElementById("sidepanel").style.width = "0";
 	document.getElementById("sidepanel").style.padding= "0px 0px 0px 0px";
+	$('.easypiechart').data('easyPieChart').update(0);
+	$('.percent').html(0 + "%");
+}
+
+function showResult(str)
+{
+	if (str.length==0)
+	{
+		document.getElementById("livesearch").innerHTML="";
+		document.getElementById("livesearch").style.border="0px";
+		return;
+	}
+	if (window.XMLHttpRequest)
+	{
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (this.readyState==4 && this.status==200)
+		{
+			var obj = JSON.parse(this.responseText);
+
+			for(var i = 0; i < obj.length; i++)
+			{
+				var rnummer=obj[i].rnummer;
+				var voornaam=obj[i].voornaam;
+				var achternaam=obj[i].achternaam;
+
+				if(i==0)
+				{
+					document.getElementById("livesearch").innerHTML= '<a class="searchhint" onclick="addUserToInput(\''+ rnummer +'\')">' + achternaam + ", " + voornaam + ", " + rnummer + '</a>';
+				}
+				else
+				{
+					document.getElementById("livesearch").innerHTML = document.getElementById("livesearch").innerHTML + '<br /><a class="searchhint" onclick="addUserToInput(\''+ rnummer +'\')">' + achternaam + ", " + voornaam + ", " + rnummer + '</a>';
+				}
+			}
+
+			document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+		}
+	}
+	xmlhttp.open("GET","AJAX/adminLiveSearchUsersRequest.php?q="+str,true);
+	xmlhttp.send();
+}
+
+//click a livesearch hint
+function addUserToInput(rnummer)
+{
+	$("#searchusers").val(rnummer);
 }

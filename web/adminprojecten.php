@@ -127,8 +127,8 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Budget</div>
 						<div class="panel-body easypiechart-panel">
-							<div class="easypiechart" id="easypiechart-teal" data-percent="56">
-								<span class="percent">56%</span>
+							<div class="easypiechart" id="easypiechart-teal" data-percent="0">
+								<span class="percent">0%</span>
 							</div>
 						</div>
 					</div>
@@ -136,7 +136,7 @@
 			</div><!--/.row-->
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="panel panel-default removebutton2">
+					<div class="panel panel-default removebutton2 addbutton1">
 						<div class="panel-heading">Deelnemers</div>
 						<div class="panel-body">
 							<table id="displayprojectparticipants" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
