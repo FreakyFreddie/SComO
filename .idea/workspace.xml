@@ -21,35 +21,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="adminDisplayUsersRequest.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="adminDisplayUsersRequest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="59" selection-end-column="9" />
+            <state relative-caret-position="564">
+              <caret line="67" column="222" selection-start-line="67" selection-start-column="222" selection-end-line="67" selection-end-column="222" />
               <folding>
-                <marker date="1493151775088" expanded="true" signature="1377:1581" ph="SELECT gebru... gebruiker" />
+                <marker date="1493238090551" expanded="true" signature="1377:1581" ph="SELECT gebru... gebruiker" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminSidePanelUser.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="adminSidePanelUser.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelUser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="97" column="34" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="34" />
+            <state relative-caret-position="594">
+              <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminDisplayUserOrdersRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUserOrdersRequest.php">
+      <file leaf-file-name="adminnavbar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/adminnavbar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="45" column="36" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
+            <state relative-caret-position="704">
+              <caret line="62" column="64" selection-start-line="62" selection-start-column="64" selection-end-line="62" selection-end-column="64" />
               <folding>
-                <marker date="1493235364113" expanded="true" signature="1380:1642" ph="SELECT beste... bestelling" />
+                <marker date="1493237434268" expanded="true" signature="198:223" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="423:561" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="472:541" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="788:993" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="843:966" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="887:952" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="1273:1498" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="1324:1486" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="1381:1455" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="1509:1716" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="1560:1704" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="1606:1669" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="1960:2162" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2015:2132" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2056:2118" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2445:2662" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2500:2650" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2546:2609" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2673:2890" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2735:2878" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2780:2842" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2901:3132" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="2969:3120" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="3015:3078" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="3362:3570" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="3417:3542" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="3462:3528" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="3846:4067" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="3893:4055" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="3950:4024" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="4078:4287" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="4125:4275" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="4171:4234" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="4382:4532" ph="..." />
+                <marker date="1493237434268" expanded="true" signature="4457:4522" ph="..." />
               </folding>
             </state>
           </provider>
@@ -80,6 +114,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="adminprojecten.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/adminprojecten.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="adminLiveSearchProjectsRequest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/AJAX/adminLiveSearchProjectsRequest.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -94,49 +138,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminDisplayProjectParticipantsRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectParticipantsRequest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-              <folding>
-                <marker date="1493194369680" expanded="true" signature="1366:1629" ph="SELECT gebru... gebruiker" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adminDisplayProjectsParticipatingRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectsParticipatingRequest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
-              <folding>
-                <marker date="1493235178051" expanded="true" signature="1380:1585" ph="SELECT , geb... " />
-                <marker date="1493235178051" expanded="true" signature="1380:1594" ph="SELECT proje... project" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="adminusers.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/adminusers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="159" column="143" selection-start-line="159" selection-start-column="137" selection-end-line="159" selection-end-column="143" />
+            <state relative-caret-position="2843">
+              <caret line="201" column="33" selection-start-line="201" selection-start-column="33" selection-end-line="201" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminDisplayProjectsRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectsRequest.php">
+      <file leaf-file-name="adminAddTableButtons-projects.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/js/adminAddTableButtons-projects.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="41" selection-end-column="9" />
-              <folding>
-                <marker date="1493065785294" expanded="true" signature="1062:1258" ph="SELECT proje... project" />
-              </folding>
+            <state relative-caret-position="660">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminAddTableButtons-users.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/js/adminAddTableButtons-users.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-526">
+              <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -172,7 +199,6 @@
         <option value="$PROJECT_DIR$/lib/orders/functions/getOrdersTotal.php" />
         <option value="$PROJECT_DIR$/lib/database/functions/validateInputs.php" />
         <option value="$PROJECT_DIR$/lib/users/functions/registerUser.php" />
-        <option value="$PROJECT_DIR$/templates/adminnavbar.php" />
         <option value="$PROJECT_DIR$/web/index.php" />
         <option value="$PROJECT_DIR$/web/js/adminAddNewProject.js" />
         <option value="$PROJECT_DIR$/web/js/adminAddTableButtons.js" />
@@ -200,14 +226,15 @@
         <option value="$PROJECT_DIR$/web/AJAX/adminModifyUserRequest.php" />
         <option value="$PROJECT_DIR$/web/js/adminAddTableButtons-users.js" />
         <option value="$PROJECT_DIR$/web/AJAX/adminRemoveUsersRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectParticipantsRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectsParticipatingRequest.php" />
-        <option value="$PROJECT_DIR$/web/adminusers.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUserOrdersRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminRemoveProjectsParticipatingRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminLiveSearchProjectsRequest.php" />
         <option value="$PROJECT_DIR$/web/js/adminSidePanelUser.js" />
+        <option value="$PROJECT_DIR$/templates/adminnavbar.php" />
+        <option value="$PROJECT_DIR$/web/adminusers.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php" />
       </list>
     </option>
   </component>
@@ -821,16 +848,16 @@
       <workItem from="1493191401220" duration="2993000" />
       <workItem from="1493206395895" duration="110000" />
       <workItem from="1493206898500" duration="841000" />
-      <workItem from="1493233635881" duration="3450000" />
+      <workItem from="1493233635881" duration="4570000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="586793000" />
+    <option name="totallyTimeSpent" value="587913000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32864583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -870,13 +897,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/js/adminDownloadBOM.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayOrdersRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1072,28 +1092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/adminAddTableButtons-projects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/adminAddTableButtons-users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminprojecten.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4554">
-          <caret line="207" column="37" selection-start-line="207" selection-start-column="37" selection-end-line="207" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/AJAX/adminRemoveProjectParticipantsRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1232">
@@ -1118,16 +1116,6 @@
           <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
           <folding>
             <marker date="1493149748379" expanded="true" signature="3069:3170" ph="UPDATE gebru... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="59" selection-end-column="9" />
-          <folding>
-            <marker date="1493151775088" expanded="true" signature="1377:1581" ph="SELECT gebru... gebruiker" />
           </folding>
         </state>
       </provider>
@@ -1206,19 +1194,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/adminnavbar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="62" column="64" selection-start-line="62" selection-start-column="64" selection-end-line="62" selection-end-column="64" />
+          <folding>
+            <marker date="1493237434268" expanded="true" signature="198:223" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="423:561" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="472:541" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="788:993" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="843:966" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="887:952" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="1273:1498" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="1324:1486" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="1381:1455" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="1509:1716" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="1560:1704" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="1606:1669" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="1960:2162" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2015:2132" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2056:2118" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2445:2662" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2500:2650" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2546:2609" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2673:2890" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2735:2878" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2780:2842" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2901:3132" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="2969:3120" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="3015:3078" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="3362:3570" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="3417:3542" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="3462:3528" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="3846:4067" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="3893:4055" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="3950:4024" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="4078:4287" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="4125:4275" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="4171:4234" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="4382:4532" ph="..." />
+            <marker date="1493237434268" expanded="true" signature="4457:4522" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminprojecten.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/adminusers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="159" column="143" selection-start-line="159" selection-start-column="137" selection-end-line="159" selection-end-column="143" />
+        <state relative-caret-position="2843">
+          <caret line="201" column="33" selection-start-line="201" selection-start-column="33" selection-end-line="201" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/adminAddTableButtons-projects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/adminAddTableButtons-users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-526">
+          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelUser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="97" column="34" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="34" />
+        <state relative-caret-position="594">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="67" column="222" selection-start-line="67" selection-start-column="222" selection-end-line="67" selection-end-column="222" />
+          <folding>
+            <marker date="1493238090551" expanded="true" signature="1377:1581" ph="SELECT gebru... gebruiker" />
+          </folding>
         </state>
       </provider>
     </entry>
