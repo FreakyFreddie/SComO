@@ -29,19 +29,15 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["rnummervoornaamachternaam"]) && isset($_POST["voornaam"]) && isset($_POST["achternaam"]) && isset($_POST["email"]) && isset($_POST["machtigingsniveau"])
-		&& !empty($_POST["rnummervoornaamachternaam"]) && !empty($_POST["voornaam"]) && !empty($_POST["achternaam"]) && !empty($_POST["email"]) && !empty($_POST["machtigingsniveau"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["rnummer"]) && isset($_POST["voornaam"]) && isset($_POST["naam"]) && isset($_POST["email"]) && isset($_POST["niveau"])
+		&& !empty($_POST["rnummer"]) && !empty($_POST["voornaam"]) && !empty($_POST["naam"]) && !empty($_POST["email"]) && !empty($_POST["niveau"]))
 	{
 		//validate input
-		$rnummervoornaamachternaam = validateInput($_POST["rnummervoornaamachternaam"]);
+		$rnummer = validateRNummer($_POST["rnummer"]);
 		$firstname = validateNaam($_POST["voornaam"]);
-		$lastname = validateNaam($_POST["achternaam"]);
+		$lastname = validateNaam($_POST["naam"]);
 		$email = validateMail($_POST["email"]);
-		$permissionlevel = validateInput($_POST["machtigingsniveau"]);
-
-		//split in rnummer & trash
-		$rnummervoornaamachternaam = explode(" - ", $rnummervoornaamachternaam);
-		$userid = validateRNummer($rnummervoornaamachternaam[0]);
+		$permissionlevel = validateInput($_POST["niveau"]);
 
 		//prevent adding non-allowed permission levels
 		if($permissionlevel == "non-actief" OR $permissionlevel == "user" OR $permissionlevel == "admin" OR $permissionlevel == "banned")
@@ -69,7 +65,7 @@
 			$dal = new DAL();
 
 			//prevent sql injection
-			$userid = mysqli_real_escape_string($dal->getConn(), $userid);
+			$userid = mysqli_real_escape_string($dal->getConn(), $rnummer);
 			$firstname = mysqli_real_escape_string($dal->getConn(), $firstname);
 			$lastname = mysqli_real_escape_string($dal->getConn(), $lastname);
 			$email = mysqli_real_escape_string($dal->getConn(), $email);

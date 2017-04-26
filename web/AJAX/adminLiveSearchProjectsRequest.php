@@ -14,15 +14,6 @@
 	//include Product class
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
-	//include project class
-	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
-
-	//include function to remove projects
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/removeUser.php';
-
-	//include project class
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
-
 	session_start();
 
 	//redirect if user is not logged in as admin
@@ -32,12 +23,35 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["array"]) && !empty($_POST["array"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_GET["q"]))
 	{
-		foreach($_POST["array"] as $user)
-		{
-			//remove the user
-			removeUser($user["rnummer"]);
-		}
+		$dal = new DAL();
+
+		//extract user info from DB
+		//database input, counter injection
+		$q = mysqli_real_escape_string($dal->getConn(), $_GET["q"]);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "ss";
+		$parameters[1] = "%".$q."%";
+		$parameters[2] = "%".$q."%";
+
+		//prepare statement
+		$dal->setStatement("SELECT idproject, titel FROM project WHERE idproject LIKE ?
+			UNION
+			SELECT idproject, titel FROM project WHERE titel LIKE ?
+		");
+
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
+
+		$dal->closeConn();
+
+		echo json_encode($records);
 	}
 ?>

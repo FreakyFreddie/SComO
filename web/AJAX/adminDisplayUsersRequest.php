@@ -31,7 +31,7 @@
 	{
 		//orders for projects to be approved (what is important?)
 		$dal = new DAL();
-		$sql = "SELECT gebruiker.rnummer, gebruiker.email as email, gebruiker.achternaam as naam, gebruiker.voornaam as voornaam, gebruiker.machtigingsniveau as niveau, gebruiker.aanmaakdatum
+		$sql = "SELECT gebruiker.rnummer as rnummer, gebruiker.email as email, gebruiker.achternaam as naam, gebruiker.voornaam as voornaam, gebruiker.machtigingsniveau as niveau, gebruiker.aanmaakdatum
 			FROM gebruiker;";
 
 		$records = $dal->queryDBNoArgs($sql);
@@ -60,6 +60,13 @@
 		}
 
 		$dal->closeConn();
+
+		//add buttons to change row or view details
+		for($i = 0; $i < count($records); $i++)
+		{
+			$records[$i]->wijzig = '<button class="btn btn-default" type="button" name="wijzig" onclick="changeUser(\''.$records[$i]->rnummer.'\')"><i class="fa fa-exchange fa-lg"></i></button>';
+			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav(\''.$records[$i]->rnummer."','".$records[$i]->email."','".$records[$i]->naam."','".$records[$i]->voornaam."','".$records[$i]->niveau."','".$records[$i]->aanmaakdatum."'".')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+		}
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

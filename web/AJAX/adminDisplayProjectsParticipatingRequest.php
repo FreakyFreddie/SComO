@@ -14,15 +14,6 @@
 	//include Product class
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
-	//include project class
-	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
-
-	//include function to remove projects
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/removeUser.php';
-
-	//include project class
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
-
 	session_start();
 
 	//redirect if user is not logged in as admin
@@ -32,12 +23,34 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["array"]) && !empty($_POST["array"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_GET["rnummer"]))
 	{
-		foreach($_POST["array"] as $user)
-		{
-			//remove the user
-			removeUser($user["rnummer"]);
-		}
+		$dal = new DAL();
+
+		//prevent SQL injection
+		$rnummer= mysqli_real_escape_string($dal->getConn(), $_GET["rnummer"]);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $rnummer;
+
+		//prepare statement
+		$dal->setStatement("SELECT project.idproject, project.titel, gebruikerproject.is_beheerder as beheerder
+			FROM project
+			INNER JOIN gebruikerproject ON project.idproject=gebruikerproject.idproject
+			WHERE gebruikerproject.rnummer=?");
+
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
+
+		$dal->closeConn();
+
+		//Lumino admin panel requires a JSON to process
+		echo json_encode($records);
 	}
 ?>

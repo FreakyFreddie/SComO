@@ -18,7 +18,7 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
 
 	//include function to remove projects
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/removeUser.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/project/functions/removeProject.php';
 
 	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
@@ -32,12 +32,35 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["array"]) && !empty($_POST["array"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["array"]) && isset($_POST["rnummer"]) && !empty($_POST["array"]) && !empty($_POST["rnummer"]))
 	{
+		$dal = new DAL();
+
+		//prevent SQL injection
+		$rnummer = mysqli_real_escape_string($dal->getConn(), $_POST["rnummer"]);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "si";
+		$parameters[1] = $rnummer;
+
+		//prepare statement
+		$dal->setStatement("DELETE FROM gebruikerproject WHERE rnummer=? AND idproject=?");
+
 		foreach($_POST["array"] as $user)
 		{
-			//remove the user
-			removeUser($user["rnummer"]);
+			$id = mysqli_real_escape_string($dal->getConn(), $user["id"]);
+			$parameters[2] = (int) $id;
+
+			$dal->writeDB($parameters);
 		}
+
+		unset($parameters);
+
+		$dal->closeConn();
 	}
 ?>
