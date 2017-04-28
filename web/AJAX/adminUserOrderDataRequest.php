@@ -23,9 +23,34 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_SESSION["adminAddUsersToAssignRequest"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["rnummer"]))
 	{
+		$dal = new DAL();
+
+		//prevent SQL injection
+		$rnummer = mysqli_real_escape_string($dal->getConn(), $_POST["rnummer"]);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $rnummer;
+
+		//prepare statement
+		$dal->setStatement("SELECT SUM(bestellingproduct.aantal) AS som
+			FROM bestelling
+			INNER JOIN bestellingproduct ON bestelling.bestelnummer=bestellingproduct.bestelnummer
+			WHERE bestelling.rnummer=?");
+
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
+
+		$dal->closeConn();
+
 		//Lumino admin panel requires a JSON to process
-		echo json_encode($_SESSION["adminAddUsersToAssignRequest"]);
+		echo $records[0]->som ;
 	}
 ?>

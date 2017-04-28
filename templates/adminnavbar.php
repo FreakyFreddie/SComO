@@ -52,7 +52,7 @@
 				}
 
 				echo '<li>
-							<a class="" href="#row1">
+							<a class="" href="adminprojecten.php#row1">
 								<svg class="glyph stroked clipboard with paper">
 									<use xlink:href="#stroked-clipboard-with-paper"/>
 								</svg>
@@ -60,7 +60,7 @@
 							</a>
 						</li>
 						<li>
-							<a class="" href="#row2">
+							<a class="" href="adminprojecten.php#row2">
 								<svg class="glyph stroked plus sign">
 									<use xlink:href="#stroked-plus-sign"/>
 								</svg>
@@ -156,27 +156,19 @@
 				}
 
 				echo '<li>
-							<a class="" href="adminuserstoevoegen.php">
+							<a class="" href="adminusers.php#row1">
+								<svg class="glyph stroked clipboard with paper">
+									<use xlink:href="#stroked-clipboard-with-paper"/>
+								</svg>
+								 Overzicht
+							</a>
+						</li>
+						<li>
+							<a class="" href="adminusers.php#row2">
 								<svg class="glyph stroked plus sign">
 									<use xlink:href="#stroked-plus-sign"/>
 								</svg>
 								 Gebruiker toevoegen
-							</a>
-						</li>
-						<li>
-							<a class="" href="adminuserswijzigen.php">
-								<svg class="glyph stroked pencil">
-									<use xlink:href="#stroked-pencil"/>
-								</svg>
-								 Gebruiker wijzigen
-							</a>
-						</li>
-						<li>
-							<a class="" href="adminusersverwijderen.php">
-								<svg class="glyph stroked trash">
-									<use xlink:href="#stroked-trash"/>
-								</svg>
-								 Gebruiker verwijderen
 							</a>
 						</li>
 					</ul>';

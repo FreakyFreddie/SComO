@@ -29,7 +29,6 @@ $(document).ready(function()
 
 			$request.done(function()
 			{
-				$("#projectlist").find(".selected").remove();
 				//refresh all tables
 				$("button[name='refresh']").trigger("click");
 			});

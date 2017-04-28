@@ -116,7 +116,7 @@
 					$parameters[7] = date("Y-n-j");
 
 					//prepare statement
-					$dal->setStatement("INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum) VALUES (?, ?, '?, ?, ?, ?, ?)");
+					$dal->setStatement("INSERT INTO gebruiker (rnummer, voornaam, achternaam, email, wachtwoord, machtigingsniveau, aanmaakdatum) VALUES (?, ?, ?, ?, ?, ?, ?)");
 					$dal->writeDB($parameters);
 					unset($parameters);
 				}

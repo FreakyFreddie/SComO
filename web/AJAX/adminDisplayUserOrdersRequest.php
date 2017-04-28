@@ -23,13 +23,12 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["id"]) && isset($_POST["budget"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_GET["rnummer"]))
 	{
 		$dal = new DAL();
 
 		//prevent SQL injection
-		$id = mysqli_real_escape_string($dal->getConn(), $_POST["id"]);
-		$budget = mysqli_real_escape_string($dal->getConn(), $_POST["budget"]);
+		$rnummer= mysqli_real_escape_string($dal->getConn(), $_GET["rnummer"]);
 
 		//create array of parameters
 		//first item = parameter types
@@ -37,23 +36,21 @@
 		//d = double
 		//b = blob
 		//s = string
-		$parameters[0] = "i";
-		$parameters[1] = (int) $id;
+		$parameters[0] = "s";
+		$parameters[1] = $rnummer;
 
 		//prepare statement
-		$dal->setStatement("SELECT SUM(bestellingproduct.aantal*bestellingproduct.prijs) AS som
+		$dal->setStatement("SELECT bestelling.bestelnummer, bestellingproduct.idproduct as productid, bestellingproduct.aantal, bestellingproduct.prijs
 			FROM bestelling
 			INNER JOIN bestellingproduct ON bestelling.bestelnummer=bestellingproduct.bestelnummer
-			WHERE bestelling.idproject=?");
+			WHERE bestelling.rnummer=?");
 
 		$records = $dal->queryDB($parameters);
 		unset($parameters);
 
 		$dal->closeConn();
 
-		$budgetgebruikt = ((float)$records[0]->som / $budget) * 100;
-
 		//Lumino admin panel requires a JSON to process
-		echo round($budgetgebruikt,2);
+		echo json_encode($records);
 	}
 ?>
