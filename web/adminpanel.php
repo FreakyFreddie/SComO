@@ -151,7 +151,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">Hoeveelheid door studenten bestelde producten per week</div>
+						<div class="panel-heading">Hoeveelheid bestelde producten & totale kostprijs per week</div>
 						<div class="panel-body">
 							<div class="canvas-wrapper">
 								<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
