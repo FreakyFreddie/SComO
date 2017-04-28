@@ -42,20 +42,19 @@ function openNav(rnummer, voornaam, naam, email, niveau, aanmaakdatum) {
 	});
 
 	//update pie chart data
-	var naam = $("#naam").html();
 	var rnummer = $("#rnummer").html();
 
 	//prepare request
 	$request = $.ajax({
 		method:"POST",
-		url:"AJAX/adminProjectOrderDataRequest.php?r=" + new Date().getTime(),
-		data: {rnummer: rnummer, naam: naam}
+		url:"AJAX/adminUserOrderDataRequest.php?r=" + new Date().getTime(),
+		data: {rnummer: rnummer}
 	});
 
 	$request.done(function(data)
 	{
 		$('.easypiechart').data('easyPieChart').update(data);
-		$('.percent').html(data + "%");
+		$('.percent').html(data);
 	});
 
 	//if removebutton does not exist, add & add eventhandler

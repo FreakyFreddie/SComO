@@ -126,10 +126,10 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="panel panel-default">
-						<div class="panel-heading">Budget</div>
+						<div class="panel-heading">Bestelde componenten</div>
 						<div class="panel-body easypiechart-panel">
 							<div class="easypiechart" id="easypiechart-teal" data-percent="0">
-								<span class="percent">0%</span>
+								<span class="percent">0</span>
 							</div>
 						</div>
 					</div>

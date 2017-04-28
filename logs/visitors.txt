@@ -957,3 +957,8 @@
 ::1|2017-4-26 22:20:25|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0|vmware-localhost|http://localhost/scomo/web/adminprojecten.php|r0303063
 ::1|2017-4-26 22:21:32|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0|vmware-localhost|http://localhost/scomo/web/adminprojecten.php|r0303063
 ::1|2017-4-26 22:21:38|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0|vmware-localhost|http://localhost/scomo/web/adminusers.php|r0303063
+::1|2017-4-28 14:26:26|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0|vmware-localhost|http://localhost/scomo/web/index.php|
+::1|2017-4-28 14:26:29|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0|vmware-localhost|http://localhost/scomo/web/index.php|r0303063
+::1|2017-4-28 14:26:29|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0|vmware-localhost|http://localhost/scomo/web/adminpanel.php|r0303063
+::1|2017-4-28 14:26:31|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0|vmware-localhost|http://localhost/scomo/web/adminusers.php|r0303063
+::1|2017-4-28 14:26:51|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0|vmware-localhost|http://localhost/scomo/web/adminprojecten.php|r0303063
