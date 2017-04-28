@@ -17,6 +17,9 @@
 	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
 
+	//include function to remove projects
+	require $GLOBALS['settings']->Folders['root'].'../lib/project/functions/removeProject.php';
+
 	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 
@@ -29,20 +32,12 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["rnummervoornaamachternaam"]) && !empty($_POST["rnummervoornaamachternaam"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["array"]) && isset($_POST["rnummer"]) && !empty($_POST["array"]) && !empty($_POST["rnummer"]))
 	{
-		//validate input
-		$rnummervoornaamachternaam = validateInput($_POST["rnummervoornaamachternaam"]);
-
-		//split in id & title
-		$rnummervoornaamachternaam = explode(" - ", $rnummervoornaamachternaam);
-		$userid = $rnummervoornaamachternaam[0];
-
 		$dal = new DAL();
 
-		//extract user info from DB
-		//database input, counter injection
-		$userid = mysqli_real_escape_string($dal->getConn(), $userid);
+		//prevent SQL injection
+		$rnummer = mysqli_real_escape_string($dal->getConn(), $_POST["rnummer"]);
 
 		//create array of parameters
 		//first item = parameter types
@@ -50,46 +45,22 @@
 		//d = double
 		//b = blob
 		//s = string
-		$parameters[0] = "s";
-		$parameters[1] = $userid;
+		$parameters[0] = "si";
+		$parameters[1] = $rnummer;
 
 		//prepare statement
-		$dal->setStatement("SELECT * FROM gebruiker WHERE rnummer =?");
-		$records = $dal->queryDB($parameters);
+		$dal->setStatement("DELETE FROM gebruikerproject WHERE rnummer=? AND idproject=?");
+
+		foreach($_POST["array"] as $user)
+		{
+			$id = mysqli_real_escape_string($dal->getConn(), $user["id"]);
+			$parameters[2] = (int) $id;
+
+			$dal->writeDB($parameters);
+		}
+
 		unset($parameters);
 
 		$dal->closeConn();
-
-		//pass JSON object if record is found
-		if($dal->getNumResults() == 1)
-		{
-			switch($records[0]->machtigingsniveau)
-			{
-				case "0":
-					$permissionlevel = "non-actief";
-					break;
-
-				case "1":
-					$permissionlevel = "user";
-					break;
-
-				case "2":
-					$permissionlevel = "admin";
-					break;
-
-				case "5":
-					$permissionlevel = "banned";
-					break;
-			}
-
-			echo json_encode(
-				array(
-					'voornaam' => $records[0]->voornaam,
-					'achternaam' => $records[0]->achternaam,
-					'email' => $records[0]->email,
-					'machtigingsniveau' => $permissionlevel
-				)
-			);
-		}
 	}
 ?>

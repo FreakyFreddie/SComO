@@ -37,7 +37,7 @@
 		foreach($_POST["array"] as $user)
 		{
 			//remove the user
-			removeUser($user["userid"]);
+			removeUser($user["rnummer"]);
 		}
 	}
 ?>
