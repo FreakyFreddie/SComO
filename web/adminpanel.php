@@ -127,7 +127,7 @@
 				<div class="col-xs-12 col-md-6 col-lg-3">
 					<div class="panel panel-red panel-widget">
 						<div class="row no-padding">
-							<a href="adminuserswijzigen.php">
+							<a href="adminusers.php">
 								<div class="col-sm-3 col-lg-5 widget-left">
 									<svg class="glyph stroked male-user">
 										<use xlink:href="#stroked-male-user"></use>
