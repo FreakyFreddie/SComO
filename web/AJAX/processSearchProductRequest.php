@@ -41,13 +41,13 @@
 		header("location: ../index.php");
 	}
 
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["searchterm"]))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_GET["searchproduct"]))
 	{
 		//send request to Farnell API
-		$farnellproducts = getFarnellProducts(validateInput($_POST['searchterm']), 0, 20);
+		$farnellproducts = getFarnellProducts(validateInput($_GET['searchproduct']), 0, 20);
 
 		//send request to Mouser API
-		$mouserproducts = getMouserProducts(validateInput($_POST['searchterm']), 0, 20);
+		$mouserproducts = getMouserProducts(validateInput($_GET['searchproduct']), 0, 20);
 
 		$products = array();
 
@@ -55,27 +55,87 @@
 
 		foreach($farnellproducts as $farnellproduct)
 		{
+			$prices = '<table class="table-striped table-hover">
+							<tr>
+								<th>
+									Quantity
+								</th>
+								<th class="text-right">
+									Price
+								</th>
+							</tr>';
+			foreach($farnellproduct->__get("Prices") as $productPrice)
+			{
+				$prices .= '<tr>
+					<td>> '.$productPrice->__get("Quantity").'</td>
+					<td class="text-right">'.$productPrice->__get("Price").'</td>
+				</tr>';
+			}
+
+			$prices .= '</table>';
+
+			$add = '<form class="input-group" action="#">
+						<label for="amountproduct" class="sr-only">Producthoeveelheid</label>
+						<input type="number" class="form-control" value="1" id="amountproduct" name="amountproduct" data-productid="'.$farnellproduct->__get("Id").'" data-supplier="'.$farnellproduct->__get("Supplier").'" />
+						<span class="input-group-btn">
+							<button class="btn btn-secondary productbutton" type="button">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button>
+						</span>
+					</form>';
+
 			$products[$i]["name"] = $farnellproduct->__get("Name");
-			$products[$i]["image"] = $farnellproduct->__get("Image");
+			$products[$i]["image"] = '<img class="img-responsive" src='.$farnellproduct->__get("Image").' alt="'.$farnellproduct->__get("Name").'" />';
 			$products[$i]["id"] = $farnellproduct->__get("Id");
-			$products[$i]["Vendor"] = $farnellproduct->__get("Vendor");
+			$products[$i]["vendor"] = $farnellproduct->__get("Vendor");
 			$products[$i]["supplier"] = $farnellproduct->__get("Supplier");
 			$products[$i]["inventory"] = $farnellproduct->__get("Inventory");
-			$products[$i]["datasheet"] = $farnellproduct->__get("DataSheet");
-			$products[$i]["prices"] = $farnellproduct->__get("Prices");
+			$products[$i]["datasheet"] = '<a href="'.$farnellproduct->__get("DataSheet").'" target="_blank">Link</a>';
+			$products[$i]["prices"] = $prices;
+			$products[$i]["add"] = $add;
 			$i++;
 		}
 
 		foreach($mouserproducts as $mouserproduct)
 		{
+			$prices = '<table class="table-striped table-hover">
+							<tr>
+								<th>
+									Quantity
+								</th>
+								<th class="text-right">
+									Price
+								</th>
+							</tr>';
+			foreach($mouserproduct->__get("Prices") as $productPrice)
+			{
+				$prices .= '<tr>
+					<td>> '.$productPrice->__get("Quantity").'</td>
+					<td class="text-right">'.$productPrice->__get("Price").'</td>
+				</tr>';
+			}
+
+			$prices .= '</table>';
+
+			$add = '<form class="input-group" action="#">
+						<label for="amountproduct" class="sr-only">Producthoeveelheid</label>
+						<input type="number" class="form-control" value="1" id="amountproduct" name="amountproduct" data-productid="'.$mouserproduct->__get("Id").'" data-supplier="'.$mouserproduct->__get("Supplier").'" />
+						<span class="input-group-btn">
+							<button class="btn btn-secondary productbutton" type="button">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button>
+						</span>
+					</form>';
+
 			$products[$i]["name"] = $mouserproduct->__get("Name");
-			$products[$i]["image"] = $mouserproduct->__get("Image");
+			$products[$i]["image"] = '<img class="img-responsive" src='.$mouserproduct->__get("Image").' alt="'.$mouserproduct->__get("Name").'" />';
 			$products[$i]["id"] = $mouserproduct->__get("Id");
-			$products[$i]["Vendor"] = $mouserproduct->__get("Vendor");
+			$products[$i]["vendor"] = $mouserproduct->__get("Vendor");
 			$products[$i]["supplier"] = $mouserproduct->__get("Supplier");
 			$products[$i]["inventory"] = $mouserproduct->__get("Inventory");
-			$products[$i]["datasheet"] = $mouserproduct->__get("DataSheet");
-			$products[$i]["prices"] = $mouserproduct->__get("Prices");
+			$products[$i]["datasheet"] = '<a href="'.$mouserproduct->__get("DataSheet").'" target="_blank">Link</a>';
+			$products[$i]["prices"] = $prices;
+			$products[$i]["add"] = $add;
 			$i++;
 		}
 
