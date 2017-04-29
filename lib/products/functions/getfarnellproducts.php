@@ -169,7 +169,7 @@
 
 		//create farnell product array
 		$farnellProducts = array();
-		
+
 		foreach($xml as $key => $xmlproduct)
 		{
 			//ignore numberofresults, only need products
@@ -215,7 +215,14 @@
 				
 				if(isset($xmlproduct->inv))
 				{
-					$product->__set("Inventory", json_decode(json_encode($xmlproduct->inv))->{'0'});
+					//inventory only for Liege needed
+					foreach($xmlproduct->stock->breakdown as $warehousestock)
+					{
+						if(json_decode(json_encode($warehousestock->region))->{'0'} == "Liege")
+						{
+							$product->__set("Inventory", json_decode(json_encode($warehousestock->inv))->{'0'});
+						}
+					}
 				}
 				
 				//set image is not found
