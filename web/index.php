@@ -5,7 +5,7 @@
 	//include header
 	require '../templates/header.php';
 ?>
-		<script type="text/javascript" src="./js/addToCart.js"></script>
+		<script type="text/javascript" src="./js/searchProduct.js"></script>
 	</head>
 
 	<body>	
@@ -26,19 +26,11 @@
 					echo $GLOBALS['settings']->Store['quote'];
 				?>
 			</p>
-			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+			<form>
 				<div class="form-group input-group searchbar">
-					<input type="text" class="form-control" placeholder="zoek een component" name="searchproduct" 
-						<?php
-							if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
-							{
-								//validate
-								echo 'value="'.validateInput($_GET['searchproduct']).'"';
-							}
-						?>
-					>
+					<input id="searchterm" type="text" class="form-control" placeholder="zoek een component" name="searchproduct">
 					<span class="input-group-btn">
-						<button class="btn btn-secondary" type="submit">
+						<button type="button" id="searchproduct" class="btn btn-secondary">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>
 					</span>
@@ -52,59 +44,6 @@
 					<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
 				</div>
 			</noscript>
-			<?php
-				if(isset($_GET['searchproduct']) && $_GET['searchproduct'] != "") 
-				{
-					//send request to Farnell API
-					$farnellproducts = getFarnellProducts(validateInput($_GET['searchproduct']), 0, 20);
-
-					//send request to Mouser API
-					$mouserproducts = getMouserProducts(validateInput($_GET['searchproduct']), 0, 20);
-					
-					//print message if no products found
-					if(empty($farnellproducts) && empty($mouserproducts))
-					{
-						echo '<div class="row">
-								<div class="col-sm-12 text-center">
-									<h3>
-										Geen weer te geven resultaten voor dit product.
-									</h3>
-								</div>
-							</div>';
-					}
-					
-					//merge arrays into one array for easy sorting
-					$products = array_merge($farnellproducts, $mouserproducts);
-					
-					$counter = 1;
-					
-					//3 products per line on bigger screens
-					foreach($products as $Product)
-					{
-						if($counter == 1)
-						{
-							echo '<div class="row">';
-						}
-						
-						if (get_class($Product) == "FarnellProduct")
-						{
-							$Product->printFarnellProduct();
-						}
-						elseif  (get_class($Product) == "MouserProduct")
-						{
-							$Product->printMouserProduct();
-						}
-						
-						if($counter == 3)
-						{
-							echo '</div>';
-							$counter = 0;
-						}
-						
-						$counter++;
-					}
-				}
-			?>
 		</div>
 
 		<!-- footer -->
