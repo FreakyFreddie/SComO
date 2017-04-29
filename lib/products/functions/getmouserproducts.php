@@ -181,6 +181,7 @@
 
 		if(isset($pattributes->Availability))
 		{
+			$pattributes->Availability = str_replace(' In voorraad', '', $pattributes->Availability);
 			$product->__set("Inventory", $pattributes->Availability);
 		}
 
@@ -274,8 +275,6 @@
 
 	function extractPrice($pPrice)
 	{
-
-
 		$price = new ProductPrice();
 
 		if(isset($pPrice->Quantity) && isset($pPrice->Price))

@@ -1,5 +1,15 @@
 $(document).ready(function()
 {
+	//disable submit on enter & trigger button click instead
+	$('#searchform').on('keyup keypress', function(e) {
+		var keyCode = e.keyCode || e.which;
+		if (keyCode === 13) {
+			e.preventDefault();
+			$("#searchproduct").trigger("click");
+			return false;
+		}
+	});
+
 	//when search button is clicked, process ajax request
 	$("#searchproduct").click(function()
 	{
@@ -35,7 +45,12 @@ $(document).ready(function()
 
 		//recreate table with new data
 		$('#displayproducts').bootstrapTable({
+			onPageChange:function(){
+				colorLowInventoryRed();
+			},
 			onLoadSuccess: function(){
+				colorLowInventoryRed();
+
 				//when a product button is clicked, product id, supplier and amount are sent to the shopping cart
 				$(".productbutton").click(function()
 				{
@@ -72,3 +87,14 @@ $(document).ready(function()
 		});
 	});
 });
+
+function colorLowInventoryRed()
+{
+	//color inventory = red when under 100 items
+	$('#displayproducts').find("tr").each(function(){
+		if(Number($(this).find("td").eq(5).text()) < 100)
+		{
+			$(this).find("td").eq(5).css('color', 'red');
+		}
+	});
+}
