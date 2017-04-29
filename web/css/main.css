@@ -118,13 +118,14 @@ body {
 }
 
 .jumbotron{
+	color: #333;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background: url("../img/bg7.png") repeat;
 }
 
 .jumbotron p{
-	/*color: #1d8db0;*/
+	color: #333;
 }
 
 .searchbar{
@@ -134,6 +135,37 @@ body {
 
 .workspace{
 	margin-bottom: 5vh;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/**shop loader overlay**/
+#overlay {
+	position: fixed; /* Sit on top of the page content */
+	display: none; /* Hidden by default */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.loader {
+	color:#1d8db0;
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	margin-top: 45vh;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
 
 .shop .col-sm-4{
@@ -148,7 +180,7 @@ body {
 	margin-top: 25px;
 }
 
-.shop .col-sm-4 .shoparticle{
+/**.shop .col-sm-4 .shoparticle{
 	width: 100%;
 	background-color: white;
 	border: 5px solid #1d8db0;
@@ -172,8 +204,9 @@ body {
 .shop .col-sm-4 .shoparticle table{
 	margin-left: 1%;
 	width: 60%;
-}
+}**/
 
+/**
 .container .input-group .form-control{
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 0px;
@@ -199,7 +232,7 @@ body {
 .mouserproduct .input-group .input-group-btn button:hover{
     color: black;
 	background-color: lightblue;
-}
+}**/
 
 table{
 	color: #5f6468;

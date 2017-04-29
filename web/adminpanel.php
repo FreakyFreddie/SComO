@@ -26,16 +26,6 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/getUsersTotal.php';
 
 ?>
-		<link href="css/Lumino/datepicker3.css" rel="stylesheet">
-		<link href="css/Lumino/styles.css" rel="stylesheet">
-
-		<!--Icons-->
-		<script src="js/Lumino/lumino.glyphs.js"></script>
-
-		<!--[if lt IE 9]>
-		<script src="js/Lumino/html5shiv.min.js"></script>
-		<script src="js/Lumino/respond.min.js"></script>
-		<![endif]-->
 	</head>
 
 	<body>

@@ -166,10 +166,10 @@
 			$xml=simplexml_load_string($result, "SimpleXMLElement", 0, $nskey, true);
 		}
 		*/
-		
+
 		//create farnell product array
 		$farnellProducts = array();
-		
+
 		foreach($xml as $key => $xmlproduct)
 		{
 			//ignore numberofresults, only need products
@@ -179,7 +179,7 @@
 				$prices = array();
 				foreach($xmlproduct->prices as $productprice)
 				{
-					
+
 					$price = new ProductPrice();
 					
 					if(isset($productprice->from) && isset($productprice->cost))
@@ -192,29 +192,37 @@
 				}
 				
 				//problem: what if an attribute is empty or not present? --> use setters instead of constructor
+				//json_encode & json_decode are used to prevent weird stuff from happaning. SimpleXMLObject creates attributes named 0, which are difficult to read
 				$product = new FarnellProduct();
 				
 				//Product object attributes
 				if(isset($xmlproduct->sku))
 				{
-					$product->__set("Id", $xmlproduct->sku);
+					$product->__set("Id", json_decode(json_encode($xmlproduct->sku))->{'0'});
 				}
 				
 				if(isset($xmlproduct->displayName))
 				{
-					$product->__set("Name", $xmlproduct->displayName);
+					$product->__set("Name", json_decode(json_encode($xmlproduct->displayName))->{'0'});
 				}
 				
 				$product->__set("Prices", $prices);
 				
 				if(isset($xmlproduct->vendorName))
 				{
-					$product->__set("Vendor", $xmlproduct->vendorName);
+					$product->__set("Vendor", json_decode(json_encode($xmlproduct->vendorName))->{'0'});
 				}
 				
 				if(isset($xmlproduct->inv))
 				{
-					$product->__set("Inventory", $xmlproduct->inv);
+					//inventory only for Liege needed
+					foreach($xmlproduct->stock->breakdown as $warehousestock)
+					{
+						if(json_decode(json_encode($warehousestock->region))->{'0'} == "Liege")
+						{
+							$product->__set("Inventory", json_decode(json_encode($warehousestock->inv))->{'0'});
+						}
+					}
 				}
 				
 				//set image is not found
@@ -229,7 +237,7 @@
 				
 				if(isset($xmlproduct->datasheets->url))
 				{
-					$product->__set("DataSheet", $xmlproduct->datasheets->url);
+					$product->__set("DataSheet", json_decode(json_encode($xmlproduct->datasheets->url))->{'0'});
 				}
 				
 				//not really needed, since we have default value set in class
@@ -238,47 +246,47 @@
 				//FarnellProduct object attributes
 				if(isset($xmlproduct->productStatus))
 				{
-					$product->__set("Status", $xmlproduct->productStatus);
+					$product->__set("Status", json_decode(json_encode($xmlproduct->productStatus))->{'0'});
 				}
 				
 				if(isset($xmlproduct->rohsStatusCode))
 				{
-					$product->__set("ROHSStatusCode", $xmlproduct->rohsStatusCode);
+					$product->__set("ROHSStatusCode", json_decode(json_encode($xmlproduct->rohsStatusCode))->{'0'});
 				}
 				
 				if(isset($xmlproduct->packSize))
 				{
-					$product->__set("PackSize", $xmlproduct->packSize);
+					$product->__set("PackSize", json_decode(json_encode($xmlproduct->packSize))->{'0'});
 				}
 				
 				if(isset($xmlproduct->unitOfMeasure))
 				{
-					$product->__set("UnitOfMeasure", $xmlproduct->unitOfMeasure);
+					$product->__set("UnitOfMeasure", json_decode(json_encode($xmlproduct->unitOfMeasure))->{'0'});
 				}
 				
 				if(isset($xmlproduct->id))
 				{
-					$product->__set("FullId", $xmlproduct->id);
+					$product->__set("FullId", json_decode(json_encode($xmlproduct->id))->{'0'});
 				}
 				
 				if(isset($xmlproduct->vendorId))
 				{
-					$product->__set("VendorId", $xmlproduct->vendorId);
+					$product->__set("VendorId", json_decode(json_encode($xmlproduct->vendorId))->{'0'});
 				}
 				
 				if(isset($xmlproduct->brandName))
 				{
-					$product->__set("BrandName", $xmlproduct->brandName);
+					$product->__set("BrandName", json_decode(json_encode($xmlproduct->brandName))->{'0'});
 				}
 				
 				if(isset($xmlproduct->translatedManufacturerPartNumber))
 				{
-					$product->__set("TranslatedManufacturerPartNumber", $xmlproduct->translatedManufacturerPartNumber);
+					$product->__set("TranslatedManufacturerPartNumber", json_decode(json_encode($xmlproduct->translatedManufacturerPartNumber))->{'0'});
 				}
 				
 				if(isset($xmlproduct->translatedMinimumOrderQuality))
 				{
-					$product->__set("TranslatedMinimumOrderQuality", $xmlproduct->translatedMinimumOrderQuality);
+					$product->__set("TranslatedMinimumOrderQuality", json_decode(json_encode($xmlproduct->translatedMinimumOrderQuality))->{'0'});
 				}
 				
 				if(isset($xmlproduct->stock))
@@ -288,62 +296,62 @@
 				
 				if(isset($xmlproduct->translatedPrimaryCatalogPage))
 				{
-					$product->__set("TranslatedPrimaryCatalogPage", $xmlproduct->translatedPrimaryCatalogPage);
+					$product->__set("TranslatedPrimaryCatalogPage", json_decode(json_encode($xmlproduct->translatedPrimaryCatalogPage))->{'0'});
 				}
 					
 				if(isset($xmlproduct->countryOfOrigin))
 				{
-					$product->__set("CountryOfOrigin", $xmlproduct->countryOfOrigin);
+					$product->__set("CountryOfOrigin", json_decode(json_encode($xmlproduct->countryOfOrigin))->{'0'});
 				}
 				
 				if(isset($xmlproduct->comingSoon))
 				{
-					$product->__set("ComingSoon", $xmlproduct->comingSoon);
+					$product->__set("ComingSoon", json_decode(json_encode($xmlproduct->comingSoon))->{'0'});
 				}
 				
 				if(isset($xmlproduct->publishingModule))
 				{
-					$product->__set("PublishingModule", $xmlproduct->publishingModule);
+					$product->__set("PublishingModule", json_decode(json_encode($xmlproduct->publishingModule))->{'0'});
 				}
 				
 				if(isset($xmlproduct->vatHandlingCode))
 				{
-					$product->__set("VatHandlingCode", $xmlproduct->vatHandlingCode);
+					$product->__set("VatHandlingCode", json_decode(json_encode($xmlproduct->vatHandlingCode))->{'0'});
 				}
 				
 				if(isset($xmlproduct->releaseStatusCode))
 				{
-					$product->__set("ReleaseStatusCode", $xmlproduct->releaseStatusCode);
+					$product->__set("ReleaseStatusCode", json_decode(json_encode($xmlproduct->releaseStatusCode))->{'0'});
 				}
 				
 				if(isset($xmlproduct->isSpecialOrder))
 				{
-					$product->__set("IsSpecialOrder", $xmlproduct->isSpecialOrder);
+					$product->__set("IsSpecialOrder", json_decode(json_encode($xmlproduct->isSpecialOrder))->{'0'});
 				}
 				
 				if(isset($xmlproduct->isAwaitingRelease))
 				{
-					$product->__set("IsAwaitingRelease", $xmlproduct->isAwaitingRelease);
+					$product->__set("IsAwaitingRelease", json_decode(json_encode($xmlproduct->isAwaitingRelease))->{'0'});
 				}
 				
 				if(isset($xmlproduct->reeling))
 				{
-					$product->__set("Reeling", $xmlproduct->reeling);
+					$product->__set("Reeling", json_decode(json_encode($xmlproduct->reeling))->{'0'});
 				}
 				
 				if(isset($xmlproduct->discountReason))
 				{
-					$product->__set("DiscountReason", $xmlproduct->discountReason);
+					$product->__set("DiscountReason", json_decode(json_encode($xmlproduct->discountReason))->{'0'});
 				}
 				
 				if(isset($xmlproduct->brandId))
 				{
-					$product->__set("BrandId", $xmlproduct->brandId);
+					$product->__set("BrandId", json_decode(json_encode($xmlproduct->brandId))->{'0'});
 				}
 				
 				if(isset($xmlproduct->commodityClassCode))
 				{
-					$product->__set("CommodityClassCode", $xmlproduct->commodityClassCode);
+					$product->__set("CommodityClassCode", json_decode(json_encode($xmlproduct->commodityClassCode))->{'0'});
 				}
 				
 				//push new product to array
@@ -354,4 +362,35 @@
 		//return array of farnell products
 		return $farnellProducts;
 	}
+
+	/**
+	//load config, typecast to object for easy access
+	$GLOBALS['settings'] = (object) parse_ini_file('../../../config/config.ini', true);
+
+	//include classes BEFORE session_start because we might need them in session
+	//include DAL (DAL & login always go on top since classes depend on them)
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
+
+	//include login class
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/classes/Login.php';
+
+	//include ProductPrice class
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
+
+	//include Product class
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
+
+	//include MouserProduct
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
+
+	//include FarnellProduct
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
+
+	//globally used functions go here
+	//logfunction
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/logActivity.php';
+
+	//input checks
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
+	getFarnellProducts("fuse", 0, 20);**/
 ?>
