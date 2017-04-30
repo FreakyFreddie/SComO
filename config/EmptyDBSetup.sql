@@ -81,7 +81,28 @@ CREATE TABLE IF NOT EXISTS webstoredb.product
   productverkoper VARCHAR(40) NOT NULL,
   productafbeelding VARCHAR(70) NOT NULL,
   productdatasheet VARCHAR(70) NOT NULL,
-  PRIMARY KEY (idproduct, leverancier));
+  PRIMARY KEY (idproduct, leverancier)
+);
+
+/*relatie verzamelingproduct*/
+CREATE TABLE IF NOT EXISTS webstoredb.verzameling
+(
+  idverzameling INT NOT NULL AUTO_INCREMENT,
+  titel VARCHAR(25),
+  PRIMARY KEY (idverzameling)
+);
+
+/*relatie verzamelingproduct*/
+CREATE TABLE IF NOT EXISTS webstoredb.verzamelingproduct
+(
+  idverzameling INT NOT NULL,
+  idproduct VARCHAR(25) NOT NULL,
+  leverancier VARCHAR(25) NOT NULL,
+  FOREIGN KEY (idverzameling)
+	REFERENCES gebruiker (idverzameling),
+  FOREIGN KEY (idproduct,leverancier)
+	REFERENCES product (idproduct,leverancier)
+);
 
 /*Relatie gebruiker heeft bepaalde producten in winkelwagen*/
 CREATE TABLE IF NOT EXISTS webstoredb.winkelwagen
@@ -105,7 +126,6 @@ CREATE TABLE IF NOT EXISTS webstoredb.bestellingproduct
   leverancier VARCHAR(25) NOT NULL,
   aantal INT NOT NULL,
   prijs DECIMAL(10,2) NOT NULL,
-  verzamelnaam VARCHAR(25),
   FOREIGN KEY (bestelnummer)
 	REFERENCES bestelling (bestelnummer),
   FOREIGN KEY (idproduct,leverancier)
