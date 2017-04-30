@@ -87,6 +87,51 @@
 				$rnr = validateRNummer($_POST["rnr"]);
 				$pwd = validateWachtWoord($_POST["pwd"]);
 
+				/**
+				//Try logging in with Login object & add to session (can be implemented later
+				$_SESSION["user"] = new Login($rnr, $pwd);
+
+				//set cookie if the user wants to stay logged in
+				if(isset($_POST["keeploggedin"]))
+				{
+
+				}
+
+				function storeTokenForUser($username, $token)
+				{
+				$sql = "INSERT INTO session_remember (`username`, `token`, `expire`) VALUES (?, ?, ?)";
+				return Dba::write($sql, array($username, $token, time()));
+				}
+
+				function onLogin($user) {
+				$token = GenerateRandomToken(); // generate a token, should be 128 - 256 bit
+				storeTokenForUser($user, $token);
+				$cookie = $user . ':' . $token;
+				$mac = hash_hmac('sha256', $cookie, SECRET_KEY);
+				$cookie .= ':' . $mac;
+				setcookie('rememberme', $cookie);
+				}
+
+				function rememberMe() {
+				$cookie = isset($_COOKIE['rememberme']) ? $_COOKIE['rememberme'] : '';
+				if ($cookie) {
+				list ($user, $token, $mac) = explode(':', $cookie);
+				if (!hash_equals(hash_hmac('sha256', $user . ':' . $token, SECRET_KEY), $mac)) {
+				return false;
+				}
+				$usertoken = fetchTokenByUserName($user);
+				if (hash_equals($usertoken, $token)) {
+				logUserIn($user);
+				}
+				}
+				User logs in with 'keep me logged in'
+				Create session
+				Create a cookie called SOMETHING containing: md5(salt+username+ip+salt) and a cookie called somethingElse containing id
+				Store cookie in database
+				User does stuff and leaves ----
+				User returns, check for somethingElse cookie, if it exists, get the old hash from the database for that user, check of the contents of cookie SOMETHING match with the hash from the database, which should also match with a newly calculated hash (for the ip) thus: cookieHash==databaseHash==md5(salt+username+ip+salt), if they do, goto 2, if they don't goto 1
+				 **/
+
 				//Try logging in with Login object & add to session
 				$_SESSION["user"] = new Login($rnr, $pwd);
 			}
