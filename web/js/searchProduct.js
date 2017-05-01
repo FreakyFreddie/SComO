@@ -19,8 +19,6 @@ $(document).ready(function()
 
 		$(".workspace").html('<noscript><div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.</div> </noscript>');
 
-		$(".workspace").html('<noscript><div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.</div> </noscript>');
-
 		$(".workspace").append('<table id="displayproducts" data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">'
 			+ '<thead>'
 			+ '<tr>'
@@ -55,31 +53,45 @@ $(document).ready(function()
 				$(".productbutton").click(function()
 				{
 					var DOMobj = $(this).parent().prev();
+					var minQuantity = Number($(DOMobj).parent().parent().prev().find("td").eq(0).text().split(" ")[1]);
 
-					//prepare request
-					$request = $.ajax({
-						method:"POST",
-						url:"AJAX/processAddToCartRequest.php?r=" + new Date().getTime(),
-						data: {productid: $(DOMobj).data("productid"), supplier: $(DOMobj).data("supplier"), amount: $(DOMobj).val()}
-					});
-
-					$request.done(function()
+					//if amount is lower than minimal quantity, do not allow order of component
+					if($(DOMobj).val() >= minQuantity)
 					{
-						//display message when product is successfully added
-						$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Toegevoegd!</strong> Het product is toegevoegd aan je winkelmandje.</div>').insertBefore($("footer")).fadeOut(2000, function()
-						{
-							$(this).remove();
+						//prepare request
+						$request = $.ajax({
+							method:"POST",
+							url:"AJAX/processAddToCartRequest.php?r=" + new Date().getTime(),
+							data: {productid: $(DOMobj).data("productid"), supplier: $(DOMobj).data("supplier"), amount: $(DOMobj).val()}
 						});
-					});
 
-					$request.fail(function()
+						$request.done(function()
+						{
+							//display message when product is successfully added
+							$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Toegevoegd!</strong> Het product is toegevoegd aan je winkelmandje.</div>').insertBefore($("footer")).fadeOut(2000, function()
+							{
+								$(this).remove();
+							});
+						});
+
+						$request.fail(function()
+						{
+							//display message when product could not be added
+							$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> Het product kon niet worden toegevoegd aan je winkelmandje.</div>').insertBefore($("footer")).fadeOut(2000, function()
+							{
+								$(this).remove();
+							});
+						});
+					}
+					else
 					{
 						//display message when product could not be added
-						$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> Het product kon niet worden toegevoegd aan je winkelmandje.</div>').insertBefore($("footer")).fadeOut(2000, function()
+						$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> U moet minimaal ' + minQuantity + ' van dit product te bestellen.</div>').insertBefore($("footer")).fadeOut(2000, function()
 						{
 							$(this).remove();
 						});
-					});
+					}
+
 				});
 				/**document.getElementById("overlay").style.display = "none";**/
 			},

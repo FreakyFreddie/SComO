@@ -39,22 +39,32 @@
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_POST["productid"]) && isset($_POST["supplier"]) && isset($_POST["amount"]))
 	{
+		$amount = (int) $_POST["amount"];
+
 		if($_POST["supplier"]=="Farnell")
 		{
 			//send request to Farnell API, returns array of one FarnellProduct
 			//what if there are no results? --> send error to page & terminate script (still needs work)
 			$product = getFarnellProducts($_POST["productid"], 0, 1);
 
-			//add product to cart (typecast amount string to int)
-			addToCart($_SESSION["user"]->__get("userId"), $product, (int) $_POST["amount"]);
+			//only process if quantity is higher than or equal to minimum quantity
+			if($amount >= $product[0]->__get("Prices")[0]->__get("Quantity"))
+			{
+				//add product to cart (typecast amount string to int)
+				addToCart($_SESSION["user"]->__get("userId"), $product, $amount);
+			}
 		}
 		elseif($_POST["supplier"]=="Mouser")
 		{
 			//send request to Mouser API, returns array of one MouserProduct
 			$product = getMouserProducts($_POST["productid"], 0, 1);
 
-			//add product to cart (typecast amount string to int)
-			addToCart($_SESSION["user"]->__get("userId"), $product, (int) $_POST["amount"]);
+			//only process if quantity is higher than or equal to minimum quantity
+			if($amount >= $product[0]->__get("Prices")[0]->__get("Quantity"))
+			{
+				//add product to cart (typecast amount string to int)
+				addToCart($_SESSION["user"]->__get("userId"), $product, (int)$_POST["amount"]);
+			}
 		}
 	}
 ?>

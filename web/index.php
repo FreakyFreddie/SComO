@@ -36,12 +36,12 @@
 				</div>
 			</form>
 		</div>
-		<div id="overlay">
+		<!--<div id="overlay">
 			<div class="loader">
 				<i class="fa fa-cog fa-spin fa-5x fa-fw"></i>
 				<span class="sr-only">Loading...</span>
 			</div>
-		</div>
+		</div>-->
 		<div class="container shop workspace">
 			<noscript>
 				<div class="alert alert-success alert-dismissible">
