@@ -32,7 +32,7 @@
 		$dal = new DAL();
 		$sql = "SELECT idproduct, leverancier, productnaam, productverkoper, eigenprijs
 			FROM product
-			WHERE leverancier = ".$supplier.";";
+			WHERE leverancier = 'EMSYS';";
 
 		$records = $dal->queryDBNoArgs($sql);
 

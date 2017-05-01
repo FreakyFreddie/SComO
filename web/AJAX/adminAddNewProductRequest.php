@@ -28,61 +28,58 @@
 	//check login condition and if the request contains all info
 	if(isset($_POST["id"]) && isset($_POST["leverancier"]) && isset($_POST["naam"]) && isset($_POST["prijs"]) && !empty($_POST["id"]) && !empty($_POST["leverancier"]) && !empty($_POST["naam"]) && !empty($_POST["prijs"]))
 	{
-		if($_POST["wachtwoord"] == $_POST["wachtwoordconfirm"])
+		//validate inputs
+		$supplier= validateInput($_POST["leverancier"]);
+		$name = validateInput($_POST["naam"]);
+
+		$dal = new DAL();
+
+		//prevent sql injection
+		$id = mysqli_real_escape_string($dal->getConn(), $_POST["id"]);
+		$supplier = mysqli_real_escape_string($dal->getConn(), $supplier);
+		$name = mysqli_real_escape_string($dal->getConn(), $name);
+		$price = (float) mysqli_real_escape_string($dal->getConn(), $_POST["prijs"]);
+
+		$parameters[0] = "ss";
+		$parameters[1] = $id;
+		$parameters[2] = $supplier;
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		//prepare statement
+		$dal->setStatement("SELECT idproduct, leverancier
+			FROM product
+			WHERE idproduct = ? AND leverancier = ?");
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
+
+		//add product if not already present in DB
+		if($dal->getNumResults() == 0)
 		{
-			//validate inputs
-			$supplier= validateNaam($_POST["leverancier"]);
-			$name = validateNaam($_POST["naam"]);
-
-			$dal = new DAL();
-
-			//prevent sql injection
-			$id = mysqli_real_escape_string($dal->getConn(), $_POST["id"]);
-			$supplier = mysqli_real_escape_string($dal->getConn(), $supplier);
-			$name = mysqli_real_escape_string($dal->getConn(), $name);
-			$price = (float) mysqli_real_escape_string($dal->getConn(), $_POST["prijs"]);
-
-			$parameters[0] = "ss";
-			$parameters[1] = $id;
-			$parameters[2] = $supplier;
-
 			//create array of parameters
 			//first item = parameter types
 			//i = integer
 			//d = double
 			//b = blob
 			//s = string
+			$parameters[0] = "ssssd";
+			$parameters[1] = $id;
+			$parameters[2] = $supplier;
+			$parameters[3] = $name;
+			$parameters[4] = $supplier;
+			$parameters[5] = $price;
+
 			//prepare statement
-			$dal->setStatement("SELECT idproduct, leverancier
-				FROM product
-				WHERE idproduct = ? AND leverancier = ?");
-			$records = $dal->queryDB($parameters);
+			$dal->setStatement("INSERT INTO product (idproduct, leverancier, productnaam, productverkoper, eigenprijs) VALUES (?, ?, ?, ?, ?)");
+			$dal->writeDB($parameters);
 			unset($parameters);
-
-			//add product if not already present in DB
-			if($dal->getNumResults() == 0)
-			{
-				//create array of parameters
-				//first item = parameter types
-				//i = integer
-				//d = double
-				//b = blob
-				//s = string
-				$parameters[0] = "ssssd";
-				$parameters[1] = $id;
-				$parameters[2] = $supplier;
-				$parameters[3] = $name;
-				$parameters[4] = $supplier;
-				$parameters[5] = $price;
-
-				//prepare statement
-				$dal->setStatement("INSERT INTO product (idproduct, leverancier, productnaam, productverkoper, eigenprijs) VALUES (?, ?, ?, ?, ?)");
-				$dal->writeDB($parameters);
-				unset($parameters);
-			}
-
-			//close the connection
-			$dal->closeConn();
 		}
+
+		//close the connection
+		$dal->closeConn();
 	}
 ?>

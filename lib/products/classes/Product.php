@@ -200,22 +200,25 @@
 			//extract the product price for the given amount
 			for ($i = 0; $i < count($this->productPrices); $i++)
 			{
-				//if user goes above the highest Quantity, the last price is valid
-				if ($productAmount < $this->productPrices[count($this->productPrices) - 1]->__get("Quantity")) {
-					//when productAmount is between two Quantities, the price for the lowest Quantity is valid
-					if ($productAmount >= $this->productPrices[$i]->__get("Quantity") && $productAmount <= $this->productPrices[$i + 1]->__get("Quantity")) {
-						//break loop from the moment we have a match (if not, we end up using the price for the highest amount)
+				if(!empty($this->productPrices))
+				{
+					//if user goes above the highest Quantity, the last price is valid
+					if ($productAmount < $this->productPrices[count($this->productPrices) - 1]->__get("Quantity")) {
+						//when productAmount is between two Quantities, the price for the lowest Quantity is valid
+						if ($productAmount >= $this->productPrices[$i]->__get("Quantity") && $productAmount <= $this->productPrices[$i + 1]->__get("Quantity")) {
+							//break loop from the moment we have a match (if not, we end up using the price for the highest amount)
+							$productPriceForAmount = $this->productPrices[$i]->__get("Price");
+							break;
+						}
+					} else {
+						//we end up using the price for the highest amount
 						$productPriceForAmount = $this->productPrices[$i]->__get("Price");
-						break;
 					}
-				} else {
-					//we end up using the price for the highest amount
-					$productPriceForAmount = $this->productPrices[$i]->__get("Price");
 				}
 			}
 
 			//if $productPriceForAmount is not an float, it is an object, so exit with error
-			if (!is_float($productPriceForAmount))
+			if (!is_float($productPriceForAmount) && !empty($this->productPrices))
 			{
 				//throw error
 				echo "Er ging iets mis, probeer opnieuw";

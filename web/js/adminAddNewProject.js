@@ -16,8 +16,9 @@ $(document).ready(function()
 			$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Succes</strong> Het project is aangemaakt</div>').insertBefore($("footer")).fadeOut(2000, function()
 			{
 				$(this).remove();
-					//refresh all tables
-					$("button[name='refresh']").trigger("click");
+
+				//refresh all tables
+				$("button[name='refresh']").trigger("click");
 			});
 		});
 

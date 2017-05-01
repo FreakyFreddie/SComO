@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS webstoredb.gebruikerproject;
-DROP TABLE IF EXISTS webstoredb.bestellingproduct ;
+DROP TABLE IF EXISTS webstoredb.bestellingproduct;
+DROP TABLE IF EXISTS webstoredb.verzamelingproduct;
 DROP TABLE IF EXISTS webstoredb.bestelling;
 DROP TABLE IF EXISTS webstoredb.winkelwagen;
 DROP TABLE IF EXISTS webstoredb.gebruiker;
