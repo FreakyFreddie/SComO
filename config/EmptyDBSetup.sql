@@ -79,8 +79,9 @@ CREATE TABLE IF NOT EXISTS webstoredb.product
   leverancier VARCHAR(25) NOT NULL,
   productnaam VARCHAR(70) NOT NULL,
   productverkoper VARCHAR(40) NOT NULL,
-  productafbeelding VARCHAR(70) NOT NULL,
-  productdatasheet VARCHAR(70) NOT NULL,
+  productafbeelding VARCHAR(70),
+  productdatasheet VARCHAR(70),
+  eigenprijs DECIMAL(10,2),
   PRIMARY KEY (idproduct, leverancier)
 );
 
