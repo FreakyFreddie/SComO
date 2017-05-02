@@ -70,7 +70,7 @@ function changeProductAccept(id, leverancier)
 function changeProductDiscard(id, leverancier)
 {
 	$("table").find("tr").each(function(){
-		if($(this).find("td").eq(1).text() == id)
+		if(($(this).find("td").eq(0).text() == id) &&($(this).find("td").eq(1).text() == leverancier))
 		{
 			//save content of columns
 			var naam = $(this).find("td").eq(2).find("input").val();

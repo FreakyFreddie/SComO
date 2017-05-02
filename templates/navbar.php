@@ -32,6 +32,19 @@
 				
 				if (isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 				{
+					//emsys is only there when logged in
+					echo '<li ';
+					if(strcmp($GLOBALS['page'], "emsys")==0)
+					{
+						echo 'class="active">';
+					}
+					else
+					{
+						echo '>';
+					}
+					echo '<a href="./emsys.php">EmSys</a>';
+					echo '</li>';
+
 					//winkelmandje is only there when logged in
 					echo '<li ';
 						if(strcmp($GLOBALS['page'], "winkelmandje")==0)

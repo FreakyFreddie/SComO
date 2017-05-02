@@ -174,6 +174,54 @@
 					</ul>';
 
 				echo '</li>';
+			echo '<li class="parent';
+
+			if (strcmp($GLOBALS['adminpage'], "adminproducten") == 0)
+			{
+				echo ' active">';
+			}
+			else
+			{
+				echo '">';
+			}
+
+			echo '<a href="adminproducten.php">
+							<span data-toggle="collapse" href="#sub-item-4">
+								<svg class="glyph stroked bag">
+									<use xlink:href="#stroked-bag"></use>
+								</svg>
+							</span>
+							 Producten
+						</a>';
+
+			if (strcmp($GLOBALS['adminpage'], "adminproducten") == 0)
+			{
+				echo '<ul class="children collapse in" aria-expanded="true" id="sub-item-4">';
+			}
+			else
+			{
+				echo '<ul class="children collapse" aria-expanded="false" id="sub-item-4">';
+			}
+
+			echo '<li>
+								<a class="" href="adminproducten.php#row1">
+									<svg class="glyph stroked clipboard with paper">
+										<use xlink:href="#stroked-clipboard-with-paper"/>
+									</svg>
+									 Overzicht
+								</a>
+							</li>
+							<li>
+								<a class="" href="adminproducten.php#row2">
+									<svg class="glyph stroked plus sign">
+										<use xlink:href="#stroked-plus-sign"/>
+									</svg>
+									 Product toevoegen
+								</a>
+							</li>
+						</ul>';
+
+			echo '</li>';
 			echo'<li role="presentation" class="divider"></li>
 				<li>
 					<a href="http://medialoot.com/item/lumino-admin-bootstrap-template/">
