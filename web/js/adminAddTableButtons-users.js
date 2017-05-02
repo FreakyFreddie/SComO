@@ -97,7 +97,7 @@ function changeUserAccept(id)
 					email: email,
 					naam: naam,
 					voornaam: voornaam,
-					niveau: niveau,
+					niveau: niveau
 				}
 			});
 

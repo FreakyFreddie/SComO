@@ -1,6 +1,6 @@
 <?php
 	//set page var in order to adapt navbar and functions
-	$GLOBALS['page'] = "index";
+	$GLOBALS['page'] = "emsys";
 
 	//include header
 	require '../templates/header.php';
@@ -27,7 +27,7 @@
 			</p>
 			<form id="searchform">
 				<div class="form-group input-group searchbar">
-					<input id="searchterm" type="text" class="form-control" placeholder="zoek een component" name="searchproduct">
+					<input id="searchterm" type="text" class="form-control" placeholder="zoek naar EmSys producten" name="searchproduct">
 					<span class="input-group-btn">
 						<button type="button" id="searchproduct" class="btn btn-secondary">
 							<span class="glyphicon glyphicon-search"></span>
@@ -51,6 +51,6 @@
 			</noscript>
 		</div>
 		<script src="js/Lumino/bootstrap-table.js"></script>
-		<script type="text/javascript" src="./js/searchProduct.js"></script>
+		<script type="text/javascript" src="./js/searchEmSysProduct.js"></script>
 		<!-- footer -->
 		<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>

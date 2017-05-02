@@ -245,7 +245,7 @@
 			}
 			return $result;
 		}
-		
+		/**
 		public function printFarnellProduct()
 		{
 			echo '<div class="col-sm-4">
@@ -313,6 +313,6 @@
 					</form>
 				</div>
 			</div>';
-		}
+		}**/
 	}
 ?>

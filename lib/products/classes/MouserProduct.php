@@ -153,7 +153,7 @@
 			}
 			return $result;
 		}
-		
+		/**
 		public function printMouserProduct()
 		{
 			echo '<div class="col-sm-4">
@@ -221,6 +221,6 @@
 					</form>
 				</div>
 			</div>';
-		}
+		}**/
 	}
 ?>

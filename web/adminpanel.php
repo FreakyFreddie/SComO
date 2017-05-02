@@ -25,6 +25,9 @@
 	//include getUsersTotal
 	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/getUsersTotal.php';
 
+	//include getProductsTotal
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getProductsTotal.php';
+
 ?>
 	</head>
 
@@ -61,11 +64,11 @@
 							<div class="col-sm-9 col-lg-7 widget-right">
 								<div class="large">
 									<?php
-										$countNewOrders = getOrdersTotal("Pending");
-										echo $countNewOrders;
+										$countEmsysProducts = getProductsTotal("EMSYS");
+										echo $countEmsysProducts;
 									?>
 								</div>
-								<div class="text-muted">Nieuwe orders</div>
+								<div class="text-muted">Emsys producten</div>
 							</div>
 						</div>
 					</div>
@@ -83,11 +86,11 @@
 							<div class="col-sm-9 col-lg-7 widget-right">
 								<div class="large">
 									<?php
-										$countProcessedOrders = getOrdersTotal("Besteld") + getOrdersTotal("Aangekomen") + getOrdersTotal("Afgehaald");
-										echo $countProcessedOrders;
+										$countNewOrders = getOrdersTotal("Pending");
+										echo $countNewOrders;
 									?>
 								</div>
-								<div class="text-muted">Orders verwerkt</div>
+								<div class="text-muted">Nieuwe orders</div>
 							</div>
 						</div>
 					</div>

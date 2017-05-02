@@ -32,6 +32,19 @@
 				
 				if (isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 				{
+					//emsys is only there when logged in
+					echo '<li ';
+					if(strcmp($GLOBALS['page'], "emsys")==0)
+					{
+						echo 'class="active">';
+					}
+					else
+					{
+						echo '>';
+					}
+					echo '<a href="./emsys.php">EmSys</a>';
+					echo '</li>';
+
 					//winkelmandje is only there when logged in
 					echo '<li ';
 						if(strcmp($GLOBALS['page'], "winkelmandje")==0)
@@ -145,16 +158,16 @@
 															<button type="submit" class="btn btn-primary btn-block">Aanmelden</button>
 														</p>
 													</div>
-													<div class="checkbox">
+													<!--<div class="checkbox">
 														<p class="text-center">
-															<input type="checkbox"> aangemeld blijven
+															<input type="checkbox"> aangemeld blijven</input>
 														</p>
-													</div>
+													</div>-->
 												</form>
 											</div>
 											<div class="bottom text-center">
 												<p>
-													<a href="">
+													<a href="./wachtwoordvergeten.php">
 														<b>
 															Wachtwoord vergeten?
 														</b>
