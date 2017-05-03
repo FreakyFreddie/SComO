@@ -123,6 +123,14 @@
 								 Verwachte leveringen
 							</a>
 						</li>
+						<li>
+							<a class="" href="adminscanbarcode.php">
+								<svg class="glyph stroked hourglass">
+									<use xlink:href="#stroked-hourglass"/>
+								</svg>
+								 Scan barcode
+							</a>
+						</li>
 					</ul>';
 
 				echo '</li>';
