@@ -29,21 +29,22 @@
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 	{
-		//Select orders from view "bestellingen"
+		//Select orders from view "bestelling"
 		$dal = new DAL();
-		$sql = "SELECT bestellingen.bestelnr as bestelnr, bestellingen.datum as datum, project.idproject as projectid, project.titel as projecttitel, bestellingen.rnummer as rnummer, bestellingen.totaalkost as totaalkost
-				FROM bestellingen
+		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as datum, project.idproject as projectid, project.titel as projecttitel, bestelling.rnummer as rnummer
+				FROM bestelling
 				LEFT JOIN project
-				ON bestellingen.projectid = project.idproject";
+				ON bestelling.idproject = project.idproject";
 		$records = $dal->queryDBNoArgs($sql);
-
+        
 		$dal->closeConn();
 
         //add buttons to view details
+        /*
         for($i = 0; $i < count($records); $i++)
         {
             $records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->id.",'".$records[$i]->titel."',".$records[$i]->budget.",'".$records[$i]->rekening."','".$records[$i]->startdatum."','".$records[$i]->einddatum."'".')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
-        }
+        }*/
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);

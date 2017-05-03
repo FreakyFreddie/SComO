@@ -123,7 +123,7 @@
 
 			//prepare statement
 			//get product from DB, matching ID & Supplier
-			$dal->setStatement("SELECT idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet FROM `product` WHERE idproduct=? AND leverancier=?");
+			$dal->setStatement("SELECT idproduct, leverancier, productnaam, productverkoper, productafbeelding, productdatasheet FROM product WHERE idproduct=? AND leverancier=?");
 			$product = $dal->queryDB($parameters);
 			unset($parameters);
 
