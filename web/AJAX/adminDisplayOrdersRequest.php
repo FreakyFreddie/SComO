@@ -39,6 +39,12 @@
 
 		$dal->closeConn();
 
+        //add buttons to view details
+        for($i = 0; $i < count($records); $i++)
+        {
+            $records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->id.",'".$records[$i]->titel."',".$records[$i]->budget.",'".$records[$i]->rekening."','".$records[$i]->startdatum."','".$records[$i]->einddatum."'".')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+        }
+
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);
 	}

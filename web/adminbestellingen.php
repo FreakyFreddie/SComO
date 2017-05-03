@@ -68,7 +68,7 @@
 		<div class="row">
 			<div class="alert alert-info alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Opgelet!</strong> Gebruikte prijzen zijn de prijzen die van toepassing waren op de besteldatum!.
+				<strong>Opgelet!</strong> Gebruikte prijzen zijn de prijzen die van toepassing waren op de besteldatum!
 			</div>
 		</div>
 		<div class="row">
@@ -85,6 +85,7 @@
 									<th data-field="projecttitel" data-sortable="true">project titel</th>
 									<th data-field="rnummer" data-sortable="true">rnummer</th>
 									<th data-field="totaalkost" data-sortable="true">totaalkost</th>
+                                    <th data-field="details">details</th>
 								</tr>
 							</thead>
 						</table>
