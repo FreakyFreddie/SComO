@@ -16,13 +16,13 @@
 		//array of products belonging to the order
 		private $orderProducts;
 
-		public function __construct($ouserId, $opersonal="0", $pId="")
+		public function __construct($mouserId, $opersonal="0", $pId="")
 		{
 			//prepare timestamp
 			date_default_timezone_set('Europe/Brussels');
 
 			$this->projectId = $pId;
-			$this->userId = $ouserId;
+			$this->userId = $mouserId;
 			$this->orderPersonal = $opersonal;
 			$this->orderCreationDate = date("Y-n-j H:i:s");
 
