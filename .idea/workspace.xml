@@ -21,145 +21,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="adminChartDataRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/AJAX/adminChartDataRequest.php">
+      <file leaf-file-name="adminProjectOrderDataRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/AJAX/adminProjectOrderDataRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-924">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="374">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
-                <marker date="1493223888014" expanded="true" signature="2271:2517" ph="SELECT CAST(... bestellingproduct" />
-                <marker date="1493223888014" expanded="true" signature="2578:2855" ph="SELECT CAST(... bestelling" />
+                <marker date="1494256127696" expanded="true" signature="1470:1678" ph="SELECT SUM(b... bestelling" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bestellingen.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/bestellingen.php">
+      <file leaf-file-name="adminDisplayProjectOrdersRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrdersRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1374">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-72">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <folding>
+                <marker date="1493128209690" expanded="true" signature="1366:1630" ph="SELECT beste... bestelling" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminDisplayProjectOrderRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrderRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="30" column="65" lean-forward="true" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Order.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/orders/classes/Order.php">
+      <file leaf-file-name="adminbestellingen.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/adminbestellingen.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="148" column="159" lean-forward="false" selection-start-line="148" selection-start-column="159" selection-end-line="148" selection-end-column="159" />
+            <state relative-caret-position="-220">
+              <caret line="169" column="26" lean-forward="true" selection-start-line="169" selection-start-column="26" selection-end-line="169" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminSidePanelOrder.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelOrder.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
               <folding>
-                <marker date="1493814558452" expanded="true" signature="2850:2950" ph="INSERT INTO bestelling... " />
-                <marker date="1493814558452" expanded="true" signature="3565:3617" ph="SELECT * FRO... bestellingproduct" />
-                <marker date="1493814558452" expanded="true" signature="5015:5058" ph="SELECT titel... project" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminDisplayOrdersRequest.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayOrdersRequest.php">
+      <file leaf-file-name="adminSidePanelProject.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelProject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+            <state relative-caret-position="902">
+              <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
               <folding>
-                <marker date="1493821035124" expanded="true" signature="1358:1617" ph="SELECT beste... bestellingen" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderProduct.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/orders/classes/OrderProduct.php">
+      <file leaf-file-name="adminDisplayProjectParticipantsRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectParticipantsRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-802">
-              <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-              <folding>
-                <marker date="1493819274124" expanded="true" signature="1427:1533" ph="INSERT INTO bestellingproduct... " />
-                <marker date="1493819274124" expanded="true" signature="2103:2192" ph="..." />
-                <marker date="1493819274124" expanded="true" signature="2201:2292" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Product.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/products/classes/Product.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1524">
-              <caret line="129" column="30" lean-forward="false" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
-              <folding>
-                <marker date="1493817014714" expanded="true" signature="2870:3015" ph="SELECT idpro... product" />
-                <marker date="1493817014714" expanded="true" signature="4556:4623" ph="SELECT idpro... product" />
-                <marker date="1493817014714" expanded="true" signature="5213:5350" ph="INSERT INTO product... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="processPlaceOrderRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/AJAX/processPlaceOrderRequest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-780">
+            <state relative-caret-position="-314">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShoppingCart.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/shoppingcart/classes/ShoppingCart.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="254" column="0" lean-forward="true" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
               <folding>
-                <marker date="1493818389584" expanded="true" signature="916:957" ph="SELECT * FRO... winkelwagen" />
-                <marker date="1493818389584" expanded="true" signature="1568:1632" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="1584:1619" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="1663:2247" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="1700:2247" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="1729:2247" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="1745:2231" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="1759:2214" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="2545:3040" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="2575:2861" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="2908:3040" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="3400:3559" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="3964:4028" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="3980:4015" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="4059:4597" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="4096:4597" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="4125:4597" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="4141:4581" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="4155:4564" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="4903:5204" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="4932:5015" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="5044:5192" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="5297:5365" ph="..." />
-                <marker date="1493818389584" expanded="true" signature="6919:6961" ph="DELETE FROM " />
-                <marker date="1493818389584" expanded="true" signature="6919:6962" ph="DELETE FROM " />
-                <marker date="1493818389584" expanded="true" signature="7538:7744" ph="SELECT gebru... gebruikerproject" />
+                <marker date="1493128209690" expanded="true" signature="1366:1629" ph="SELECT gebru... gebruiker" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="showFinalCart.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/showFinalCart.js">
+      <file leaf-file-name="adminprojecten.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/adminprojecten.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updateProductAmount.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/updateProductAmount.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="242">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -180,6 +126,15 @@
       <find>prijs</find>
       <find>key</find>
       <find>table</find>
+      <find>nive</find>
+      <find>budget</find>
+      <find>sidepa</find>
+      <find>remo</find>
+      <find>removeb</find>
+      <find>eas</find>
+      <find>projecto</find>
+      <find>disp</find>
+      <find>displa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,11 +143,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectParticipantsRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminRemoveProjectParticipantsRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminLiveSearchUsersRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminAddUserToProjectRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminProjectOrderDataRequest.php" />
         <option value="$PROJECT_DIR$/web/js/adminSidePanelProject.js" />
         <option value="$PROJECT_DIR$/web/js/adminAddUsersToProject.js" />
         <option value="$PROJECT_DIR$/web/adminprojectentoewijzen.php" />
@@ -232,13 +184,16 @@
         <option value="$PROJECT_DIR$/templates/navbar.php" />
         <option value="$PROJECT_DIR$/web/css/main.css" />
         <option value="$PROJECT_DIR$/web/js/searchProduct.js" />
-        <option value="$PROJECT_DIR$/web/adminbestellingen.php" />
         <option value="$PROJECT_DIR$/lib/orders/classes/Order.php" />
         <option value="$PROJECT_DIR$/lib/products/classes/Product.php" />
         <option value="$PROJECT_DIR$/web/js/updateProductAmount.js" />
         <option value="$PROJECT_DIR$/lib/shoppingcart/classes/ShoppingCart.php" />
         <option value="$PROJECT_DIR$/lib/orders/classes/OrderProduct.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminDisplayOrdersRequest.php" />
+        <option value="$PROJECT_DIR$/web/adminbestellingen.php" />
+        <option value="$PROJECT_DIR$/web/js/adminSidePanelOrder.js" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrderRequest.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminProjectOrderDataRequest.php" />
       </list>
     </option>
   </component>
@@ -292,6 +247,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -333,28 +290,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SComO" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SComO" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lumino" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -760,8 +695,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -788,7 +721,13 @@
       <recent name="C:\wamp\www\SComO\lib\users\functions" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.adminbestellingen.php">
+    <configuration default="false" name="adminSidePanelOrder.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="adminSidePanelOrder.js" working-dir="$PROJECT_DIR$/web/js">
+      <method />
+    </configuration>
+    <configuration default="false" name="adminbestellingen.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/SComO/adminbestellingen.php">
+      <method />
+    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
       <config-file value="" />
       <node-interpreter value="project" />
@@ -845,6 +784,16 @@
       <recursive>false</recursive>
       <method />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.adminSidePanelOrder.js" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.adminbestellingen.php" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.adminbestellingen.php" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.adminSidePanelOrder.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -987,34 +936,35 @@
       <workItem from="1493738767007" duration="1421000" />
       <workItem from="1493800574878" duration="5028000" />
       <workItem from="1493812879508" duration="8163000" />
+      <workItem from="1493842464739" duration="17279000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="657530000" />
+    <option name="totallyTimeSpent" value="674809000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1953125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20416667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32381997" sideWeight="0.496875" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978093" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5643897" sideWeight="0.503125" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70911086" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1038,90 +988,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminRemoveProjectsParticipatingRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminRemoveProjectParticipantsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-660">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/adminAddNewProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="20" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/adminAddNewProduct.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="61" lean-forward="false" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/adminAddTableButtons-users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1124">
-          <caret line="99" column="34" lean-forward="false" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/adminAddTableButtons-projects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1320">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/project/classes/Project.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3366">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminLiveSearchUsersRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminModifyProjectRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-426">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminModifyUserRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="71" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProductsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="34" column="38" lean-forward="false" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/AJAX/processSearchProductRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
@@ -1165,14 +1031,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1144">
           <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminUserOrderDataRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1295,7 +1153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="946">
           <caret line="72" column="102" lean-forward="false" selection-start-line="72" selection-start-column="102" selection-end-line="72" selection-end-column="102" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1328,7 +1185,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1350,32 +1206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminprojecten.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3982">
-          <caret line="181" column="36" lean-forward="false" selection-start-line="181" selection-start-column="36" selection-end-line="181" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="41" column="9" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="41" selection-end-column="9" />
-          <folding>
-            <marker date="1493128209691" expanded="true" signature="1062:1258" ph="SELECT proje... project" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminbestellingen.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="87" column="73" lean-forward="false" selection-start-line="87" selection-start-column="73" selection-end-line="87" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/orders/functions/getOrdersForUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-692">
@@ -1389,7 +1219,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/bestellingen.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1374">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1397,7 +1227,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/AJAX/adminChartDataRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-924">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1493223888014" expanded="true" signature="2271:2517" ph="SELECT CAST(... bestellingproduct" />
@@ -1406,21 +1236,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/orders/classes/Order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="148" column="159" lean-forward="false" selection-start-line="148" selection-start-column="159" selection-end-line="148" selection-end-column="159" />
-          <folding>
-            <marker date="1493814558452" expanded="true" signature="2850:2950" ph="INSERT INTO bestelling... " />
-            <marker date="1493814558452" expanded="true" signature="3565:3617" ph="SELECT * FRO... bestellingproduct" />
-            <marker date="1493814558452" expanded="true" signature="5015:5058" ph="SELECT titel... project" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/products/classes/Product.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1524">
+        <state relative-caret-position="2838">
           <caret line="129" column="30" lean-forward="false" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
           <folding>
             <marker date="1493817014714" expanded="true" signature="2870:3015" ph="SELECT idpro... product" />
@@ -1432,8 +1250,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/showFinalCart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+        <state relative-caret-position="990">
+          <caret line="45" column="21" lean-forward="false" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1448,8 +1266,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/shoppingcart/classes/ShoppingCart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="254" column="0" lean-forward="true" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+        <state relative-caret-position="5588">
+          <caret line="254" column="0" lean-forward="false" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
           <folding>
             <marker date="1493818389584" expanded="true" signature="916:957" ph="SELECT * FRO... winkelwagen" />
             <marker date="1493818389584" expanded="true" signature="1568:1632" ph="..." />
@@ -1483,7 +1301,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/AJAX/processPlaceOrderRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-780">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1491,7 +1309,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/orders/classes/OrderProduct.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-802">
+        <state relative-caret-position="176">
           <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
           <folding>
             <marker date="1493819274124" expanded="true" signature="1427:1533" ph="INSERT INTO bestellingproduct... " />
@@ -1501,12 +1319,166 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/orders/classes/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="148" column="159" lean-forward="false" selection-start-line="148" selection-start-column="159" selection-end-line="148" selection-end-column="159" />
+          <folding>
+            <marker date="1493814558452" expanded="true" signature="2850:2950" ph="INSERT INTO bestelling... " />
+            <marker date="1493814558452" expanded="true" signature="3565:3617" ph="SELECT * FRO... bestellingproduct" />
+            <marker date="1493814558452" expanded="true" signature="5015:5058" ph="SELECT titel... project" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectsParticipatingRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-494">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1493800046302" expanded="true" signature="1380:1594" ph="SELECT proje... project" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminNewProjectOrdersRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1493128209699" expanded="true" signature="1377:1793" ph="SELECT beste... bestelling" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUserOrdersRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-494">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1493800046308" expanded="true" signature="1380:1642" ph="SELECT beste... bestelling" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminUserOrderDataRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <marker date="1493800046315" expanded="true" signature="1383:1565" ph="SELECT SUM(b... bestelling" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="55" column="23" lean-forward="true" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+          <folding>
+            <marker date="1493800046310" expanded="true" signature="1377:1581" ph="SELECT gebru... gebruiker" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2988">
+          <caret line="7" column="76" lean-forward="true" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminprojecten.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectsRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="40" column="24" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <marker date="1493128209691" expanded="true" signature="1062:1258" ph="SELECT proje... project" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayOrdersRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+        <state relative-caret-position="770">
+          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
           <folding>
-            <marker date="1493821035124" expanded="true" signature="1358:1617" ph="SELECT beste... bestellingen" />
+            <marker date="1494255108499" expanded="true" signature="1113:1404" ph="SELECT beste... bestellingen" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectParticipantsRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-314">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1493128209690" expanded="true" signature="1366:1629" ph="SELECT gebru... gebruiker" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrdersRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <marker date="1493128209690" expanded="true" signature="1366:1630" ph="SELECT beste... bestelling" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="902">
+          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminProjectOrderDataRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1494256127696" expanded="true" signature="1470:1678" ph="SELECT SUM(b... bestelling" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrderRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="30" column="65" lean-forward="true" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminbestellingen.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-220">
+          <caret line="169" column="26" lean-forward="true" selection-start-line="169" selection-start-column="26" selection-end-line="169" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
