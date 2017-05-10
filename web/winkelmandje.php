@@ -60,7 +60,7 @@
 									<select  class="form-control" id="selectproject" name="selectproject">';
 										$shoppingcart = new ShoppingCart($_SESSION["user"]->__get("userId"));
 
-										$projects = $shoppingcart->getProjectsForUser($_SESSION["user"]->__get("userId"));
+										$projects = $shoppingcart->getProjectsForUser();
 
 										foreach($projects as $project)
 										{

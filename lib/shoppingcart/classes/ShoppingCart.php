@@ -142,7 +142,6 @@
 			{
 				$farnellorder = $this->createOrder($orderpersonal, $project);
 
-
 				foreach($this->shoppingCartArticles as $article)
 				{
 					if($article->__get("Supplier") == "Farnell")
@@ -181,7 +180,7 @@
 		}
 
 		//returns projectid & projectnaam of each project in DB
-		public function getProjectsForUser($userid)
+		public function getProjectsForUser()
 		{
 			$dal = new DAL();
 
@@ -228,9 +227,17 @@
 				$project = explode(" - ", $project);
 				$projectid = $project[0];
 
-				//create a new project order
-				$order = new Order($this->userId, $orderpersonal, $projectid);
-				$order->writeDB();
+				$records = $this->getProjectsForUser();
+
+				foreach($records as $record)
+				{
+					if($record->idproject == $projectid)
+					{
+						//create a new project order
+						$order = new Order($this->userId, $orderpersonal, $projectid);
+						$order->writeDB();
+					}
+				}
 			}
 
 			return $order;

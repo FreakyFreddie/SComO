@@ -94,7 +94,7 @@
 			$prod["productnaam"] = $this->product->__get("Name");
 			$prod["leverancier"] = $this->product->__get("Supplier");
 			$prod["productverkoper"] = $this->product->__get("Vendor");
-			$prod["datasheet"] = $this->product->__get("DataSheet");
+			$prod["datasheet"] = '<a href="'.$this->product->__get("DataSheet").'">Link</a>';
 			$prod["afbeelding"] = '<img class="img img-responsive" src="'.$this->product->__get("Image").'" />';
 			$prod["prijs"] = $this->productPrice;
 			$prod["aantal"] = '<form class="input-group" action="#">
@@ -128,7 +128,7 @@
 
 		public function addArticleToOrder($order)
 		{
-			$orderproduct = new OrderProduct((int)$order->__get("Id"), $this->productId, $this->productSupplier, $this->productAmount, $this->productPrice, $this->collection);
+			$orderproduct = new OrderProduct((int)$order->__get("Id"), $this->productId, $this->productSupplier, $this->productAmount, $this->productPrice);
 			$orderproduct->writeDB();
 		}
 	}
