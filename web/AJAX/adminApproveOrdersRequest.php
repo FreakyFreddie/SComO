@@ -157,10 +157,10 @@
                 $records = $dal->queryDB($parameters);
                 unset($parameters);
 
-                //check if there is indeed data that has been put into $records
+                //check if there is indeed data that has been put into records
                 if(mysqli_num_rows($records)>0)
                 {
-                    //each row in $records represents an order that we have to send back to winkelwagen
+                    //each row in records represents an order that we have to send back to winkelwagen
                     while($row = mysqli_fetch_assoc($records)) {
 
                         //set parameters
