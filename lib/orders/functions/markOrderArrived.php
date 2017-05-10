@@ -100,6 +100,5 @@
 			//close the connection
 			$dal->closeConn();
 		}
-
 	}
 ?>
