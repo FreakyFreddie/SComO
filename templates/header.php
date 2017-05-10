@@ -79,7 +79,7 @@
 
 			//input checks
 			require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
-	
+
 			//check login condition & log in
 			if(isset($_POST["rnr"]) && isset($_POST["pwd"]))
 			{

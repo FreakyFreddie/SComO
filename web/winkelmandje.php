@@ -38,24 +38,38 @@
 			Winkelmandje.
 		</p>
 	</div>
-	<div id="shoppingcart" class="container workspace">
+	<div id="shoppingcart" class="container main workspace">
 		<noscript>
 			<div class="alert alert-warning alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
 			</div>
 		</noscript>
-		<?php
-			$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
-
-			echo '<div class="panel panel-default">';
-
-			$shoppingCart->printShoppingCart();
-
-			echo '</div>';
-		?>
+		<div class="row"  id="row1">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<table data-toggle="table" data-url="AJAX/processDisplayShoppingCartRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+							<thead>
+							<tr>
+								<th data-field="idproduct" data-sortable="true">id</th>
+								<th data-field="productnaam" data-sortable="true">naam</th>
+								<th data-field="leverancier" data-sortable="true">leverancier</th>
+								<th data-field="productverkoper"  data-sortable="true">verkoper</th>
+								<th data-field="datasheet"  data-sortable="true">datasheet</th>
+								<th data-field="afbeelding"  data-sortable="true">afbeelding</th>
+								<th data-field="prijs"  data-sortable="true">prijs</th>
+								<th data-field="aantal"  data-sortable="true">aantal</th>
+								<th data-field="delete">delete</th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
 	</div>
-
+	<script src="js/Lumino/bootstrap-table.js"></script>
 	<!-- footer -->
 	<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
 

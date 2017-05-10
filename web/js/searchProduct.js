@@ -46,6 +46,49 @@ $(document).ready(function()
 		$('#displayproducts').bootstrapTable({
 			onPageChange:function(){
 				colorLowInventoryRed();
+
+				$(".productbutton").click(function()
+				{
+					var DOMobj = $(this).parent().prev();
+					var minQuantity = Number($(DOMobj).parent().parent().prev().find("td").eq(0).text().split(" ")[1]);
+
+					//if amount is lower than minimal quantity, do not allow order of component
+					if($(DOMobj).val() >= minQuantity)
+					{
+						//prepare request
+						$request = $.ajax({
+							method:"POST",
+							url:"AJAX/processAddToCartRequest.php?r=" + new Date().getTime(),
+							data: {productid: $(DOMobj).data("productid"), supplier: $(DOMobj).data("supplier"), amount: $(DOMobj).val()}
+						});
+
+						$request.done(function()
+						{
+							//display message when product is successfully added
+							$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Toegevoegd!</strong> Het product is toegevoegd aan je winkelmandje.</div>').insertBefore($("footer")).fadeOut(2000, function()
+							{
+								$(this).remove();
+							});
+						});
+
+						$request.fail(function()
+						{
+							//display message when product could not be added
+							$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> Het product kon niet worden toegevoegd aan je winkelmandje.</div>').insertBefore($("footer")).fadeOut(2000, function()
+							{
+								$(this).remove();
+							});
+						});
+					}
+					else
+					{
+						//display message when product could not be added
+						$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> U moet minimaal ' + minQuantity + ' van dit product te bestellen.</div>').insertBefore($("footer")).fadeOut(2000, function()
+						{
+							$(this).remove();
+						});
+					}
+				});
 			},
 			onLoadSuccess: function(){
 				colorLowInventoryRed();
@@ -92,9 +135,7 @@ $(document).ready(function()
 							$(this).remove();
 						});
 					}
-
 				});
-
 			},
 			url: 'AJAX/processSearchProductRequest.php?searchproduct=' + searchterm + '&r=' + new Date().getTime()
 		});
