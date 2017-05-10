@@ -139,6 +139,9 @@
 			$i++;
 		}
 
+		var_dump($mouserproducts);
+		var_dump($farnellproducts);
+
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($products);
 	}
