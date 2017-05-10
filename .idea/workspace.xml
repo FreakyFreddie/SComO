@@ -24,18 +24,17 @@
       <file leaf-file-name="adminApproveOrdersRequest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/AJAX/adminApproveOrdersRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="163" column="55" lean-forward="true" selection-start-line="163" selection-start-column="55" selection-end-line="163" selection-end-column="55" />
+            <state relative-caret-position="412">
+              <caret line="176" column="47" lean-forward="false" selection-start-line="176" selection-start-column="47" selection-end-line="176" selection-end-column="47" />
               <folding>
-                <marker date="1494354522596" expanded="true" signature="2125:2178" ph="UPDATE beste... " />
-                <marker date="1494354522596" expanded="true" signature="2501:2655" ph="SELECT gebru... gebruiker" />
-                <marker date="1494354522596" expanded="true" signature="3751:3813" ph="..." />
-                <marker date="1494354522596" expanded="true" signature="4398:4451" ph="UPDATE beste... " />
-                <marker date="1494354522596" expanded="true" signature="4703:5045" ph="SELECT beste... bestellingproduct" />
-                <marker date="1494354522596" expanded="true" signature="5563:5654" ph="INSERT INTO winkekelwagen" />
-                <marker date="1494354522596" expanded="true" signature="5571:5654" ph="SELECT idpro... bestellingproduct" />
-                <marker date="1494354522596" expanded="true" signature="6024:6178" ph="SELECT gebru... gebruiker" />
-                <marker date="1494354522596" expanded="true" signature="7243:7305" ph="..." />
+                <marker date="1494407579529" expanded="true" signature="2125:2178" ph="UPDATE beste... " />
+                <marker date="1494407579529" expanded="true" signature="2501:2655" ph="SELECT gebru... gebruiker" />
+                <marker date="1494407579529" expanded="true" signature="3751:3813" ph="..." />
+                <marker date="1494407579529" expanded="true" signature="4398:4451" ph="UPDATE beste... " />
+                <marker date="1494407579529" expanded="true" signature="4733:5075" ph="SELECT beste... bestellingproduct" />
+                <marker date="1494407579529" expanded="true" signature="5978:6065" ph="INSERT INTO winkelwagen... " />
+                <marker date="1494407579529" expanded="true" signature="6517:6671" ph="SELECT gebru... gebruiker" />
+                <marker date="1494407579529" expanded="true" signature="7736:7798" ph="..." />
               </folding>
             </state>
           </provider>
@@ -969,12 +968,12 @@
       <workItem from="1493800574878" duration="5028000" />
       <workItem from="1493812879508" duration="8163000" />
       <workItem from="1493842464739" duration="18537000" />
-      <workItem from="1494351145672" duration="3846000" />
+      <workItem from="1494351145672" duration="7282000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="679913000" />
+    <option name="totallyTimeSpent" value="683349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -1516,18 +1515,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/AJAX/adminApproveOrdersRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="163" column="55" lean-forward="true" selection-start-line="163" selection-start-column="55" selection-end-line="163" selection-end-column="55" />
+        <state relative-caret-position="412">
+          <caret line="176" column="47" lean-forward="false" selection-start-line="176" selection-start-column="47" selection-end-line="176" selection-end-column="47" />
           <folding>
-            <marker date="1494354522596" expanded="true" signature="2125:2178" ph="UPDATE beste... " />
-            <marker date="1494354522596" expanded="true" signature="2501:2655" ph="SELECT gebru... gebruiker" />
-            <marker date="1494354522596" expanded="true" signature="3751:3813" ph="..." />
-            <marker date="1494354522596" expanded="true" signature="4398:4451" ph="UPDATE beste... " />
-            <marker date="1494354522596" expanded="true" signature="4703:5045" ph="SELECT beste... bestellingproduct" />
-            <marker date="1494354522596" expanded="true" signature="5563:5654" ph="INSERT INTO winkekelwagen" />
-            <marker date="1494354522596" expanded="true" signature="5571:5654" ph="SELECT idpro... bestellingproduct" />
-            <marker date="1494354522596" expanded="true" signature="6024:6178" ph="SELECT gebru... gebruiker" />
-            <marker date="1494354522596" expanded="true" signature="7243:7305" ph="..." />
+            <marker date="1494407579529" expanded="true" signature="2125:2178" ph="UPDATE beste... " />
+            <marker date="1494407579529" expanded="true" signature="2501:2655" ph="SELECT gebru... gebruiker" />
+            <marker date="1494407579529" expanded="true" signature="3751:3813" ph="..." />
+            <marker date="1494407579529" expanded="true" signature="4398:4451" ph="UPDATE beste... " />
+            <marker date="1494407579529" expanded="true" signature="4733:5075" ph="SELECT beste... bestellingproduct" />
+            <marker date="1494407579529" expanded="true" signature="5978:6065" ph="INSERT INTO winkelwagen... " />
+            <marker date="1494407579529" expanded="true" signature="6517:6671" ph="SELECT gebru... gebruiker" />
+            <marker date="1494407579529" expanded="true" signature="7736:7798" ph="..." />
           </folding>
         </state>
       </provider>

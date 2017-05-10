@@ -148,7 +148,7 @@
                 $parameters[1] = $orderid;
 
                 //prepare statement
-                //update orderstatus
+                //get all data that has to be put into winkelwagen
                 $dal->setStatement("SELECT bestelling.rnummer, bestellingproduct.idproduct, bestellingproduct.leverancier, bestellingproduct.aantal, bestellingproduct.prijs
                 FROM bestellingproduct
                 INNER JOIN bestelling
@@ -157,19 +157,27 @@
                 $records = $dal->queryDB($parameters);
                 unset($parameters);
 
-                while($row = mysqli_fetch_assoc($records)) {
+                //check if there is indeed data that has been put into $records
+                if(mysqli_num_rows($records)>0)
+                {
+                    //each row in $records represents an order that we have to send back to winkelwagen
+                    while($row = mysqli_fetch_assoc($records)) {
 
-                    $parameters[0] = "iisid";
-                    $parameters[1] = $row["rnummer"];
-                    $parameters[2] = $row["idproduct"];
-                    $parameters[3] = $row["leverancier"];
-                    $parameters[4] = $row["aantal"];
-                    $parameters[5] = $row["prijs"];
+                        //set parameters
+                        $parameters[0] = "sssid";
+                        $parameters[1] = $row["rnummer"];
+                        $parameters[2] = $row["idproduct"];
+                        $parameters[3] = $row["leverancier"];
+                        $parameters[4] = $row["aantal"];
+                        $parameters[5] = $row["prijs"];
 
-                    $dal->setStatement("INSERT INTO winkelwagen (rnummer,idproduct,leverancier,aantal,prijs) VALUES (?,?,?,?,?)");
+                        //set statement with those parameters
+                        $dal->setStatement("INSERT INTO winkelwagen (rnummer,idproduct,leverancier,aantal,prijs) VALUES (?,?,?,?,?)");
 
-                    $dal->writeDB($parameters);
-                    unset($parameters);
+                        //execute the statement
+                        $dal->writeDB($parameters);
+                        unset($parameters);
+                    }
                 }
 
 				//create array of parameters
