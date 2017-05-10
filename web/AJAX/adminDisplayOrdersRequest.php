@@ -14,10 +14,6 @@
 	//include Product class
 	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
-	//include Shopping Cart & ShoppingCartArticle
-	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCart.php';
-	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
-
 	session_start();
 
 	//redirect if user is not logged in as admin
@@ -29,17 +25,25 @@
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 	{
-		//Select orders from view "bestellingen"
+		//Select orders from view "bestelling"
 		$dal = new DAL();
-		$sql = "SELECT bestellingen.bestelnr as bestelnr, bestellingen.datum as datum, project.idproject as projectid, project.titel as projecttitel, bestellingen.rnummer as rnummer, bestellingen.totaalkost as totaalkost
-				FROM bestellingen
+		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as besteldatum, bestelling.rnummer as rnummer, project.idproject as projectid, project.titel as projecttitel, project.budget as budget
+				FROM bestelling
 				LEFT JOIN project
-				ON bestellingen.projectid = project.idproject";
+				ON bestelling.idproject = project.idproject";
 		$records = $dal->queryDBNoArgs($sql);
 
 		$dal->closeConn();
 
+        //add buttons to view details
+
+        for($i = 0; $i < count($records); $i++)
+        {
+            $records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnr.",'".$records[$i]->besteldatum."',".$records[$i]->rnummer.",'".$records[$i]->projectid."','".$records[$i]->projecttitel."','".$records[$i]->budget."'".')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+        }
+
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);
 	}
+
 ?>

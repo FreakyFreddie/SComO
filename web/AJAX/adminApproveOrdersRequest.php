@@ -144,6 +144,34 @@
 				$dal->writeDB($parameters);
 				unset($parameters);
 
+                $parameters[0] = "i";
+                $parameters[1] = $orderid;
+
+                //prepare statement
+                //update orderstatus
+                $dal->setStatement("SELECT bestelling.rnummer, bestellingproduct.idproduct, bestellingproduct.leverancier, bestellingproduct.aantal, bestellingproduct.prijs
+                FROM bestellingproduct
+                INNER JOIN bestelling
+                ON bestellingproduct.bestelnummer=bestelling.bestelnummer
+                WHERE bestellingproduct.bestelnummer=?");
+                $records = $dal->queryDB($parameters);
+                unset($parameters);
+
+                while($row = mysqli_fetch_assoc($records)) {
+
+                    $parameters[0] = "iisid";
+                    $parameters[1] = $row["rnummer"];
+                    $parameters[2] = $row["idproduct"];
+                    $parameters[3] = $row["leverancier"];
+                    $parameters[4] = $row["aantal"];
+                    $parameters[5] = $row["prijs"];
+
+                    $dal->setStatement("INSERT INTO winkelwagen (rnummer,idproduct,leverancier,aantal,prijs) VALUES (?,?,?,?,?)");
+
+                    $dal->writeDB($parameters);
+                    unset($parameters);
+                }
+
 				//create array of parameters
 				//first item = parameter types
 				//i = integer

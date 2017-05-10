@@ -210,10 +210,12 @@
 			{
 				$mouserorder = $this->createOrder($orderpersonal, $project);
 
-				foreach($this->shoppingCartArticles as $article)
+
+                foreach($this->shoppingCartArticles as $article)
 				{
 					if($article->__get("Supplier") == "Mouser")
 					{
+
 						$article->addArticleToOrder($mouserorder);
 					}
 				}
@@ -222,10 +224,12 @@
 			{
 				$farnellorder = $this->createOrder($orderpersonal, $project);
 
+
 				foreach($this->shoppingCartArticles as $article)
 				{
 					if($article->__get("Supplier") == "Farnell")
 					{
+
 						$article->addArticleToOrder($farnellorder);
 					}
 				}
@@ -251,7 +255,7 @@
 
 			//prepare statement
 			//delete articles from user shopping cart
-			$dal->setStatement("DELETE FROM winkelwagen WHERE rnummer=?");
+			$dal->setStatement("DELETE FROM `winkelwagen` WHERE `rnummer`=?");
 			$dal->writeDB($parameters);
 			unset($parameters);
 

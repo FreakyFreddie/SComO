@@ -146,7 +146,7 @@
 			//create OrderProduct for every product
 			foreach($arrayproducts as $product)
 			{
-				$this->orderProducts[] = new OrderProduct($product->bestelnummer, $product->idproduct, $product->leverancier, $product->aantal, $product->prijs, $product->verzamelnaam);
+				$this->orderProducts[] = new OrderProduct($product->bestelnummer, $product->idproduct, $product->leverancier, $product->aantal, $product->prijs);
 			}
 		}
 

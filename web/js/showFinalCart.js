@@ -42,7 +42,7 @@ $(document).ready(function()
 				$request.done(function()
 				{
 					//display message when product is successfully added
-					$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Aangepast!</strong> De hoeveelheid van het product is succesvol gewijzigd.</div>').insertBefore($("footer")).fadeOut(2000, function()
+					$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Aangepast!</strong> De bestelling is succesvol geplaatst.</div>').insertBefore($("footer")).fadeOut(2000, function()
 					{
 						$("#shoppingcart").find(".row").remove();
 						$("#shoppingcart").html("Bestelling geplaatst.");
@@ -52,7 +52,7 @@ $(document).ready(function()
 				$request.fail(function()
 				{
 					//display message when product could not be added
-					$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> De hoeveelheid van het product kon niet worden gewijzigd.</div>').insertBefore($("footer")).fadeOut(2000, function()
+					$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> De bestelling kon niet worden geplaatst.</div>').insertBefore($("footer")).fadeOut(2000, function()
 					{
 						$(this).remove();
 					});

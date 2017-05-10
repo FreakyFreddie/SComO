@@ -31,7 +31,7 @@ $(document).ready(function()
 			+ '<th data-field="inventory" data-sortable="true">voorraad</th>'
 			+ '<th data-field="datasheet">datasheet</th>'
 			+ '<th data-field="prices">prijzen</th>'
-			+ '<th data-field="add">bestel</th>'
+			+ '<th data-field="add" style="min-width:100px">bestel</th>'
 			+ '</tr>'
 			+ '</thead>'
 			+ '</table>');
@@ -94,7 +94,7 @@ $(document).ready(function()
 					}
 
 				});
-				/**document.getElementById("overlay").style.display = "none";**/
+
 			},
 			url: 'AJAX/processSearchProductRequest.php?searchproduct=' + searchterm + '&r=' + new Date().getTime()
 		});
