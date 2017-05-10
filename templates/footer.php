@@ -10,7 +10,7 @@
 				</div>
 				<div class="footer-block text-right">
 					<p>
-						&copy; 2016 - Dennis Van Elst
+						&copy; 2017 - Dennis Van Elst & Jelle Mommens
 					</p>
 				</div>
 			</div>
