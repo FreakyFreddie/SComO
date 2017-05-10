@@ -41,6 +41,24 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/images" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/scripts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/PHPMailer/examples/styles" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/config" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/fonts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/include" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/tools" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/examples/barcodes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/examples/config" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/examples/data" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/examples/images" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/examples/lang" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/examples/data/cert" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/fonts/ae_fonts_2.0" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/fonts/dejavu-fonts-ttf-2.33" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/fonts/dejavu-fonts-ttf-2.34" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/fonts/freefont-20100919" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/fonts/freefont-20120503" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/TCPDF/include/barcodes" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
