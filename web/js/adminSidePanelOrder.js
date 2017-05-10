@@ -1,5 +1,5 @@
 /* Open the sidenav */
-function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, budget) {
+function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, status) {
     //fill in table data target urls
     //$("#displayprojectparticipants").attr("data-url", "AJAX/adminDisplayProjectParticipantsRequest.php?id=" + id);
     //$("#displayprojectorder").attr("data-url", "AJAX/adminDisplayProjectOrderRequest.php?id=" + id);
@@ -13,15 +13,15 @@ function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, budget
     $("#rnummer").empty();
     $("#projectid").empty();
     $("#projecttitel").empty();
-    $("#budget").empty();
+    $("#status").empty();
 
     //fill in new info
     $("#bestelnr").append(bestelnr);
     $("#besteldatum").append(besteldatum);
-    $("#rnummer").append(projectid);
-    $("#projectid").append(projecttitel);
-    $("#projecttitel").append(rnummer);
-    $("#budget").append(budget);
+    $("#rnummer").append(rnummer);
+    $("#projectid").append(projectid);
+    $("#projecttitel").append(projecttitel);
+    $("#status").append(status);
 
     //remove old data from table
     $('#displayprojectorders').bootstrapTable('removeAll');

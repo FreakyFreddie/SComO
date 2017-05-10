@@ -109,9 +109,9 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        Budget
+                                        Status
                                     </th>
-                                    <td id="budget" class="text-right">
+                                    <td id="status" class="text-right">
 
                                     </td>
                                 </tr>
@@ -184,6 +184,7 @@
 								<tr>
 									<th data-field="bestelnr" data-sortable="true">bestelnr</th>
 									<th data-field="besteldatum"  data-sortable="true">besteldatum</th>
+									<th data-field="status"  data-sortable="true">status</th>
                                     <th data-field="rnummer" data-sortable="true">rnummer</th>
 									<th data-field="projectid" data-sortable="true">project id</th>
 									<th data-field="projecttitel" data-sortable="true">project titel</th>

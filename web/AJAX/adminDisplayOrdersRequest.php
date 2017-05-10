@@ -27,7 +27,7 @@
 	{
 		//Select orders from view "bestelling"
 		$dal = new DAL();
-		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as besteldatum, bestelling.rnummer as rnummer, project.idproject as projectid, project.titel as projecttitel, project.budget as budget
+		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as besteldatum, bestelling.status as status, bestelling.rnummer as rnummer, project.idproject as projectid, project.titel as projecttitel
 				FROM bestelling
 				LEFT JOIN project
 				ON bestelling.idproject = project.idproject";
@@ -35,11 +35,16 @@
 
 		$dal->closeConn();
 
-        //add buttons to view details
-
+		//add buttons to view details
         for($i = 0; $i < count($records); $i++)
         {
-            $records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnr.",'".$records[$i]->besteldatum."',".$records[$i]->rnummer.",'".$records[$i]->projectid."','".$records[$i]->projecttitel."','".$records[$i]->budget."'".')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+			if(empty($records[$i]->projectid) && empty($records[$i]->projecttitel))
+			{
+				$records[$i]->projectid = 0;
+				$records[$i]->projecttitel = "-";
+			}
+
+            $records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnr.",'".$records[$i]->besteldatum."','".$records[$i]->rnummer."',".$records[$i]->projectid.",'".$records[$i]->projecttitel."',".$records[$i]->status.')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
         }
 
 		//Lumino admin panel requires a JSON to process
