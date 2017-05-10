@@ -14,11 +14,10 @@
 	//include Shopping Cart & ShoppingCartArticle
 	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCart.php';
 	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
-
 ?>
-	<script type="text/javascript" src="./js/updateProductAmount.js"></script>
-	<script type="text/javascript" src="./js/deleteProduct.js"></script>
+
 	<script type="text/javascript" src="./js/showFinalCart.js"></script>
+	<script src="js/showShoppingCart.js"></script>
 </head>
 
 <body>
@@ -45,11 +44,36 @@
 				<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
 			</div>
 		</noscript>
-		<div class="row"  id="row1">
+		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<table data-toggle="table" data-url="AJAX/processDisplayShoppingCartRequest.php"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<?php
+							echo '<div class="row">
+									<div class="col-sm-4">
+									<p>Deze bestelling is: </p>
+									<input checked="true" class="orderpersoonlijk" type="radio" name="orderpersoonlijk" value="persoonlijk" /> Persoonlijk
+									<input class="orderpersoonlijk" type="radio" name="orderpersoonlijk" value="project" /> Voor project
+								</div>
+								<div class="col-sm-4" id="projectlist">
+									<p>Indien voor project, selecteer welk: </p>
+									<select  class="form-control" id="selectproject" name="selectproject">';
+										$shoppingcart = new ShoppingCart($_SESSION["user"]->__get("userId"));
+
+										$projects = $shoppingcart->getProjectsForUser($_SESSION["user"]->__get("userId"));
+
+										foreach($projects as $project)
+										{
+											echo '<option value="' . $project->idproject . ' - ' . $project->titel . '">' . $project->idproject . ' - ' . $project->titel . '</option>';
+										}
+							echo '</select>
+								</div>
+								<div class="col-sm-4 text-right">
+									<button type="button" id="orderproducts" class="btn btn-primary" value="orderproducts" name="orderproducts">Bestelling plaatsen</button>
+								</div>
+							</div>';
+						?>
+						<table id="displayshoppingcart" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 							<thead>
 							<tr>
 								<th data-field="idproduct" data-sortable="true">id</th>

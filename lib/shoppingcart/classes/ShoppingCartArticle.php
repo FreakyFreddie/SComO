@@ -118,7 +118,7 @@
 			$prod["productnaam"] = $this->product->__get("Name");
 			$prod["leverancier"] = $this->product->__get("Supplier");
 			$prod["productverkoper"] = $this->product->__get("Vendor");
-			$prod["datasheet"] = $this->product->__get("DataSheet");
+			$prod["datasheet"] = '<a href="'.$this->product->__get("DataSheet").'">Link</a>';
 			$prod["afbeelding"] = '<img class="img img-responsive" src="'.$this->product->__get("Image").'" />';
 			$prod["prijs"] = $this->productPrice;
 			$prod["aantal"] = $this->productAmount;
