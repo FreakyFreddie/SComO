@@ -28,12 +28,14 @@ body {
 /*sidepanel*/
 .sidepanel {
 	right: 0;
-	min-height: 100%; /* 100% Full-height */
+	top: 40px;
+	height: 95vh; /* 100% Full-height */
 	width: 0; /* 0 width - change this with JavaScript */
 	position: fixed; /* Stay in place */
 	z-index: 100; /* Stay on top */
 	background-color: #f1f4f7; /* grey*/
-	overflow-x: hidden; /* Disable horizontal scroll */
+	/* overflow-x: hidden;Disable horizontal scroll */
+	overflow: auto; /* Disable horizontal scroll */
 	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 

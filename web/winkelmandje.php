@@ -16,7 +16,7 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
 ?>
 
-	<script type="text/javascript" src="./js/showFinalCart.js"></script>
+	<script src="js/placeOrder.js"></script>
 	<script src="js/showShoppingCart.js"></script>
 </head>
 

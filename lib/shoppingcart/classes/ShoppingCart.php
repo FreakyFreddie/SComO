@@ -53,19 +53,19 @@
 
 		public function printShoppingCart()
 		{
+			$products = array();
+
 			//only print articles if there are articles in shopping cart
 			if(isset($this->shoppingCartArticles) && ($this->shoppingCartArticles[0]->__get("productId") !=""))
 			{
-				$products = array();
-
 				//print every article in the shopping cart
 				foreach($this->shoppingCartArticles as $article)
 				{
 					$products[] = $article->printShoppingCartArticle();
 				}
-
-				return $products;
 			}
+
+			return $products;
 		}
 
 		public function printFinalShoppingCart()
