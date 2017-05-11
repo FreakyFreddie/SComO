@@ -157,20 +157,23 @@
                 $records = $dal->queryDB($parameters);
                 unset($parameters);
 
-                while($row = mysqli_fetch_assoc($records)) {
+				$z = 0;
 
-                    $parameters[0] = "iisid";
-                    $parameters[1] = $row["rnummer"];
-                    $parameters[2] = $row["idproduct"];
-                    $parameters[3] = $row["leverancier"];
-                    $parameters[4] = $row["aantal"];
-                    $parameters[5] = $row["prijs"];
+				//add articles back to shopping cart
+               foreach($records as $record)
+			   {
+					$parameters[0] = "sssid";
+					$parameters[1] = $record->rnummer;
+                    $parameters[2] = $record->idproduct;
+                    $parameters[3] = $record->leverancier;
+                    $parameters[4] = $record->aantal;
+                    $parameters[5] = $record->prijs;
 
                     $dal->setStatement("INSERT INTO winkelwagen (rnummer,idproduct,leverancier,aantal,prijs) VALUES (?,?,?,?,?)");
 
                     $dal->writeDB($parameters);
                     unset($parameters);
-                }
+			   }
 
 				//create array of parameters
 				//first item = parameter types
