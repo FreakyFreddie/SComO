@@ -20,26 +20,16 @@
 
 	session_start();
 
-	//redirect if user is not logged in as admin
-	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") != 2)
+	//redirect if user is not logged in
+	if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR $_SESSION["user"]->__get("permissionLevel") == 0 OR $_SESSION["user"]->__get("permissionLevel") == 5)
 	{
-		header("location: ../index.php");
+		header("location: index.php");
 	}
 
 	//check login condition and if the request contains all info
 	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
 	{
-		//orders for projects to be approved (what is important?)
-		$dal = new DAL();
-		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as datum,
- 			bestelling.rnummer as rnummer, (bestellingproduct.aantal * bestellingproduct.prijs) as totaalkost
-			FROM bestelling INNER JOIN bestellingproduct
-			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
-			WHERE bestelling.status=1 AND bestelling.persoonlijk=1
-			GROUP BY bestelling.bestelnummer;";
-		$records = $dal->queryDBNoArgs($sql);
-
-		//Lumino admin panel requires a JSON to process
-		echo json_encode($records);
+		$shoppingCart = new ShoppingCart($_SESSION["user"]->__get("userId"));
+		echo json_encode($shoppingCart->printShoppingCart());
 	}
 ?>

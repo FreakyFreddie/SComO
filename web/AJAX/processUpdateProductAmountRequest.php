@@ -57,12 +57,11 @@
 			//d = double
 			//b = blob
 			//s = string
-			$parameters[0] = "sss";
-			$parameters[1] = $productAmount;
+			$parameters[0] = "isss";
+			$parameters[1] = (int) $productAmount;
 			$parameters[2] = $userId;
 			$parameters[3] = $productId;
 			$parameters[4] = $Supplier;
-
 
 			//prepare statement
 			//if product exists in cart, delete it

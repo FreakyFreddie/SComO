@@ -41,14 +41,14 @@
 		//d = double
 		//b = blob
 		//s = string
-		$parameters[0] = "sss";
+		$parameters[0] = "ssi";
 		$parameters[1] = $finalordernumber;
-		$parameters[2] = $supplier;
-		$parameters[3] = date("Y-n-j H:i:s");
+		$parameters[2] = date("Y-n-j H:i:s");
+		$parameters[3] = 0;
 
 		//prepare statement
 		//add final order number to database
-		$dal->setStatement("INSERT INTO definitiefbesteld (defbestelnummer, leverancier, defbesteldatum) VALUES (?, ?, ?)");
+		$dal->setStatement("INSERT INTO definitiefbesteld (defbestelnummer, defbesteldatum, status) VALUES (?, ?, ?)");
 		$dal->writeDB($parameters);
 		unset($parameters);
 

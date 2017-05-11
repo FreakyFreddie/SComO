@@ -32,6 +32,7 @@
 <script src="js/Lumino/respond.min.js"></script>
 <![endif]-->
 
+<script src="js/adminSidePanelFinalOrder.js"></script>
 </head>
 
 <body>
@@ -51,25 +52,120 @@
 	//include admin dashboard navbar
 	require $GLOBALS['settings']->Folders['root'].'../templates/adminnavbar.php';
 ?>
+<div id="sidepanel" class="sidepanel">
+	<div class="main">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="panel panel-default removebutton1" id="infopanel">
+					<div class="panel-heading">Info </div>
+					<div class="panel-body">
+						<div class="row">
+							<table class="table table-hover">
+								<tbody>
+								<tr>
+									<th>
+										Bestelnr
+									</th>
+									<td id="bestelnr" class="text-right">
 
+									</td>
+								</tr>
+								<tr>
+									<th>
+										Besteldatum
+									</th>
+									<td id="besteldatum" class="text-right">
+
+									</td>
+								</tr>
+								<tr>
+									<th>
+										Rnummer
+									</th>
+									<td id="rnummer" class="text-right">
+
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<table class="table table-hover">
+								<tbody>
+								<tr>
+									<th>
+										ProjectId
+									</th>
+									<td id="projectid" class="text-right">
+
+									</td>
+								</tr>
+								<tr>
+									<th>
+										ProjectTitel
+									</th>
+									<td id="projecttitel" class="text-right">
+
+									</td>
+								</tr>
+								<tr>
+									<th>
+										Status
+									</th>
+									<td id="status" class="text-right">
+
+									</td>
+								</tr>
+
+								</tbody>
+							</table>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<p id="message">
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">Budget</div>
+					<div class="panel-body easypiechart-panel">
+						<div class="easypiechart" id="easypiechart-orange" data-percent="0">
+							<span class="percent">0%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+		<div class="row">
+
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Producten in bestelling</div>
+					<div class="panel-body">
+						<table id="displayfinalorderproducts" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+							<thead>
+							<tr>
+								<th data-field="productafbeelding" data-sortable="true">afbeelding</th>
+								<th data-field="idproduct" data-sortable="true">id</th>
+								<th data-field="productnaam" data-sortable="true">naam</th>
+								<th data-field="leverancier" data-sortable="true">leverancier</th>
+								<th data-field="productverkoper"  data-sortable="true">verkoper</th>
+								<th data-field="productdatasheet" data-sortable="true">datasheet</th>
+								<th data-field="prijs" data-sortable="true">prijs</th>
+								<th data-field="aantal" data-sortable="true">aantal</th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+	</div>
+</div>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-	<div class="row">
-		<ol class="breadcrumb">
-			<li>
-				<a href="adminpanel.php">
-					<svg class="glyph stroked home">
-						<use xlink:href="#stroked-home"></use>
-					</svg>
-				</a>
-			</li>
-			<li class="active">
-				<a href="adminbestellingen.php">
-					Bestellingen
-				</a>
-			</li>
-			<li class="active">Verwachte leveringen</li>
-		</ol>
-	</div><!--/.row-->
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default" id="finalorderlist">
@@ -81,8 +177,8 @@
 								<th data-field="selector" data-checkbox="true" >selector</th>
 								<th data-field="defbestelnummer" data-sortable="true">definitief bestelnr</th>
 								<th data-field="defbesteldatum"  data-sortable="true">datum plaatsing</th>
-								<th data-field="leverancier" data-sortable="true">leverancier</th>
 								<th data-field="totaalkost" data-sortable="true">totaalkost</th>
+								<th data-field="details" data-sortable="true">details</th>
 							</tr>
 						</thead>
 					</table>

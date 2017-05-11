@@ -63,6 +63,7 @@
 			FROM bestellingproduct
 			INNER JOIN bestelling
 			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
+			WHERE bestelling.status > 0
 			GROUP BY datum
 			ORDER BY datum DESC";
 		$records = $dal->queryDBNoArgs($sql);
@@ -71,6 +72,7 @@
 			FROM bestelling
 			INNER JOIN bestellingproduct
 			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
+			WHERE bestelling.status > 0
 			GROUP BY datum2
 			ORDER BY datum2 DESC";
         $records2 = $dal->queryDBNoArgs($sql2);

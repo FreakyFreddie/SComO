@@ -79,9 +79,9 @@
 
 			//input checks
 			require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
-						
+
 			//check login condition & log in
-			if(isset($_POST["username"]) && isset($_POST["pwd"]))
+			if(isset($_POST["rnr"]) && isset($_POST["pwd"]))
 			{
 				//prevent HTML injection
 				$rnr = validateRNummer($_POST["rnr"]);

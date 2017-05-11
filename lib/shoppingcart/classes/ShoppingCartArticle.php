@@ -88,73 +88,47 @@
 		{
 			//print shopping article in "table row" style
 			//if amount changes, AJAX script will keep track of update
-			echo '<td>'
-					.$this->product->__get("Name").
-				'</td>
-				<td>'
-					.$this->product->__get("Supplier").
-				'</td>
-				<td>'
-					.$this->product->__get("Id").
-				'</td>
-				<td>'
-					.$this->product->__get("Vendor").
-				'</td>			
-				<td>
-					<a href="'.$this->product->__get("DataSheet").'" target="_blank">Link</a>
-				</td>
-				<td>
-					<img class="img img-responsive" src="'.$this->product->__get("Image").'" />
-				</td>
-				<td>'
-					.$this->productPrice.
-				'</td>
-				<td>
-					<form class="input-group" action="#">
+			$prod = array();
+
+			$prod["idproduct"] = $this->product->__get("Id");
+			$prod["productnaam"] = $this->product->__get("Name");
+			$prod["leverancier"] = $this->product->__get("Supplier");
+			$prod["productverkoper"] = $this->product->__get("Vendor");
+			$prod["datasheet"] = '<a href="'.$this->product->__get("DataSheet").'">Link</a>';
+			$prod["afbeelding"] = '<img class="img img-responsive" src="'.$this->product->__get("Image").'" />';
+			$prod["prijs"] = $this->productPrice;
+			$prod["aantal"] = '<form class="input-group" action="#">
 						<label for="amountproduct" class="sr-only">Producthoeveelheid</label>
 						<input type="number" class="form-control amountproduct" value="'.$this->productAmount.'" name="amountproduct" data-productid="'.$this->product->__get("Id").'" data-supplier="'.$this->product->__get("Supplier").'" />
-					</form>
-				</td>
-				<td>
-					<form class="input-group" action="#">
+					</form>';
+			$prod["delete"] = '<form class="input-group" action="#">
 						<button type="button" class="btn btn-danger deleteproduct" value="delete" name="deleteproduct" productid="'.$this->product->__get("Id").'" supplier="'.$this->product->__get("Supplier").'">Delete</button>
-					</form>
-				</td>';
+					</form>';
+
+			return $prod;
 		}
 
 		public function printFinalShoppingCartArticle()
 		{
 			//print shopping article in "table row" style
 			//if amount changes, AJAX script will keep track of update
-			echo '<td>'
-				.$this->product->__get("Name").
-				'</td>
-				<td>'
-				.$this->product->__get("Supplier").
-				'</td>
-				<td>'
-				.$this->product->__get("Id").
-				'</td>
-				<td>'
-				.$this->product->__get("Vendor").
-				'</td>			
-				<td>
-					<a href="'.$this->product->__get("DataSheet").'" target="_blank">Link</a>
-				</td>
-				<td>
-					<img class="img img-responsive" src="'.$this->product->__get("Image").'" />
-				</td>
-				<td>'
-				.$this->productPrice.
-				'</td>
-				<td>'
-					.$this->productAmount.
-				'</td>';
+			$prod = array();
+
+			$prod["idproduct"] = $this->product->__get("Id");
+			$prod["productnaam"] = $this->product->__get("Name");
+			$prod["leverancier"] = $this->product->__get("Supplier");
+			$prod["productverkoper"] = $this->product->__get("Vendor");
+			$prod["datasheet"] = '<a href="'.$this->product->__get("DataSheet").'">Link</a>';
+			$prod["afbeelding"] = '<img class="img img-responsive" src="'.$this->product->__get("Image").'" />';
+			$prod["prijs"] = $this->productPrice;
+			$prod["aantal"] = $this->productAmount;
+
+			return $prod;
 		}
 
 		public function addArticleToOrder($order)
 		{
-			$orderproduct = new OrderProduct((int)$order->__get("Id"), $this->productId, $this->productSupplier, $this->productAmount, $this->productPrice, $this->collection);
+			$orderproduct = new OrderProduct((int)$order->__get("Id"), $this->productId, $this->productSupplier, $this->productAmount, $this->productPrice);
 			$orderproduct->writeDB();
 		}
 	}

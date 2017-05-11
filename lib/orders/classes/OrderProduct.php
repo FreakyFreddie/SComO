@@ -7,16 +7,18 @@
 		private $productSupplier;
 		private $productAmount;
 		private $productPrice;
+		private $productFinalOrderNumber;
 
 		private $product;
 
-		public function __construct($oid, $pid, $psupplier, $pamount, $pprice)
+		public function __construct($oid, $pid, $psupplier, $pamount, $pprice, $pfinalOrderNumber='')
 		{
 			$this->orderId = $oid;
 			$this->productId = $pid;
 			$this->productSupplier = $psupplier;
 			$this->productAmount = $pamount;
 			$this->productPrice = $pprice;
+			$this->productFinalOrderNumber = $pfinalOrderNumber;
 
 			//get extra info on product
 			$this->getProductInfo();
@@ -32,6 +34,7 @@
 			$this->productSupplier = mysqli_real_escape_string($dal->getConn(), $this->productSupplier);
 			$this->productAmount = mysqli_real_escape_string($dal->getConn(), $this->productAmount);
 			$this->productPrice = mysqli_real_escape_string($dal->getConn(), $this->productPrice);
+			$this->productFinalOrderNumber = mysqli_real_escape_string($dal->getConn(), $this->productFinalOrderNumber);
 
 			//create array of parameters
 			//first item = parameter types
@@ -39,15 +42,16 @@
 			//d = double
 			//b = blob
 			//s = string
-			$parameters[0] = "issid";
+			$parameters[0] = "issids";
 			$parameters[1] = $this->orderId;
 			$parameters[2] = $this->productId;
 			$parameters[3] = $this->productSupplier;
 			$parameters[4] = $this->productAmount;
 			$parameters[5] = $this->productPrice;
+			$parameters[6] = $this->productFinalOrderNumber;
 
 			//add order to DB (still to complete)
-			$dal->setStatement("INSERT INTO bestellingproduct (bestelnummer, idproduct, leverancier, aantal, prijs) VALUES (?, ?, ?, ?, ?)");
+			$dal->setStatement("INSERT INTO bestellingproduct (bestelnummer, idproduct, leverancier, aantal, prijs, defbestelnummer) VALUES (?, ?, ?, ?, ?, ?)");
 			$dal->writeDB($parameters);
 			unset($parameters);
 

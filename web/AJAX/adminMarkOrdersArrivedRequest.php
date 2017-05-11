@@ -29,6 +29,15 @@
 	//include project class
 	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 
+	//add PHPMailer mail functionality
+	require $GLOBALS['settings']->Folders['root'].'../lib/FPDF/fpdf.php';
+
+	//include DAL (DAL & login always go on top since classes depend on them)
+	require $GLOBALS['settings']->Folders['root'].'../lib/barcodegenerator/src/BarcodeGenerator.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/barcodegenerator/src/BarcodeGeneratorJPG.php';
+
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/generateInvoice.php';
+
 	session_start();
 
 	//redirect if user is not logged in as admin

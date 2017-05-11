@@ -1,16 +1,16 @@
 $(document).ready(function()
 {
 	//buttons to add or remove
-	$("#orderprojectlist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="approveorders" class="btn btn-default" type="button" name="approveorders"><span class="glyphicon glyphicon-plus"></span> Goedkeuren</button></div>');
+	$("#orderprojectlist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button class="approveorders btn btn-default" type="button" name="approveorders"><span class="glyphicon glyphicon-plus"></span> Goedkeuren</button></div>');
 
-	$("#orderprojectlist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="disapproveorders" class="btn btn-default" type="button" name="dissaproveorders"><span class="glyphicon glyphicon-minus"></span> Afkeuren</button></div>');
+	$("#orderprojectlist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button class="disapproveorders btn btn-default" type="button" name="dissaproveorders"><span class="glyphicon glyphicon-minus"></span> Afkeuren</button></div>');
 
-	$("#orderpersonallist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="approveorders" class="btn btn-default" type="button" name="approveorders"><span class="glyphicon glyphicon-plus"></span> Goedkeuren</button></div>');
+	$("#orderpersonallist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button class="approveorders btn btn-default" type="button" name="approveorders"><span class="glyphicon glyphicon-plus"></span> Goedkeuren</button></div>');
 
-	$("#orderpersonallist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="disapproveorders" class="btn btn-default" type="button" name="dissaproveorders"><span class="glyphicon glyphicon-minus"></span> Afkeuren</button></div>');
+	$("#orderpersonallist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button class="disapproveorders btn btn-default" type="button" name="dissaproveorders"><span class="glyphicon glyphicon-minus"></span> Afkeuren</button></div>');
 
 	//script to extract data
-	$("#approveorders").click(function()
+	$(".approveorders").click(function()
 	{
 		//set projects array
 		var orders=[];
@@ -42,34 +42,36 @@ $(document).ready(function()
 	});
 
 	//script to extract data
-	$("#disapproveorders").click(function()
+	$(".disapproveorders").click(function()
 	{
 		//set projects array
 		var orders=[];
 
 		$(this).parent().parent().next().find("table").find(".selected").each(function ()
 		{
-			var order = {id: $(this).find("td").eq(1).text()};
+			var message = prompt("U staat op het punt om bestelling " + $(this).find("td").eq(1).text() + "af te keuren.\nGeef een reden op:", "Vraag info bij docent.");
 
-			//push project to array
-			orders.push(order);
+			if (!(message == null))
+			{
+				var order = {id: $(this).find("td").eq(1).text(), message: message};
+
+				//push project to array
+				orders.push(order);
+			}
 		});
 
-		if(confirm("U staat op het punt orders af te keuren.\nDoorgaan?"))
-		{
-			//prepare request
-			$request = $.ajax({
-				method:"POST",
-				url:"AJAX/adminApproveOrdersRequest.php?r=" + new Date().getTime(),
-				data: {array: orders, status: "denied"}
-			});
+		//prepare request
+		$request = $.ajax({
+			method:"POST",
+			url:"AJAX/adminApproveOrdersRequest.php?r=" + new Date().getTime(),
+			data: {array: orders, status: "denied"}
+		});
 
-			$request.done(function()
-			{
-				//refresh all tables
-				$("button[name='refresh']").trigger("click");
-			});
-		}
+		$request.done(function()
+		{
+			//refresh all tables
+			$("button[name='refresh']").trigger("click");
+		});
 
 	});
 });

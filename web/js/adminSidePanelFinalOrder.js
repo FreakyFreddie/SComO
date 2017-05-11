@@ -1,5 +1,5 @@
 /* Open the sidenav */
-function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, status) {
+function openNav(defbestelnummer, besteldatum, rnummer, projectid, projecttitel, status) {
     //fill in table data target urls
     //$("#displayprojectparticipants").attr("data-url", "AJAX/adminDisplayProjectParticipantsRequest.php?id=" + id);
     //$("#displayprojectorder").attr("data-url", "AJAX/adminDisplayProjectOrderRequest.php?id=" + id);
@@ -8,7 +8,7 @@ function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, status
     document.getElementById("sidepanel").style.padding= "0px 10px 0px 10px";
 
     //clear old project
-    $("#bestelnr").empty();
+    $("#defbestelnummer").empty();
     $("#besteldatum").empty();
     $("#rnummer").empty();
     $("#projectid").empty();
@@ -17,28 +17,12 @@ function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, status
     $("#message").empty();
 
     //fill in new info
-    $("#bestelnr").append(bestelnr);
+    $("#defbestelnummer").append(defbestelnummer);
     $("#besteldatum").append(besteldatum);
     $("#rnummer").append(rnummer);
     $("#projectid").append(projectid);
     $("#projecttitel").append(projecttitel);
     $("#status").append(status);
-
-    //if status is denied, display message
-    if(status == "Geweigerd")
-    {
-        //prepare request
-        $request = $.ajax({
-            method:"POST",
-            url:"AJAX/processOrderDeniedMessageRequest.php?r=" + new Date().getTime(),
-            data: {bestelnummer: bestelnr}
-        });
-
-        $request.done(function(msg)
-        {
-            $("#message").append(msg);
-        });
-    }
 
     //remove old data from table
     $('#displayuserorderproducts').bootstrapTable('removeAll');
@@ -48,21 +32,11 @@ function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, status
 
     //add data to table
     $('#displayuserorderproducts').bootstrapTable({
-        url: 'AJAX/adminDisplayUserOrderProductsRequest.php?bestelnummer=' + bestelnr + '&r=' + new Date().getTime()
+        url: 'AJAX/adminDisplayFinalOrderProductsRequest.php?bestelnummer=' + defbestelnummer + '&r=' + new Date().getTime()
     });
 
-    //prepare request
-    $request = $.ajax({
-        method:"POST",
-        url:"AJAX/processUserOrderDataRequest.php?r=" + new Date().getTime(),
-        data: {bestelnummer: bestelnr}
-    });
-
-    $request.done(function(data)
-    {
-        $('.easypiechart').data('easyPieChart').update(data);
-        $('.percent').html("€" + data);
-    });
+    $('.easypiechart').data('easyPieChart').update(totaalkost);
+    $('.percent').html("€" + totaalkost);
 
 }
 

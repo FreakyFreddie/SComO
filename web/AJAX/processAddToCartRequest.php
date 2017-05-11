@@ -66,7 +66,7 @@
 			if($amount >= $product[0]->__get("Prices")[0]->__get("Quantity"))
 			{
 				//add product to cart (typecast amount string to int)
-				addToCart($_SESSION["user"]->__get("userId"), $product, (int)$_POST["amount"]);
+				addToCart($_SESSION["user"]->__get("userId"), $product, $amount);
 			}
 		}
 		else
