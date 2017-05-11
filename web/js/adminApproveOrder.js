@@ -1,16 +1,16 @@
 $(document).ready(function()
 {
 	//buttons to add or remove
-	$("#orderprojectlist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="approveorders" class="btn btn-default" type="button" name="approveorders"><span class="glyphicon glyphicon-plus"></span> Goedkeuren</button></div>');
+	$("#orderprojectlist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button class="approveorders btn btn-default" type="button" name="approveorders"><span class="glyphicon glyphicon-plus"></span> Goedkeuren</button></div>');
 
-	$("#orderprojectlist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="disapproveorders" class="btn btn-default" type="button" name="dissaproveorders"><span class="glyphicon glyphicon-minus"></span> Afkeuren</button></div>');
+	$("#orderprojectlist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button class="disapproveorders btn btn-default" type="button" name="dissaproveorders"><span class="glyphicon glyphicon-minus"></span> Afkeuren</button></div>');
 
-	$("#orderpersonallist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="approveorders" class="btn btn-default" type="button" name="approveorders"><span class="glyphicon glyphicon-plus"></span> Goedkeuren</button></div>');
+	$("#orderpersonallist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button class="approveorders btn btn-default" type="button" name="approveorders"><span class="glyphicon glyphicon-plus"></span> Goedkeuren</button></div>');
 
-	$("#orderpersonallist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button id="disapproveorders" class="btn btn-default" type="button" name="dissaproveorders"><span class="glyphicon glyphicon-minus"></span> Afkeuren</button></div>');
+	$("#orderpersonallist").find(".fixed-table-toolbar").append('<div class="columns btn-group pull-left"><button class="disapproveorders btn btn-default" type="button" name="dissaproveorders"><span class="glyphicon glyphicon-minus"></span> Afkeuren</button></div>');
 
 	//script to extract data
-	$("#approveorders").click(function()
+	$(".approveorders").click(function()
 	{
 		//set projects array
 		var orders=[];
@@ -42,7 +42,7 @@ $(document).ready(function()
 	});
 
 	//script to extract data
-	$("#disapproveorders").click(function()
+	$(".disapproveorders").click(function()
 	{
 		//set projects array
 		var orders=[];
