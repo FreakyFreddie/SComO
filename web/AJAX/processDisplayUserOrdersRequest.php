@@ -47,8 +47,6 @@
 		$records = $dal->queryDB($parameters);
 		unset($parameters);
 
-
-
 		//add buttons to change row or view details
 		for($i = 0; $i < count($records); $i++)
 		{

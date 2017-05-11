@@ -31,13 +31,47 @@
 	{
 		//orders for projects to be approved (what is important?)
 		$dal = new DAL();
-		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as datum,
- 			bestelling.rnummer as rnummer, (bestellingproduct.aantal * bestellingproduct.prijs) as totaalkost
+		$sql = "SELECT bestelling.bestelnummer as bestelnr, bestelling.besteldatum as datum, bestelling.idproject as projectid,
+ 			bestelling.rnummer as rnummer, SUM(bestellingproduct.aantal * bestellingproduct.prijs) as totaalkost
 			FROM bestelling INNER JOIN bestellingproduct
 			ON bestelling.bestelnummer=bestellingproduct.bestelnummer
-			WHERE bestelling.status=1 AND bestelling.persoonlijk=1
+			WHERE bestelling.status=1 AND bestelling.persoonlijk=0
 			GROUP BY bestelling.bestelnummer;";
 		$records = $dal->queryDBNoArgs($sql);
+
+		//add buttons to change row or view details
+		for($i = 0; $i < count($records); $i++)
+		{
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "i";
+			$parameters[1] = (int) $records[$i]->bestelnummer;
+
+			//prepare statement
+			$dal->setStatement("SELECT project.titel
+				FROM bestelling
+				INNER JOIN project
+				ON bestelling.idproject=project.idproject
+				WHERE bestelling.bestelnummer=?");
+
+			$projecttitel = $dal->queryDB($parameters);
+			unset($parameters);
+
+			if(isset($projecttitel[0]->titel) && !empty($projecttitel[0]->titel))
+			{
+				$records[$i]->project = $projecttitel[0]->titel;
+			}
+			else
+			{
+				$records[$i]->project = "-";
+			}
+
+			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnr.",'".$records[$i]->besteldatum."','".$records[$i]->rnummer."','".$records[$i]->project.'\')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+		}
 
 		//Lumino admin panel requires a JSON to process
 		echo json_encode($records);
