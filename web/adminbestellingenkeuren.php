@@ -150,7 +150,6 @@
 								<th data-field="productdatasheet" data-sortable="true">datasheet</th>
 								<th data-field="prijs" data-sortable="true">prijs</th>
 								<th data-field="aantal" data-sortable="true">aantal</th>
-								<th data-field="status" data-sortable="true">status</th>
 							</tr>
 							</thead>
 						</table>
@@ -162,23 +161,6 @@
 </div>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-	<div class="row">
-		<ol class="breadcrumb">
-			<li>
-				<a href="adminpanel.php">
-					<svg class="glyph stroked home">
-						<use xlink:href="#stroked-home"></use>
-					</svg>
-				</a>
-			</li>
-			<li class="active">
-				<a href="adminbestellingen.php">
-					Bestellingen
-				</a>
-			</li>
-			<li class="active">Bestellingen keuren</li>
-		</ol>
-	</div><!--/.row-->
 	<div class="row">
 		<div class="alert alert-info alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

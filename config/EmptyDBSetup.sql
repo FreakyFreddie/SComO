@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.bestelling
   idproject INT,
   rnummer VARCHAR(8) NOT NULL,
   persoonlijk INT NOT NULL,
+  defafhaaldatum DATE,
   PRIMARY KEY (bestelnummer),
   FOREIGN KEY (idproject)
 	REFERENCES project (idproject),
@@ -77,11 +78,11 @@ CREATE TABLE IF NOT EXISTS webstoredb.product
 (
   idproduct VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
-  productnaam VARCHAR(70) NOT NULL,
-  productverkoper VARCHAR(40) NOT NULL,
-  productafbeelding VARCHAR(70),
-  productdatasheet VARCHAR(70),
-  eigenprijs DECIMAL(10,2),
+  productnaam VARCHAR(200) NOT NULL,
+  productverkoper VARCHAR(200) NOT NULL,
+  productafbeelding VARCHAR(2000),
+  productdatasheet VARCHAR(2000),
+  eigenprijs DECIMAL(12,4),
   PRIMARY KEY (idproduct, leverancier)
 );
 
@@ -112,7 +113,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.winkelwagen
   idproduct VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
   aantal INT NOT NULL,
-  prijs DECIMAL(10,2) NOT NULL,
+  prijs DECIMAL(12,4) NOT NULL,
   FOREIGN KEY (rnummer)
 	REFERENCES gebruiker (rnummer),
   FOREIGN KEY (idproduct,leverancier)
@@ -126,8 +127,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.bestellingproduct
   idproduct VARCHAR(25) NOT NULL,
   leverancier VARCHAR(25) NOT NULL,
   aantal INT NOT NULL,
-  prijs DECIMAL(10,2) NOT NULL,
-  status INT NOT NULL,
+  prijs DECIMAL(12,4) NOT NULL,
   defbestelnummer VARCHAR(25),
   FOREIGN KEY (defbestelnummer)
   REFERENCES definitiefbesteld (defbestelnummer),

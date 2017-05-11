@@ -70,6 +70,7 @@
 				$records[$i]->project = "-";
 			}
 
+			$records[$i]->totaalkost = round($records[$i]->totaalkost, 2);
 			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnr.",'".$records[$i]->besteldatum."','".$records[$i]->rnummer."','".$records[$i]->project.'\')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
 		}
 

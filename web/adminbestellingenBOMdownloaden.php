@@ -54,23 +54,6 @@
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 	<div class="row">
-		<ol class="breadcrumb">
-			<li>
-				<a href="adminpanel.php">
-					<svg class="glyph stroked home">
-						<use xlink:href="#stroked-home"></use>
-					</svg>
-				</a>
-			</li>
-			<li class="active">
-				<a href="adminbestellingen.php">
-					Bestellingen
-				</a>
-			</li>
-			<li class="active">BOM downloaden</li>
-		</ol>
-	</div><!--/.row-->
-	<div class="row">
 		<div class="alert alert-warning alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>Opgelet!</strong> Indien u een BOM download, dient u meteen daarna een bestelnummer de geplaatste Mouser- of Farnellbestelling aan de database door te geven!

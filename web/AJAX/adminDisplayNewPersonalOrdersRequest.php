@@ -42,6 +42,7 @@
 		//add buttons to change row or view details
 		for($i = 0; $i < count($records); $i++)
 		{
+			$records[$i]->totaalkost = round($records[$i]->totaalkost, 2);
 			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnr.",'".$records[$i]->datum."','".$records[$i]->rnummer.'\')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
 		}
 

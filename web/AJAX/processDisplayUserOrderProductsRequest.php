@@ -63,7 +63,7 @@
 			$parameters[1] = (int) $bestelnummer;
 
 			//prepare statement
-			$dal->setStatement("SELECT product.idproduct, product.leverancier, product.productnaam, product.productverkoper, product.productafbeelding, product.productdatasheet, bestellingproduct.prijs, bestellingproduct.aantal, bestellingproduct.status
+			$dal->setStatement("SELECT product.idproduct, product.leverancier, product.productnaam, product.productverkoper, product.productafbeelding, product.productdatasheet, bestellingproduct.prijs, bestellingproduct.aantal
 			FROM bestellingproduct
 			INNER JOIN product
 			ON product.idproduct=bestellingproduct.idproduct
@@ -71,6 +71,13 @@
 
 			$records = $dal->queryDB($parameters);
 			unset($parameters);
+
+			for($i = 0; $i<count($records); $i++)
+			{
+				$records[$i]->prijs = round($records[$i]->prijs, 2);
+				$records[$i]->productdatasheet = '<a href="'.$records[$i]->productdatasheet.'">Link</a>';
+				$records[$i]->productafbeelding = '<img class="img img-responsive" src="'.$records[$i]->productafbeelding.'" />';
+			}
 
 			$dal->closeConn();
 		}

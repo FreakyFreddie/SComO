@@ -122,7 +122,6 @@
 									<th data-field="productdatasheet" data-sortable="true">datasheet</th>
 									<th data-field="prijs" data-sortable="true">prijs</th>
 									<th data-field="aantal" data-sortable="true">aantal</th>
-									<th data-field="status" data-sortable="true">status</th>
 								</tr>
 								</thead>
 							</table>
