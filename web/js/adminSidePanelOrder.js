@@ -24,31 +24,27 @@ function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, status
     $("#status").append(status);
 
     //remove old data from table
-    $('#displayprojectorders').bootstrapTable('removeAll');
+    $('#displayuserorderproducts').bootstrapTable('removeAll');
 
     //destroy table
-    $('#displayprojectorders').bootstrapTable('destroy');
+    $('#displayuserorderproducts').bootstrapTable('destroy');
 
     //add data to table
-    $('#displayprojectorders').bootstrapTable({
-        url: 'AJAX/adminDisplayProjectOrdersRequest.php?id=' + id +'&r=' + new Date().getTime()
+    $('#displayuserorderproducts').bootstrapTable({
+        url: 'AJAX/adminDisplayUserOrderProductsRequest.php?bestelnummer=' + bestelnr + '&r=' + new Date().getTime()
     });
-
-    //update pie chart data
-    var budget = $("#budget").html();
-    var id = $("#id").html();
 
     //prepare request
     $request = $.ajax({
         method:"POST",
-        url:"AJAX/adminProjectOrderDataRequest.php?r=" + new Date().getTime(),
-        data: {id: id, budget: budget}
+        url:"AJAX/processUserOrderDataRequest.php?r=" + new Date().getTime(),
+        data: {bestelnummer: bestelnr}
     });
 
     $request.done(function(data)
     {
         $('.easypiechart').data('easyPieChart').update(data);
-        $('.percent').html(data + "%");
+        $('.percent').html("€" + data);
     });
 
 }
@@ -59,5 +55,5 @@ function closeNav()
     document.getElementById("sidepanel").style.width = "0";
     document.getElementById("sidepanel").style.padding= "0px 0px 0px 0px";
     $('.easypiechart').data('easyPieChart').update(0);
-    $('.percent').html(0 + "%");
+    $('.percent').html("€" + 0);
 }
