@@ -50,9 +50,41 @@
 		//add buttons to change row or view details
 		for($i = 0; $i < count($records); $i++)
 		{
+			//ready permissionlevel for database
+			switch ($records[$i]->status)
+			{
+				case "0":
+					$records[$i]->status = "Geweigerd";
+					break;
+
+				case "1":
+					$records[$i]->status = "Pending";
+					break;
+
+				case "2":
+					$records[$i]->status = "Goedgekeurd";
+					break;
+
+				case "3":
+					$records[$i]->status = "Besteld";
+					break;
+
+				case "4":
+					$records[$i]->status = "Aangekomen";
+					break;
+
+				case "5":
+					$records[$i]->status = "Afgehaald";
+					break;
+
+				case "9":
+					$records[$i]->status = "Gesplitst";
+					break;
+			}
+
 			if((int) $records[$i]->persoonlijk == 1)
 			{
-				$records[$i]->project = "-";
+				$records[$i]->project = "N/A";
 			}
 			elseif((int) $records[$i]->persoonlijk == 0)
 			{
@@ -81,7 +113,7 @@
 				}
 				else
 				{
-					$records[$i]->project = "-";
+					$records[$i]->project = "N/A";
 				}
 			}
 			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnummer.",'".$records[$i]->status."','".$records[$i]->besteldatum."','".$records[$i]->project.'\')"><i class="fa fa-angle-double-right fa-lg"></i></button>';

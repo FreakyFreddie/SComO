@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS webstoredb.bestelling
   rnummer VARCHAR(8) NOT NULL,
   persoonlijk INT NOT NULL,
   defafhaaldatum DATE,
+  bericht VARCHAR(1000),
   PRIMARY KEY (bestelnummer),
   FOREIGN KEY (idproject)
 	REFERENCES project (idproject),

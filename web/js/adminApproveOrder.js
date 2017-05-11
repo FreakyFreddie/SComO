@@ -49,27 +49,29 @@ $(document).ready(function()
 
 		$(this).parent().parent().next().find("table").find(".selected").each(function ()
 		{
-			var order = {id: $(this).find("td").eq(1).text()};
+			var message = prompt("U staat op het punt om bestelling " + $(this).find("td").eq(1).text() + "af te keuren.\nGeef een reden op:", "Vraag info bij docent.");
 
-			//push project to array
-			orders.push(order);
+			if (!(message == null))
+			{
+				var order = {id: $(this).find("td").eq(1).text(), message: message};
+
+				//push project to array
+				orders.push(order);
+			}
 		});
 
-		if(confirm("U staat op het punt orders af te keuren.\nDoorgaan?"))
-		{
-			//prepare request
-			$request = $.ajax({
-				method:"POST",
-				url:"AJAX/adminApproveOrdersRequest.php?r=" + new Date().getTime(),
-				data: {array: orders, status: "denied"}
-			});
+		//prepare request
+		$request = $.ajax({
+			method:"POST",
+			url:"AJAX/adminApproveOrdersRequest.php?r=" + new Date().getTime(),
+			data: {array: orders, status: "denied"}
+		});
 
-			$request.done(function()
-			{
-				//refresh all tables
-				$("button[name='refresh']").trigger("click");
-			});
-		}
+		$request.done(function()
+		{
+			//refresh all tables
+			$("button[name='refresh']").trigger("click");
+		});
 
 	});
 });

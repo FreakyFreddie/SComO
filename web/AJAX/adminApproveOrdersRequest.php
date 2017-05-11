@@ -125,9 +125,11 @@
 			{
 				//validate input
 				$orderid = validateInput($orderdenied["id"]);
+				$message = validateInput($orderdenied["message"]);
 
 				//update orderstatus in database
 				$orderid = mysqli_real_escape_string($dal->getConn(), $orderid);
+				$message = mysqli_real_escape_string($dal->getConn(), $message);
 
 				//create array of parameters
 				//first item = parameter types
@@ -135,12 +137,14 @@
 				//d = double
 				//b = blob
 				//s = string
-				$parameters[0] = "i";
-				$parameters[1] = $orderid;
+				$parameters[0] = "si";
+				$parameters[1] = $message;
+				$parameters[2] = (int) $orderid;
+
 
 				//prepare statement
 				//update orderstatus
-				$dal->setStatement("UPDATE bestelling SET status='0' WHERE bestelnummer=?");
+				$dal->setStatement("UPDATE bestelling SET status='0', bericht=? WHERE bestelnummer=?");
 				$dal->writeDB($parameters);
 				unset($parameters);
 

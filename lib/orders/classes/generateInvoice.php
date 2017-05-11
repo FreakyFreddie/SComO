@@ -29,6 +29,8 @@
 			//extract products in order
 			$dal->setStatement("SELECT *
 			FROM bestellingproduct
+			INNER JOIN product
+			ON bestellingproduct.idproduct=product.idproduct
 			WHERE bestelnummer=?");
 
 			$this->products = $dal->queryDB($parameters);
@@ -134,10 +136,11 @@
 			$this->SetLineWidth(.3);
 			$this->SetFont('','B');
 			// Header
-			$this->Cell(80,7,'ID',1,0,'C',true);
-			$this->Cell(30,7,'Aantal',1,0,'C',true);
-			$this->Cell(30,7,'Prijs per stuk',1,0,'C',true);
-			$this->Cell(30,7,'Totaalprijs',1,0,'C',true);
+			$this->Cell(50,10,'ID',1,0,'C',true);
+			$this->Cell(50,10,'Naam',1,0,'C',true);
+			$this->Cell(30,10,'Aantal',1,0,'C',true);
+			$this->Cell(30,10,'Prijs per stuk',1,0,'C',true);
+			$this->Cell(30,10,'Totaalprijs',1,0,'C',true);
 			$this->Ln();
 			// Color and font restoration
 			$this->SetFillColor(224,235,255);
@@ -150,10 +153,11 @@
 
 			foreach($this->products as $product)
 			{
-				$this->Cell(80,6,$product->idproduct,'LR',0,'L',$fill);
-				$this->Cell(30,6,$product->aantal,'LR',0,'R',$fill);
-				$this->Cell(30,6,$product->prijs,'LR',0,'R',$fill);
-				$this->Cell(30,6,round((float)$product->prijs * (int)$product->aantal, 2),'LR',0,'R',$fill);
+				$this->Cell(50,10,$product->idproduct,'LR',0,'L',$fill);
+				$this->Cell(50,10,substr($product->productnaam, 0, 25),'LR',0,'L',$fill);
+				$this->Cell(30,10,$product->aantal,'LR',0,'R',$fill);
+				$this->Cell(30,10,$product->prijs,'LR',0,'R',$fill);
+				$this->Cell(30,10,round((float)$product->prijs * (int)$product->aantal, 2),'LR',0,'R',$fill);
 				$this->Ln();
 				$fill = !$fill;
 
@@ -162,11 +166,11 @@
 
 			$this->SetFont('','B');
 
-			$this->Cell(140,6,'Totaal','L',0,'R',$fill);
+			$this->Cell(160,6,'Totaal','L',0,'R',$fill);
 			$this->Cell(30,6,$total,'R',0,'R',$fill);
 			$this->Ln();
 			// Closing line
-			$this->Cell(170,0,'','T');
+			$this->Cell(190,0,'','T');
 		}
 	}
 ?>

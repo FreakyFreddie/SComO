@@ -14,6 +14,7 @@ function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, status
     $("#projectid").empty();
     $("#projecttitel").empty();
     $("#status").empty();
+    $("#message").empty();
 
     //fill in new info
     $("#bestelnr").append(bestelnr);
@@ -22,6 +23,22 @@ function openNav(bestelnr, besteldatum, rnummer, projectid, projecttitel, status
     $("#projectid").append(projectid);
     $("#projecttitel").append(projecttitel);
     $("#status").append(status);
+
+    //if status is denied, display message
+    if(status == "Geweigerd")
+    {
+        //prepare request
+        $request = $.ajax({
+            method:"POST",
+            url:"AJAX/processOrderDeniedMessageRequest.php?r=" + new Date().getTime(),
+            data: {bestelnummer: bestelnr}
+        });
+
+        $request.done(function(msg)
+        {
+            $("#message").append(msg);
+        });
+    }
 
     //remove old data from table
     $('#displayuserorderproducts').bootstrapTable('removeAll');

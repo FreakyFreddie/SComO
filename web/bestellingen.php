@@ -52,46 +52,54 @@
 					<div class="panel panel-default removebutton1" id="infopanel">
 						<div class="panel-heading">Info </div>
 						<div class="panel-body">
-							<table class="table table-hover">
-								<tbody>
-								<tr>
-									<th>
-										bestelnummer
-									</th>
-									<td id="bestelnummer" class="text-right">
+							<div class="row">
+								<table class="table table-hover">
+									<tbody>
+									<tr>
+										<th>
+											bestelnummer
+										</th>
+										<td id="bestelnummer" class="text-right">
 
-									</td>
-								</tr>
-								<tr>
-									<th>
-										Status
-									</th>
-									<td id="status" class="text-right">
+										</td>
+									</tr>
+									<tr>
+										<th>
+											Status
+										</th>
+										<td id="status" class="text-right">
 
-									</td>
-								</tr>
-								</tbody>
-							</table>
-							<table class="table table-hover">
-								<tbody>
-								<tr>
-									<th>
-										Project
-									</th>
-									<td id="project" class="text-right">
+										</td>
+									</tr>
+									</tbody>
+								</table>
+								<table class="table table-hover">
+									<tbody>
+									<tr>
+										<th>
+											Project
+										</th>
+										<td id="project" class="text-right">
 
-									</td>
-								</tr>
-								<tr>
-									<th>
-										Besteldatum
-									</th>
-									<td id="besteldatum" class="text-right">
+										</td>
+									</tr>
+									<tr>
+										<th>
+											Besteldatum
+										</th>
+										<td id="besteldatum" class="text-right">
 
-									</td>
-								</tr>
-								</tbody>
-							</table>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<p id="message">
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

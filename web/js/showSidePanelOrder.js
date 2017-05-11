@@ -12,12 +12,30 @@ function openNav(bestelnummer, status, besteldatum, project) {
 	$("#status").empty();
 	$("#besteldatum").empty();
 	$("#project").empty();
+	$("#message").empty();
 
 	//fill in new info
 	$("#bestelnummer").append(bestelnummer);
 	$("#status").append(status);
 	$("#besteldatum").append(besteldatum);
 	$("#project").append(project);
+
+
+	//if status is denied, display message
+	if(status == "Geweigerd")
+	{
+		//prepare request
+		$request = $.ajax({
+			method:"POST",
+			url:"AJAX/processOrderDeniedMessageRequest.php?r=" + new Date().getTime(),
+			data: {bestelnummer: bestelnummer}
+		});
+
+		$request.done(function(msg)
+		{
+			$("#message").append(msg);
+		});
+	}
 
 	//remove old data from table
 	$('#displayuserorderproducts').bootstrapTable('removeAll');
