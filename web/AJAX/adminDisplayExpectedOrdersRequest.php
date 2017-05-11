@@ -31,13 +31,18 @@
 	{
 		//Select orders from view "bestellingen"
 		$dal = new DAL();
-		$sql = "SELECT definitiefbesteldebestellingen.defbestelnummer, definitiefbesteldebestellingen.defbesteldatum, definitiefbesteldebestellingen.leverancier, SUM(totaalkost) AS totaalkost
-				FROM definitiefbesteldebestellingen
-				INNER JOIN bestelling
-				ON definitiefbesteldebestellingen.bestelnummer = bestelling.bestelnummer
-				WHERE bestelling.status = '3'
-				GROUP BY definitiefbesteldebestellingen.defbestelnummer";
+		$sql = "SELECT definitiefbesteld.defbestelnummer, definitiefbesteld.defbesteldatum, SUM((bestellingproduct.aantal * bestellingproduct.prijs)) AS totaalkost
+		FROM definitiefbesteld
+		INNER JOIN bestellingproduct
+		ON bestellingproduct.defbestelnummer = definitiefbesteld.defbestelnummer
+		WHERE definitiefbesteld.status=0
+		GROUP BY bestellingproduct.defbestelnummer";
 		$records = $dal->queryDBNoArgs($sql);
+
+		for($i = 0; $i<count($records); $i++)
+		{
+			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav()"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+		}
 
 		$dal->closeConn();
 

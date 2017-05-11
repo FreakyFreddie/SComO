@@ -43,9 +43,8 @@
 		//s = string
 		$parameters[0] = "ssi";
 		$parameters[1] = $finalordernumber;
-		$parameters[2] = $supplier;
-		$parameters[3] = date("Y-n-j H:i:s");
-		$parameters[4] = 0;
+		$parameters[2] = date("Y-n-j H:i:s");
+		$parameters[3] = 0;
 
 		//prepare statement
 		//add final order number to database

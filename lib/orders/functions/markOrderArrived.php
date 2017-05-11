@@ -17,20 +17,56 @@
 
 		//prepare statement
 		//get array of order numbers belonging to the final order number
-		$dal->setStatement("SELECT definitiefbesteldebestellingen.bestelnummer, bestelling.rnummer
-				FROM definitiefbesteldebestellingen
-				INNER JOIN bestelling
-				ON definitiefbesteldebestellingen.bestelnummer=bestelling.bestelnummer
-				WHERE definitiefbesteldebestellingen.defbestelnummer=?");
+		$dal->setStatement("SELECT bestellingproduct.bestelnummer
+				FROM definitiefbesteld
+				INNER JOIN bestellingproduct
+				ON definitiefbesteld.defbestelnummer=bestellingproduct.defbestelnummer
+				WHERE bestellingproduct.defbestelnummer=? AND definitiefbesteld.status='0'
+				GROUP BY bestellingproduct.bestelnummer");
 		$records = $dal->queryDB($parameters);
+		unset($parameters);
+
+		//update definitiefbesteld status & date of arrival
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "ss";
+		$parameters[1] = date("Y-n-j H:i:s");
+		$parameters[2] = $finalorderid;
+
+		$dal->setStatement("UPDATE definitiefbesteld
+					SET defaankomstdatum=?, status='1'
+					WHERE defbestelnummer=?");
+		$dal->writeDB($parameters);
 		unset($parameters);
 
 		foreach($records as $order)
 		{
 			//prevent sql injection
 			$orderid = mysqli_real_escape_string($dal->getConn(), $order->bestelnummer);
-			$userid = mysqli_real_escape_string($dal->getConn(), $order->rnummer);
 
+			//get email to sent invoice to
+			//create array of parameters
+			//first item = parameter types
+			//i = integer
+			//d = double
+			//b = blob
+			//s = string
+			$parameters[0] = "i";
+			$parameters[1] = $orderid;
+
+			$dal->setStatement("SELECT bestelling.bestelnummer, bestelling.rnummer, gebruiker.email
+				FROM bestelling
+				INNER JOIN gebruiker
+				ON bestelling.rnummer = gebruiker.rnummer
+				WHERE bestelling.bestelnummer=?");
+			$userorders = $dal->queryDB($parameters);
+			unset($parameters);
+
+			//update each order to arrived
 			//create array of parameters
 			//first item = parameter types
 			//i = integer
@@ -46,22 +82,25 @@
 			$dal->writeDB($parameters);
 			unset($parameters);
 
-			//create array of parameters
-			//first item = parameter types
-			//i = integer
-			//d = double
-			//b = blob
-			//s = string
-			$parameters[0] = "s";
-			$parameters[1] = $userid;
+			$fullmail = $userorders[0]->email;
 
-			//get user email
-			$dal->setStatement("SELECT email FROM gebruiker
- 					WHERE rnummer=?");
-			$records = $dal->queryDB($parameters);
-			unset($parameters);
+			// Instanciation of inherited class
+			$pdf = new Invoice($orderid);
+			$pdf->AliasNbPages();
+			$pdf->AddPage();
+			$pdf->SetFont('Times','',12);
+			//for($i=1;$i<=20;$i++)
+			//$pdf->Cell(0,10,'Printing line number '.$i,0,1);
+			//$pdf->FancyTable($header,$data);
+			$pdf->ProductTable();
 
-			$fullmail = $records[0]->email;
+			$pdf_filename = "factuur".$orderid.".pdf";
+
+			if(!file_exists($pdf_filename) || is_writable($pdf_filename)){
+				$pdf->Output($pdf_filename, "F");
+			} else {
+				exit("Path Not Writable");
+			}
 
 			//send mail to inform person
 			$mail = new PHPMailer;
@@ -83,8 +122,9 @@
 
 			$mail->isHTML(TRUE);
 
-			$mail->Subject = "bestelling #" . $orderid . " is goedgekeurd.";
-			$mail->Body = '<html><p>Uw bestelling is gedeeltelijk of volledig aangekomen.</p></html>';
+			$mail->Subject = "bestelling #" . $orderid . " is toegekomen.";
+			$mail->Body = '<html><p>Uw bestelling is aangekomen. Deze kan afgehaald worden aan het secretariaat.</p><p>Gelieve een afgedrukte versie van de factuur en uw studentenkaart mee te brengen als afhaalbewijs.</p></html>';
+			$mail->AddAttachment($pdf_filename);
 
 			if (!$mail->send())
 			{
@@ -93,9 +133,11 @@
 			else
 			{
 				echo '<div class="row">
-					<p>mail verzonden naar ' . $fullmail . '</p>
-					</div>';
+						<p>mail verzonden naar ' . $fullmail . '</p>
+						</div>';
 			}
+
+			unlink($pdf_filename);
 
 			//close the connection
 			$dal->closeConn();
