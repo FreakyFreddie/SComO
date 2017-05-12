@@ -41,7 +41,8 @@
 
 		for($i = 0; $i<count($records); $i++)
 		{
-			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav()"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+			$records[$i]->totaalkost = round((float) $records[$i]->totaalkost, 2);
+			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav(\''.$records[$i]->defbestelnummer."','".$records[$i]->defbesteldatum."',".$records[$i]->totaalkost.')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
 		}
 
 		$dal->closeConn();

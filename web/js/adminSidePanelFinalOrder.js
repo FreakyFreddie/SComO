@@ -1,5 +1,5 @@
 /* Open the sidenav */
-function openNav(defbestelnummer, besteldatum, rnummer, projectid, projecttitel, status) {
+function openNav(defbestelnummer, defbesteldatum, totaalkost) {
     //fill in table data target urls
     //$("#displayprojectparticipants").attr("data-url", "AJAX/adminDisplayProjectParticipantsRequest.php?id=" + id);
     //$("#displayprojectorder").attr("data-url", "AJAX/adminDisplayProjectOrderRequest.php?id=" + id);
@@ -9,35 +9,25 @@ function openNav(defbestelnummer, besteldatum, rnummer, projectid, projecttitel,
 
     //clear old project
     $("#defbestelnummer").empty();
-    $("#besteldatum").empty();
-    $("#rnummer").empty();
-    $("#projectid").empty();
-    $("#projecttitel").empty();
-    $("#status").empty();
-    $("#message").empty();
+    $("#defbesteldatum").empty();
 
     //fill in new info
     $("#defbestelnummer").append(defbestelnummer);
-    $("#besteldatum").append(besteldatum);
-    $("#rnummer").append(rnummer);
-    $("#projectid").append(projectid);
-    $("#projecttitel").append(projecttitel);
-    $("#status").append(status);
+    $("#defbesteldatum").append(defbesteldatum);
 
     //remove old data from table
-    $('#displayuserorderproducts').bootstrapTable('removeAll');
+    $('#displayfinalorderproducts').bootstrapTable('removeAll');
 
     //destroy table
-    $('#displayuserorderproducts').bootstrapTable('destroy');
+    $('#displayfinalorderproducts').bootstrapTable('destroy');
 
     //add data to table
-    $('#displayuserorderproducts').bootstrapTable({
-        url: 'AJAX/adminDisplayFinalOrderProductsRequest.php?bestelnummer=' + defbestelnummer + '&r=' + new Date().getTime()
+    $('#displayfinalorderproducts').bootstrapTable({
+        url: 'AJAX/adminDisplayFinalOrderProductsRequest.php?defbestelnummer=' + defbestelnummer + '&r=' + new Date().getTime()
     });
 
     $('.easypiechart').data('easyPieChart').update(totaalkost);
     $('.percent').html("€" + totaalkost);
-
 }
 
 /* Close/hide the sidenav */

@@ -18,6 +18,9 @@
 	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCart.php';
 	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
 
+	//input checks
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
+
 	session_start();
 
 	//redirect if user is not logged in as admin
@@ -27,21 +30,38 @@
 	}
 
 	//check login condition and if the request contains all info
-	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn"))
+	if(isset($_SESSION["user"]) && $_SESSION["user"]->__get("loggedIn") && isset($_GET["defbestelnummer"]))
 	{
 		//Select orders from view "bestellingen"
 		$dal = new DAL();
-		$sql = "SELECT definitiefbesteld.defbestelnummer, definitiefbesteld.defbesteldatum, SUM((bestellingproduct.aantal * bestellingproduct.prijs)) AS totaalkost
-		FROM definitiefbesteld
-		INNER JOIN bestellingproduct
-		ON bestellingproduct.defbestelnummer = definitiefbesteld.defbestelnummer
-		WHERE definitiefbesteld.status=0
-		GROUP BY bestellingproduct.defbestelnummer";
-		$records = $dal->queryDBNoArgs($sql);
+
+		$defbestelnummer = validateInput($_GET["defbestelnummer"]);
+		$defbestelnummer = mysqli_real_escape_string($dal->getConn(), $defbestelnummer);
+
+		//create array of parameters
+		//first item = parameter types
+		//i = integer
+		//d = double
+		//b = blob
+		//s = string
+		$parameters[0] = "s";
+		$parameters[1] = $defbestelnummer;
+
+		//prepare statement
+		$dal->setStatement("SELECT product.idproduct, product.leverancier, product.productnaam, product.productverkoper, product.productafbeelding, product.productdatasheet, bestellingproduct.prijs, bestellingproduct.aantal
+			FROM bestellingproduct
+			INNER JOIN product
+			ON product.idproduct=bestellingproduct.idproduct
+			WHERE bestellingproduct.defbestelnummer=?");
+
+		$records = $dal->queryDB($parameters);
+		unset($parameters);
 
 		for($i = 0; $i<count($records); $i++)
 		{
-			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav()"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+			$records[$i]->prijs = round($records[$i]->prijs, 2);
+			$records[$i]->productdatasheet = '<a href="'.$records[$i]->productdatasheet.'">Link</a>';
+			$records[$i]->productafbeelding = '<img class="img img-responsive" src="'.$records[$i]->productafbeelding.'" />';
 		}
 
 		$dal->closeConn();
