@@ -33,7 +33,7 @@ $(document).ready(function()
 			$request.done(function()
 			{
 				//display message when product is successfully added
-				$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Aangepast!</strong> De bestelling is succesvol geplaatst.</div>').insertBefore($("footer")).fadeOut(2000, function()
+				$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Geslaagd!</strong> De bestelling is succesvol geplaatst.</div>').insertBefore($("footer")).fadeOut(2000, function()
 				{
 					$("#shoppingcart").find(".row").remove();
 					$("#shoppingcart").html("Bestelling geplaatst.");

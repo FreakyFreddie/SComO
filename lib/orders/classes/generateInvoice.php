@@ -137,8 +137,8 @@
 			$this->SetFont('','B');
 			// Header
 			$this->Cell(50,10,'ID',1,0,'C',true);
-			$this->Cell(50,10,'Naam',1,0,'C',true);
-			$this->Cell(30,10,'Aantal',1,0,'C',true);
+			$this->Cell(60,10,'Naam',1,0,'C',true);
+			$this->Cell(20,10,'Aantal',1,0,'C',true);
 			$this->Cell(30,10,'Prijs per stuk',1,0,'C',true);
 			$this->Cell(30,10,'Totaalprijs',1,0,'C',true);
 			$this->Ln();
@@ -154,8 +154,8 @@
 			foreach($this->products as $product)
 			{
 				$this->Cell(50,10,$product->idproduct,'LR',0,'L',$fill);
-				$this->Cell(50,10,substr($product->productnaam, 0, 25),'LR',0,'L',$fill);
-				$this->Cell(30,10,$product->aantal,'LR',0,'R',$fill);
+				$this->Cell(60,10,substr($product->productnaam, 0, 25),'LR',0,'L',$fill);
+				$this->Cell(20,10,$product->aantal,'LR',0,'R',$fill);
 				$this->Cell(30,10,$product->prijs,'LR',0,'R',$fill);
 				$this->Cell(30,10,round((float)$product->prijs * (int)$product->aantal, 2),'LR',0,'R',$fill);
 				$this->Ln();

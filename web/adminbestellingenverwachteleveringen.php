@@ -65,25 +65,9 @@
 								<tbody>
 								<tr>
 									<th>
-										Bestelnr
+										Bestelnummer
 									</th>
-									<td id="bestelnr" class="text-right">
-
-									</td>
-								</tr>
-								<tr>
-									<th>
-										Besteldatum
-									</th>
-									<td id="besteldatum" class="text-right">
-
-									</td>
-								</tr>
-								<tr>
-									<th>
-										Rnummer
-									</th>
-									<td id="rnummer" class="text-right">
+									<td id="defbestelnummer" class="text-right">
 
 									</td>
 								</tr>
@@ -93,29 +77,12 @@
 								<tbody>
 								<tr>
 									<th>
-										ProjectId
+										Besteldatum
 									</th>
-									<td id="projectid" class="text-right">
+									<td id="defbesteldatum" class="text-right">
 
 									</td>
 								</tr>
-								<tr>
-									<th>
-										ProjectTitel
-									</th>
-									<td id="projecttitel" class="text-right">
-
-									</td>
-								</tr>
-								<tr>
-									<th>
-										Status
-									</th>
-									<td id="status" class="text-right">
-
-									</td>
-								</tr>
-
 								</tbody>
 							</table>
 						</div>
@@ -130,7 +97,7 @@
 			</div>
 			<div class="col-lg-3">
 				<div class="panel panel-default">
-					<div class="panel-heading">Budget</div>
+					<div class="panel-heading">Totaalkost</div>
 					<div class="panel-body easypiechart-panel">
 						<div class="easypiechart" id="easypiechart-orange" data-percent="0">
 							<span class="percent">0%</span>
@@ -190,6 +157,8 @@
 
 <script src="js/Lumino/bootstrap-datepicker.js"></script>
 <script src="js/Lumino/bootstrap-table.js"></script>
+<script src="js/Lumino/easypiechart.js"></script>
+<script src="js/Lumino/easypiechart-data.js"></script>
 <script src="js/adminOrderArrived.js"></script>
 <script>
 	!function ($) {

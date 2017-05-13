@@ -142,6 +142,6 @@ $(document).ready(function()
 				});
 			});
 		},
-		url: 'AJAX/processDisplayShoppingCartRequest?r=' + new Date().getTime()
+		url: 'AJAX/processDisplayShoppingCartRequest.php?r=' + new Date().getTime()
 	});
 });

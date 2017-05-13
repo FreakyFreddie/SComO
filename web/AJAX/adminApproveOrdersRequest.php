@@ -23,6 +23,18 @@
 	//add PHPMailer mail functionality
 	require $GLOBALS['settings']->Folders['root'].'../lib/PHPMailer/PHPMailerAutoload.php';
 
+	//include function to remove projects
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/markOrderArrived.php';
+
+	//add PHPMailer mail functionality
+	require $GLOBALS['settings']->Folders['root'].'../lib/FPDF/fpdf.php';
+
+	//include DAL (DAL & login always go on top since classes depend on them)
+	require $GLOBALS['settings']->Folders['root'].'../lib/barcodegenerator/src/BarcodeGenerator.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/barcodegenerator/src/BarcodeGeneratorJPG.php';
+
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/generateInvoice.php';
+
 	session_start();
 
 	//redirect if user is not logged in as admin
@@ -58,9 +70,13 @@
 				$parameters[1] = $orderid;
 
 				//prepare statement
-				//update orderstatus in database
-				$dal->setStatement("UPDATE bestelling SET status='2' WHERE bestelnummer=?");
-				$dal->writeDB($parameters);
+				//get user email
+				$dal->setStatement("SELECT product.leverancier
+						FROM bestellingproduct
+ 						INNER JOIN product
+ 						ON bestellingproduct.idproduct = product.idproduct
+ 						WHERE bestellingproduct.bestelnummer=?");
+				$records = $dal->queryDB($parameters);
 				unset($parameters);
 
 				//create array of parameters
@@ -78,43 +94,133 @@
  						INNER JOIN bestelling
  						ON bestelling.rnummer = gebruiker.rnummer
  						WHERE bestelling.bestelnummer=?");
-				$records = $dal->queryDB($parameters);
+				$emails = $dal->queryDB($parameters);
 				unset($parameters);
 
-				$fullmail = $records[0]->email;
+				$fullmail = $emails[0]->email;
 
-				//send mail to inform person
-				$mail = new PHPMailer;
-
-				//$mail->SMTPDebug = 3;
-
-				//PHPMailer settings
-				$mail->isSMTP();
-				$mail->Host = $GLOBALS['settings']->SMTP['host'];
-				$mail->SMTPAuth = TRUE;
-				$mail->Username = $GLOBALS['settings']->SMTP['username'];
-				$mail->Password = $GLOBALS['settings']->SMTP['password'];
-				$mail->SMTPSecure = $GLOBALS['settings']->SMTP['connection'];
-				$mail->Port = $GLOBALS['settings']->SMTP['port'];
-
-				$mail->From = $GLOBALS['settings']->SMTP['username'];
-				$mail->FromName = $GLOBALS['settings']->SMTP['name'];
-				$mail->addAddress($fullmail);
-
-				$mail->isHTML(TRUE);
-
-				$mail->Subject = "bestelling #" . $orderid . " is goedgekeurd.";
-				$mail->Body = '<html><p>Uw bestelling werd goedgekeurd. Nu moet u afwachten tot de bestelling door de school geplaatst wordt.</p></html>';
-
-				if (!$mail->send())
+				if($records[0]->leverancier == 'EMSYS')
 				{
-					echo "<p>Fout bij het verzenden van de mail.</p>";
+					//create array of parameters
+					//first item = parameter types
+					//i = integer
+					//d = double
+					//b = blob
+					//s = string
+					$parameters[0] = "i";
+					$parameters[1] = $orderid;
+
+					//prepare statement
+					//update orderstatus in database
+					$dal->setStatement("UPDATE bestelling SET status='4' WHERE bestelnummer=?");
+					$dal->writeDB($parameters);
+					unset($parameters);
+
+					// Instanciation of inherited class
+					$pdf = new Invoice($orderid);
+					$pdf->AliasNbPages();
+					$pdf->AddPage();
+					$pdf->SetFont('Times','',12);
+					//for($i=1;$i<=20;$i++)
+					//$pdf->Cell(0,10,'Printing line number '.$i,0,1);
+					//$pdf->FancyTable($header,$data);
+					$pdf->ProductTable();
+
+					$pdf_filename = "factuur".$orderid.".pdf";
+
+					if(!file_exists($pdf_filename) || is_writable($pdf_filename)){
+						$pdf->Output($pdf_filename, "F");
+					} else {
+						exit("Path Not Writable");
+					}
+
+					//send mail to inform person
+					$mail = new PHPMailer;
+
+					//$mail->SMTPDebug = 3;
+
+					//PHPMailer settings
+					$mail->isSMTP();
+					$mail->Host = $GLOBALS['settings']->SMTP['host'];
+					$mail->SMTPAuth = TRUE;
+					$mail->Username = $GLOBALS['settings']->SMTP['username'];
+					$mail->Password = $GLOBALS['settings']->SMTP['password'];
+					$mail->SMTPSecure = $GLOBALS['settings']->SMTP['connection'];
+					$mail->Port = $GLOBALS['settings']->SMTP['port'];
+
+					$mail->From = $GLOBALS['settings']->SMTP['username'];
+					$mail->FromName = $GLOBALS['settings']->SMTP['name'];
+					$mail->addAddress($fullmail);
+
+					$mail->isHTML(TRUE);
+
+					$mail->Subject = "bestelling #" . $orderid . " is toegekomen.";
+					$mail->Body = '<html><p>Uw bestelling is aangekomen. Deze kan afgehaald worden aan het secretariaat.</p><p>Gelieve een afgedrukte versie van de factuur en uw studentenkaart mee te brengen als afhaalbewijs.</p></html>';
+					$mail->addAttachment($pdf_filename);
+
+					if (!$mail->send())
+					{
+						echo "<p>Fout bij het verzenden van de mail.</p>";
+					}
+					else
+					{
+						echo '<div class="row">
+						<p>mail verzonden naar ' . $fullmail . '</p>
+						</div>';
+					}
+
+					unlink($pdf_filename);
 				}
 				else
 				{
-					echo '<div class="row">
+					//create array of parameters
+					//first item = parameter types
+					//i = integer
+					//d = double
+					//b = blob
+					//s = string
+					$parameters[0] = "i";
+					$parameters[1] = $orderid;
+
+					//prepare statement
+					//update orderstatus in database
+					$dal->setStatement("UPDATE bestelling SET status='2' WHERE bestelnummer=?");
+					$dal->writeDB($parameters);
+					unset($parameters);
+
+					//send mail to inform person
+					$mail = new PHPMailer;
+
+					//$mail->SMTPDebug = 3;
+
+					//PHPMailer settings
+					$mail->isSMTP();
+					$mail->Host = $GLOBALS['settings']->SMTP['host'];
+					$mail->SMTPAuth = TRUE;
+					$mail->Username = $GLOBALS['settings']->SMTP['username'];
+					$mail->Password = $GLOBALS['settings']->SMTP['password'];
+					$mail->SMTPSecure = $GLOBALS['settings']->SMTP['connection'];
+					$mail->Port = $GLOBALS['settings']->SMTP['port'];
+
+					$mail->From = $GLOBALS['settings']->SMTP['username'];
+					$mail->FromName = $GLOBALS['settings']->SMTP['name'];
+					$mail->addAddress($fullmail);
+
+					$mail->isHTML(TRUE);
+
+					$mail->Subject = "bestelling #" . $orderid . " is goedgekeurd.";
+					$mail->Body = '<html><p>Uw bestelling werd goedgekeurd. Nu moet u afwachten tot de bestelling door de school geplaatst wordt.</p></html>';
+
+					if (!$mail->send())
+					{
+						echo "<p>Fout bij het verzenden van de mail.</p>";
+					}
+					else
+					{
+						echo '<div class="row">
 					<p>mail verzonden naar ' . $fullmail . '</p>
 					</div>';
+					}
 				}
 			}
 		}

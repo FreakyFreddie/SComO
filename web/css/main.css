@@ -160,8 +160,7 @@ body {
 	color:#1d8db0;
 	width: 200px;
 	height: 200px;
-	margin: auto;
-	margin-top: 45vh;
+	margin: 45vh auto auto;
 	animation: spin 2s linear infinite;
 }
 

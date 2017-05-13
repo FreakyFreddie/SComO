@@ -125,10 +125,10 @@
 						</li>
 						<li>
 							<a class="" href="adminscanbarcode.php">
-								<svg class="glyph stroked hourglass">
-									<use xlink:href="#stroked-hourglass"/>
+								<svg class="glyph stroked upload">
+									<use xlink:href="#stroked-upload"/>
 								</svg>
-								 Scan barcode
+								Afhalingen
 							</a>
 						</li>
 					</ul>';

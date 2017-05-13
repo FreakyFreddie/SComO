@@ -9,7 +9,7 @@
 		$page = "http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 		$datetime = date("Y-n-j H:i:s");
 		$useragent = $_SERVER['HTTP_USER_AGENT'];
-		$remotehost = @getHostByAddr($ipaddress);
+		$remotehost = @gethostbyaddr($ipaddress);
 		$userid ="";
 
 		//add userid if logged in

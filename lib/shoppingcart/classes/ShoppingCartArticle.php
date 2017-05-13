@@ -7,7 +7,6 @@
 		private $productSupplier;
 		private $productAmount;
 		private $productPrice;
-		private $collection = "none";
 
 		//product is object of Product class
 		private $product;
