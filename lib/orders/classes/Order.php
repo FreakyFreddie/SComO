@@ -94,24 +94,48 @@
 				$this->orderCreationDate = mysqli_real_escape_string($dal->getConn(), $this->orderCreationDate);
 				$this->orderStatus = mysqli_real_escape_string($dal->getConn(), $this->orderStatus);
 
-				//create array of parameters
-				//first item = parameter types
-				//i = integer
-				//d = double
-				//b = blob
-				//s = string
-				$parameters[0] = "isisi";
-				$parameters[1] = $this->projectId;
-				$parameters[2] = $this->userId;
-				$parameters[3] = $this->orderPersonal;
-				$parameters[4] = $this->orderCreationDate;
-				$parameters[5] = $this->orderStatus;
+				if($this->projectId == "")
+				{
+					//create array of parameters
+					//first item = parameter types
+					//i = integer
+					//d = double
+					//b = blob
+					//s = string
+					$parameters[0] = "sisi";
+					$parameters[2] = $this->userId;
+					$parameters[3] = (int) $this->orderPersonal;
+					$parameters[4] = $this->orderCreationDate;
+					$parameters[5] = (int) $this->orderStatus;
 
-				//prepare statement
-				//defbestelnummer is NULL when order is created
-				$dal->setStatement("INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES (?, ?, ?, ?, ?)");
-				$dal->writeDB($parameters);
-				unset($parameters);
+					//prepare statement
+					//defbestelnummer is NULL when order is created
+					$dal->setStatement("INSERT INTO bestelling (rnummer, persoonlijk, besteldatum, status) VALUES (?, ?, ?, ?)");
+					$dal->writeDB($parameters);
+					unset($parameters);
+				}
+				else
+				{
+					//create array of parameters
+					//first item = parameter types
+					//i = integer
+					//d = double
+					//b = blob
+					//s = string
+					$parameters[0] = "isisi";
+					$parameters[1] = (int) $this->projectId;
+					$parameters[2] = $this->userId;
+					$parameters[3] = (int) $this->orderPersonal;
+					$parameters[4] = $this->orderCreationDate;
+					$parameters[5] = (int) $this->orderStatus;
+
+					//prepare statement
+					//defbestelnummer is NULL when order is created
+					$dal->setStatement("INSERT INTO bestelling (idproject, rnummer, persoonlijk, besteldatum, status) VALUES (?, ?, ?, ?, ?)");
+					$dal->writeDB($parameters);
+					unset($parameters);
+				}
+
 
 				//get the automatically generated ID of the order
 				$this->orderId = mysqli_insert_id($dal->getConn());
