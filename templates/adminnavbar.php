@@ -125,8 +125,8 @@
 						</li>
 						<li>
 							<a class="" href="adminscanbarcode.php">
-								<svg class="glyph stroked checkmark">
-									<use xlink:href="#stroked-checkmark"/>
+								<svg class="glyph stroked upload">
+									<use xlink:href="#stroked-upload"/>
 								</svg>
 								Afhalingen
 							</a>

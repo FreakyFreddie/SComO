@@ -110,6 +110,7 @@
 
 			$mousercount = 0;
 			$farnellcount = 0;
+			$emsyscount = 0;
 
 			foreach($this->shoppingCartArticles as $article)
 			{
@@ -120,6 +121,10 @@
 				if($article->__get("Supplier") == "Farnell")
 				{
 					$farnellcount++;
+				}
+				if($article->__get("Supplier") == "EMSYS")
+				{
+					$emsyscount++;
 				}
 			}
 
@@ -148,6 +153,19 @@
 					{
 
 						$article->addArticleToOrder($farnellorder);
+					}
+				}
+			}
+			if($emsyscount > 0)
+			{
+				$emsysorder = $this->createOrder($orderpersonal, $project);
+
+				foreach($this->shoppingCartArticles as $article)
+				{
+					if($article->__get("Supplier") == "EMSYS")
+					{
+
+						$article->addArticleToOrder($emsysorder);
 					}
 				}
 			}
