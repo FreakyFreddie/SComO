@@ -11,7 +11,6 @@
 		header("location: index.php");
 	}
 ?>
-<script type="text/javascript" src="./js/addToCart.js"></script>
 </head>
 
 <body>

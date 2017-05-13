@@ -124,7 +124,7 @@
 
 			$mail->Subject = "bestelling #" . $orderid . " is toegekomen.";
 			$mail->Body = '<html><p>Uw bestelling is aangekomen. Deze kan afgehaald worden aan het secretariaat.</p><p>Gelieve een afgedrukte versie van de factuur en uw studentenkaart mee te brengen als afhaalbewijs.</p></html>';
-			$mail->AddAttachment($pdf_filename);
+			$mail->addAttachment($pdf_filename);
 
 			if (!$mail->send())
 			{
