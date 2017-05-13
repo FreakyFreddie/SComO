@@ -169,18 +169,6 @@
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
-			<ol class="breadcrumb">
-				<li>
-					<a href="adminpanel.php">
-						<svg class="glyph stroked home">
-							<use xlink:href="#stroked-home"></use>
-						</svg>
-					</a>
-				</li>
-				<li class="active">Bestellingen</li>
-			</ol>
-		</div><!--/.row-->
-		<div class="row">
 			<div class="alert alert-info alert-dismissible">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<strong>Opgelet!</strong> Gebruikte prijzen zijn de prijzen die van toepassing waren op de besteldatum!
