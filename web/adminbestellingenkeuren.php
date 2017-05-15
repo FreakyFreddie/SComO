@@ -17,7 +17,7 @@
 	}
 
 	//include getOrdersTotal
-	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/getOrdersTotal.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/orders/functions/getOrdersTotal.php';
 ?>
 
 <link href="css/Lumino/datepicker3.css" rel="stylesheet">
@@ -39,7 +39,7 @@
 <body>
 <?php
 	//include navbar
-	require $GLOBALS['settings']->Folders['root'].'../templates/navbar.php';
+	require $GLOBALS['settings']->Folders['root'].'/templates/navbar.php';
 ?>
 
 <noscript>
@@ -51,7 +51,7 @@
 
 <?php
 	//include admin dashboard navbar
-	require $GLOBALS['settings']->Folders['root'].'../templates/adminnavbar.php';
+	require $GLOBALS['settings']->Folders['root'].'/templates/adminnavbar.php';
 ?>
 
 <div id="sidepanel" class="sidepanel">
@@ -241,5 +241,5 @@
 	})
 </script>
 <!-- footer -->
-<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
+<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>
 

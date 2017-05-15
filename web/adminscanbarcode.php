@@ -37,7 +37,7 @@ if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE OR 
 <body>
 <?php
 //include navbar
-require $GLOBALS['settings']->Folders['root'].'../templates/navbar.php';
+require $GLOBALS['settings']->Folders['root'].'/templates/navbar.php';
 ?>
 
 <noscript>
@@ -49,7 +49,7 @@ require $GLOBALS['settings']->Folders['root'].'../templates/navbar.php';
 
 <?php
 //include admin dashboard navbar
-require $GLOBALS['settings']->Folders['root'].'../templates/adminnavbar.php';
+require $GLOBALS['settings']->Folders['root'].'/templates/adminnavbar.php';
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -223,5 +223,5 @@ require $GLOBALS['settings']->Folders['root'].'../templates/adminnavbar.php';
     })
 </script>
 <!-- footer -->
-<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
+<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>
 

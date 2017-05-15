@@ -12,8 +12,8 @@
 	}
 
 	//include Shopping Cart & ShoppingCartArticle
-	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCart.php';
-	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/shoppingcart/classes/ShoppingCart.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/shoppingcart/classes/ShoppingCartArticle.php';
 ?>
 
 	<script src="js/placeOrder.js"></script>
@@ -95,5 +95,5 @@
 	</div>
 	<script src="js/Lumino/bootstrap-table.js"></script>
 	<!-- footer -->
-	<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
+	<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>
 

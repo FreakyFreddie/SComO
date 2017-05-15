@@ -6,22 +6,22 @@
 
 	//include classes BEFORE session_start because we might need them in session
 	//include DAL (DAL & login always go on top since classes depend on them)
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/database/classes/DAL.php';
 
 	//include login class
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/classes/Login.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/users/classes/Login.php';
 
 	//include ProductPrice class
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/ProductPrice.php';
 
 	//include Product class
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/Product.php';
 
 	//logfunction
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/logActivity.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/users/functions/logActivity.php';
 
 	//input checks
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/database/functions/validateInputs.php';
 
 	session_start();
 

@@ -6,30 +6,30 @@
 
 	//include classes BEFORE session_start because we might need them in session
 	//include DAL (DAL & login always go on top since classes depend on them)
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/database/classes/DAL.php';
 
 	//include login class
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/classes/Login.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/users/classes/Login.php';
 
 	//include ProductPrice class
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/ProductPrice.php';
 
 	//include Product class
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/Product.php';
 
 	//include MouserProduct
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/MouserProduct.php';
 
 	//include FarnellProduct
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/FarnellProduct.php';
 
 	//include functions
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
-	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/functions/addToCart.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getfarnellproducts.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getmouserproducts.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/shoppingcart/functions/addToCart.php';
 
 	//input checks
-	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/database/functions/validateInputs.php';
 
 	session_start();
 
