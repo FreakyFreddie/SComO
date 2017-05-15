@@ -87,7 +87,7 @@
 				$products[$i]["name"] = $record->name;
 				$products[$i]["supplier"] = $record->supplier;
 				$products[$i]["vendor"] = $record->vendor;
-				$products[$i]["price"] = $record->price;
+				$products[$i]["price"] = round($record->price, 2);
 				$products[$i]["add"] = $add;
 			}
 

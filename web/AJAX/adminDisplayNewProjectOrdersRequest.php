@@ -49,7 +49,7 @@
 			//b = blob
 			//s = string
 			$parameters[0] = "i";
-			$parameters[1] = (int) $records[$i]->bestelnummer;
+			$parameters[1] = (int) $records[$i]->bestelnr;
 
 			//prepare statement
 			$dal->setStatement("SELECT project.titel
@@ -71,7 +71,7 @@
 			}
 
 			$records[$i]->totaalkost = round($records[$i]->totaalkost, 2);
-			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnr.",'".$records[$i]->besteldatum."','".$records[$i]->rnummer."','".$records[$i]->project.'\')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
+			$records[$i]->details = '<button class="btn btn-default" type="button" name="details" onclick="openNav('.$records[$i]->bestelnr.",'".$records[$i]->datum."','".$records[$i]->rnummer."','".$records[$i]->project.'\')"><i class="fa fa-angle-double-right fa-lg"></i></button>';
 		}
 
 		//Lumino admin panel requires a JSON to process
