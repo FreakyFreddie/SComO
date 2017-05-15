@@ -75,7 +75,7 @@ require $GLOBALS['settings']->Folders['root'].'/templates/adminnavbar.php';
             $dal = new DAL();
 
             $ordernumber = validateInput($_POST['barcode']);
-            $ordernumber = (int) mysqli_real_escape_string($dal->getConn(), $ordernumber);
+            $ordernumber = (int) mysqli_real_escape_string($dal->getConn(), $ordernumber) OR die("Invalid barcode");
 
             //update status to delivered
             //create array of parameters
