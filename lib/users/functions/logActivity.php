@@ -22,7 +22,7 @@
 		$logline = $ipaddress . "|" . $datetime . "|" . $useragent . "|" . $remotehost . "|" . $page . "|" . $userid . "\n";
 
 		//select file to write log to
-		$logfile =  $GLOBALS['settings']->Folders['root'].'../logs/visitors.txt';
+		$logfile =  $GLOBALS['settings']->Folders['root'].'/logs/visitors.txt';
 
 		//open log in append mode
 		$file = fopen($logfile, 'a+')
