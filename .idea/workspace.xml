@@ -21,101 +21,125 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="adminprojecten.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/adminprojecten.php">
+      <file leaf-file-name="OrderProduct.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/orders/classes/OrderProduct.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+            <state relative-caret-position="1386">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding>
+                <marker date="1494688027478" expanded="true" signature="1562:1668" ph="INSERT INTO bestellingproduct... " />
+                <marker date="1494688027478" expanded="true" signature="2238:2327" ph="..." />
+                <marker date="1494688027478" expanded="true" signature="2336:2427" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generateInvoice.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/orders/classes/generateInvoice.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3190">
+              <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+              <folding>
+                <marker date="1494688027478" expanded="true" signature="615:747" ph="SELECT * FRO... bestellingproduct" />
+                <marker date="1494688027478" expanded="true" signature="1098:1263" ph="SELECT gebru... bestelling" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DAL.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/database/classes/DAL.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminscanbarcode.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/adminscanbarcode.php">
+      <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/footer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="264">
+              <caret line="12" column="76" selection-start-line="12" selection-start-column="76" selection-end-line="12" selection-end-column="76" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminusers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/adminusers.php">
+      <file leaf-file-name="adminDisplayProductsRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProductsRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+            <state relative-caret-position="322">
+              <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+              <folding>
+                <marker date="1494401291857" expanded="true" signature="1317:1435" ph="SELECT idpro... product" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="processSearchEmSysProductRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/AJAX/processSearchEmSysProductRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="542">
+              <caret line="89" column="65" selection-start-line="89" selection-start-column="65" selection-end-line="89" selection-end-column="65" />
+              <folding>
+                <marker date="1494866036739" expanded="true" signature="1922:2094" ph="SELECT idpro... product" />
+                <marker date="1494866036739" expanded="true" signature="1922:2281" ph="SELECT idpro... " />
+                <marker date="1494866036739" expanded="true" signature="2107:2281" ph="SELECT idpro... product" />
+                <marker date="1494866036739" expanded="true" signature="2578:3042" ph="..." />
+                <marker date="1494866036739" expanded="true" signature="2873:3029" ph="..." />
+                <marker date="1494866036739" expanded="true" signature="2943:3015" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.ini" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/config.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="834">
+              <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bestellingen.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/bestellingen.php">
+      <file leaf-file-name="adminDisplayNewProjectOrdersRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayNewProjectOrdersRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="1606">
+              <caret line="73" column="159" selection-start-line="73" selection-start-column="159" selection-end-line="73" selection-end-column="159" />
+              <folding>
+                <marker date="1494843123712" expanded="true" signature="1377:1796" ph="SELECT beste... bestelling" />
+                <marker date="1494843123712" expanded="true" signature="2184:2329" ph="SELECT proje... bestelling" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="emsys.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/emsys.php">
+      <file leaf-file-name="Order.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/orders/classes/Order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="2464">
+              <caret line="112" column="29" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
+              <folding>
+                <marker date="1494688027477" expanded="true" signature="2875:2961" ph="INSERT INTO bestelling... " />
+                <marker date="1494688027477" expanded="true" signature="3549:3649" ph="INSERT INTO bestelling... " />
+                <marker date="1494688027477" expanded="true" signature="4273:4325" ph="SELECT * FRO... bestellingproduct" />
+                <marker date="1494688027477" expanded="true" signature="5723:5766" ph="SELECT titel... project" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.php">
+      <file leaf-file-name="processPlaceOrderRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/AJAX/processPlaceOrderRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profiel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/profiel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registreren.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/registreren.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wachtwoordvergeten.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/wachtwoordvergeten.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="winkelmandje.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/winkelmandje.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="1320">
+              <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -153,57 +177,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrderRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrdersRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectParticipantsRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectsParticipatingRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayProjectsRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUserOrderProductsRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUserOrdersRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminDownloadBOMRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminFarnellProductsToOrderRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminLiveSearchProjectsRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminLiveSearchUsersRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminMarkOrdersArrivedRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminModifyProductRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminModifyProjectRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminModifyUserRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminMouserProductsToOrderRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminProjectOrderDataRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminRemoveProjectParticipantsRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminRemoveProjectsParticipatingRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminRemoveProjectsRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminUserOrderDataRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/adminRemoveUsersRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processAddToCartRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processDeleteFromCartRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processDisplayShoppingCartRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processDisplayUserOrderProductsRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processDisplayUserOrdersRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processOrderDeniedMessageRequest.php" />
+        <option value="$PROJECT_DIR$/web/js/showFinalCart.js" />
         <option value="$PROJECT_DIR$/web/AJAX/processPlaceOrderRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processSearchEmSysProductRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processSearchProductRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processUpdateProductAmountRequest.php" />
-        <option value="$PROJECT_DIR$/web/AJAX/processUserOrderDataRequest.php" />
-        <option value="$PROJECT_DIR$/web/activate.php" />
-        <option value="$PROJECT_DIR$/web/adminbestellingen.php" />
-        <option value="$PROJECT_DIR$/web/adminbestellingenBOMdownloaden.php" />
-        <option value="$PROJECT_DIR$/web/adminbestellingenkeuren.php" />
-        <option value="$PROJECT_DIR$/web/adminbestellingenverwachteleveringen.php" />
-        <option value="$PROJECT_DIR$/web/adminpanel.php" />
-        <option value="$PROJECT_DIR$/web/adminproducten.php" />
+        <option value="$PROJECT_DIR$/web/js/showUserOrders.js" />
         <option value="$PROJECT_DIR$/web/adminprojecten.php" />
-        <option value="$PROJECT_DIR$/web/adminscanbarcode.php" />
-        <option value="$PROJECT_DIR$/web/adminusers.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/processUserOrderDataRequest.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminChartDataRequest.php" />
+        <option value="$PROJECT_DIR$/lib/shoppingcart/functions/addToCart.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/processAddToCartRequest.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUserOrderProductsRequest.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/processDisplayUserOrderProductsRequest.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayNewPersonalOrdersRequest.php" />
+        <option value="$PROJECT_DIR$/web/adminbestellingenBOMdownloaden.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminAddFinalOrderNumberRequest.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminMarkOrdersArrivedRequest.php" />
+        <option value="$PROJECT_DIR$/web/js/adminApproveOrder.js" />
+        <option value="$PROJECT_DIR$/web/AJAX/processOrderDeniedMessageRequest.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/processDisplayUserOrdersRequest.php" />
+        <option value="$PROJECT_DIR$/web/js/adminSidePanelOrder.js" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayOrdersRequest.php" />
+        <option value="$PROJECT_DIR$/web/adminbestellingenkeuren.php" />
         <option value="$PROJECT_DIR$/web/bestellingen.php" />
-        <option value="$PROJECT_DIR$/web/emsys.php" />
-        <option value="$PROJECT_DIR$/web/index.php" />
-        <option value="$PROJECT_DIR$/web/profiel.php" />
-        <option value="$PROJECT_DIR$/web/registreren.php" />
-        <option value="$PROJECT_DIR$/web/wachtwoordvergeten.php" />
+        <option value="$PROJECT_DIR$/web/js/showSidePanelOrder.js" />
+        <option value="$PROJECT_DIR$/web/adminbestellingenverwachteleveringen.php" />
+        <option value="$PROJECT_DIR$/web/js/adminSidePanelFinalOrder.js" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayExpectedOrdersRequest.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayFinalOrderProductsRequest.php" />
+        <option value="$PROJECT_DIR$/web/js/adminUpdateOrderDelivered.js" />
+        <option value="$PROJECT_DIR$/web/js/adminScanBarcode.js" />
+        <option value="$PROJECT_DIR$/web/adminscanbarcode.php" />
+        <option value="$PROJECT_DIR$/web/js/placeOrder.js" />
+        <option value="$PROJECT_DIR$/lib/shoppingcart/classes/ShoppingCart.php" />
+        <option value="$PROJECT_DIR$/templates/adminnavbar.php" />
+        <option value="$PROJECT_DIR$/web/adminbestellingen.php" />
+        <option value="$PROJECT_DIR$/web/adminpanel.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminApproveOrdersRequest.php" />
+        <option value="$PROJECT_DIR$/lib/users/functions/logActivity.php" />
+        <option value="$PROJECT_DIR$/lib/orders/functions/markOrderArrived.php" />
+        <option value="$PROJECT_DIR$/web/css/main.css" />
+        <option value="$PROJECT_DIR$/web/js/adminSidePanelProject.js" />
+        <option value="$PROJECT_DIR$/templates/template.php" />
+        <option value="$PROJECT_DIR$/lib/shoppingcart/classes/ShoppingCartArticle.php" />
+        <option value="$PROJECT_DIR$/config/EmptyDBSetup.sql" />
         <option value="$PROJECT_DIR$/web/winkelmandje.php" />
+        <option value="$PROJECT_DIR$/web/js/showShoppingCart.js" />
+        <option value="$PROJECT_DIR$/lib/orders/classes/Order.php" />
+        <option value="$PROJECT_DIR$/lib/orders/classes/OrderProduct.php" />
+        <option value="$PROJECT_DIR$/lib/orders/classes/generateInvoice.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayNewProjectOrdersRequest.php" />
+        <option value="$PROJECT_DIR$/lib/database/classes/DAL.php" />
+        <option value="$PROJECT_DIR$/templates/footer.php" />
+        <option value="$PROJECT_DIR$/web/AJAX/processSearchEmSysProductRequest.php" />
       </list>
     </option>
   </component>
@@ -966,12 +990,12 @@
       <workItem from="1494673004325" duration="10403000" />
       <workItem from="1494840713790" duration="2345000" />
       <workItem from="1494852247614" duration="599000" />
-      <workItem from="1494864570811" duration="3018000" />
+      <workItem from="1494864570811" duration="1474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="771218000" />
+    <option name="totallyTimeSpent" value="769674000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -981,7 +1005,6 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32381997" sideWeight="0.496875" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70911086" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -993,6 +1016,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37211856" sideWeight="0.503125" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70911086" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978093" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1018,471 +1042,410 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrderRequest.php">
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayOrdersRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-          <folding>
-            <marker date="1494875122197" expanded="true" signature="1370:1634" ph="SELECT beste... bestelling" />
-          </folding>
+        <state relative-caret-position="902">
+          <caret line="41" column="13" selection-start-line="40" selection-start-column="12" selection-end-line="44" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectOrdersRequest.php">
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayOrderProductsRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122151" expanded="true" signature="1360:1624" ph="SELECT beste... bestelling" />
-          </folding>
+        <state relative-caret-position="286">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectParticipantsRequest.php">
+    <entry file="file://$PROJECT_DIR$/web/bestellingen.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122248" expanded="true" signature="1360:1623" ph="SELECT gebru... gebruiker" />
-          </folding>
+        <state relative-caret-position="2794">
+          <caret line="127" column="12" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectsParticipatingRequest.php">
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminAddFinalOrderNumberRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122375" expanded="true" signature="1374:1588" ph="SELECT proje... project" />
-          </folding>
+        <state relative-caret-position="1628">
+          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="93" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProjectsRequest.php">
+    <entry file="file://$PROJECT_DIR$/web/js/adminScanBarcode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122206" expanded="true" signature="1056:1252" ph="SELECT proje... project" />
-          </folding>
+        <state relative-caret-position="110">
+          <caret line="5" column="106" selection-start-line="5" selection-start-column="106" selection-end-line="5" selection-end-column="106" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUserOrderProductsRequest.php">
+    <entry file="file://$PROJECT_DIR$/web/adminscanbarcode.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122284" expanded="true" signature="1401:1738" ph="SELECT produ... bestellingproduct" />
-          </folding>
+        <state relative-caret-position="438">
+          <caret line="100" column="31" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUserOrdersRequest.php">
+    <entry file="file://$PROJECT_DIR$/lib/products/classes/MouserProduct.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122304" expanded="true" signature="1374:1636" ph="SELECT beste... bestelling" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122187" expanded="true" signature="1367:1571" ph="SELECT gebru... gebruiker" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDownloadBOMRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122178" expanded="true" signature="1961:2263" ph="SELECT beste... bestelling" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminFarnellProductsToOrderRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122349" expanded="true" signature="1368:1678" ph="SELECT beste... bestelling" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminLiveSearchProjectsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-          <folding>
-            <marker date="1494875122231" expanded="true" signature="1433:1492" ph="SELECT idpro... project" />
-            <marker date="1494875122231" expanded="true" signature="1433:1560" ph="SELECT idpro... " />
-            <marker date="1494875122231" expanded="true" signature="1505:1560" ph="SELECT idpro... project" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminLiveSearchUsersRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122275" expanded="true" signature="1465:1537" ph="SELECT rnumm... gebruiker" />
-            <marker date="1494875122275" expanded="true" signature="1465:1711" ph="SELECT rnumm... " />
-            <marker date="1494875122275" expanded="true" signature="1550:1623" ph="SELECT rnumm... gebruiker" />
-            <marker date="1494875122275" expanded="true" signature="1636:1711" ph="SELECT rnumm... gebruiker" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminMarkOrdersArrivedRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminModifyProductRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122257" expanded="true" signature="2341:2452" ph="UPDATE produ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminModifyProjectRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminModifyUserRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122366" expanded="true" signature="3059:3160" ph="UPDATE gebru... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminMouserProductsToOrderRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122321" expanded="true" signature="1357:1666" ph="SELECT beste... bestelling" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminProjectOrderDataRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122240" expanded="true" signature="1464:1672" ph="SELECT SUM(b... bestelling" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminRemoveProjectParticipantsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122266" expanded="true" signature="1800:1860" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminRemoveProjectsParticipatingRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122169" expanded="true" signature="1819:1879" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminRemoveProjectsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminUserOrderDataRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122294" expanded="true" signature="1377:1559" ph="SELECT SUM(b... bestelling" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminRemoveUsersRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processAddToCartRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
-          <folding>
-            <marker date="1494875122132" expanded="true" signature="3583:3663" ph="SELECT eigen... product" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processDeleteFromCartRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-          <folding>
-            <marker date="1494875597552" expanded="true" signature="1787:1870" ph="SELECT idpro... winkelwagen" />
-            <marker date="1494875597552" expanded="true" signature="2302:2375" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processDisplayShoppingCartRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processDisplayUserOrderProductsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
-          <folding>
-            <marker date="1494875597696" expanded="true" signature="1561:1640" ph="SELECT beste... bestelling" />
-            <marker date="1494875597696" expanded="true" signature="2010:2347" ph="SELECT produ... bestellingproduct" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processDisplayUserOrdersRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding>
-            <marker date="1494875597614" expanded="true" signature="1403:1549" ph="SELECT beste... bestelling" />
-            <marker date="1494875597614" expanded="true" signature="2675:2820" ph="SELECT proje... bestelling" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processOrderDeniedMessageRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processPlaceOrderRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processSearchEmSysProductRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding>
-            <marker date="1494875597688" expanded="true" signature="1910:2082" ph="SELECT idpro... product" />
-            <marker date="1494875597688" expanded="true" signature="1910:2269" ph="SELECT idpro... " />
-            <marker date="1494875597688" expanded="true" signature="2095:2269" ph="SELECT idpro... product" />
-            <marker date="1494875597688" expanded="true" signature="2566:3030" ph="..." />
-            <marker date="1494875597688" expanded="true" signature="2861:3017" ph="..." />
-            <marker date="1494875597688" expanded="true" signature="2931:3003" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processSearchProductRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processUpdateProductAmountRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/processUserOrderDataRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/activate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminbestellingen.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminbestellingenBOMdownloaden.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminbestellingenkeuren.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminbestellingenverwachteleveringen.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminpanel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/adminproducten.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminbestellingenverwachteleveringen.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="171" column="57" selection-start-line="171" selection-start-column="57" selection-end-line="171" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminproductenafhalen.php" />
+    <entry file="file://$PROJECT_DIR$/web/adminbestellingenkeuren.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1608">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="225" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminMarkOrdersArrivedRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="20" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminbestellingen.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminpanel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-704">
+          <caret line="55" column="50" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminApproveOrdersRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="157" column="39" selection-start-line="157" selection-start-column="39" selection-end-line="157" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/users/functions/logActivity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/orders/functions/markOrderArrived.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="124" column="49" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="49" />
+          <folding>
+            <marker date="1494688027480" expanded="true" signature="469:764" ph="SELECT beste... definitiefbesteld" />
+            <marker date="1494688027480" expanded="true" signature="1131:1224" ph="UPDATE defin... " />
+            <marker date="1494688027480" expanded="true" signature="1665:1859" ph="SELECT beste... bestelling" />
+            <marker date="1494688027480" expanded="true" signature="2174:2237" ph="UPDATE beste... " />
+            <marker date="1494688027480" expanded="true" signature="3912:3976" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/Lumino/easypiechart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="162" column="4" selection-start-line="162" selection-start-column="4" selection-end-line="162" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/Lumino/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="389" column="4" selection-start-line="389" selection-start-column="4" selection-end-line="389" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/adminAddNewProduct.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/adminprojecten.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="-2112">
+          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminscanbarcode.php">
+    <entry file="file://$PROJECT_DIR$/templates/template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="176">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/adminnavbar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminChartDataRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="136" column="16" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/shoppingcart/functions/addToCart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/users/functions/resetPassword.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/users/functions/registerUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1320">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/placeOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/adminSidePanelUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/searchEmSysProduct.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/searchProduct.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1056">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/showSidePanelOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/adminusers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="344">
+          <caret line="169" column="95" selection-start-line="169" selection-start-column="31" selection-end-line="169" selection-end-column="95" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/bestellingen.php">
+    <entry file="file://$PROJECT_DIR$/web/AJAX/processDisplayShoppingCartRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/emsys.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/profiel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/registreren.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/wachtwoordvergeten.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/winkelmandje.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="1672">
+          <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/showShoppingCart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3014">
+          <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/shoppingcart/classes/ShoppingCart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2376">
+          <caret line="108" column="46" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+          <folding>
+            <marker date="1494688027482" expanded="true" signature="916:957" ph="SELECT * FRO... winkelwagen" />
+            <marker date="1494688027482" expanded="true" signature="2280:2581" ph="..." />
+            <marker date="1494688027482" expanded="true" signature="2309:2392" ph="..." />
+            <marker date="1494688027482" expanded="true" signature="2421:2569" ph="..." />
+            <marker date="1494688027482" expanded="true" signature="2674:2742" ph="..." />
+            <marker date="1494688027482" expanded="true" signature="4668:4711" ph="DELETE FROM " />
+            <marker date="1494688027482" expanded="true" signature="5280:5486" ph="SELECT gebru... gebruikerproject" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/shoppingcart/classes/ShoppingCartArticle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2838">
+          <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+          <folding>
+            <marker date="1494688027482" expanded="true" signature="2469:2780" ph="..." />
+            <marker date="1494688027482" expanded="true" signature="2842:3065" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/EmptyDBSetup.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="65" column="6" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/processPlaceOrderRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/orders/classes/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2464">
+          <caret line="112" column="29" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
+          <folding>
+            <marker date="1494688027477" expanded="true" signature="2875:2961" ph="INSERT INTO bestelling... " />
+            <marker date="1494688027477" expanded="true" signature="3549:3649" ph="INSERT INTO bestelling... " />
+            <marker date="1494688027477" expanded="true" signature="4273:4325" ph="SELECT * FRO... bestellingproduct" />
+            <marker date="1494688027477" expanded="true" signature="5723:5766" ph="SELECT titel... project" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/orders/classes/OrderProduct.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1386">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <marker date="1494688027478" expanded="true" signature="1562:1668" ph="INSERT INTO bestellingproduct... " />
+            <marker date="1494688027478" expanded="true" signature="2238:2327" ph="..." />
+            <marker date="1494688027478" expanded="true" signature="2336:2427" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/orders/classes/generateInvoice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3190">
+          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+          <folding>
+            <marker date="1494688027478" expanded="true" signature="615:747" ph="SELECT * FRO... bestellingproduct" />
+            <marker date="1494688027478" expanded="true" signature="1098:1263" ph="SELECT gebru... bestelling" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayNewProjectOrdersRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1606">
+          <caret line="73" column="159" selection-start-line="73" selection-start-column="159" selection-end-line="73" selection-end-column="159" />
+          <folding>
+            <marker date="1494843123712" expanded="true" signature="1377:1796" ph="SELECT beste... bestelling" />
+            <marker date="1494843123712" expanded="true" signature="2184:2329" ph="SELECT proje... bestelling" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/database/classes/DAL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="76" selection-start-line="12" selection-start-column="76" selection-end-line="12" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/adminDisplayProductsRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+          <folding>
+            <marker date="1494401291857" expanded="true" signature="1317:1435" ph="SELECT idpro... product" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/AJAX/processSearchEmSysProductRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="89" column="65" selection-start-line="89" selection-start-column="65" selection-end-line="89" selection-end-column="65" />
+          <folding>
+            <marker date="1494866036739" expanded="true" signature="1922:2094" ph="SELECT idpro... product" />
+            <marker date="1494866036739" expanded="true" signature="1922:2281" ph="SELECT idpro... " />
+            <marker date="1494866036739" expanded="true" signature="2107:2281" ph="SELECT idpro... product" />
+            <marker date="1494866036739" expanded="true" signature="2578:3042" ph="..." />
+            <marker date="1494866036739" expanded="true" signature="2873:3029" ph="..." />
+            <marker date="1494866036739" expanded="true" signature="2943:3015" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="834">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding />
         </state>
       </provider>

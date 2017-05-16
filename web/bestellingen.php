@@ -12,13 +12,13 @@
 	}
 
 	//include OrderProduct
-	require $GLOBALS['settings']->Folders['root'].'/lib/orders/classes/OrderProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/OrderProduct.php';
 
 	//include Order
-	require $GLOBALS['settings']->Folders['root'].'/lib/orders/classes/Order.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/Order.php';
 
 	//include function to get user orders
-	require $GLOBALS['settings']->Folders['root'].'/lib/orders/functions/getOrdersForUser.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/getOrdersForUser.php';
 
 ?>
 	<!-- AJAX to sort orders -->
@@ -172,4 +172,4 @@
 	<script src="js/Lumino/easypiechart.js"></script>
 	<script src="js/Lumino/easypiechart-data.js"></script>
 	<!-- footer -->
-	<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>
+	<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>

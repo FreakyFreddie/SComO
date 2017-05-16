@@ -6,34 +6,34 @@
 
 	//include classes BEFORE session_start because we might need them in session
 	//include DAL (DAL & login always go on top since classes depend on them)
-	require $GLOBALS['settings']->Folders['root'].'/lib/database/classes/DAL.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
 
 	//include login class
-	require $GLOBALS['settings']->Folders['root'].'/lib/users/classes/Login.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/classes/Login.php';
 
 	//include Product class
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/Product.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
 	//include project class
-	require $GLOBALS['settings']->Folders['root'].'/lib/project/classes/Project.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/project/classes/Project.php';
 
 	//include project class
-	require $GLOBALS['settings']->Folders['root'].'/lib/database/functions/validateInputs.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 
 	//add PHPMailer mail functionality
-	require $GLOBALS['settings']->Folders['root'].'/lib/PHPMailer/PHPMailerAutoload.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/PHPMailer/PHPMailerAutoload.php';
 
 	//include function to remove projects
-	require $GLOBALS['settings']->Folders['root'].'/lib/orders/functions/markOrderArrived.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/markOrderArrived.php';
 
 	//add PHPMailer mail functionality
-	require $GLOBALS['settings']->Folders['root'].'/lib/FPDF/fpdf.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/FPDF/fpdf.php';
 
 	//include DAL (DAL & login always go on top since classes depend on them)
-	require $GLOBALS['settings']->Folders['root'].'/lib/barcodegenerator/src/BarcodeGenerator.php';
-	require $GLOBALS['settings']->Folders['root'].'/lib/barcodegenerator/src/BarcodeGeneratorJPG.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/barcodegenerator/src/BarcodeGenerator.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/barcodegenerator/src/BarcodeGeneratorJPG.php';
 
-	require $GLOBALS['settings']->Folders['root'].'/lib/orders/classes/generateInvoice.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/generateInvoice.php';
 
 	session_start();
 

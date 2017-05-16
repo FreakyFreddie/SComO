@@ -12,7 +12,7 @@
 	}
 
 	//include registerfunction
-	require $GLOBALS['settings']->Folders['root'].'/lib/users/functions/resetPassword.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/resetPassword.php';
 ?>
 
 	</head>
@@ -65,4 +65,4 @@
 	</div>
 
 	<!-- footer -->
-<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>
+<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>

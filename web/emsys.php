@@ -53,4 +53,4 @@
 		<script src="js/Lumino/bootstrap-table.js"></script>
 		<script type="text/javascript" src="./js/searchEmSysProduct.js"></script>
 		<!-- footer -->
-		<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>
+		<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>

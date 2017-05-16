@@ -6,41 +6,41 @@
 
 	//include classes BEFORE session_start because we might need them in session
 	//include DAL (DAL & login always go on top since classes depend on them)
-	require $GLOBALS['settings']->Folders['root'].'/lib/database/classes/DAL.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
 
 	//include login class
-	require $GLOBALS['settings']->Folders['root'].'/lib/users/classes/Login.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/classes/Login.php';
 
 	//include ProductPrice class
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/ProductPrice.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
 
 	//include Product class
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/Product.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
 	//include MouserProduct
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/MouserProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
 
 	//include FarnellProduct
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/FarnellProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
 
 	//include ShoppingCartArticle
-	require $GLOBALS['settings']->Folders['root'].'/lib/shoppingcart/classes/ShoppingCartArticle.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCartArticle.php';
 
 	//include ShoppingCart
-	require $GLOBALS['settings']->Folders['root'].'/lib/shoppingcart/classes/ShoppingCart.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/shoppingcart/classes/ShoppingCart.php';
 
 	//include OrderProduct
-	require $GLOBALS['settings']->Folders['root'].'/lib/orders/classes/OrderProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/OrderProduct.php';
 
 	//include Order
-	require $GLOBALS['settings']->Folders['root'].'/lib/orders/classes/Order.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/orders/classes/Order.php';
 
 	//include functions
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getfarnellproducts.php';
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getmouserproducts.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
 
 	//include input validation
-	require $GLOBALS['settings']->Folders['root'].'/lib/database/functions/validateInputs.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 
 	session_start();
 

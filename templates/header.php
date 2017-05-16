@@ -5,25 +5,25 @@
 	//include classes BEFORE session_start because we might need them in session
 	//globally used classes go here
 	//include DAL (DAL & login always go on top since classes depend on them)
-	require $GLOBALS['settings']->Folders['root'].'/lib/database/classes/DAL.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/database/classes/DAL.php';
 
 	//include login class
-	require $GLOBALS['settings']->Folders['root'].'/lib/users/classes/Login.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/users/classes/Login.php';
 
 	//include ProductPrice class
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/ProductPrice.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/ProductPrice.php';
 
 	//include Product class
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/Product.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/Product.php';
 
 	//include MouserProduct
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/MouserProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/MouserProduct.php';
 
 	//include FarnellProduct
-	require $GLOBALS['settings']->Folders['root'].'/lib/products/classes/FarnellProduct.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/products/classes/FarnellProduct.php';
 
 	//add PHPMailer mail functionality
-	require $GLOBALS['settings']->Folders['root'].'/lib/PHPMailer/PHPMailerAutoload.php';
+	require $GLOBALS['settings']->Folders['root'].'../lib/PHPMailer/PHPMailerAutoload.php';
 
 	//start session once since header.php is included in all pages
 	session_start();
@@ -71,14 +71,14 @@
 		
 		<?php
 			//globally used functions go here
-			require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getfarnellproducts.php';
-			require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getmouserproducts.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getfarnellproducts.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getmouserproducts.php';
 
 			//logfunction
-			require $GLOBALS['settings']->Folders['root'].'/lib/users/functions/logActivity.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/logActivity.php';
 
 			//input checks
-			require $GLOBALS['settings']->Folders['root'].'/lib/database/functions/validateInputs.php';
+			require $GLOBALS['settings']->Folders['root'].'../lib/database/functions/validateInputs.php';
 
 			//check login condition & log in
 			if(isset($_POST["rnr"]) && isset($_POST["pwd"]))
