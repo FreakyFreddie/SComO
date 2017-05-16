@@ -12,7 +12,7 @@
 	}
 
 	//include function to change password
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/changePassWord.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/users/functions/changePassWord.php';
 ?>
 </head>
 
@@ -76,4 +76,4 @@
 </div>
 
 <!-- footer -->
-<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
+<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>

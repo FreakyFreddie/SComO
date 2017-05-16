@@ -12,7 +12,7 @@
 	}
 
 	//include registerfunction
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/registerUser.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/users/functions/registerUser.php';
 ?>
 
 	</head>
@@ -90,4 +90,4 @@
 		</div>
 		
 		<!-- footer -->
-		<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
+		<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>

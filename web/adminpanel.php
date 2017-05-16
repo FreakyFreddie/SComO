@@ -17,16 +17,16 @@
 	}
 
 	//include getOrdersTotal
-	require $GLOBALS['settings']->Folders['root'].'../lib/orders/functions/getOrdersTotal.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/orders/functions/getOrdersTotal.php';
 
 	//include getProjectsTotal
-	require $GLOBALS['settings']->Folders['root'].'../lib/project/functions/getProjectsTotal.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/project/functions/getProjectsTotal.php';
 
 	//include getUsersTotal
-	require $GLOBALS['settings']->Folders['root'].'../lib/users/functions/getUsersTotal.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/users/functions/getUsersTotal.php';
 
 	//include getProductsTotal
-	require $GLOBALS['settings']->Folders['root'].'../lib/products/functions/getProductsTotal.php';
+	require $GLOBALS['settings']->Folders['root'].'/lib/products/functions/getProductsTotal.php';
 
 ?>
 	</head>
@@ -34,7 +34,7 @@
 	<body>
 		<?php
 			//include navbar
-			require $GLOBALS['settings']->Folders['root'].'../templates/navbar.php';
+			require $GLOBALS['settings']->Folders['root'].'/templates/navbar.php';
 		?>
 
 		<noscript>
@@ -46,7 +46,7 @@
 
 		<?php
 			//include admin dashboard navbar
-			require $GLOBALS['settings']->Folders['root'].'../templates/adminnavbar.php';
+			require $GLOBALS['settings']->Folders['root'].'/templates/adminnavbar.php';
 		?>
 
 		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -179,4 +179,4 @@
 			})
 		</script>
 
-	<?php require $GLOBALS['settings']->Folders['root'].'../templates/footer.php'; ?>
+	<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>
