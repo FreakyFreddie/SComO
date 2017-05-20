@@ -34,7 +34,7 @@
         $data=filter_var($data, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 		
 		//Naam needs to be one or more words, sometimes separated by a - (ex. An-sophie)
-		if(preg_match("/^[a-zA-Z -]+$/", $data))
+		if(preg_match("/^[A-z ,.'-]+$/", $data))
 		{
 			//make all letters lowercase
 			$data = strtolower($data);
@@ -95,13 +95,13 @@
         $data = filter_var($data, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 
 		//password must contain at least 8 characters or numbers(a-z, A-Z, 0-9)
-		if(preg_match("/^[a-zA-Z0-9]{8,}$/", $data))
+		if(strlen($data) > 7)
 		{
 			return $data;
 		}
 		else
 		{
-			echo "<p>Een wachtwoord moet bestaan uit ten minste 8 letters of cijfers</p>";
+			echo "<p>Een wachtwoord moet bestaan uit ten minste 8 karakters.</p>";
 			return FALSE;
 		}
 	}
