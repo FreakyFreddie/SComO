@@ -16,37 +16,48 @@ $(document).ready(function()
 
 	$("#orderproducts").click(function()
 	{
-		var orderpersoonlijk = $('.orderpersoonlijk:checked').val();
-		var project = $("#selectproject").val();
-
-		var r = confirm("Ben je zeker dat je deze bestelling definitief wil plaatsen?");
-
-		if (r == true)
+		if($('table').find('td').html()!='No matching records found')
 		{
-			//prepare request
-			$request = $.ajax({
-				method:"POST",
-				url:"AJAX/processPlaceOrderRequest.php?r=" + new Date().getTime(),
-				data: {orderpersonal: orderpersoonlijk, project: project}
-			});
+			var orderpersoonlijk = $('.orderpersoonlijk:checked').val();
+			var project = $("#selectproject").val();
 
-			$request.done(function()
-			{
-				//display message when product is successfully added
-				$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Geslaagd!</strong> De bestelling is succesvol geplaatst.</div>').insertBefore($("footer")).fadeOut(2000, function()
-				{
-					$("#shoppingcart").find(".row").remove();
-					$("#shoppingcart").html("Bestelling geplaatst.");
-				});
-			});
+			var r = confirm("Ben je zeker dat je deze bestelling definitief wil plaatsen?");
 
-			$request.fail(function()
+			if (r == true)
 			{
-				//display message when product could not be added
-				$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> De bestelling kon niet worden geplaatst.</div>').insertBefore($("footer")).fadeOut(2000, function()
-				{
-					$(this).remove();
+				//prepare request
+				$request = $.ajax({
+					method:"POST",
+					url:"AJAX/processPlaceOrderRequest.php?r=" + new Date().getTime(),
+					data: {orderpersonal: orderpersoonlijk, project: project}
 				});
+
+				$request.done(function()
+				{
+					//display message when product is successfully added
+					$('<div class="navbar-fixed-bottom alert alert-success"> <strong>Geslaagd!</strong> De bestelling is succesvol geplaatst.</div>').insertBefore($("footer")).fadeOut(2000, function()
+					{
+						$("#shoppingcart").find(".row").remove();
+						$("#shoppingcart").html("Bestelling geplaatst.");
+					});
+				});
+
+				$request.fail(function()
+				{
+					//display message when product could not be added
+					$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> De bestelling kon niet worden geplaatst.</div>').insertBefore($("footer")).fadeOut(2000, function()
+					{
+						$(this).remove();
+					});
+				});
+			}
+		}
+		else
+		{
+			//display message when product could not be added
+			$('<div class="navbar-fixed-bottom alert alert-danger"> <strong>Fout!</strong> U kunt geen lege bestelling plaatsen.</div>').insertBefore($("footer")).fadeOut(2000, function()
+			{
+				$(this).remove();
 			});
 		}
 	});

@@ -21,16 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="134" column="46" selection-start-line="134" selection-start-column="46" selection-end-line="134" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="adminbestellingenkeuren.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/adminbestellingenkeuren.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -88,7 +78,7 @@
       <file leaf-file-name="winkelmandje.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/winkelmandje.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-638">
+            <state relative-caret-position="352">
               <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
               <folding>
                 <marker date="1494930104125" expanded="true" signature="1560:2064" ph="..." />
@@ -100,11 +90,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminusers.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="showShoppingCart.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/js/showShoppingCart.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-726">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="placeOrder.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/js/placeOrder.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="596">
+              <caret line="57" column="127" selection-start-line="57" selection-start-column="127" selection-end-line="57" selection-end-column="127" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminusers.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/adminusers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3751">
-              <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+            <state relative-caret-position="-451">
+              <caret line="214" column="64" selection-start-line="214" selection-start-column="64" selection-end-line="214" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -131,16 +141,6 @@
               <folding>
                 <marker date="1494930104093" expanded="true" signature="1464:1672" ph="SELECT SUM(b... bestelling" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.ini" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config.ini">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -177,7 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUserOrderProductsRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUserOrdersRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminDisplayUsersRequest.php" />
         <option value="$PROJECT_DIR$/web/AJAX/adminDownloadBOMRequest.php" />
@@ -228,6 +227,7 @@
         <option value="$PROJECT_DIR$/templates/header.php" />
         <option value="$PROJECT_DIR$/web/emsys.php" />
         <option value="$PROJECT_DIR$/web/index.php" />
+        <option value="$PROJECT_DIR$/web/js/placeOrder.js" />
       </list>
     </option>
   </component>
@@ -997,12 +997,12 @@
       <workItem from="1495120863296" duration="914000" />
       <workItem from="1495217709024" duration="2958000" />
       <workItem from="1495272564459" duration="5428000" />
-      <workItem from="1495287102207" duration="1931000" />
+      <workItem from="1495287102207" duration="2937000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="785708000" />
+    <option name="totallyTimeSpent" value="786714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1049,20 +1049,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminMarkOrdersArrivedRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/AJAX/adminModifyProductRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/AJAX/adminModifyProjectRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -1244,6 +1230,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding>
+            <marker date="1494930104107" expanded="true" signature="1443:1578" ph="SELECT SUM(b... bestellingproduct" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1251,6 +1240,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1258,6 +1248,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1265,6 +1256,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1694">
           <caret line="77" column="89" selection-start-line="77" selection-start-column="89" selection-end-line="77" selection-end-column="89" />
+          <folding>
+            <marker date="1494930111922" expanded="true" signature="3126:3239" ph="UPDATE beste... " />
+            <marker date="1494930111922" expanded="true" signature="3350:4041" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="3394:4041" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="3452:4041" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="3582:4041" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="3632:4041" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="3702:4041" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="3750:4041" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="3795:4041" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="3844:3955" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="4253:4489" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="4302:4408" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="5178:5347" ph="SELECT beste... bestelling" />
+            <marker date="1494930111922" expanded="true" signature="5724:5960" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="5773:5879" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="6649:7050" ph="SELECT proje... project" />
+            <marker date="1494930111922" expanded="true" signature="7953:8136" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="8001:8091" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="8183:9535" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="8426:9517" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="8474:9472" ph="..." />
+            <marker date="1494930111922" expanded="true" signature="8519:9423" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1279,6 +1294,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="77">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1462,9 +1478,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminusers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-451">
+          <caret line="214" column="64" selection-start-line="214" selection-start-column="64" selection-end-line="214" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/winkelmandje.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-638">
+        <state relative-caret-position="352">
           <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
           <folding>
             <marker date="1494930104125" expanded="true" signature="1560:2064" ph="..." />
@@ -1475,10 +1499,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminusers.php">
+    <entry file="file://$PROJECT_DIR$/web/js/showShoppingCart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3751">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        <state relative-caret-position="-726">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/placeOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="57" column="127" selection-start-line="57" selection-start-column="127" selection-end-line="57" selection-end-column="127" />
           <folding />
         </state>
       </provider>
