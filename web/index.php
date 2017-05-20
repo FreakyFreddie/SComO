@@ -49,6 +49,29 @@
 					<strong>Opgelet!</strong> Zonder javascript werkt de webwinkel mogelijk niet.
 				</div>
 			</noscript>
+			<?php
+				if(!isset($_SESSION["user"]) OR $_SESSION["user"]->__get("loggedIn") != TRUE)
+				{
+					echo'<div class="alert alert-warning alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Opgelet!</strong> U dient ingelogd te zijn om de webwinkel te kunnen gebruiken.
+					</div>';
+				}
+				elseif($_SESSION["user"]->__get("permissionLevel") == 5)
+				{
+					echo'<div class="alert alert-warning alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Opgelet!</strong> U bent verbannen. Neem contact op met uw docent.
+					</div>';
+				}
+				elseif($_SESSION["user"]->__get("permissionLevel") == 0)
+				{
+					echo'<div class="alert alert-warning alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Opgelet!</strong> Uw account is nog niet geactiveerd. Activeer deze via de ontvangen link in uw schoolmailbox.
+					</div>';
+				}
+			?>
 		</div>
 		<script src="js/Lumino/bootstrap-table.js"></script>
 		<script type="text/javascript" src="./js/searchProduct.js"></script>

@@ -8,6 +8,11 @@
 </head>
 
 <body>
+	<div class="container main workspace">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
 <?php
 	//include navbar
 	require '../templates/navbar.php';
@@ -59,5 +64,9 @@
 		$dal->closeConn();
 	}
 ?>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- footer -->
 	<?php require $GLOBALS['settings']->Folders['root'].'/templates/footer.php'; ?>

@@ -134,6 +134,8 @@
 
 				//Try logging in with Login object & add to session
 				$_SESSION["user"] = new Login($rnr, $pwd);
+
+				header("location:../web/index.php");
 			}
 
 			//write activity to log
