@@ -35,7 +35,7 @@
 		date_default_timezone_set('Europe/Brussels');
 
 		//set the graph scale (higher scale = more weeks in between milestones)
-		$scale= 1 ;
+		$scale= 1;
 
 		//set milestone dates, note that they are DateTime objects
 		//first date +23h & 59mins since we want the whole day included
@@ -89,7 +89,7 @@
 		foreach($records as $key => $record)
 		{
 			//exit the loop if we go over the max date
-			if(date_diff($dates[$i],date_create($record->datum))->days > ($scale*$counter*7))
+			if(date_diff($dates[0],date_create($record->datum))->days > ($scale*$counter*7))
 			{
 				break;
 			}
@@ -159,7 +159,7 @@
         foreach($records2 as $key => $record2)
         {
             //exit the loop if we go over the max date
-            if(date_diff($dates[$i],date_create($record2->datum2))->days > ($scale*$counter*7))
+            if(date_diff($dates[0],date_create($record2->datum2))->days > ($scale*$counter*7))
             {
                 break;
             }

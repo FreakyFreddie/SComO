@@ -11,7 +11,7 @@
 		public function __construct()
 		{
 			//problem
-			$this->DBSettings = (object) parse_ini_file($GLOBALS['settings']->Folders['root'].'../config/dbconfig.ini', true);
+			$this->DBSettings = (object) parse_ini_file($GLOBALS['settings']->Folders['root'].'/config/dbconfig.ini', true);
 			$this->dbConnect();
 		}
 		
