@@ -44,7 +44,8 @@ CREATE TABLE IF NOT EXISTS webstoredb.gebruikerproject
   FOREIGN KEY (rnummer)
 	REFERENCES gebruiker (rnummer),
   FOREIGN KEY (idproject)
-	REFERENCES project (idproject)
+	REFERENCES project (idproject),
+  PRIMARY KEY (idproject, rnummer)
 );
 
 /*Tabel definitief besteld*/
@@ -105,7 +106,8 @@ CREATE TABLE IF NOT EXISTS webstoredb.verzamelingproduct
   FOREIGN KEY (idverzameling)
 	REFERENCES verzameling (idverzameling),
   FOREIGN KEY (idproduct,leverancier)
-	REFERENCES product (idproduct,leverancier)
+	REFERENCES product (idproduct,leverancier),
+  PRIMARY KEY (idverzameling, idproduct, leverancier)
 );
 
 /*Relatie gebruiker heeft bepaalde producten in winkelwagen*/
@@ -119,7 +121,8 @@ CREATE TABLE IF NOT EXISTS webstoredb.winkelwagen
   FOREIGN KEY (rnummer)
 	REFERENCES gebruiker (rnummer),
   FOREIGN KEY (idproduct,leverancier)
-	REFERENCES product (idproduct,leverancier)
+	REFERENCES product (idproduct,leverancier),
+  PRIMARY KEY (rnummer, idproduct, leverancier)
 );
 
 /*Relatie bestelling bevat producten*/
@@ -132,9 +135,10 @@ CREATE TABLE IF NOT EXISTS webstoredb.bestellingproduct
   prijs DECIMAL(12,4) NOT NULL,
   defbestelnummer VARCHAR(25),
   FOREIGN KEY (defbestelnummer)
-  REFERENCES definitiefbesteld (defbestelnummer),
+	REFERENCES definitiefbesteld (defbestelnummer),
   FOREIGN KEY (bestelnummer)
 	REFERENCES bestelling (bestelnummer),
   FOREIGN KEY (idproduct,leverancier)
-	REFERENCES product (idproduct,leverancier)
+	REFERENCES product (idproduct,leverancier),
+  PRIMARY KEY (bestelnummer, idproduct, leverancier)
 );
