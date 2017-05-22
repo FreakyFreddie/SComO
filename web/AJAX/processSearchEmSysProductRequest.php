@@ -89,6 +89,8 @@
 				$products[$i]["vendor"] = $record->vendor;
 				$products[$i]["price"] = round($record->price, 2);
 				$products[$i]["add"] = $add;
+
+				$i++;
 			}
 
 			echo json_encode($products);
